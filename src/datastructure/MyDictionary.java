@@ -1,5 +1,7 @@
-package datastructures;
+package datastructure;
 
+
+import exception.DictionaryException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,17 +17,26 @@ public class MyDictionary<KeyType, ValueType> implements MyIDictionary<KeyType, 
     }
 
     @Override
-    public void remove(KeyType key) {
+    public void remove(KeyType key) throws DictionaryException {
+        if (!this.map.containsKey(key)) {
+            throw new DictionaryException("Key does not exist.");
+        }
         this.map.remove(key);
     }
 
     @Override
-    public ValueType get(KeyType key) {
+    public ValueType get(KeyType key) throws DictionaryException {
+        if (!this.map.containsKey(key)) {
+            throw new DictionaryException("Key does not exist.");
+        }
         return this.map.get(key);
     }
 
     @Override
-    public void update(KeyType key, ValueType value) {
+    public void update(KeyType key, ValueType value) throws DictionaryException {
+        if (!this.map.containsKey(key)) {
+            throw new DictionaryException("Key does not exist.");
+        }
         this.map.put(key, value);
     }
 

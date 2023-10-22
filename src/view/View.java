@@ -1,16 +1,17 @@
 package view;
 
 import controller.Controller;
-import exception.MyException;
+import exception.StackException;
+import programs.ProgramGenerator;
 
 import java.util.Scanner;
 
 public class View {
 
-    private Controller controller;
+    private final Controller controller;
     private static final Scanner scanner = new Scanner(System.in);
 
-    public View(Controller controller, String programsPath) {
+    public View(Controller controller) {
         this.controller = controller;
     }
 
@@ -26,7 +27,7 @@ public class View {
                 System.out.println();
                 switch (option) {
                     case 1:
-//                        this.chooseProgram();
+                        this.chooseProgram();
                         break;
 
                     case 2:
@@ -44,12 +45,31 @@ public class View {
                     default:
                         System.out.println("\nInvalid option!");
                 }
-//            } catch (MyException e) {
-//                System.out.println(e.getMessage());
             } catch (Exception e) {
-                System.out.println("Something went wrong!");
+                System.out.println("Something went wrong! " + e.getMessage());
                 View.scanner.nextLine();
             }
+        }
+    }
+
+    private void chooseProgram() throws StackException {
+        System.out.print("Please enter the program number (1 to 3): ");
+        int chosenProgram = Integer.parseInt(View.scanner.nextLine());
+        switch (chosenProgram) {
+            case 1:
+                this.controller.setProgram(ProgramGenerator.getProgram1());
+                break;
+
+            case 2:
+//                this.controller.setProgram(ProgramGenerator.getProgram2());
+                break;
+
+            case 3:
+//                this.controller.setProgram(ProgramGenerator.getProgram3());
+                break;
+
+            default:
+                System.out.println("Invalid program number!");
         }
     }
 

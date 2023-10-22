@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Repository implements IRepository {
     private final List<ProgramState> programStates = new ArrayList<ProgramState>();
-    private int currentProgramIndex = 0;
+    private final int currentProgramIndex = 0;
 
     public void add(ProgramState programState) {
         this.programStates.add(programState);

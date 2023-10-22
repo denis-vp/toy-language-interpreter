@@ -1,8 +1,13 @@
 package model.statement;
 
-import exception.MyException;
+import exception.DictionaryException;
+import exception.ExpressionException;
+import exception.StackException;
+import exception.StatementException;
 import model.programstate.ProgramState;
 
 public interface IStatement {
-    ProgramState execute(ProgramState state) throws MyException;
+    ProgramState execute(ProgramState state) throws StatementException, DictionaryException, ExpressionException, StackException;
+
+    IStatement deepCopy() throws ExpressionException;
 }

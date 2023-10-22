@@ -1,9 +1,15 @@
 // TODO: make better toString() functions for ExecutionStack, SymbolTable, Output
-// TODO: solve the deepCopy() problem for statements
 // TODO: hardcode some programs
-// TODO: extend the exception class
+
+import repository.Repository;
+import controller.Controller;
+import view.View;
 
 public class Main {
     public static void main(String[] args) {
+        Repository repository = new Repository();
+        Controller controller = new Controller(repository);
+        View view = new View(controller);
+        view.run();
     }
 }

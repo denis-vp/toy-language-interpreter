@@ -1,7 +1,7 @@
 package model.expression;
 
-import datastructures.MyIDictionary;
-import exception.MyException;
+import datastructure.MyIDictionary;
+import exception.DictionaryException;
 import model.value.Value;
 
 public class VarNameExpression implements Expression {
@@ -12,7 +12,12 @@ public class VarNameExpression implements Expression {
     }
 
     @Override
-    public Value eval(MyIDictionary<String, Value> table) throws MyException {
+    public Value eval(MyIDictionary<String, Value> table) throws DictionaryException {
         return table.get(this.id);
+    }
+
+    @Override
+    public Expression deepCopy() {
+        return new VarNameExpression(this.id);
     }
 }

@@ -1,7 +1,8 @@
 package model.expression;
 
-import datastructures.MyIDictionary;
-import exception.MyException;
+import datastructure.MyIDictionary;
+import exception.DictionaryException;
+import exception.ExpressionException;
 import model.type.BoolType;
 import model.value.BoolValue;
 import model.value.Value;
@@ -10,10 +11,10 @@ import java.util.HashMap;
 import java.util.function.BiPredicate;
 
 public class LogicalExpression implements Expression {
-    private Expression e1;
-    private Expression e2;
+    private final Expression e1;
+    private final Expression e2;
     private static final HashMap<Integer, BiPredicate<Boolean, Boolean>> operators = new HashMap<>();
-    private int operator;
+    private final int operator;
 
     public LogicalExpression(Expression e1, Expression e2, int operator) {
         operators.put(1, (a, b) -> a && b);
@@ -25,7 +26,7 @@ public class LogicalExpression implements Expression {
     }
 
     @Override
-    public Value eval(MyIDictionary<String, Value> table) throws MyException {
+    public Value eval(MyIDictionary<String, Value> table) throws ExpressionException, DictionaryException {
         Value v1, v2;
         v1 = e1.eval(table);
         if (v1.getType().equals(new BoolType())) {
@@ -38,8 +39,13 @@ public class LogicalExpression implements Expression {
                 n2 = b2.getValue();
                 return new BoolValue(LogicalExpression.operators.get(this.operator).test(n1, n2));
             } else
-                throw new MyException("second operand is not a boolean");
+                throw new ExpressionException("second operand is not a boolean");
         } else
-            throw new MyException("first operand is not a boolean");
+            throw new ExpressionException("first operand is not a boolean");
+    }
+
+    @Override
+    public Expression deepCopy() throws ExpressionException {
+        return new LogicalExpression(this.e1.deepCopy(), this.e2.deepCopy(), this.operator);
     }
 }

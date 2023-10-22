@@ -1,7 +1,8 @@
 package model.statement;
 
-import datastructures.MyIStack;
-import exception.MyException;
+import datastructure.MyIStack;
+import exception.DictionaryException;
+import exception.ExpressionException;
 import model.expression.Expression;
 import model.programstate.ProgramState;
 import model.value.BoolValue;
@@ -18,7 +19,7 @@ public class IfStatement implements IStatement {
     }
 
     @Override
-    public ProgramState execute(ProgramState state) throws MyException {
+    public ProgramState execute(ProgramState state) throws ExpressionException, DictionaryException {
         MyIStack<IStatement> stack = state.getExecutionStack();
         BoolValue condition = (BoolValue) this.expression.eval(state.getSymbolTable());
         if (condition.getValue()) {
@@ -27,6 +28,11 @@ public class IfStatement implements IStatement {
             stack.push(this.elseStatement);
         }
         return state;
+    }
+
+    @Override
+    public IStatement deepCopy() throws ExpressionException {
+        return new IfStatement(this.expression.deepCopy(), this.thenStatement.deepCopy(), this.elseStatement.deepCopy());
     }
 
     public String toString() {

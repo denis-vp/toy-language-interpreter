@@ -1,4 +1,6 @@
-package datastructures;
+package datastructure;
+
+import exception.StackException;
 
 import java.util.Stack;
 
@@ -6,7 +8,10 @@ public class MyStack<Type> implements MyIStack<Type> {
     private final Stack<Type> stack = new Stack<Type>();
 
     @Override
-    public Type top() {
+    public Type top() throws StackException {
+        if (this.stack.isEmpty()) {
+            throw new StackException("Stack is empty.");
+        }
         return this.stack.peek();
     }
 
@@ -16,7 +21,10 @@ public class MyStack<Type> implements MyIStack<Type> {
     }
 
     @Override
-    public Type pop() {
+    public Type pop() throws StackException {
+        if (this.stack.isEmpty()) {
+            throw new StackException("Stack is empty.");
+        }
         return this.stack.pop();
     }
 

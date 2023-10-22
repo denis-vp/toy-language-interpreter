@@ -1,7 +1,8 @@
 package model.expression;
 
-import datastructures.MyIDictionary;
-import exception.MyException;
+import datastructure.MyIDictionary;
+import exception.DictionaryException;
+import exception.ExpressionException;
 import model.type.IntType;
 import model.value.IntValue;
 import model.value.Value;
@@ -10,12 +11,12 @@ import java.util.HashMap;
 import java.util.function.IntBinaryOperator;
 
 public class ArithmeticExpression implements Expression {
-    private Expression e1;
-    private Expression e2;
+    private final Expression e1;
+    private final Expression e2;
     private static final HashMap<Integer, IntBinaryOperator> operators = new HashMap<>();
-    private int operator;
+    private final int operator;
 
-    public ArithmeticExpression(Expression e1, Expression e2, int operator) throws MyException {
+    public ArithmeticExpression(Expression e1, Expression e2, int operator) {
         operators.put(1, Integer::sum);
         operators.put(2, (a, b) -> a - b);
         operators.put(3, (a, b) -> a * b);
@@ -26,7 +27,7 @@ public class ArithmeticExpression implements Expression {
     }
 
     @Override
-    public Value eval(MyIDictionary<String, Value> table) throws MyException {
+    public Value eval(MyIDictionary<String, Value> table) throws ExpressionException, DictionaryException {
         Value v1, v2;
         v1 = e1.eval(table);
         if (v1.getType().equals(new IntType())) {
@@ -40,11 +41,16 @@ public class ArithmeticExpression implements Expression {
                 try {
                     return new IntValue(ArithmeticExpression.operators.get(this.operator).applyAsInt(n1, n2));
                 } catch (Exception e) {
-                    throw new MyException("division by zero");
+                    throw new ExpressionException("division by zero");
                 }
             } else
-                throw new MyException("second operand is not an integer");
+                throw new ExpressionException("second operand is not an integer");
         } else
-            throw new MyException("first operand is not an integer");
+            throw new ExpressionException("first operand is not an integer");
+    }
+
+    @Override
+    public Expression deepCopy() throws ExpressionException {
+        return new ArithmeticExpression(this.e1.deepCopy(), this.e2.deepCopy(), this.operator);
     }
 }

@@ -1,16 +1,16 @@
 package model.statement;
 
-import datastructures.MyIDictionary;
-import datastructures.MyIStack;
-import exception.MyException;
+import datastructure.MyIDictionary;
+import datastructure.MyIStack;
+import exception.*;
 import model.expression.Expression;
 import model.programstate.ProgramState;
 import model.type.Type;
 import model.value.Value;
 
 public class AssignmentStatement implements IStatement {
-    private String id;
-    private Expression expression;
+    private final String id;
+    private final Expression expression;
 
     public AssignmentStatement(String id, Expression expression) {
         this.id = id;
@@ -18,7 +18,7 @@ public class AssignmentStatement implements IStatement {
     }
 
     @Override
-    public ProgramState execute(ProgramState state) throws MyException {
+    public ProgramState execute(ProgramState state) throws StackException, ExpressionException, DictionaryException, StatementException {
         MyIStack<IStatement> stack = state.getExecutionStack();
         MyIDictionary<String, Value> symbolTable = state.getSymbolTable();
         stack.pop();
@@ -28,12 +28,17 @@ public class AssignmentStatement implements IStatement {
             if (value.getType().equals(typeId)) {
                 symbolTable.update(this.id, value);
             } else {
-                throw new MyException("Declared type of variable " + this.id + " and type of the assigned expression do not match.");
+                throw new StatementException("Declared type of variable " + this.id + " and type of the assigned expression do not match.");
             }
         } else {
-            throw new MyException("Variable " + this.id + " is not defined.");
+            throw new StatementException("Variable " + this.id + " is not defined.");
         }
         return state;
+    }
+
+    @Override
+    public IStatement deepCopy() throws ExpressionException {
+        return new AssignmentStatement(this.id, this.expression.deepCopy());
     }
 
     public String toString() {

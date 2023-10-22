@@ -1,8 +1,8 @@
 package model.statement;
 
-import datastructures.MyIDictionary;
-import datastructures.MyIStack;
-import exception.MyException;
+import datastructure.MyIDictionary;
+import datastructure.MyIStack;
+import exception.StatementException;
 import model.programstate.ProgramState;
 import model.type.BoolType;
 import model.type.IntType;
@@ -26,15 +26,20 @@ public class VarDecStatement implements IStatement {
     }
 
     @Override
-    public ProgramState execute(ProgramState state) throws MyException {
+    public ProgramState execute(ProgramState state) throws StatementException {
         MyIStack<IStatement> stack = state.getExecutionStack();
         MyIDictionary<String, Value> symbolTable = state.getSymbolTable();
         if (symbolTable.search(this.name)) {
-            throw new MyException("Variable " + this.name + " is already defined.");
+            throw new StatementException("Variable " + this.name + " is already defined.");
         } else {
             symbolTable.add(this.name, VarDecStatement.defaultValues.get(this.type));
         }
         return state;
+    }
+
+    @Override
+    public IStatement deepCopy() {
+        return new VarDecStatement(this.name, this.type.deepCopy());
     }
 
     String getName() {

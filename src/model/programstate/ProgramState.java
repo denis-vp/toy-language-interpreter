@@ -1,8 +1,8 @@
 package model.programstate;
 
-import datastructures.MyIDictionary;
-import datastructures.MyIList;
-import datastructures.MyIStack;
+import datastructure.MyIDictionary;
+import datastructure.MyIList;
+import datastructure.MyIStack;
 import model.statement.IStatement;
 import model.value.Value;
 

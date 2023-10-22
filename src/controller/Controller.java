@@ -1,13 +1,14 @@
 package controller;
 
-import datastructures.MyIStack;
+import datastructure.MyIStack;
 import exception.MyException;
+import exception.StackException;
 import model.programstate.ProgramState;
 import model.statement.IStatement;
 import repository.IRepository;
 
 public class Controller {
-    private IRepository repository;
+    private final IRepository repository;
     private boolean displayFlag = false;
 
     public Controller(IRepository repository) {
@@ -46,5 +47,12 @@ public class Controller {
 
     public void toggleDisplayFlag() {
         this.displayFlag = !this.displayFlag;
+    }
+
+    public void setProgram(IStatement program) throws StackException {
+        while (!this.repository.getCurrentProgram().getExecutionStack().isEmpty()) {
+            this.repository.getCurrentProgram().getExecutionStack().pop();
+        }
+        this.repository.getCurrentProgram().getExecutionStack().push(program);
     }
 }

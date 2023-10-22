@@ -1,9 +1,12 @@
 package model.expression;
 
-import datastructures.MyIDictionary;
-import exception.MyException;
+import datastructure.MyIDictionary;
+import exception.DictionaryException;
+import exception.ExpressionException;
 import model.value.Value;
 
 public interface Expression {
-    Value eval(MyIDictionary<String, Value> table) throws MyException;
+    Value eval(MyIDictionary<String, Value> table) throws ExpressionException, DictionaryException;
+
+    Expression deepCopy() throws ExpressionException;
 }

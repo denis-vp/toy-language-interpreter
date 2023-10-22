@@ -1,4 +1,6 @@
-package datastructures;
+package datastructure;
+
+import exception.DictionaryException;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -6,11 +8,11 @@ import java.util.Set;
 public interface MyIDictionary<KeyType, ValueType> {
     void add(KeyType key, ValueType value);
 
-    void remove(KeyType key);
+    void remove(KeyType key) throws DictionaryException;
 
-    ValueType get(KeyType key);
+    ValueType get(KeyType key) throws DictionaryException;
 
-    void update(KeyType key, ValueType value);
+    void update(KeyType key, ValueType value) throws DictionaryException;
 
     boolean search(KeyType key);
 
