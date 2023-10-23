@@ -7,7 +7,7 @@ import exception.StatementException;
 import model.programstate.ProgramState;
 
 public interface IStatement {
-    ProgramState execute(ProgramState state) throws StatementException, DictionaryException, ExpressionException, StackException;
+    ProgramState execute(ProgramState state) throws StatementException;
 
-    IStatement deepCopy() throws ExpressionException;
+    IStatement deepCopy() throws StatementException;
 }

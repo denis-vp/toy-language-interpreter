@@ -18,15 +18,33 @@ public class AssignmentStatement implements IStatement {
     }
 
     @Override
-    public ProgramState execute(ProgramState state) throws StackException, ExpressionException, DictionaryException, StatementException {
+    public ProgramState execute(ProgramState state) throws StatementException {
         MyIStack<IStatement> stack = state.getExecutionStack();
         MyIDictionary<String, Value> symbolTable = state.getSymbolTable();
-        stack.pop();
+//        try {
+//            stack.pop();
+//        } catch (StackException e) {
+//            throw new StatementException(e.getMessage());
+//        }
         if (symbolTable.search(this.id)) {
-            Value value = this.expression.eval(symbolTable);
-            Type typeId = (symbolTable.get(this.id)).getType();
+            Value value = null;
+            try {
+                value = this.expression.eval(symbolTable);
+            } catch (ExpressionException e) {
+                throw new StatementException(e.getMessage());
+            }
+            Type typeId = null;
+            try {
+                typeId = (symbolTable.get(this.id)).getType();
+            } catch (DictionaryException e) {
+                throw new StatementException(e.getMessage());
+            }
             if (value.getType().equals(typeId)) {
-                symbolTable.update(this.id, value);
+                try {
+                    symbolTable.update(this.id, value);
+                } catch (DictionaryException e) {
+                    throw new StatementException(e.getMessage());
+                }
             } else {
                 throw new StatementException("Declared type of variable " + this.id + " and type of the assigned expression do not match.");
             }
@@ -37,8 +55,12 @@ public class AssignmentStatement implements IStatement {
     }
 
     @Override
-    public IStatement deepCopy() throws ExpressionException {
-        return new AssignmentStatement(this.id, this.expression.deepCopy());
+    public IStatement deepCopy() throws StatementException {
+        try {
+            return new AssignmentStatement(this.id, this.expression.deepCopy());
+        } catch (ExpressionException e) {
+            throw new StatementException(e.getMessage());
+        }
     }
 
     public String toString() {

@@ -6,12 +6,12 @@ public class IntType implements Type {
         return another instanceof IntType;
     }
 
-    public String toString() {
-        return "int";
-    }
-
     @Override
     public Type deepCopy() {
         return new IntType();
+    }
+
+    public String toString() {
+        return "int";
     }
 }

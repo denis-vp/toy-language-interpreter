@@ -5,12 +5,12 @@ public class BoolType implements Type {
         return another instanceof BoolType;
     }
 
-    public String toString() {
-        return "bool";
-    }
-
     @Override
     public Type deepCopy() {
         return new BoolType();
+    }
+
+    public String toString() {
+        return "bool";
     }
 }

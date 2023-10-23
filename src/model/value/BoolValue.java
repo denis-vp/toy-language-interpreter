@@ -14,10 +14,6 @@ public class BoolValue implements Value {
         return this.value;
     }
 
-    public String toString() {
-        return Boolean.toString(this.value);
-    }
-
     @Override
     public Type getType() {
         return new BoolType();
@@ -26,5 +22,9 @@ public class BoolValue implements Value {
     @Override
     public Value deepCopy() {
         return new BoolValue(this.value);
+    }
+
+    public String toString() {
+        return Boolean.toString(this.value);
     }
 }

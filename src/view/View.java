@@ -1,13 +1,13 @@
 package view;
 
 import controller.Controller;
-import exception.StackException;
-import programs.ProgramGenerator;
+import exception.MyException;
+import programgenerator.ProgramGenerator;
 
 import java.util.Scanner;
 
 public class View {
-
+    private boolean chosenProgram = false;
     private final Controller controller;
     private static final Scanner scanner = new Scanner(System.in);
 
@@ -38,12 +38,16 @@ public class View {
                         this.toggleDisplayFlag();
                         break;
 
+                    case 4:
+                        System.out.println("Program output:\n" + this.controller.getProgramOutput() + "\n");
+                        break;
+
                     case 0:
-                        System.out.println("\nBye!");
+                        System.out.println("Bye!");
                         return;
 
                     default:
-                        System.out.println("\nInvalid option!");
+                        System.out.println("Invalid option!");
                 }
             } catch (Exception e) {
                 System.out.println("Something went wrong! " + e.getMessage());
@@ -52,28 +56,40 @@ public class View {
         }
     }
 
-    private void chooseProgram() throws StackException {
-        System.out.print("Please enter the program number (1 to 3): ");
+    private void chooseProgram() throws MyException {
+        System.out.print("Please enter the program number (0 to 3): ");
         int chosenProgram = Integer.parseInt(View.scanner.nextLine());
         switch (chosenProgram) {
+            case 0:
+                this.controller.setProgram(ProgramGenerator.getProgram0());
+                this.chosenProgram = true;
+                break;
             case 1:
                 this.controller.setProgram(ProgramGenerator.getProgram1());
+                this.chosenProgram = true;
                 break;
 
             case 2:
-//                this.controller.setProgram(ProgramGenerator.getProgram2());
+                this.controller.setProgram(ProgramGenerator.getProgram2());
+                this.chosenProgram = true;
                 break;
 
             case 3:
-//                this.controller.setProgram(ProgramGenerator.getProgram3());
+                this.controller.setProgram(ProgramGenerator.getProgram3());
+                this.chosenProgram = true;
                 break;
 
             default:
-                System.out.println("Invalid program number!");
+                System.out.println("\nInvalid program number!");
         }
     }
 
     private void runProgram() {
+        if (!this.chosenProgram) {
+            System.out.println("\nPlease choose a program first!");
+            return;
+        }
+
         try {
             this.controller.allSteps();
         } catch (Exception e) {
@@ -95,6 +111,7 @@ public class View {
         System.out.println("1. Choose program");
         System.out.println("2. Run");
         System.out.println("3. Toggle display flag");
+        System.out.println("4. Print program output");
         System.out.println("0. Exit");
     }
 

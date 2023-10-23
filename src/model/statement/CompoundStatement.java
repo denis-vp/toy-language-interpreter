@@ -2,6 +2,7 @@ package model.statement;
 
 import datastructure.MyIStack;
 import exception.ExpressionException;
+import exception.StatementException;
 import model.programstate.ProgramState;
 
 public class CompoundStatement implements IStatement {
@@ -22,7 +23,7 @@ public class CompoundStatement implements IStatement {
     }
 
     @Override
-    public IStatement deepCopy() throws ExpressionException {
+    public IStatement deepCopy() throws StatementException {
         return new CompoundStatement(this.first.deepCopy(), this.second.deepCopy());
     }
 

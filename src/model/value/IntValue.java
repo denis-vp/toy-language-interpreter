@@ -19,12 +19,12 @@ public class IntValue implements Value {
     }
 
     @Override
-    public Type getType() {
-        return new IntType();
+    public Value deepCopy() {
+        return new IntValue(this.value);
     }
 
     @Override
-    public Value deepCopy() {
-        return new IntValue(this.value);
+    public Type getType() {
+        return new IntType();
     }
 }
