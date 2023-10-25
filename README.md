@@ -1,5 +1,8 @@
 # Toy Language Interpreter (Java)
 
+![Python](https://img.shields.io/badge/Java-11%2B-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+
 Welcome to the Toy Language Interpreter repository! This project is a Java-based interpreter for a simple toy language, currently supporting integer and boolean data types, arithmetic and logical expressions, print statements, and if statements. It provides a platform for understanding the basics of language interpretation and lays the foundation for potential enhancements in the future.
 
 ## Features
