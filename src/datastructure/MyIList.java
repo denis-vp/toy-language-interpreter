@@ -2,6 +2,7 @@ package datastructure;
 
 import exception.ListException;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 
 public interface MyIList<T> {
@@ -30,4 +31,6 @@ public interface MyIList<T> {
     boolean isEmpty();
 
     void sort(Comparator<T> comparator);
+
+    ArrayList<T> getAll();
 }

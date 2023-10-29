@@ -1,13 +1,34 @@
 package repository;
 
+import datastructure.MyIDictionary;
+import datastructure.MyIList;
+import datastructure.MyIStack;
+import exception.DictionaryException;
+import exception.RepositoryException;
 import model.programstate.ProgramState;
+import model.statement.IStatement;
+import model.value.Value;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Repository implements IRepository {
     private final List<ProgramState> programStates = new ArrayList<ProgramState>();
     private final int currentProgramIndex = 0;
+    private String logFilePath;
+
+    public Repository(String logFilePath) {
+        this.logFilePath = logFilePath;
+    }
+
+    public String getLogFilePath() {
+        return this.logFilePath;
+    }
+
+    public void setLogFilePath(String logFilePath) {
+        this.logFilePath = logFilePath;
+    }
 
     public void add(ProgramState programState) {
         this.programStates.add(programState);
@@ -29,8 +50,44 @@ public class Repository implements IRepository {
         return List.copyOf(this.programStates);
     }
 
-    public void logProgramStateExecution() {
-        System.out.println(this.programStates.get(this.currentProgramIndex));
+    public void logProgramStateExecution() throws RepositoryException {
+        ProgramState programState = this.getCurrentProgram();
+        MyIStack<IStatement> executionStack = programState.getExecutionStack();
+        MyIDictionary<String, Value> symbolTable = programState.getSymbolTable();
+        MyIList<Value> output = programState.getOutput();
+
+        try (PrintWriter logFile = new PrintWriter(new BufferedWriter(new FileWriter(this.logFilePath, true)))) {
+            logFile.println("Execution Stack:");
+            if (executionStack.isEmpty()) {
+                logFile.println("-- Empty --");
+            }
+            for (IStatement statement : executionStack.getAll()) {
+                logFile.println(statement);
+            }
+
+            logFile.println("Symbol Table:");
+            if (symbolTable.isEmpty()) {
+                logFile.println("-- Empty --");
+            }
+            for (String key : symbolTable.keys()) {
+                try {
+                    logFile.println(key + " --> " + symbolTable.get(key));
+                } catch (DictionaryException e) {
+                    throw new RepositoryException(e.getMessage());
+                }
+            }
+            logFile.println("Output:");
+            if (output.isEmpty()) {
+                logFile.println("-- Empty --");
+            }
+            for (Value value : output.getAll()) {
+                logFile.println(value);
+            }
+//            TODO: Add the File Table to the log file
+            logFile.println();
+        } catch (IOException e) {
+            throw new RepositoryException("Could not open log file!");
+        }
     }
 
     @Override

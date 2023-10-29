@@ -2,10 +2,11 @@ package datastructure;
 
 import exception.StackException;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class MyStack<T> implements MyIStack<T> {
-    private final Stack<T> stack = new Stack<T>();
+    private final Stack<T> stack = new Stack<>();
 
     @Override
     public T top() throws StackException {
@@ -40,5 +41,9 @@ public class MyStack<T> implements MyIStack<T> {
 
     public String toString() {
         return this.stack.toString();
+    }
+
+    public ArrayList<T> getAll() {
+        return new ArrayList<>(this.stack);
     }
 }

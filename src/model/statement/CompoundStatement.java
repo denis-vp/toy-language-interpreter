@@ -1,7 +1,6 @@
 package model.statement;
 
 import datastructure.MyIStack;
-import exception.ExpressionException;
 import exception.StatementException;
 import model.programstate.ProgramState;
 
@@ -17,8 +16,10 @@ public class CompoundStatement implements IStatement {
     @Override
     public ProgramState execute(ProgramState state) {
         MyIStack<IStatement> stack = state.getExecutionStack();
+
         stack.push(this.second);
         stack.push(this.first);
+
         return state;
     }
 

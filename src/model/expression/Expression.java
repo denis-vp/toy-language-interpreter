@@ -1,7 +1,6 @@
 package model.expression;
 
 import datastructure.MyIDictionary;
-import exception.DictionaryException;
 import exception.ExpressionException;
 import model.value.Value;
 

@@ -3,7 +3,7 @@ package model.programstate;
 import datastructure.MyIDictionary;
 import datastructure.MyIList;
 import datastructure.MyIStack;
-import exception.MyException;
+import exception.ProgramStateException;
 import exception.StatementException;
 import model.statement.IStatement;
 import model.value.Value;
@@ -15,14 +15,14 @@ public class ProgramState {
     IStatement originalProgram;
 
     public ProgramState(MyIStack<IStatement> executionStack, MyIDictionary<String, Value> symbolTable,
-                        MyIList<Value> output, IStatement originalProgram) throws MyException {
+                        MyIList<Value> output, IStatement originalProgram) throws ProgramStateException {
         this.executionStack = executionStack;
         this.symbolTable = symbolTable;
         this.output = output;
         try {
             this.originalProgram = originalProgram.deepCopy();
         } catch (StatementException e) {
-            throw new MyException(e.getMessage());
+            throw new ProgramStateException(e.getMessage());
         }
         executionStack.push(originalProgram);
     }

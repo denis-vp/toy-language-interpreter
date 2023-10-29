@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class MyList<T> implements MyIList<T>, Iterable<T> {
-    private final List<T> list = new ArrayList<T>();
+    private final List<T> list = new ArrayList<>();
 
     @Override
     public T first() throws ListException {
@@ -104,5 +104,9 @@ public class MyList<T> implements MyIList<T>, Iterable<T> {
 
     public String toString() {
         return this.list.toString();
+    }
+
+    public ArrayList<T> getAll() {
+        return new ArrayList<>(this.list);
     }
 }

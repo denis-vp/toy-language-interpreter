@@ -1,7 +1,6 @@
 package model.statement;
 
 import datastructure.MyIList;
-import datastructure.MyIStack;
 import exception.*;
 import model.expression.Expression;
 import model.programstate.ProgramState;
@@ -16,15 +15,16 @@ public class PrintStatement implements IStatement {
 
     @Override
     public ProgramState execute(ProgramState state) throws StatementException {
-        MyIStack<IStatement> stack = state.getExecutionStack();
         MyIList<Value> output = state.getOutput();
-        Value value = null;
+
+        Value value;
         try {
             value = this.expression.eval(state.getSymbolTable());
         } catch (ExpressionException e) {
             throw new StatementException(e.getMessage());
         }
         output.pushBack(value);
+
         return state;
     }
 

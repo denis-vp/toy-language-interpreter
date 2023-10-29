@@ -1,7 +1,6 @@
 package model.statement;
 
 import datastructure.MyIStack;
-import exception.DictionaryException;
 import exception.ExpressionException;
 import exception.StatementException;
 import model.expression.Expression;
@@ -22,7 +21,8 @@ public class IfStatement implements IStatement {
     @Override
     public ProgramState execute(ProgramState state) throws StatementException {
         MyIStack<IStatement> stack = state.getExecutionStack();
-        BoolValue condition = null;
+
+        BoolValue condition;
         try {
             condition = (BoolValue) this.expression.eval(state.getSymbolTable());
         } catch (ExpressionException e) {
@@ -33,6 +33,7 @@ public class IfStatement implements IStatement {
         } else {
             stack.push(this.elseStatement);
         }
+
         return state;
     }
 

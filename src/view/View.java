@@ -117,7 +117,6 @@ public class View {
 
     private static int getOption() {
         System.out.print("Please enter an option: ");
-        int option = Integer.parseInt(View.scanner.nextLine());
-        return option;
+        return Integer.parseInt(View.scanner.nextLine());
     }
 }

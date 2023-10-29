@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class MyDictionary<K, V> implements MyIDictionary<K, V> {
-    private final Map<K, V> map = new HashMap<K, V>();
+    private final Map<K, V> map = new HashMap<>();
 
     @Override
     public void add(K key, V value) {

@@ -2,6 +2,7 @@ package programgenerator;
 
 import datastructure.*;
 import exception.MyException;
+import exception.ProgramStateException;
 import model.expression.ArithmeticExpression;
 import model.expression.ValueExpression;
 import model.expression.VarNameExpression;
@@ -29,7 +30,7 @@ public class ProgramGenerator {
         ProgramState program;
         try {
             program = new ProgramState(stack, symbolTable, output, statement);
-        } catch (MyException e) {
+        } catch (ProgramStateException e) {
             throw new MyException(e.getMessage());
         }
         return program;
@@ -47,7 +48,7 @@ public class ProgramGenerator {
         ProgramState program;
         try {
             program = new ProgramState(stack, symbolTable, output, statement);
-        } catch (MyException e) {
+        } catch (ProgramStateException e) {
             throw new MyException(e.getMessage());
         }
         return program;
@@ -71,7 +72,7 @@ public class ProgramGenerator {
         ProgramState program;
         try {
             program = new ProgramState(stack, symbolTable, output, statement);
-        } catch (MyException e) {
+        } catch (ProgramStateException e) {
             throw new MyException(e.getMessage());
         }
         return program;
@@ -94,7 +95,7 @@ public class ProgramGenerator {
         ProgramState program;
         try {
             program = new ProgramState(stack, symbolTable, output, statement);
-        } catch (MyException e) {
+        } catch (ProgramStateException e) {
             throw new MyException(e.getMessage());
         }
         return program;
