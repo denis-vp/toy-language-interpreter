@@ -4,11 +4,11 @@ import exception.StackException;
 
 import java.util.Stack;
 
-public class MyStack<Type> implements MyIStack<Type> {
-    private final Stack<Type> stack = new Stack<Type>();
+public class MyStack<T> implements MyIStack<T> {
+    private final Stack<T> stack = new Stack<T>();
 
     @Override
-    public Type top() throws StackException {
+    public T top() throws StackException {
         if (this.stack.isEmpty()) {
             throw new StackException("Stack is empty.");
         }
@@ -16,12 +16,12 @@ public class MyStack<Type> implements MyIStack<Type> {
     }
 
     @Override
-    public void push(Type element) {
+    public void push(T element) {
         this.stack.push(element);
     }
 
     @Override
-    public Type pop() throws StackException {
+    public T pop() throws StackException {
         if (this.stack.isEmpty()) {
             throw new StackException("Stack is empty.");
         }

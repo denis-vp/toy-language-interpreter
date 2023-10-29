@@ -5,22 +5,22 @@ import exception.DictionaryException;
 import java.util.ArrayList;
 import java.util.Set;
 
-public interface MyIDictionary<KeyType, ValueType> {
-    void add(KeyType key, ValueType value);
+public interface MyIDictionary<K, V> {
+    void add(K key, V value);
 
-    void remove(KeyType key) throws DictionaryException;
+    void remove(K key) throws DictionaryException;
 
-    ValueType get(KeyType key) throws DictionaryException;
+    V get(K key) throws DictionaryException;
 
-    void update(KeyType key, ValueType value) throws DictionaryException;
+    void update(K key, V value) throws DictionaryException;
 
-    boolean search(KeyType key);
+    boolean search(K key);
 
     int size();
 
     boolean isEmpty();
 
-    Set<KeyType> keys();
+    Set<K> keys();
 
-    ArrayList<ValueType> values();
+    ArrayList<V> values();
 }

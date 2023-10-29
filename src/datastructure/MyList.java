@@ -7,11 +7,11 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-public class MyList<Type> implements MyIList<Type>, Iterable<Type> {
-    private final List<Type> list = new ArrayList<Type>();
+public class MyList<T> implements MyIList<T>, Iterable<T> {
+    private final List<T> list = new ArrayList<T>();
 
     @Override
-    public Type first() throws ListException {
+    public T first() throws ListException {
         if (this.list.isEmpty()) {
             throw new ListException("List is empty.");
         }
@@ -19,12 +19,12 @@ public class MyList<Type> implements MyIList<Type>, Iterable<Type> {
     }
 
     @Override
-    public void pushFront(Type element) {
+    public void pushFront(T element) {
         this.list.addFirst(element);
     }
 
     @Override
-    public Type popFront() throws ListException {
+    public T popFront() throws ListException {
         if (this.list.isEmpty()) {
             throw new ListException("List is empty.");
         }
@@ -32,7 +32,7 @@ public class MyList<Type> implements MyIList<Type>, Iterable<Type> {
     }
 
     @Override
-    public Type last() throws ListException {
+    public T last() throws ListException {
         if (this.list.isEmpty()) {
             throw new ListException("List is empty.");
         }
@@ -40,12 +40,12 @@ public class MyList<Type> implements MyIList<Type>, Iterable<Type> {
     }
 
     @Override
-    public void pushBack(Type element) {
+    public void pushBack(T element) {
         this.list.addLast(element);
     }
 
     @Override
-    public Type popBack() throws ListException {
+    public T popBack() throws ListException {
         if (this.list.isEmpty()) {
             throw new ListException("List is empty.");
         }
@@ -53,12 +53,12 @@ public class MyList<Type> implements MyIList<Type>, Iterable<Type> {
     }
 
     @Override
-    public void add(int index, Type element) {
+    public void add(int index, T element) {
         this.list.add(index, element);
     }
 
     @Override
-    public Type remove(int index) throws ListException {
+    public T remove(int index) throws ListException {
         if (this.list.isEmpty() || index < 0 || index >= this.list.size()) {
             throw new ListException("List is empty.");
         }
@@ -66,7 +66,7 @@ public class MyList<Type> implements MyIList<Type>, Iterable<Type> {
     }
 
     @Override
-    public Type get(int index) throws ListException {
+    public T get(int index) throws ListException {
         if (this.list.isEmpty() || index < 0 || index >= this.list.size()) {
             throw new ListException("List is empty.");
         }
@@ -74,7 +74,7 @@ public class MyList<Type> implements MyIList<Type>, Iterable<Type> {
     }
 
     @Override
-    public void set(int index, Type element) throws ListException {
+    public void set(int index, T element) throws ListException {
         if (this.list.isEmpty() || index < 0 || index >= this.list.size()) {
             throw new ListException("List is empty.");
         }
@@ -93,12 +93,12 @@ public class MyList<Type> implements MyIList<Type>, Iterable<Type> {
     }
 
     @Override
-    public void sort(Comparator<Type> comparator) {
+    public void sort(Comparator<T> comparator) {
         this.list.sort(comparator);
     }
 
     @Override
-    public Iterator<Type> iterator() {
+    public Iterator<T> iterator() {
         return this.list.iterator();
     }
 

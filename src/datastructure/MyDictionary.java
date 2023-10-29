@@ -8,16 +8,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class MyDictionary<KeyType, ValueType> implements MyIDictionary<KeyType, ValueType> {
-    private final Map<KeyType, ValueType> map = new HashMap<KeyType, ValueType>();
+public class MyDictionary<K, V> implements MyIDictionary<K, V> {
+    private final Map<K, V> map = new HashMap<K, V>();
 
     @Override
-    public void add(KeyType key, ValueType value) {
+    public void add(K key, V value) {
         this.map.put(key, value);
     }
 
     @Override
-    public void remove(KeyType key) throws DictionaryException {
+    public void remove(K key) throws DictionaryException {
         if (!this.map.containsKey(key)) {
             throw new DictionaryException("Key does not exist.");
         }
@@ -25,7 +25,7 @@ public class MyDictionary<KeyType, ValueType> implements MyIDictionary<KeyType, 
     }
 
     @Override
-    public ValueType get(KeyType key) throws DictionaryException {
+    public V get(K key) throws DictionaryException {
         if (!this.map.containsKey(key)) {
             throw new DictionaryException("Key does not exist.");
         }
@@ -33,7 +33,7 @@ public class MyDictionary<KeyType, ValueType> implements MyIDictionary<KeyType, 
     }
 
     @Override
-    public void update(KeyType key, ValueType value) throws DictionaryException {
+    public void update(K key, V value) throws DictionaryException {
         if (!this.map.containsKey(key)) {
             throw new DictionaryException("Key does not exist.");
         }
@@ -41,7 +41,7 @@ public class MyDictionary<KeyType, ValueType> implements MyIDictionary<KeyType, 
     }
 
     @Override
-    public boolean search(KeyType key) {
+    public boolean search(K key) {
         return this.map.containsKey(key);
     }
 
@@ -56,13 +56,13 @@ public class MyDictionary<KeyType, ValueType> implements MyIDictionary<KeyType, 
     }
 
     @Override
-    public Set<KeyType> keys() {
+    public Set<K> keys() {
         return this.map.keySet();
     }
 
     @Override
-    public ArrayList<ValueType> values() {
-        return new ArrayList<ValueType>(this.map.values());
+    public ArrayList<V> values() {
+        return new ArrayList<V>(this.map.values());
     }
 
     public String toString() {

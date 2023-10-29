@@ -4,30 +4,30 @@ import exception.ListException;
 
 import java.util.Comparator;
 
-public interface MyIList<Type> {
-    Type first() throws ListException;
+public interface MyIList<T> {
+    T first() throws ListException;
 
-    void pushFront(Type element);
+    void pushFront(T element);
 
-    Type popFront() throws ListException;
+    T popFront() throws ListException;
 
-    Type last() throws ListException;
+    T last() throws ListException;
 
-    void pushBack(Type element);
+    void pushBack(T element);
 
-    Type popBack() throws ListException;
+    T popBack() throws ListException;
 
-    void add(int index, Type element);
+    void add(int index, T element);
 
-    Type remove(int index) throws ListException;
+    T remove(int index) throws ListException;
 
-    Type get(int index) throws ListException;
+    T get(int index) throws ListException;
 
-    void set(int index, Type element) throws ListException;
+    void set(int index, T element) throws ListException;
 
     int size();
 
     boolean isEmpty();
 
-    void sort(Comparator<Type> comparator);
+    void sort(Comparator<T> comparator);
 }

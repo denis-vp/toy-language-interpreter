@@ -2,12 +2,12 @@ package datastructure;
 
 import exception.StackException;
 
-public interface MyIStack<Type> {
-    Type top() throws StackException;
+public interface MyIStack<T> {
+    T top() throws StackException;
 
-    void push(Type element);
+    void push(T element);
 
-    Type pop() throws StackException;
+    T pop() throws StackException;
 
     int size();
 
