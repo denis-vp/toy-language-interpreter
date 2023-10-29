@@ -1,5 +1,6 @@
 package model.statement;
 
+import datastructure.MyIDictionary;
 import datastructure.MyIList;
 import exception.*;
 import model.expression.Expression;
@@ -16,10 +17,11 @@ public class PrintStatement implements IStatement {
     @Override
     public ProgramState execute(ProgramState state) throws StatementException {
         MyIList<Value> output = state.getOutput();
+        MyIDictionary<String, Value> symbolTable = state.getSymbolTable();
 
         Value value;
         try {
-            value = this.expression.eval(state.getSymbolTable());
+            value = this.expression.eval(symbolTable);
         } catch (ExpressionException e) {
             throw new StatementException(e.getMessage());
         }

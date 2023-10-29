@@ -18,10 +18,12 @@ public class ProgramState {
     IStatement originalProgram;
 
     public ProgramState(MyIStack<IStatement> executionStack, MyIDictionary<String, Value> symbolTable,
-                        MyIList<Value> output, IStatement originalProgram) throws ProgramStateException {
+                        MyIList<Value> output, MyIDictionary<String, BufferedReader> fileTable,
+                        IStatement originalProgram) throws ProgramStateException {
         this.executionStack = executionStack;
         this.symbolTable = symbolTable;
         this.output = output;
+        this.fileTable = fileTable;
         try {
             this.originalProgram = originalProgram.deepCopy();
         } catch (StatementException e) {
@@ -33,7 +35,8 @@ public class ProgramState {
     public String toString() {
         return "Execution Stack:\n" + this.executionStack.toString() +
                 "\nSymbol Table:\n" + this.symbolTable.toString() +
-                "\nOutput:\n" + this.output.toString() + "\n";
+                "\nOutput:\n" + this.output.toString() +
+                "\nFile Table:\n" + this.fileTable.toString() + "\n";
     }
 
     public MyIStack<IStatement> getExecutionStack() {
@@ -46,6 +49,10 @@ public class ProgramState {
 
     public MyIList<Value> getOutput() {
         return this.output;
+    }
+
+    public MyIDictionary<String, BufferedReader> getFileTable() {
+        return this.fileTable;
     }
 
     public IStatement getOriginalProgram() {
@@ -62,6 +69,10 @@ public class ProgramState {
 
     public void setOutput(MyIList<Value> output) {
         this.output = output;
+    }
+
+    public void setFileTable(MyIDictionary<String, BufferedReader> fileTable) {
+        this.fileTable = fileTable;
     }
 
     public void setOriginalProgram(IStatement originalProgram) {

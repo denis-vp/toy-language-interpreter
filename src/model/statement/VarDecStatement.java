@@ -3,14 +3,9 @@ package model.statement;
 import datastructure.MyIDictionary;
 import exception.StatementException;
 import model.programstate.ProgramState;
-import model.type.BoolType;
-import model.type.IntType;
 import model.type.Type;
-import model.value.BoolValue;
-import model.value.IntValue;
 import model.value.Value;
 
-import java.util.HashMap;
 
 public class VarDecStatement implements IStatement {
     String id;

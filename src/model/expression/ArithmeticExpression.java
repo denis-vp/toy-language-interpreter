@@ -49,8 +49,9 @@ public class ArithmeticExpression implements Expression {
                 }
             } else
                 throw new ExpressionException("second operand is not an integer");
-        } else
+        } else {
             throw new ExpressionException("first operand is not an integer");
+        }
     }
 
     @Override
