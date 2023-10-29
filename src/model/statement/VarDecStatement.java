@@ -28,13 +28,7 @@ public class VarDecStatement implements IStatement {
         if (symbolTable.search(this.id)) {
             throw new StatementException("Variable " + this.id + " is already defined.");
         } else {
-            if (this.type.equals(new IntType())) {
-                symbolTable.add(this.id, new IntValue(0));
-            } else if (this.type.equals(new BoolType())) {
-                symbolTable.add(this.id, new BoolValue(false));
-            } else {
-                throw new StatementException("Type " + this.type + " is not defined.");
-            }
+            symbolTable.add(this.id, this.type.defaultValue());
         }
 
         return state;

@@ -1,25 +1,25 @@
 package model.type;
 
-import model.value.IntValue;
+import model.value.StringValue;
 import model.value.Value;
 
-public class IntType implements Type {
+public class StringType implements Type {
     @Override
     public boolean equals(Type another) {
-        return another instanceof IntType;
+        return another instanceof StringType;
     }
 
     @Override
     public Value defaultValue() {
-        return new IntValue(0);
+        return new StringValue("");
     }
 
     @Override
     public Type deepCopy() {
-        return new IntType();
+        return new StringType();
     }
 
     public String toString() {
-        return "int";
+        return "string";
     }
 }

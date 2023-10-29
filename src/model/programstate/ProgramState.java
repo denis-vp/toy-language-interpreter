@@ -8,10 +8,13 @@ import exception.StatementException;
 import model.statement.IStatement;
 import model.value.Value;
 
+import java.io.BufferedReader;
+
 public class ProgramState {
     private MyIStack<IStatement> executionStack;
     private MyIDictionary<String, Value> symbolTable;
     private MyIList<Value> output;
+    private MyIDictionary<String, BufferedReader> fileTable;
     IStatement originalProgram;
 
     public ProgramState(MyIStack<IStatement> executionStack, MyIDictionary<String, Value> symbolTable,

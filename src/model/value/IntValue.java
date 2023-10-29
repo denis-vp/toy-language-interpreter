@@ -14,8 +14,9 @@ public class IntValue implements Value {
         return this.value;
     }
 
-    public String toString() {
-        return Integer.toString(this.value);
+    @Override
+    public Type getType() {
+        return new IntType();
     }
 
     @Override
@@ -23,8 +24,7 @@ public class IntValue implements Value {
         return new IntValue(this.value);
     }
 
-    @Override
-    public Type getType() {
-        return new IntType();
+    public String toString() {
+        return Integer.toString(this.value);
     }
 }
