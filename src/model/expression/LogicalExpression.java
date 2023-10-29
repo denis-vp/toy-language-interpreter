@@ -7,13 +7,14 @@ import model.value.BoolValue;
 import model.value.Value;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.function.BiPredicate;
 
 public class LogicalExpression implements Expression {
     private final Expression e1;
     private final Expression e2;
-    private static final HashMap<Integer, BiPredicate<Boolean, Boolean>> operators = new HashMap<>();
-    private static final HashMap<Integer, String> operatorsString = new HashMap<>();
+    private static final Map<Integer, BiPredicate<Boolean, Boolean>> operators = new HashMap<>();
+    private static final Map<Integer, String> operatorsString = new HashMap<>();
     private final int operator;
 
     public LogicalExpression(Expression e1, Expression e2, int operator) {
