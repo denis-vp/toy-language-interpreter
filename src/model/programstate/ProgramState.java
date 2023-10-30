@@ -16,19 +16,18 @@ public class ProgramState {
     private MyIStack<Statement> executionStack;
     private MyIDictionary<String, Value> symbolTable;
     private MyIList<Value> output;
-    private MyIDictionary<String, BufferedReader> fileTable;
     private MyIHeap<Value> heap;
+    private MyIDictionary<String, BufferedReader> fileTable;
 
     public ProgramState(Statement originalProgram, MyIStack<Statement> executionStack,
                         MyIDictionary<String, Value> symbolTable, MyIList<Value> output,
-                        MyIDictionary<String, BufferedReader> fileTable,
-                        MyIHeap<Value> heap) throws ProgramStateException {
+                        MyIHeap<Value> heap, MyIDictionary<String, BufferedReader> fileTable) throws ProgramStateException {
 
         this.executionStack = executionStack;
         this.symbolTable = symbolTable;
         this.output = output;
-        this.fileTable = fileTable;
         this.heap = heap;
+        this.fileTable = fileTable;
 
         try {
             this.originalProgram = originalProgram.deepCopy();
@@ -62,12 +61,12 @@ public class ProgramState {
         return this.output;
     }
 
-    public MyIDictionary<String, BufferedReader> getFileTable() {
-        return this.fileTable;
-    }
-
     public MyIHeap<Value> getHeap() {
         return this.heap;
+    }
+
+    public MyIDictionary<String, BufferedReader> getFileTable() {
+        return this.fileTable;
     }
 
     public void setOriginalProgram(Statement originalProgram) {
@@ -86,11 +85,11 @@ public class ProgramState {
         this.output = output;
     }
 
-    public void setFileTable(MyIDictionary<String, BufferedReader> fileTable) {
-        this.fileTable = fileTable;
-    }
-
     public void setHeap(MyIHeap<Value> heap) {
         this.heap = heap;
+    }
+
+    public void setFileTable(MyIDictionary<String, BufferedReader> fileTable) {
+        this.fileTable = fileTable;
     }
 }

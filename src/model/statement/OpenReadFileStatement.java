@@ -24,8 +24,8 @@ public class OpenReadFileStatement implements Statement {
     @Override
     public ProgramState execute(ProgramState state) throws StatementException {
         MyIDictionary<String, Value> symbolTable = state.getSymbolTable();
-        MyIDictionary<String, BufferedReader> fileTable = state.getFileTable();
         MyIHeap<Value> heap = state.getHeap();
+        MyIDictionary<String, BufferedReader> fileTable = state.getFileTable();
 
         try {
             Value value = this.expression.eval(symbolTable, heap);
