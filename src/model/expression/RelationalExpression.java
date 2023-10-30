@@ -3,6 +3,7 @@ package model.expression;
 import datastructure.MyIDictionary;
 import exception.ExpressionException;
 import model.type.IntType;
+import model.value.BoolValue;
 import model.value.IntValue;
 import model.value.Value;
 
@@ -20,9 +21,9 @@ public class RelationalExpression implements Expression {
     private final String operator;
 
     public RelationalExpression(String operator, Expression e1, Expression e2) {
+        this.operator = operator;
         this.e1 = e1;
         this.e2 = e2;
-        this.operator = operator;
     }
 
     @Override
@@ -41,11 +42,15 @@ public class RelationalExpression implements Expression {
         int n1 = i1.getValue();
         int n2 = i2.getValue();
 
-        return new IntValue(operators.get(this.operator).test(n1, n2) ? 1 : 0);
+        return new BoolValue(operators.get(this.operator).test(n1, n2));
     }
 
     @Override
     public Expression deepCopy() throws ExpressionException {
         return new RelationalExpression(this.operator, this.e1.deepCopy(), this.e2.deepCopy());
+    }
+
+    public String toString() {
+        return this.e1.toString() + " " + this.operator + " " + this.e2.toString();
     }
 }

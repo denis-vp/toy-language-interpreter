@@ -1,14 +1,17 @@
 import controller.Controller;
 import datastructure.*;
 import model.expression.ArithmeticExpression;
+import model.expression.RelationalExpression;
 import model.expression.ValueExpression;
 import model.expression.VarNameExpression;
 import model.programstate.ProgramState;
 import model.statement.*;
 import model.type.BoolType;
 import model.type.IntType;
+import model.type.StringType;
 import model.value.BoolValue;
 import model.value.IntValue;
+import model.value.StringValue;
 import repository.Repository;
 import view.TextMenu;
 import view.commands.ExitCommand;
@@ -19,7 +22,8 @@ import java.util.Scanner;
 public class Interpreter {
     public static void main(String[] args) {
         try {
-            String logFilePath = getLogFile();
+//            String logFilePath = getLogFile();
+            String logFilePath = "./log/log.txt";
 
             ProgramState ex1 = new ProgramState(new MyStack<>(), new MyDictionary<>(),
                     new MyList<>(), new MyDictionary<>(), getExample1());
@@ -41,16 +45,23 @@ public class Interpreter {
             Repository repository4 = new Repository(ex4, logFilePath);
             Controller controller4 = new Controller(repository4);
 
+            ProgramState ex5 = new ProgramState(new MyStack<>(), new MyDictionary<>(),
+                    new MyList<>(), new MyDictionary<>(), getExample5());
+            Repository repository5 = new Repository(ex5, logFilePath);
+            Controller controller5 = new Controller(repository5);
+
             TextMenu menu = new TextMenu();
             menu.addCommand(new RunExample("1", "run example 1", controller1));
             menu.addCommand(new RunExample("2", "run example 2", controller2));
             menu.addCommand(new RunExample("3", "run example 3", controller3));
             menu.addCommand(new RunExample("4", "run example 4", controller4));
+            menu.addCommand(new RunExample("5", "run example 5", controller5));
 //            menu.addCommand(new ToggleDisplayFlagCommand("1.1", "toggle display flag for example 1", controller1));
 //            menu.addCommand(new ToggleDisplayFlagCommand("2.1", "toggle display flag for example 2", controller2));
 //            menu.addCommand(new ToggleDisplayFlagCommand("3.1", "toggle display flag for example 3", controller3));
 //            menu.addCommand(new ToggleDisplayFlagCommand("4.1", "toggle display flag for example 4", controller4));
-            menu.addCommand(new ExitCommand("0", "exit"));
+//            menu.addCommand(new ToggleDisplayFlagCommand("5.1", "toggle display flag for example 5", controller5));
+            menu.addCommand(new ExitCommand("x", "exit"));
             menu.show();
 
         } catch (Exception e) {
@@ -106,14 +117,25 @@ public class Interpreter {
     }
 
     public static IStatement getExample4() {
-        IStatement statement = new CompoundStatement(new VarDecStatement("a", new BoolType()),
-                new CompoundStatement(new VarDecStatement("v",
-                        new IntType()), new CompoundStatement(new AssignmentStatement("a",
-                        new ValueExpression(new BoolValue(true))),
-                        new CompoundStatement(new IfStatement(new VarNameExpression("a"),
-                                new AssignmentStatement("v", new ValueExpression(new IntValue(2))),
-                                new AssignmentStatement("v", new ValueExpression(new IntValue(3)))),
-                                new PrintStatement(new VarNameExpression("v"))))));
+        IStatement statement = new CompoundStatement(new VarDecStatement("varf", new StringType()),
+                new CompoundStatement(new AssignmentStatement("varf", new ValueExpression(new StringValue("./input/test.in"))),
+                        new CompoundStatement(new OpenReadFileStatement(new VarNameExpression("varf")),
+                                new CompoundStatement(new VarDecStatement("varc", new IntType()),
+                                        new CompoundStatement(new ReadFileStatement(new VarNameExpression("varf"), "varc"),
+                                                new CompoundStatement(new PrintStatement(new VarNameExpression("varc")),
+                                                        new CompoundStatement(new ReadFileStatement(new VarNameExpression("varf"), "varc"),
+                                                                new CompoundStatement(new PrintStatement(new VarNameExpression("varc")),
+                                                                        new CloseReadFileStatement(new VarNameExpression("varf"))))))))));
+
+        return statement;
+    }
+
+    public static IStatement getExample5() {
+        IStatement statement = new CompoundStatement(new VarDecStatement("v", new IntType()),
+                new CompoundStatement(new AssignmentStatement("v", new ValueExpression(new IntValue(2))),
+                        new CompoundStatement(new IfStatement(new RelationalExpression("<", new VarNameExpression("v"), new ValueExpression(new IntValue(3))),
+                                new AssignmentStatement("v", new ValueExpression(new IntValue(5))), new NopStatement()),
+                                new PrintStatement(new VarNameExpression("v")))));
 
         return statement;
     }

@@ -25,6 +25,6 @@ public class StringValue implements Value {
     }
 
     public String toString() {
-        return this.value;
+        return String.format("\"%s\"", this.value);
     }
 }

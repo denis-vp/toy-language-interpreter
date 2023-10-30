@@ -50,4 +50,8 @@ public class CloseReadFileStatement implements IStatement {
     public IStatement deepCopy() throws StatementException {
         return null;
     }
+
+    public String toString() {
+        return "closeRFile(" + this.expression.toString() + ")";
+    }
 }

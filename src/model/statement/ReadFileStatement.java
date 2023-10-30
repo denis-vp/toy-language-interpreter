@@ -70,4 +70,8 @@ public class ReadFileStatement implements IStatement{
     public IStatement deepCopy() throws StatementException {
         return null;
     }
+
+    public String toString() {
+        return "readFile(" + this.expression.toString() + ", " + this.id + ")";
+    }
 }

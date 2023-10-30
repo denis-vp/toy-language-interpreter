@@ -101,6 +101,7 @@ public class Repository implements IRepository {
             for (Value value : output.getAll()) {
                 logFile.println(value);
             }
+            logFile.println("------------------------------------");
 
             logFile.println("File Table:");
             if (programState.getFileTable().isEmpty()) {

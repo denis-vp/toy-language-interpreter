@@ -29,7 +29,7 @@ public class OpenReadFileStatement implements IStatement {
             Value value = this.expression.eval(symbolTable);
             if (value.getType().equals(new StringType())) {
                 StringValue stringValue = (StringValue) value;
-                if (fileTable.search(stringValue.getValue())) {
+                if (!fileTable.search(stringValue.getValue())) {
                     BufferedReader bufferedReader;
                     bufferedReader = new BufferedReader(new FileReader(stringValue.getValue()));
                     fileTable.add(stringValue.getValue(), bufferedReader);
@@ -53,5 +53,9 @@ public class OpenReadFileStatement implements IStatement {
         } catch (ExpressionException e) {
             throw new StatementException(e.getMessage());
         }
+    }
+
+    public String toString() {
+        return "openRFile(" + this.expression.toString() + ")";
     }
 }

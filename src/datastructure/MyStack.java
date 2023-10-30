@@ -44,6 +44,6 @@ public class MyStack<T> implements MyIStack<T> {
     }
 
     public ArrayList<T> getAll() {
-        return new ArrayList<>(this.stack);
+        return new ArrayList<>(this.stack.reversed());
     }
 }
