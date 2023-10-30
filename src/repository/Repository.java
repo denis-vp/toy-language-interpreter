@@ -10,6 +10,8 @@ import model.statement.IStatement;
 import model.value.Value;
 
 import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +21,15 @@ public class Repository implements IRepository {
     private String logFilePath;
 
     public Repository(String logFilePath) {
+        this.logFilePath = logFilePath;
+    }
+
+    public Repository(ProgramState initialProgram) {
+        this.programStates.add(initialProgram);
+    }
+
+    public Repository(ProgramState initialProgram, String logFilePath) {
+        this.programStates.add(initialProgram);
         this.logFilePath = logFilePath;
     }
 
@@ -57,6 +68,9 @@ public class Repository implements IRepository {
         MyIList<Value> output = programState.getOutput();
 
         try (PrintWriter logFile = new PrintWriter(new BufferedWriter(new FileWriter(this.logFilePath, true)))) {
+            LocalDateTime now = LocalDateTime.now();
+            logFile.println("Program State - " + now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+
             logFile.println("Execution Stack:");
             if (executionStack.isEmpty()) {
                 logFile.println("-- Empty --");
@@ -64,6 +78,7 @@ public class Repository implements IRepository {
             for (IStatement statement : executionStack.getAll()) {
                 logFile.println(statement);
             }
+            logFile.println("------------------------------------");
 
             logFile.println("Symbol Table:");
             if (symbolTable.isEmpty()) {
@@ -76,6 +91,9 @@ public class Repository implements IRepository {
                     throw new RepositoryException(e.getMessage());
                 }
             }
+            logFile.println("------------------------------------");
+
+
             logFile.println("Output:");
             if (output.isEmpty()) {
                 logFile.println("-- Empty --");
@@ -83,7 +101,20 @@ public class Repository implements IRepository {
             for (Value value : output.getAll()) {
                 logFile.println(value);
             }
-//            TODO: Add the File Table to the log file
+
+            logFile.println("File Table:");
+            if (programState.getFileTable().isEmpty()) {
+                logFile.println("-- Empty --");
+            }
+            for (String key : programState.getFileTable().keys()) {
+                try {
+                    logFile.println(key + " --> " + programState.getFileTable().get(key));
+                } catch (DictionaryException e) {
+                    throw new RepositoryException(e.getMessage());
+                }
+            }
+            logFile.println("------------------------------------");
+
             logFile.println();
         } catch (IOException e) {
             throw new RepositoryException("Could not open log file!");
