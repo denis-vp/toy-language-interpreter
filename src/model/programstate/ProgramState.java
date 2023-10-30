@@ -11,15 +11,15 @@ import model.value.Value;
 import java.io.BufferedReader;
 
 public class ProgramState {
+    IStatement originalProgram;
     private MyIStack<IStatement> executionStack;
     private MyIDictionary<String, Value> symbolTable;
     private MyIList<Value> output;
     private MyIDictionary<String, BufferedReader> fileTable;
-    IStatement originalProgram;
 
-    public ProgramState(MyIStack<IStatement> executionStack, MyIDictionary<String, Value> symbolTable,
-                        MyIList<Value> output, MyIDictionary<String, BufferedReader> fileTable,
-                        IStatement originalProgram) throws ProgramStateException {
+    public ProgramState(IStatement originalProgram, MyIStack<IStatement> executionStack,
+                        MyIDictionary<String, Value> symbolTable, MyIList<Value> output,
+                        MyIDictionary<String, BufferedReader> fileTable) throws ProgramStateException {
 
         this.executionStack = executionStack;
         this.symbolTable = symbolTable;

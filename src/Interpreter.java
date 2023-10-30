@@ -11,33 +11,35 @@ import view.commands.RunExample;
 import java.util.Objects;
 import java.util.Scanner;
 
+// TODO: Manage better somehow the default values for reference types
+
 public class Interpreter {
     public static void main(String[] args) {
         try {
             String logFilePath = getLogFile();
 
-            ProgramState ex1 = new ProgramState(new MyStack<>(), new MyDictionary<>(),
-                    new MyList<>(), new MyDictionary<>(), ProgramGenerator.getExample1());
+            ProgramState ex1 = new ProgramState(ProgramGenerator.getExample1(), new MyStack<>(), new MyDictionary<>(),
+                    new MyList<>(), new MyDictionary<>());
             IRepository repository1 = new Repository(ex1, logFilePath);
             Controller controller1 = new Controller(repository1);
 
-            ProgramState ex2 = new ProgramState(new MyStack<>(), new MyDictionary<>(),
-                    new MyList<>(), new MyDictionary<>(), ProgramGenerator.getExample2());
+            ProgramState ex2 = new ProgramState(ProgramGenerator.getExample2(), new MyStack<>(), new MyDictionary<>(),
+                    new MyList<>(), new MyDictionary<>());
             IRepository repository2 = new Repository(ex2, logFilePath);
             Controller controller2 = new Controller(repository2);
 
-            ProgramState ex3 = new ProgramState(new MyStack<>(), new MyDictionary<>(),
-                    new MyList<>(), new MyDictionary<>(), ProgramGenerator.getExample3());
+            ProgramState ex3 = new ProgramState(ProgramGenerator.getExample3(), new MyStack<>(), new MyDictionary<>(),
+                    new MyList<>(), new MyDictionary<>());
             IRepository repository3 = new Repository(ex3, logFilePath);
             Controller controller3 = new Controller(repository3);
 
-            ProgramState ex4 = new ProgramState(new MyStack<>(), new MyDictionary<>(),
-                    new MyList<>(), new MyDictionary<>(), ProgramGenerator.getExample4());
+            ProgramState ex4 = new ProgramState(ProgramGenerator.getExample4(), new MyStack<>(), new MyDictionary<>(),
+                    new MyList<>(), new MyDictionary<>());
             IRepository repository4 = new Repository(ex4, logFilePath);
             Controller controller4 = new Controller(repository4);
 
-            ProgramState ex5 = new ProgramState(new MyStack<>(), new MyDictionary<>(),
-                    new MyList<>(), new MyDictionary<>(), ProgramGenerator.getExample5());
+            ProgramState ex5 = new ProgramState(ProgramGenerator.getExample5(), new MyStack<>(), new MyDictionary<>(),
+                    new MyList<>(), new MyDictionary<>());
             IRepository repository5 = new Repository(ex5, logFilePath);
             Controller controller5 = new Controller(repository5);
 
