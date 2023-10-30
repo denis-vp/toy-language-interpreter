@@ -3,7 +3,7 @@ package controller;
 import datastructure.MyIStack;
 import exception.*;
 import model.programstate.ProgramState;
-import model.statement.IStatement;
+import model.statement.Statement;
 import repository.IRepository;
 
 public class Controller {
@@ -15,13 +15,13 @@ public class Controller {
     }
 
     public ProgramState oneStep(ProgramState programState) throws ControllerException {
-        MyIStack<IStatement> stack = programState.getExecutionStack();
+        MyIStack<Statement> stack = programState.getExecutionStack();
         if (stack.isEmpty()) {
             throw new ControllerException("Execution stack is empty!");
         }
 
         try {
-            IStatement currentStatement = stack.pop();
+            Statement currentStatement = stack.pop();
             return currentStatement.execute(programState);
         } catch (StackException | StatementException e) {
             throw new ControllerException(e.getMessage());

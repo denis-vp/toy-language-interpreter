@@ -3,8 +3,8 @@ package model.statement;
 import exception.StatementException;
 import model.programstate.ProgramState;
 
-public interface IStatement {
+public interface Statement {
     ProgramState execute(ProgramState state) throws StatementException;
 
-    IStatement deepCopy() throws StatementException;
+    Statement deepCopy() throws StatementException;
 }

@@ -1,6 +1,7 @@
 package model.expression;
 
 import datastructure.MyIDictionary;
+import datastructure.MyIHeap;
 import model.value.Value;
 
 public class ValueExpression implements Expression {
@@ -11,7 +12,7 @@ public class ValueExpression implements Expression {
     }
 
     @Override
-    public Value eval(MyIDictionary<String, Value> table) {
+    public Value eval(MyIDictionary<String, Value> symbolTable, MyIHeap<Value> heap) {
         return this.value;
     }
 

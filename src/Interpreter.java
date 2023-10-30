@@ -19,27 +19,27 @@ public class Interpreter {
             String logFilePath = getLogFile();
 
             ProgramState ex1 = new ProgramState(ProgramGenerator.getExample1(), new MyStack<>(), new MyDictionary<>(),
-                    new MyList<>(), new MyDictionary<>());
+                    new MyList<>(), new MyDictionary<>(), new MyHeap<>());
             IRepository repository1 = new Repository(ex1, logFilePath);
             Controller controller1 = new Controller(repository1);
 
             ProgramState ex2 = new ProgramState(ProgramGenerator.getExample2(), new MyStack<>(), new MyDictionary<>(),
-                    new MyList<>(), new MyDictionary<>());
+                    new MyList<>(), new MyDictionary<>(), new MyHeap<>());
             IRepository repository2 = new Repository(ex2, logFilePath);
             Controller controller2 = new Controller(repository2);
 
             ProgramState ex3 = new ProgramState(ProgramGenerator.getExample3(), new MyStack<>(), new MyDictionary<>(),
-                    new MyList<>(), new MyDictionary<>());
+                    new MyList<>(), new MyDictionary<>(), new MyHeap<>());
             IRepository repository3 = new Repository(ex3, logFilePath);
             Controller controller3 = new Controller(repository3);
 
             ProgramState ex4 = new ProgramState(ProgramGenerator.getExample4(), new MyStack<>(), new MyDictionary<>(),
-                    new MyList<>(), new MyDictionary<>());
+                    new MyList<>(), new MyDictionary<>(), new MyHeap<>());
             IRepository repository4 = new Repository(ex4, logFilePath);
             Controller controller4 = new Controller(repository4);
 
             ProgramState ex5 = new ProgramState(ProgramGenerator.getExample5(), new MyStack<>(), new MyDictionary<>(),
-                    new MyList<>(), new MyDictionary<>());
+                    new MyList<>(), new MyDictionary<>(), new MyHeap<>());
             IRepository repository5 = new Repository(ex5, logFilePath);
             Controller controller5 = new Controller(repository5);
 

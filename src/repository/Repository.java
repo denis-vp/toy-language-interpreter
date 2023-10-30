@@ -6,7 +6,7 @@ import datastructure.MyIStack;
 import exception.DictionaryException;
 import exception.RepositoryException;
 import model.programstate.ProgramState;
-import model.statement.IStatement;
+import model.statement.Statement;
 import model.value.Value;
 
 import java.io.*;
@@ -79,7 +79,7 @@ public class Repository implements IRepository {
     @Override
     public void logProgramStateExecution() throws RepositoryException {
         ProgramState programState = this.getCurrentProgram();
-        MyIStack<IStatement> executionStack = programState.getExecutionStack();
+        MyIStack<Statement> executionStack = programState.getExecutionStack();
         MyIDictionary<String, Value> symbolTable = programState.getSymbolTable();
         MyIList<Value> output = programState.getOutput();
 
@@ -91,7 +91,7 @@ public class Repository implements IRepository {
             if (executionStack.isEmpty()) {
                 logFile.println("-- Empty --");
             }
-            for (IStatement statement : executionStack.getAll()) {
+            for (Statement statement : executionStack.getAll()) {
                 logFile.println(statement);
             }
             logFile.println("------------------------------------");

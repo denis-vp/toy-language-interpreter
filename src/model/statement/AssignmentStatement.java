@@ -1,13 +1,14 @@
 package model.statement;
 
 import datastructure.MyIDictionary;
+import datastructure.MyIHeap;
 import exception.*;
 import model.expression.Expression;
 import model.programstate.ProgramState;
 import model.type.Type;
 import model.value.Value;
 
-public class AssignmentStatement implements IStatement {
+public class AssignmentStatement implements Statement {
     private final String id;
     private final Expression expression;
 
@@ -19,12 +20,13 @@ public class AssignmentStatement implements IStatement {
     @Override
     public ProgramState execute(ProgramState state) throws StatementException {
         MyIDictionary<String, Value> symbolTable = state.getSymbolTable();
+        MyIHeap<Value> heap = state.getHeap();
 
         if (!symbolTable.search(this.id)) {
             throw new StatementException("Variable " + this.id + " is not defined.");
         }
         try {
-            Value value = this.expression.eval(symbolTable);
+            Value value = this.expression.eval(symbolTable, heap);
             Type typeId = (symbolTable.get(this.id)).getType();
             if (!value.getType().equals(typeId)) {
                 throw new StatementException("Declared type of variable " + this.id +
@@ -39,7 +41,7 @@ public class AssignmentStatement implements IStatement {
     }
 
     @Override
-    public IStatement deepCopy() throws StatementException {
+    public Statement deepCopy() throws StatementException {
         try {
             return new AssignmentStatement(this.id, this.expression.deepCopy());
         } catch (ExpressionException e) {

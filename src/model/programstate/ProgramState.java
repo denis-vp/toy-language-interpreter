@@ -1,30 +1,34 @@
 package model.programstate;
 
 import datastructure.MyIDictionary;
+import datastructure.MyIHeap;
 import datastructure.MyIList;
 import datastructure.MyIStack;
 import exception.ProgramStateException;
 import exception.StatementException;
-import model.statement.IStatement;
+import model.statement.Statement;
 import model.value.Value;
 
 import java.io.BufferedReader;
 
 public class ProgramState {
-    IStatement originalProgram;
-    private MyIStack<IStatement> executionStack;
+    Statement originalProgram;
+    private MyIStack<Statement> executionStack;
     private MyIDictionary<String, Value> symbolTable;
     private MyIList<Value> output;
     private MyIDictionary<String, BufferedReader> fileTable;
+    private MyIHeap<Value> heap;
 
-    public ProgramState(IStatement originalProgram, MyIStack<IStatement> executionStack,
+    public ProgramState(Statement originalProgram, MyIStack<Statement> executionStack,
                         MyIDictionary<String, Value> symbolTable, MyIList<Value> output,
-                        MyIDictionary<String, BufferedReader> fileTable) throws ProgramStateException {
+                        MyIDictionary<String, BufferedReader> fileTable,
+                        MyIHeap<Value> heap) throws ProgramStateException {
 
         this.executionStack = executionStack;
         this.symbolTable = symbolTable;
         this.output = output;
         this.fileTable = fileTable;
+        this.heap = heap;
 
         try {
             this.originalProgram = originalProgram.deepCopy();
@@ -42,7 +46,11 @@ public class ProgramState {
                 "\nFile Table:\n" + this.fileTable.toString() + "\n";
     }
 
-    public MyIStack<IStatement> getExecutionStack() {
+    public Statement getOriginalProgram() {
+        return this.originalProgram;
+    }
+
+    public MyIStack<Statement> getExecutionStack() {
         return this.executionStack;
     }
 
@@ -58,11 +66,15 @@ public class ProgramState {
         return this.fileTable;
     }
 
-    public IStatement getOriginalProgram() {
-        return this.originalProgram;
+    public MyIHeap<Value> getHeap() {
+        return this.heap;
     }
 
-    public void setExecutionStack(MyIStack<IStatement> executionStack) {
+    public void setOriginalProgram(Statement originalProgram) {
+        this.originalProgram = originalProgram;
+    }
+
+    public void setExecutionStack(MyIStack<Statement> executionStack) {
         this.executionStack = executionStack;
     }
 
@@ -78,7 +90,7 @@ public class ProgramState {
         this.fileTable = fileTable;
     }
 
-    public void setOriginalProgram(IStatement originalProgram) {
-        this.originalProgram = originalProgram;
+    public void setHeap(MyIHeap<Value> heap) {
+        this.heap = heap;
     }
 }

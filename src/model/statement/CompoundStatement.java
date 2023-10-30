@@ -4,18 +4,18 @@ import datastructure.MyIStack;
 import exception.StatementException;
 import model.programstate.ProgramState;
 
-public class CompoundStatement implements IStatement {
-    private final IStatement first;
-    private final IStatement second;
+public class CompoundStatement implements Statement {
+    private final Statement first;
+    private final Statement second;
 
-    public CompoundStatement(IStatement first, IStatement second) {
+    public CompoundStatement(Statement first, Statement second) {
         this.first = first;
         this.second = second;
     }
 
     @Override
     public ProgramState execute(ProgramState state) {
-        MyIStack<IStatement> stack = state.getExecutionStack();
+        MyIStack<Statement> stack = state.getExecutionStack();
 
         stack.push(this.second);
         stack.push(this.first);
@@ -24,7 +24,7 @@ public class CompoundStatement implements IStatement {
     }
 
     @Override
-    public IStatement deepCopy() throws StatementException {
+    public Statement deepCopy() throws StatementException {
         return new CompoundStatement(this.first.deepCopy(), this.second.deepCopy());
     }
 

@@ -1,6 +1,7 @@
 package model.statement;
 
 import datastructure.MyIDictionary;
+import datastructure.MyIHeap;
 import exception.ExpressionException;
 import exception.StatementException;
 import model.expression.Expression;
@@ -13,7 +14,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
-public class OpenReadFileStatement implements IStatement {
+public class OpenReadFileStatement implements Statement {
     private final Expression expression;
 
     public OpenReadFileStatement(Expression expression) {
@@ -24,9 +25,10 @@ public class OpenReadFileStatement implements IStatement {
     public ProgramState execute(ProgramState state) throws StatementException {
         MyIDictionary<String, Value> symbolTable = state.getSymbolTable();
         MyIDictionary<String, BufferedReader> fileTable = state.getFileTable();
+        MyIHeap<Value> heap = state.getHeap();
 
         try {
-            Value value = this.expression.eval(symbolTable);
+            Value value = this.expression.eval(symbolTable, heap);
             if (!value.getType().equals(new StringType())) {
                 throw new StatementException("Expression " + this.expression + " is not of type string.");
             }
@@ -46,7 +48,7 @@ public class OpenReadFileStatement implements IStatement {
     }
 
     @Override
-    public IStatement deepCopy() throws StatementException {
+    public Statement deepCopy() throws StatementException {
         try {
             return new OpenReadFileStatement(this.expression.deepCopy());
         } catch (ExpressionException e) {

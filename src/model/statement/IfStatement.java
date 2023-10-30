@@ -1,18 +1,20 @@
 package model.statement;
 
+import datastructure.MyIHeap;
 import datastructure.MyIStack;
 import exception.ExpressionException;
 import exception.StatementException;
 import model.expression.Expression;
 import model.programstate.ProgramState;
 import model.value.BoolValue;
+import model.value.Value;
 
-public class IfStatement implements IStatement {
+public class IfStatement implements Statement {
     Expression expression;
-    IStatement thenStatement;
-    IStatement elseStatement;
+    Statement thenStatement;
+    Statement elseStatement;
 
-    public IfStatement(Expression expression, IStatement thenStatement, IStatement elseStatement) {
+    public IfStatement(Expression expression, Statement thenStatement, Statement elseStatement) {
         this.expression = expression;
         this.thenStatement = thenStatement;
         this.elseStatement = elseStatement;
@@ -20,10 +22,11 @@ public class IfStatement implements IStatement {
 
     @Override
     public ProgramState execute(ProgramState state) throws StatementException {
-        MyIStack<IStatement> stack = state.getExecutionStack();
+        MyIStack<Statement> stack = state.getExecutionStack();
+        MyIHeap<Value> heap = state.getHeap();
 
         try {
-            BoolValue condition = (BoolValue) this.expression.eval(state.getSymbolTable());
+            BoolValue condition = (BoolValue) this.expression.eval(state.getSymbolTable(), heap);
             if (condition.getValue()) {
                 stack.push(this.thenStatement);
             } else {
@@ -37,7 +40,7 @@ public class IfStatement implements IStatement {
     }
 
     @Override
-    public IStatement deepCopy() throws StatementException {
+    public Statement deepCopy() throws StatementException {
         try {
             return new IfStatement(this.expression.deepCopy(), this.thenStatement.deepCopy(),
                     this.elseStatement.deepCopy());

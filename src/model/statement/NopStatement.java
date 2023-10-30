@@ -2,14 +2,14 @@ package model.statement;
 
 import model.programstate.ProgramState;
 
-public class NopStatement implements IStatement {
+public class NopStatement implements Statement {
     @Override
     public ProgramState execute(ProgramState state) {
         return state;
     }
 
     @Override
-    public IStatement deepCopy() {
+    public Statement deepCopy() {
         return new NopStatement();
     }
 

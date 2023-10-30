@@ -1,6 +1,7 @@
 package model.expression;
 
 import datastructure.MyIDictionary;
+import datastructure.MyIHeap;
 import exception.ExpressionException;
 import model.type.BoolType;
 import model.value.BoolValue;
@@ -25,12 +26,12 @@ public class LogicalExpression implements Expression {
     }
 
     @Override
-    public Value eval(MyIDictionary<String, Value> table) throws ExpressionException {
-        Value v1 = this.e1.eval(table);
+    public Value eval(MyIDictionary<String, Value> symbolTable, MyIHeap<Value> heap) throws ExpressionException {
+        Value v1 = this.e1.eval(symbolTable, heap);
         if (!v1.getType().equals(new BoolType())) {
             throw new ExpressionException("first operand is not a boolean");
         }
-        Value v2 = this.e2.eval(table);
+        Value v2 = this.e2.eval(symbolTable, heap);
         if (!v2.getType().equals(new BoolType())) {
             throw new ExpressionException("second operand is not a boolean");
         }

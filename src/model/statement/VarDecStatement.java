@@ -7,7 +7,7 @@ import model.type.Type;
 import model.value.Value;
 
 
-public class VarDecStatement implements IStatement {
+public class VarDecStatement implements Statement {
     String id;
     Type type;
 
@@ -30,7 +30,7 @@ public class VarDecStatement implements IStatement {
     }
 
     @Override
-    public IStatement deepCopy() {
+    public Statement deepCopy() {
         return new VarDecStatement(this.id, this.type.deepCopy());
     }
 

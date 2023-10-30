@@ -16,7 +16,8 @@ public class ReferenceType implements Type {
 
     @Override
     public boolean equals(Type another) {
-        return another instanceof ReferenceType && this.inner.equals(((ReferenceType) another).getInner());
+//        TODO: Maybe compare the inner types as well?
+        return another instanceof ReferenceType;
     }
 
     @Override
