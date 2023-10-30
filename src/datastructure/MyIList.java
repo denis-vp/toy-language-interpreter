@@ -6,17 +6,17 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public interface MyIList<T> {
-    T first() throws ListException;
-
     void pushFront(T element);
 
     T popFront() throws ListException;
 
-    T last() throws ListException;
+    T first() throws ListException;
 
     void pushBack(T element);
 
     T popBack() throws ListException;
+
+    T last() throws ListException;
 
     void add(int index, T element);
 

@@ -19,13 +19,12 @@ public class PrintStatement implements IStatement {
         MyIList<Value> output = state.getOutput();
         MyIDictionary<String, Value> symbolTable = state.getSymbolTable();
 
-        Value value;
         try {
-            value = this.expression.eval(symbolTable);
+            Value value = this.expression.eval(symbolTable);
+            output.pushBack(value);
         } catch (ExpressionException e) {
             throw new StatementException(e.getMessage());
         }
-        output.pushBack(value);
 
         return state;
     }
@@ -40,6 +39,6 @@ public class PrintStatement implements IStatement {
     }
 
     public String toString() {
-        return "print(" + expression.toString() + ")";
+        return "print(" + this.expression + ")";
     }
 }

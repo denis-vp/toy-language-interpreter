@@ -1,53 +1,44 @@
 import controller.Controller;
 import datastructure.*;
-import model.expression.ArithmeticExpression;
-import model.expression.RelationalExpression;
-import model.expression.ValueExpression;
-import model.expression.VarNameExpression;
 import model.programstate.ProgramState;
-import model.statement.*;
-import model.type.BoolType;
-import model.type.IntType;
-import model.type.StringType;
-import model.value.BoolValue;
-import model.value.IntValue;
-import model.value.StringValue;
+import programgenerator.ProgramGenerator;
+import repository.IRepository;
 import repository.Repository;
 import view.TextMenu;
 import view.commands.ExitCommand;
 import view.commands.RunExample;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Interpreter {
     public static void main(String[] args) {
         try {
-//            String logFilePath = getLogFile();
-            String logFilePath = "./log/log.txt";
+            String logFilePath = getLogFile();
 
             ProgramState ex1 = new ProgramState(new MyStack<>(), new MyDictionary<>(),
-                    new MyList<>(), new MyDictionary<>(), getExample1());
-            Repository repository1 = new Repository(ex1, logFilePath);
+                    new MyList<>(), new MyDictionary<>(), ProgramGenerator.getExample1());
+            IRepository repository1 = new Repository(ex1, logFilePath);
             Controller controller1 = new Controller(repository1);
 
             ProgramState ex2 = new ProgramState(new MyStack<>(), new MyDictionary<>(),
-                    new MyList<>(), new MyDictionary<>(), getExample2());
-            Repository repository2 = new Repository(ex2, logFilePath);
+                    new MyList<>(), new MyDictionary<>(), ProgramGenerator.getExample2());
+            IRepository repository2 = new Repository(ex2, logFilePath);
             Controller controller2 = new Controller(repository2);
 
             ProgramState ex3 = new ProgramState(new MyStack<>(), new MyDictionary<>(),
-                    new MyList<>(), new MyDictionary<>(), getExample3());
-            Repository repository3 = new Repository(ex3, logFilePath);
+                    new MyList<>(), new MyDictionary<>(), ProgramGenerator.getExample3());
+            IRepository repository3 = new Repository(ex3, logFilePath);
             Controller controller3 = new Controller(repository3);
 
             ProgramState ex4 = new ProgramState(new MyStack<>(), new MyDictionary<>(),
-                    new MyList<>(), new MyDictionary<>(), getExample4());
-            Repository repository4 = new Repository(ex4, logFilePath);
+                    new MyList<>(), new MyDictionary<>(), ProgramGenerator.getExample4());
+            IRepository repository4 = new Repository(ex4, logFilePath);
             Controller controller4 = new Controller(repository4);
 
             ProgramState ex5 = new ProgramState(new MyStack<>(), new MyDictionary<>(),
-                    new MyList<>(), new MyDictionary<>(), getExample5());
-            Repository repository5 = new Repository(ex5, logFilePath);
+                    new MyList<>(), new MyDictionary<>(), ProgramGenerator.getExample5());
+            IRepository repository5 = new Repository(ex5, logFilePath);
             Controller controller5 = new Controller(repository5);
 
             TextMenu menu = new TextMenu();
@@ -71,72 +62,17 @@ public class Interpreter {
 
     private static String getLogFile() {
         String logFilePath = "./log/";
+
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please enter the log file name: ");
-        String input = "";
-        while (input.isEmpty()) {
-            input = scanner.nextLine();
+        String input = scanner.nextLine();
+
+        if (Objects.equals(input, "")) {
+            logFilePath += "log.txt";
+        } else  {
+            logFilePath += input;
         }
-        logFilePath += input;
+
         return logFilePath;
-    }
-
-    public static IStatement getExample1() {
-        IStatement statement = new CompoundStatement(new VarDecStatement("v", new IntType()),
-                new CompoundStatement(new AssignmentStatement("v",
-                        new ValueExpression(new IntValue(2))), new PrintStatement(new VarNameExpression("v"))));
-
-        return statement;
-    }
-
-    public static IStatement getExample2() {
-        IStatement statement = new CompoundStatement(new VarDecStatement("a", new IntType()),
-                new CompoundStatement(new VarDecStatement("b", new IntType()),
-                        new CompoundStatement(new AssignmentStatement("a",
-                                new ArithmeticExpression(new ValueExpression(new IntValue(2)),
-                                        new ArithmeticExpression(new ValueExpression(new IntValue(3)),
-                                                new ValueExpression(new IntValue(5)), 3), 1)),
-                                new CompoundStatement(new AssignmentStatement("b",
-                                        new ArithmeticExpression(new VarNameExpression("a"), new ValueExpression(new IntValue(1)), 1)),
-                                        new PrintStatement(new VarNameExpression("b"))))));
-
-        return statement;
-    }
-
-    public static IStatement getExample3() {
-        IStatement statement = new CompoundStatement(new VarDecStatement("a", new BoolType()),
-                new CompoundStatement(new VarDecStatement("v",
-                        new IntType()), new CompoundStatement(new AssignmentStatement("a",
-                        new ValueExpression(new BoolValue(true))),
-                        new CompoundStatement(new IfStatement(new VarNameExpression("a"),
-                                new AssignmentStatement("v", new ValueExpression(new IntValue(2))),
-                                new AssignmentStatement("v", new ValueExpression(new IntValue(3)))),
-                                new PrintStatement(new VarNameExpression("v"))))));
-
-        return statement;
-    }
-
-    public static IStatement getExample4() {
-        IStatement statement = new CompoundStatement(new VarDecStatement("varf", new StringType()),
-                new CompoundStatement(new AssignmentStatement("varf", new ValueExpression(new StringValue("./input/test.in"))),
-                        new CompoundStatement(new OpenReadFileStatement(new VarNameExpression("varf")),
-                                new CompoundStatement(new VarDecStatement("varc", new IntType()),
-                                        new CompoundStatement(new ReadFileStatement(new VarNameExpression("varf"), "varc"),
-                                                new CompoundStatement(new PrintStatement(new VarNameExpression("varc")),
-                                                        new CompoundStatement(new ReadFileStatement(new VarNameExpression("varf"), "varc"),
-                                                                new CompoundStatement(new PrintStatement(new VarNameExpression("varc")),
-                                                                        new CloseReadFileStatement(new VarNameExpression("varf"))))))))));
-
-        return statement;
-    }
-
-    public static IStatement getExample5() {
-        IStatement statement = new CompoundStatement(new VarDecStatement("v", new IntType()),
-                new CompoundStatement(new AssignmentStatement("v", new ValueExpression(new IntValue(2))),
-                        new CompoundStatement(new IfStatement(new RelationalExpression("<", new VarNameExpression("v"), new ValueExpression(new IntValue(3))),
-                                new AssignmentStatement("v", new ValueExpression(new IntValue(5))), new NopStatement()),
-                                new PrintStatement(new VarNameExpression("v")))));
-
-        return statement;
     }
 }

@@ -29,35 +29,32 @@ public class ReadFileStatement implements IStatement{
         MyIDictionary<String, Value> symbolTable = state.getSymbolTable();
         MyIDictionary<String, BufferedReader> fileTable = state.getFileTable();
 
-         try {
-            if (symbolTable.search(this.id)) {
-                Value value = symbolTable.get(this.id);
+        try {
+            if (!symbolTable.search(this.id)) {
+                throw new StatementException("Variable " + this.id + " is not defined.");
+            }
+            Value idValue = symbolTable.get(this.id);
+            if (!idValue.getType().equals(new IntType())) {
+                throw new StatementException("Variable " + this.id + " is not of type int.");
+            }
 
-                if (value.getType().equals(new IntType())) {
-                    value = this.expression.eval(symbolTable);
+            Value expressionValue = this.expression.eval(symbolTable);
+            if (!expressionValue.getType().equals(new StringType())) {
+                throw new StatementException("Expression " + this.expression + " is not of type string.");
+            }
+            StringValue stringValue = (StringValue) expressionValue;
 
-                    if (value.getType().equals(new StringType())) {
-                        StringValue stringValue = (StringValue) value;
+            if (!fileTable.search(stringValue.getValue())) {
+                throw new StatementException("File " + stringValue.getValue() + " not opened.");
+            }
 
-                        if (fileTable.search(stringValue.getValue())) {
-                            BufferedReader fileDescriptor = fileTable.get(stringValue.getValue());
-                            String line = fileDescriptor.readLine();
-                            if (line == null) {
-                                symbolTable.add(this.id, new IntValue(0));
-                            } else {
-                                symbolTable.add(this.id, new IntValue(Integer.parseInt(line)));
-                            }
-                        } else {
-                            throw new StatementException("File " + stringValue.getValue() + " not opened.");
-                        }
-                    } else {
-                        throw new StatementException("Expression " + this.expression + " is not of type string.");
-                    }
-                } else {
-                    throw new StatementException("Expression " + this.expression + " is not of type int.");
-                }
+            BufferedReader bufferedReader = fileTable.get(stringValue.getValue());
+            String line = bufferedReader.readLine();
+            if (line == null) {
+                IntType intType = new IntType();
+                symbolTable.update(this.id, intType.defaultValue());
             } else {
-                throw new StatementException("Variable " + this.id + " not declared.");
+                symbolTable.update(this.id, new IntValue(Integer.parseInt(line)));
             }
         } catch (DictionaryException | ExpressionException | IOException e) {
             throw new StatementException(e.getMessage());
@@ -72,6 +69,6 @@ public class ReadFileStatement implements IStatement{
     }
 
     public String toString() {
-        return "readFile(" + this.expression.toString() + ", " + this.id + ")";
+        return "readFile(" + this.expression + ", " + this.id + ")";
     }
 }

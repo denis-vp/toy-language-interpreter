@@ -27,18 +27,16 @@ public class CloseReadFileStatement implements IStatement {
 
         try {
             Value value = this.expression.eval(symbolTable);
-            if (value.getType().equals(new StringType())) {
-                StringValue stringValue = (StringValue) value;
-                if (fileTable.search(stringValue.getValue())) {
-                    BufferedReader bufferedReader = fileTable.get(stringValue.getValue());
-                    bufferedReader.close();
-                    fileTable.remove(stringValue.getValue());
-                } else {
-                    throw new StatementException("File " + stringValue.getValue() + " not opened.");
-                }
-            } else {
+            if (!value.getType().equals(new StringType())) {
                 throw new StatementException("Expression " + this.expression + " is not of type string.");
             }
+            StringValue stringValue = (StringValue) value;
+            if (!fileTable.search(stringValue.getValue())) {
+                throw new StatementException("File " + stringValue.getValue() + " not opened.");
+            }
+            BufferedReader bufferedReader = fileTable.get(stringValue.getValue());
+            bufferedReader.close();
+            fileTable.remove(stringValue.getValue());
         } catch (ExpressionException | DictionaryException | IOException e) {
             throw new StatementException(e.getMessage());
         }
@@ -52,6 +50,6 @@ public class CloseReadFileStatement implements IStatement {
     }
 
     public String toString() {
-        return "closeRFile(" + this.expression.toString() + ")";
+        return "closeRFile(" + this.expression + ")";
     }
 }

@@ -27,18 +27,17 @@ public class OpenReadFileStatement implements IStatement {
 
         try {
             Value value = this.expression.eval(symbolTable);
-            if (value.getType().equals(new StringType())) {
-                StringValue stringValue = (StringValue) value;
-                if (!fileTable.search(stringValue.getValue())) {
-                    BufferedReader bufferedReader;
-                    bufferedReader = new BufferedReader(new FileReader(stringValue.getValue()));
-                    fileTable.add(stringValue.getValue(), bufferedReader);
-                } else {
-                    throw new StatementException("File " + stringValue.getValue() + " already opened.");
-                }
-            } else {
-                throw new StatementException("Expression " + this.expression.toString() + " is not of type string.");
+            if (!value.getType().equals(new StringType())) {
+                throw new StatementException("Expression " + this.expression + " is not of type string.");
             }
+            StringValue stringValue = (StringValue) value;
+            if (fileTable.search(stringValue.getValue())) {
+                throw new StatementException("File " + stringValue.getValue() + " already opened.");
+            }
+
+            BufferedReader bufferedReader;
+            bufferedReader = new BufferedReader(new FileReader(stringValue.getValue()));
+            fileTable.add(stringValue.getValue(), bufferedReader);
         } catch (ExpressionException | FileNotFoundException e) {
             throw new StatementException(e.getMessage());
         }
@@ -56,6 +55,6 @@ public class OpenReadFileStatement implements IStatement {
     }
 
     public String toString() {
-        return "openRFile(" + this.expression.toString() + ")";
+        return "openRFile(" + this.expression + ")";
     }
 }

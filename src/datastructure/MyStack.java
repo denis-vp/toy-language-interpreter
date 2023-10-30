@@ -9,14 +9,6 @@ public class MyStack<T> implements MyIStack<T> {
     private final Stack<T> stack = new Stack<>();
 
     @Override
-    public T top() throws StackException {
-        if (this.stack.isEmpty()) {
-            throw new StackException("Stack is empty.");
-        }
-        return this.stack.peek();
-    }
-
-    @Override
     public void push(T element) {
         this.stack.push(element);
     }
@@ -30,6 +22,14 @@ public class MyStack<T> implements MyIStack<T> {
     }
 
     @Override
+    public T top() throws StackException {
+        if (this.stack.isEmpty()) {
+            throw new StackException("Stack is empty.");
+        }
+        return this.stack.peek();
+    }
+
+    @Override
     public int size() {
         return this.stack.size();
     }
@@ -39,11 +39,11 @@ public class MyStack<T> implements MyIStack<T> {
         return this.stack.isEmpty();
     }
 
-    public String toString() {
-        return this.stack.toString();
-    }
-
     public ArrayList<T> getAll() {
         return new ArrayList<>(this.stack.reversed());
+    }
+
+    public String toString() {
+        return this.stack.toString();
     }
 }

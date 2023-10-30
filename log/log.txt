@@ -1,0 +1,774 @@
+Program State - 2023-10-30 17:46:16
+Execution Stack:
+(int v; (v = 2; print(v)))
+------------------------------------
+Symbol Table:
+-- Empty --
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:16
+Execution Stack:
+int v
+(v = 2; print(v))
+------------------------------------
+Symbol Table:
+-- Empty --
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:16
+Execution Stack:
+(v = 2; print(v))
+------------------------------------
+Symbol Table:
+v --> 0
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:16
+Execution Stack:
+v = 2
+print(v)
+------------------------------------
+Symbol Table:
+v --> 0
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:16
+Execution Stack:
+print(v)
+------------------------------------
+Symbol Table:
+v --> 2
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:16
+Execution Stack:
+-- Empty --
+------------------------------------
+Symbol Table:
+v --> 2
+------------------------------------
+Output:
+2
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:16
+Execution Stack:
+(int a; (int b; (a = 2 + 3 * 5; (b = a + 1; print(b)))))
+------------------------------------
+Symbol Table:
+-- Empty --
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:16
+Execution Stack:
+int a
+(int b; (a = 2 + 3 * 5; (b = a + 1; print(b))))
+------------------------------------
+Symbol Table:
+-- Empty --
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:16
+Execution Stack:
+(int b; (a = 2 + 3 * 5; (b = a + 1; print(b))))
+------------------------------------
+Symbol Table:
+a --> 0
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:16
+Execution Stack:
+int b
+(a = 2 + 3 * 5; (b = a + 1; print(b)))
+------------------------------------
+Symbol Table:
+a --> 0
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:16
+Execution Stack:
+(a = 2 + 3 * 5; (b = a + 1; print(b)))
+------------------------------------
+Symbol Table:
+a --> 0
+b --> 0
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:16
+Execution Stack:
+a = 2 + 3 * 5
+(b = a + 1; print(b))
+------------------------------------
+Symbol Table:
+a --> 0
+b --> 0
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:16
+Execution Stack:
+(b = a + 1; print(b))
+------------------------------------
+Symbol Table:
+a --> 17
+b --> 0
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:16
+Execution Stack:
+b = a + 1
+print(b)
+------------------------------------
+Symbol Table:
+a --> 17
+b --> 0
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:16
+Execution Stack:
+print(b)
+------------------------------------
+Symbol Table:
+a --> 17
+b --> 18
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:16
+Execution Stack:
+-- Empty --
+------------------------------------
+Symbol Table:
+a --> 17
+b --> 18
+------------------------------------
+Output:
+18
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:17
+Execution Stack:
+(bool a; (int v; (a = true; (if (a) then (v = 2) else (v = 3); print(v)))))
+------------------------------------
+Symbol Table:
+-- Empty --
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:17
+Execution Stack:
+bool a
+(int v; (a = true; (if (a) then (v = 2) else (v = 3); print(v))))
+------------------------------------
+Symbol Table:
+-- Empty --
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:17
+Execution Stack:
+(int v; (a = true; (if (a) then (v = 2) else (v = 3); print(v))))
+------------------------------------
+Symbol Table:
+a --> false
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:17
+Execution Stack:
+int v
+(a = true; (if (a) then (v = 2) else (v = 3); print(v)))
+------------------------------------
+Symbol Table:
+a --> false
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:17
+Execution Stack:
+(a = true; (if (a) then (v = 2) else (v = 3); print(v)))
+------------------------------------
+Symbol Table:
+a --> false
+v --> 0
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:17
+Execution Stack:
+a = true
+(if (a) then (v = 2) else (v = 3); print(v))
+------------------------------------
+Symbol Table:
+a --> false
+v --> 0
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:17
+Execution Stack:
+(if (a) then (v = 2) else (v = 3); print(v))
+------------------------------------
+Symbol Table:
+a --> true
+v --> 0
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:17
+Execution Stack:
+if (a) then (v = 2) else (v = 3)
+print(v)
+------------------------------------
+Symbol Table:
+a --> true
+v --> 0
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:17
+Execution Stack:
+v = 2
+print(v)
+------------------------------------
+Symbol Table:
+a --> true
+v --> 0
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:17
+Execution Stack:
+print(v)
+------------------------------------
+Symbol Table:
+a --> true
+v --> 2
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:17
+Execution Stack:
+-- Empty --
+------------------------------------
+Symbol Table:
+a --> true
+v --> 2
+------------------------------------
+Output:
+2
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:18
+Execution Stack:
+(string v; (v = "./input/test.in"; (openRFile(v); (int c; (readFile(v, c); (print(c); (readFile(v, c); (print(c); closeRFile(v)))))))))
+------------------------------------
+Symbol Table:
+-- Empty --
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:18
+Execution Stack:
+string v
+(v = "./input/test.in"; (openRFile(v); (int c; (readFile(v, c); (print(c); (readFile(v, c); (print(c); closeRFile(v))))))))
+------------------------------------
+Symbol Table:
+-- Empty --
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:18
+Execution Stack:
+(v = "./input/test.in"; (openRFile(v); (int c; (readFile(v, c); (print(c); (readFile(v, c); (print(c); closeRFile(v))))))))
+------------------------------------
+Symbol Table:
+v --> ""
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:18
+Execution Stack:
+v = "./input/test.in"
+(openRFile(v); (int c; (readFile(v, c); (print(c); (readFile(v, c); (print(c); closeRFile(v)))))))
+------------------------------------
+Symbol Table:
+v --> ""
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:18
+Execution Stack:
+(openRFile(v); (int c; (readFile(v, c); (print(c); (readFile(v, c); (print(c); closeRFile(v)))))))
+------------------------------------
+Symbol Table:
+v --> "./input/test.in"
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:18
+Execution Stack:
+openRFile(v)
+(int c; (readFile(v, c); (print(c); (readFile(v, c); (print(c); closeRFile(v))))))
+------------------------------------
+Symbol Table:
+v --> "./input/test.in"
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:18
+Execution Stack:
+(int c; (readFile(v, c); (print(c); (readFile(v, c); (print(c); closeRFile(v))))))
+------------------------------------
+Symbol Table:
+v --> "./input/test.in"
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+./input/test.in --> java.io.BufferedReader@18769467
+------------------------------------
+
+Program State - 2023-10-30 17:46:18
+Execution Stack:
+int c
+(readFile(v, c); (print(c); (readFile(v, c); (print(c); closeRFile(v)))))
+------------------------------------
+Symbol Table:
+v --> "./input/test.in"
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+./input/test.in --> java.io.BufferedReader@18769467
+------------------------------------
+
+Program State - 2023-10-30 17:46:18
+Execution Stack:
+(readFile(v, c); (print(c); (readFile(v, c); (print(c); closeRFile(v)))))
+------------------------------------
+Symbol Table:
+c --> 0
+v --> "./input/test.in"
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+./input/test.in --> java.io.BufferedReader@18769467
+------------------------------------
+
+Program State - 2023-10-30 17:46:18
+Execution Stack:
+readFile(v, c)
+(print(c); (readFile(v, c); (print(c); closeRFile(v))))
+------------------------------------
+Symbol Table:
+c --> 0
+v --> "./input/test.in"
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+./input/test.in --> java.io.BufferedReader@18769467
+------------------------------------
+
+Program State - 2023-10-30 17:46:18
+Execution Stack:
+(print(c); (readFile(v, c); (print(c); closeRFile(v))))
+------------------------------------
+Symbol Table:
+c --> 15
+v --> "./input/test.in"
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+./input/test.in --> java.io.BufferedReader@18769467
+------------------------------------
+
+Program State - 2023-10-30 17:46:18
+Execution Stack:
+print(c)
+(readFile(v, c); (print(c); closeRFile(v)))
+------------------------------------
+Symbol Table:
+c --> 15
+v --> "./input/test.in"
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+./input/test.in --> java.io.BufferedReader@18769467
+------------------------------------
+
+Program State - 2023-10-30 17:46:18
+Execution Stack:
+(readFile(v, c); (print(c); closeRFile(v)))
+------------------------------------
+Symbol Table:
+c --> 15
+v --> "./input/test.in"
+------------------------------------
+Output:
+15
+------------------------------------
+File Table:
+./input/test.in --> java.io.BufferedReader@18769467
+------------------------------------
+
+Program State - 2023-10-30 17:46:18
+Execution Stack:
+readFile(v, c)
+(print(c); closeRFile(v))
+------------------------------------
+Symbol Table:
+c --> 15
+v --> "./input/test.in"
+------------------------------------
+Output:
+15
+------------------------------------
+File Table:
+./input/test.in --> java.io.BufferedReader@18769467
+------------------------------------
+
+Program State - 2023-10-30 17:46:18
+Execution Stack:
+(print(c); closeRFile(v))
+------------------------------------
+Symbol Table:
+c --> 50
+v --> "./input/test.in"
+------------------------------------
+Output:
+15
+------------------------------------
+File Table:
+./input/test.in --> java.io.BufferedReader@18769467
+------------------------------------
+
+Program State - 2023-10-30 17:46:18
+Execution Stack:
+print(c)
+closeRFile(v)
+------------------------------------
+Symbol Table:
+c --> 50
+v --> "./input/test.in"
+------------------------------------
+Output:
+15
+------------------------------------
+File Table:
+./input/test.in --> java.io.BufferedReader@18769467
+------------------------------------
+
+Program State - 2023-10-30 17:46:18
+Execution Stack:
+closeRFile(v)
+------------------------------------
+Symbol Table:
+c --> 50
+v --> "./input/test.in"
+------------------------------------
+Output:
+15
+50
+------------------------------------
+File Table:
+./input/test.in --> java.io.BufferedReader@18769467
+------------------------------------
+
+Program State - 2023-10-30 17:46:18
+Execution Stack:
+-- Empty --
+------------------------------------
+Symbol Table:
+c --> 50
+v --> "./input/test.in"
+------------------------------------
+Output:
+15
+50
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:18
+Execution Stack:
+(int v; (v = 1; if (v < 3) then (print(v)) else (nop)))
+------------------------------------
+Symbol Table:
+-- Empty --
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:18
+Execution Stack:
+int v
+(v = 1; if (v < 3) then (print(v)) else (nop))
+------------------------------------
+Symbol Table:
+-- Empty --
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:18
+Execution Stack:
+(v = 1; if (v < 3) then (print(v)) else (nop))
+------------------------------------
+Symbol Table:
+v --> 0
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:18
+Execution Stack:
+v = 1
+if (v < 3) then (print(v)) else (nop)
+------------------------------------
+Symbol Table:
+v --> 0
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:18
+Execution Stack:
+if (v < 3) then (print(v)) else (nop)
+------------------------------------
+Symbol Table:
+v --> 1
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:18
+Execution Stack:
+print(v)
+------------------------------------
+Symbol Table:
+v --> 1
+------------------------------------
+Output:
+-- Empty --
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+
+Program State - 2023-10-30 17:46:18
+Execution Stack:
+-- Empty --
+------------------------------------
+Symbol Table:
+v --> 1
+------------------------------------
+Output:
+1
+------------------------------------
+File Table:
+-- Empty --
+------------------------------------
+

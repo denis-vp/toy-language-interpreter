@@ -4,19 +4,10 @@ import exception.ListException;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 
-public class MyList<T> implements MyIList<T>, Iterable<T> {
+public class MyList<T> implements MyIList<T> {
     private final List<T> list = new ArrayList<>();
-
-    @Override
-    public T first() throws ListException {
-        if (this.list.isEmpty()) {
-            throw new ListException("List is empty.");
-        }
-        return this.list.getFirst();
-    }
 
     @Override
     public void pushFront(T element) {
@@ -32,11 +23,11 @@ public class MyList<T> implements MyIList<T>, Iterable<T> {
     }
 
     @Override
-    public T last() throws ListException {
+    public T first() throws ListException {
         if (this.list.isEmpty()) {
             throw new ListException("List is empty.");
         }
-        return this.list.getLast();
+        return this.list.getFirst();
     }
 
     @Override
@@ -50,6 +41,14 @@ public class MyList<T> implements MyIList<T>, Iterable<T> {
             throw new ListException("List is empty.");
         }
         return this.list.removeLast();
+    }
+
+    @Override
+    public T last() throws ListException {
+        if (this.list.isEmpty()) {
+            throw new ListException("List is empty.");
+        }
+        return this.list.getLast();
     }
 
     @Override
@@ -97,16 +96,11 @@ public class MyList<T> implements MyIList<T>, Iterable<T> {
         this.list.sort(comparator);
     }
 
-    @Override
-    public Iterator<T> iterator() {
-        return this.list.iterator();
+    public ArrayList<T> getAll() {
+        return new ArrayList<>(this.list);
     }
 
     public String toString() {
         return this.list.toString();
-    }
-
-    public ArrayList<T> getAll() {
-        return new ArrayList<>(this.list);
     }
 }

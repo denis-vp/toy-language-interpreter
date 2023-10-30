@@ -14,9 +14,11 @@ public interface IRepository {
 
     int size();
 
+    boolean isEmpty();
+
+    ProgramState getCurrentProgram();
+
     List<ProgramState> getProgramStates();
 
     void logProgramStateExecution() throws RepositoryException;
-
-    ProgramState getCurrentProgram();
 }

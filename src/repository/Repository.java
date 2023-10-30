@@ -41,26 +41,42 @@ public class Repository implements IRepository {
         this.logFilePath = logFilePath;
     }
 
+    @Override
     public void add(ProgramState programState) {
         this.programStates.add(programState);
     }
 
+    @Override
     public ProgramState get(int index) {
         return this.programStates.get(index);
     }
 
+    @Override
     public void set(int index, ProgramState programState) {
         this.programStates.set(index, programState);
     }
 
+    @Override
     public int size() {
         return this.programStates.size();
     }
 
+    @Override
+    public boolean isEmpty() {
+        return this.programStates.isEmpty();
+    }
+
+    @Override
+    public ProgramState getCurrentProgram() {
+        return this.programStates.get(this.currentProgramIndex);
+    }
+
+    @Override
     public List<ProgramState> getProgramStates() {
         return List.copyOf(this.programStates);
     }
 
+    @Override
     public void logProgramStateExecution() throws RepositoryException {
         ProgramState programState = this.getCurrentProgram();
         MyIStack<IStatement> executionStack = programState.getExecutionStack();
@@ -120,10 +136,5 @@ public class Repository implements IRepository {
         } catch (IOException e) {
             throw new RepositoryException("Could not open log file!");
         }
-    }
-
-    @Override
-    public ProgramState getCurrentProgram() {
-        return this.programStates.get(this.currentProgramIndex);
     }
 }

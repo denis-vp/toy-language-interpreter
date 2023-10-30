@@ -21,17 +21,20 @@ public class TextMenu {
     }
 
     public void show() {
-        Scanner scanner = new Scanner(System.in);
-        while (true) {
-            this.printMenu();
-            System.out.print("Enter an option: ");
-            String option = scanner.nextLine();
-            Command command = this.commands.get(option);
-            if (command == null) {
-                System.out.println("Invalid option!");
-                continue;
+        try (Scanner scanner = new Scanner(System.in)) {
+            while (true) {
+                this.printMenu();
+                System.out.print("Enter an option: ");
+                String option = scanner.nextLine();
+                Command command = this.commands.get(option);
+                if (command == null) {
+                    System.out.println("Invalid option!");
+                    continue;
+                }
+                command.execute();
             }
-            command.execute();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 }

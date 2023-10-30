@@ -20,26 +20,19 @@ public class AssignmentStatement implements IStatement {
     public ProgramState execute(ProgramState state) throws StatementException {
         MyIDictionary<String, Value> symbolTable = state.getSymbolTable();
 
-        if (symbolTable.search(this.id)) {
-            Value value;
-            try {
-                value = this.expression.eval(symbolTable);
-            } catch (ExpressionException e) {
-                throw new StatementException(e.getMessage());
-            }
-            try {
-                Type typeId = (symbolTable.get(this.id)).getType();
-
-                if (value.getType().equals(typeId)) {
-                    symbolTable.update(this.id, value);
-                } else {
-                    throw new StatementException("Declared type of variable " + this.id + " and type of the assigned expression do not match.");
-                }
-            } catch (DictionaryException e) {
-                throw new StatementException(e.getMessage());
-            }
-        } else {
+        if (!symbolTable.search(this.id)) {
             throw new StatementException("Variable " + this.id + " is not defined.");
+        }
+        try {
+            Value value = this.expression.eval(symbolTable);
+            Type typeId = (symbolTable.get(this.id)).getType();
+            if (!value.getType().equals(typeId)) {
+                throw new StatementException("Declared type of variable " + this.id +
+                        " and type of the assigned expression do not match.");
+            }
+            symbolTable.update(this.id, value);
+        } catch (ExpressionException | DictionaryException e) {
+            throw new StatementException(e.getMessage());
         }
 
         return state;
@@ -55,6 +48,6 @@ public class AssignmentStatement implements IStatement {
     }
 
     public String toString() {
-        return this.id + "=" + this.expression.toString();
+        return this.id + " = " + this.expression;
     }
 }

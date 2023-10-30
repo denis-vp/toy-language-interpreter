@@ -22,16 +22,15 @@ public class IfStatement implements IStatement {
     public ProgramState execute(ProgramState state) throws StatementException {
         MyIStack<IStatement> stack = state.getExecutionStack();
 
-        BoolValue condition;
         try {
-            condition = (BoolValue) this.expression.eval(state.getSymbolTable());
+            BoolValue condition = (BoolValue) this.expression.eval(state.getSymbolTable());
+            if (condition.getValue()) {
+                stack.push(this.thenStatement);
+            } else {
+                stack.push(this.elseStatement);
+            }
         } catch (ExpressionException e) {
             throw new StatementException(e.getMessage());
-        }
-        if (condition.getValue()) {
-            stack.push(this.thenStatement);
-        } else {
-            stack.push(this.elseStatement);
         }
 
         return state;
@@ -40,13 +39,14 @@ public class IfStatement implements IStatement {
     @Override
     public IStatement deepCopy() throws StatementException {
         try {
-            return new IfStatement(this.expression.deepCopy(), this.thenStatement.deepCopy(), this.elseStatement.deepCopy());
+            return new IfStatement(this.expression.deepCopy(), this.thenStatement.deepCopy(),
+                    this.elseStatement.deepCopy());
         } catch (ExpressionException e) {
             throw new StatementException(e.getMessage());
         }
     }
 
     public String toString() {
-        return "if(" + this.expression.toString() + ") then (" + this.thenStatement.toString() + ") else(" + this.elseStatement.toString() + ")";
+        return "if (" + this.expression + ") then (" + this.thenStatement + ") else (" +  this.elseStatement + ")";
     }
 }

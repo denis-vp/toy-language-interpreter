@@ -20,9 +20,8 @@ public class Controller {
             throw new ControllerException("Execution stack is empty!");
         }
 
-        IStatement currentStatement;
         try {
-            currentStatement = stack.pop();
+            IStatement currentStatement = stack.pop();
             return currentStatement.execute(programState);
         } catch (StackException | StatementException e) {
             throw new ControllerException(e.getMessage());
@@ -51,23 +50,23 @@ public class Controller {
         }
     }
 
-    public String getProgramOutput() {
-        return this.repository.getCurrentProgram().getOutput().toString();
+    public boolean getDisplayFlag() {
+        return this.displayFlag;
     }
 
     public void setDisplayFlag(boolean displayFlag) {
         this.displayFlag = displayFlag;
     }
 
-    public boolean getDisplayFlag() {
-        return this.displayFlag;
-    }
-
     public void toggleDisplayFlag() {
         this.displayFlag = !this.displayFlag;
     }
 
-    public void setProgram(ProgramState program) {
+    public void addProgram(ProgramState program) {
         this.repository.add(program);
+    }
+
+    public String getProgramOutput() {
+        return this.repository.getCurrentProgram().getOutput().toString();
     }
 }
