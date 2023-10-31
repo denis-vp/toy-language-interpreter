@@ -15,7 +15,6 @@ public class RunExample extends Command {
     public void execute() {
         try {
             this.controller.allSteps();
-            System.out.println("Program output:\n" + this.controller.getProgramOutput() + "\n");
         } catch (MyException e) {
             System.out.println("Something went wrong! " + e.getMessage());
         }

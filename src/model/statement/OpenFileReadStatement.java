@@ -44,7 +44,7 @@ public class OpenFileReadStatement implements Statement {
             throw new StatementException(e.getMessage());
         }
 
-        return state;
+        return null;
     }
 
     @Override

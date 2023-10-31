@@ -36,7 +36,7 @@ public class IfStatement implements Statement {
             throw new StatementException(e.getMessage());
         }
 
-        return state;
+        return null;
     }
 
     @Override

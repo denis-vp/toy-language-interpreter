@@ -6,48 +6,76 @@ import model.programstate.ProgramState;
 import model.statement.Statement;
 import repository.IRepository;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
+
 public class Controller {
     private final IRepository repository;
     private boolean displayFlag = true;
+    private ExecutorService executorService;
 
     public Controller(IRepository repository) {
         this.repository = repository;
     }
 
-    public ProgramState oneStep(ProgramState programState) throws ControllerException {
-        MyIStack<Statement> stack = programState.getExecutionStack();
-        if (stack.isEmpty()) {
-            throw new ControllerException("Execution stack is empty!");
-        }
+    public void oneStepForAllPrograms(List<ProgramState> programStates) throws ControllerException {
+        programStates.forEach(programState -> {
+            try {
+                this.repository.logProgramStateExecution(programState);
+            } catch (RepositoryException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        List<Callable<ProgramState>> callList = programStates.stream()
+                .map((ProgramState programState) -> (Callable<ProgramState>) programState::oneStep)
+                .toList();
 
         try {
-            Statement currentStatement = stack.pop();
-            return currentStatement.execute(programState);
-        } catch (StackException | StatementException e) {
+            List<ProgramState> newProgramStates = this.executorService.invokeAll(callList).stream()
+                    .map(future -> {
+                        try {
+                            return future.get();
+                        } catch (InterruptedException | ExecutionException e) {
+                            throw new RuntimeException(e);
+                        }
+                    })
+                    .filter(Objects::nonNull)
+                    .toList();
+            programStates.addAll(newProgramStates);
+        } catch (InterruptedException e) {
             throw new ControllerException(e.getMessage());
         }
+
+        programStates.forEach(programState -> {
+            try {
+                this.repository.logProgramStateExecution(programState);
+            } catch (RepositoryException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        this.repository.setProgramStates(programStates);
     }
 
     public void allSteps() throws ControllerException {
-        ProgramState programState = this.repository.getCurrentProgram();
-
-        try {
-            this.repository.logProgramStateExecution();
-            if (this.displayFlag) {
-                System.out.println(programState);
+        this.executorService = Executors.newFixedThreadPool(2);
+        List<ProgramState> programStates = this.removeCompletedPrograms(this.repository.getProgramStates());
+        while (!programStates.isEmpty()) {
+            try {
+                this.oneStepForAllPrograms(programStates);
+            } catch (RuntimeException e) {
+                throw new ControllerException(e.getMessage());
             }
-
-            while (!programState.getExecutionStack().isEmpty()) {
-                this.oneStep(programState);
-
-                this.repository.logProgramStateExecution();
-                if (this.displayFlag) {
-                    System.out.println(programState);
-                }
-            }
-        } catch (RepositoryException e) {
-            throw new ControllerException(e.getMessage());
+            programStates = this.removeCompletedPrograms(this.repository.getProgramStates());
         }
+        this.executorService.shutdownNow();
+        this.repository.setProgramStates(programStates);
     }
 
     public boolean getDisplayFlag() {
@@ -66,7 +94,9 @@ public class Controller {
         this.repository.add(program);
     }
 
-    public String getProgramOutput() {
-        return this.repository.getCurrentProgram().getOutput().toString();
+    List<ProgramState> removeCompletedPrograms(List<ProgramState> programStates) {
+        return programStates.stream()
+                .filter(ProgramState::isNotCompleted)
+                .collect(Collectors.toList());
     }
 }

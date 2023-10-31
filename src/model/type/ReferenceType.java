@@ -31,6 +31,6 @@ public class ReferenceType implements Type {
     }
 
     public String toString() {
-        return "ref (" + this.inner + ") ";
+        return "ref (" + this.inner + ")";
     }
 }

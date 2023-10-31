@@ -5,13 +5,19 @@ import datastructure.MyIHeap;
 import datastructure.MyIList;
 import datastructure.MyIStack;
 import exception.ProgramStateException;
+import exception.StackException;
 import exception.StatementException;
 import model.statement.Statement;
 import model.value.Value;
 
 import java.io.BufferedReader;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
 
 public class ProgramState {
+    private static final Set<Integer> ids = new HashSet<>();
+    private final int id;
     Statement originalProgram;
     private MyIStack<Statement> executionStack;
     private MyIDictionary<String, Value> symbolTable;
@@ -19,10 +25,12 @@ public class ProgramState {
     private MyIHeap<Value> heap;
     private MyIDictionary<String, BufferedReader> fileTable;
 
-    public ProgramState(Statement originalProgram, MyIStack<Statement> executionStack,
-                        MyIDictionary<String, Value> symbolTable, MyIList<Value> output,
-                        MyIHeap<Value> heap, MyIDictionary<String, BufferedReader> fileTable) throws ProgramStateException {
+    public ProgramState(Statement originalProgram,
+                        MyIStack<Statement> executionStack, MyIDictionary<String, Value> symbolTable,
+                        MyIList<Value> output, MyIHeap<Value> heap,
+                        MyIDictionary<String, BufferedReader> fileTable) throws ProgramStateException {
 
+        this.id = ProgramState.getNewId();
         this.executionStack = executionStack;
         this.symbolTable = symbolTable;
         this.output = output;
@@ -39,10 +47,30 @@ public class ProgramState {
     }
 
     public String toString() {
-        return "Execution Stack:\n" + this.executionStack.toString() +
-                "\nSymbol Table:\n" + this.symbolTable.toString() +
-                "\nOutput:\n" + this.output.toString() +
-                "\nFile Table:\n" + this.fileTable.toString() + "\n";
+        return "ProgramState{" +
+                "id=" + this.id +
+                ", executionStack=" + this.executionStack +
+                ", symbolTable=" + this.symbolTable +
+                ", output=" + this.output +
+                ", heap=" + this.heap +
+                ", fileTable=" + this.fileTable +
+                '}';
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    private static int getNewId() {
+        Random random = new Random();
+        int id;
+        synchronized (ProgramState.ids) {
+            do {
+                id = random.nextInt();
+            } while (ProgramState.ids.contains(id));
+            ProgramState.ids.add(id);
+        }
+        return id;
     }
 
     public Statement getOriginalProgram() {
@@ -91,5 +119,22 @@ public class ProgramState {
 
     public void setFileTable(MyIDictionary<String, BufferedReader> fileTable) {
         this.fileTable = fileTable;
+    }
+
+    public boolean isNotCompleted() {
+        return !this.executionStack.isEmpty();
+    }
+
+    public ProgramState oneStep() throws ProgramStateException {
+        if (this.executionStack.isEmpty()) {
+            throw new ProgramStateException("Execution stack is empty!");
+        }
+
+        try {
+            Statement currentStatement = this.executionStack.pop();
+            return currentStatement.execute(this);
+        } catch (StatementException | StackException e) {
+            throw new ProgramStateException(e.getMessage());
+        }
     }
 }

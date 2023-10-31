@@ -69,18 +69,18 @@ public class Repository implements IRepository {
     }
 
     @Override
-    public ProgramState getCurrentProgram() {
-        return this.programStates.get(this.currentProgramIndex);
-    }
-
-    @Override
     public List<ProgramState> getProgramStates() {
         return List.copyOf(this.programStates);
     }
 
     @Override
-    public void logProgramStateExecution() throws RepositoryException {
-        ProgramState programState = this.getCurrentProgram();
+    public void setProgramStates(List<ProgramState> programStates) {
+        this.programStates.clear();
+        this.programStates.addAll(programStates);
+    }
+
+    @Override
+    public void logProgramStateExecution(ProgramState programState) throws RepositoryException {
         MyIStack<Statement> executionStack = programState.getExecutionStack();
         MyIDictionary<String, Value> symbolTable = programState.getSymbolTable();
         MyIList<Value> output = programState.getOutput();
@@ -88,8 +88,7 @@ public class Repository implements IRepository {
         MyIDictionary<String, BufferedReader> fileTable = programState.getFileTable();
 
         try (PrintWriter logFile = new PrintWriter(new BufferedWriter(new FileWriter(this.logFilePath, true)))) {
-            LocalDateTime now = LocalDateTime.now();
-            logFile.println("Program State - " + now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+            logFile.println("Program State - " + programState.getId());
 
             logFile.println("Execution Stack:");
             if (executionStack.isEmpty()) {

@@ -13,6 +13,7 @@ import java.util.Scanner;
 
 // TODO: Manage better somehow the default values for reference types
 // TODO: Reorder exeStack, symTable, out, fileTable, heap, lockTable
+// TODO: Implement the garbage collector
 
 public class Interpreter {
     public static void main(String[] args) {
@@ -59,7 +60,13 @@ public class Interpreter {
             IRepository repository8 = new Repository(ex8, logFilePath);
             Controller controller8 = new Controller(repository8);
 
+            ProgramState ex9 = new ProgramState(ProgramGenerator.getExample9(), new MyStack<>(), new MyDictionary<>(),
+                    new MyList<>(), new MyHeap<>(), new MyDictionary<>());
+            IRepository repository9 = new Repository(ex9, logFilePath);
+            Controller controller9 = new Controller(repository9);
+
             TextMenu menu = new TextMenu();
+            menu.addCommand(new ExitCommand("0", "exit"));
             menu.addCommand(new RunExample("1", "run example 1", controller1));
             menu.addCommand(new RunExample("2", "run example 2", controller2));
             menu.addCommand(new RunExample("3", "run example 3", controller3));
@@ -68,6 +75,7 @@ public class Interpreter {
             menu.addCommand(new RunExample("6", "run example 6", controller6));
             menu.addCommand(new RunExample("7", "run example 7", controller7));
             menu.addCommand(new RunExample("8", "run example 8", controller8));
+            menu.addCommand(new RunExample("9", "run example 9", controller9));
 //            menu.addCommand(new ToggleDisplayFlagCommand("1.1", "toggle display flag for example 1", controller1));
 //            menu.addCommand(new ToggleDisplayFlagCommand("2.1", "toggle display flag for example 2", controller2));
 //            menu.addCommand(new ToggleDisplayFlagCommand("3.1", "toggle display flag for example 3", controller3));
@@ -76,7 +84,7 @@ public class Interpreter {
 //            menu.addCommand(new ToggleDisplayFlagCommand("6.1", "toggle display flag for example 6", controller6));
 //            menu.addCommand(new ToggleDisplayFlagCommand("7.1", "toggle display flag for example 7", controller7));
 //            menu.addCommand(new ToggleDisplayFlagCommand("8.1", "toggle display flag for example 8", controller8));
-            menu.addCommand(new ExitCommand("x", "exit"));
+//            menu.addCommand(new ToggleDisplayFlagCommand("9.1", "toggle display flag for example 9", controller9));
             menu.show();
 
         } catch (Exception e) {

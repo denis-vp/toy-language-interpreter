@@ -16,9 +16,9 @@ public interface IRepository {
 
     boolean isEmpty();
 
-    ProgramState getCurrentProgram();
-
     List<ProgramState> getProgramStates();
 
-    void logProgramStateExecution() throws RepositoryException;
+    void setProgramStates(List<ProgramState> programStates);
+
+    void logProgramStateExecution(ProgramState programState) throws RepositoryException;
 }

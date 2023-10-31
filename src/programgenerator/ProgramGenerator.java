@@ -160,4 +160,28 @@ public class ProgramGenerator {
 
         return statement;
     }
+
+//    Threading example
+    public static Statement getExample9() {
+        Statement declaringV = new VarDecStatement("v", new IntType());
+        Statement declaringA = new VarDecStatement("a", new ReferenceType(new IntType()));
+        Statement assigningV = new AssignmentStatement("v", new ValueExpression(new IntValue(10)));
+        Statement allocatingA = new HeapAllocationStatement("a", new ValueExpression(new IntValue(22)));
+        Statement writingA = new HeapWriteStatement("a", new ValueExpression(new IntValue(30)));
+        Statement assigningV2 = new AssignmentStatement("v", new ValueExpression(new IntValue(32)));
+        Statement printingV = new PrintStatement(new VarNameExpression("v"));
+        Statement printingA = new PrintStatement(new HeapReadExpression(new VarNameExpression("a")));
+        Statement thread1 = new ForkStatement(new CompoundStatement(writingA,
+                new CompoundStatement(assigningV2, new CompoundStatement(printingV, printingA))));
+
+        Statement statement = new CompoundStatement(declaringV,
+                new CompoundStatement(declaringA,
+                        new CompoundStatement(assigningV,
+                                new CompoundStatement(allocatingA,
+                                        new CompoundStatement(thread1,
+                                                new CompoundStatement(printingV, printingA))))));
+
+
+        return statement;
+    }
 }

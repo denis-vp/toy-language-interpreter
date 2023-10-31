@@ -26,7 +26,7 @@ public class VarDecStatement implements Statement {
             symbolTable.add(this.id, this.type.defaultValue());
         }
 
-        return state;
+        return null;
     }
 
     @Override

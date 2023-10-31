@@ -29,7 +29,7 @@ public class ForStatement implements Statement {
         stack.push(new WhileStatement(this.condition, new CompoundStatement(this.body, this.advancement)));
         stack.push(this.initialization);
 
-        return state;
+        return null;
     }
 
     @Override

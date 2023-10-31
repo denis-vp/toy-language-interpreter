@@ -23,4 +23,6 @@ public interface MyIDictionary<K, V> {
     Set<K> keys();
 
     ArrayList<V> values();
+
+    MyIDictionary<K, V> deepCopy();
 }

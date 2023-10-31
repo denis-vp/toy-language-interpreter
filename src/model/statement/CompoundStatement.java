@@ -20,7 +20,7 @@ public class CompoundStatement implements Statement {
         stack.push(this.second);
         stack.push(this.first);
 
-        return state;
+        return null;
     }
 
     @Override
