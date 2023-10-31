@@ -138,4 +138,26 @@ public class ProgramGenerator {
 
         return statement;
     }
+
+//    For statement example
+    public static Statement getExample8() {
+        Statement declaringV = new VarDecStatement("v", new IntType());
+        Statement assigningV = new AssignmentStatement("v", new ValueExpression(new IntValue(1)));
+        Statement declaringAssigningI = new CompoundStatement(new VarDecStatement("i", new IntType()),
+                new AssignmentStatement("i", new ValueExpression(new IntValue(2))));
+        Statement incrementingI = new AssignmentStatement("i", new ArithmeticExpression("+",
+                new VarNameExpression("i"), new ValueExpression(new IntValue(1))));
+        Statement multiplyingV = new AssignmentStatement("v", new ArithmeticExpression("*",
+                new VarNameExpression("v"), new VarNameExpression("i")));
+        Statement forStatement = new ForStatement(declaringAssigningI, new RelationalExpression("<",
+                new VarNameExpression("i"), new ValueExpression(new IntValue(10))), incrementingI, multiplyingV);
+        Statement printingV = new PrintStatement(new VarNameExpression("v"));
+
+        Statement statement = new CompoundStatement(declaringV,
+                new CompoundStatement(assigningV,
+                        new CompoundStatement(forStatement,
+                                printingV)));
+
+        return statement;
+    }
 }
