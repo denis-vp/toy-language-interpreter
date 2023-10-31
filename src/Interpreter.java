@@ -43,17 +43,31 @@ public class Interpreter {
             IRepository repository5 = new Repository(ex5, logFilePath);
             Controller controller5 = new Controller(repository5);
 
+            ProgramState ex6 = new ProgramState(ProgramGenerator.getExample6(), new MyStack<>(), new MyDictionary<>(),
+                    new MyList<>(), new MyHeap<>(), new MyDictionary<>());
+            IRepository repository6 = new Repository(ex6, logFilePath);
+            Controller controller6 = new Controller(repository6);
+
+            ProgramState ex7 = new ProgramState(ProgramGenerator.getExample7(), new MyStack<>(), new MyDictionary<>(),
+                    new MyList<>(), new MyHeap<>(), new MyDictionary<>());
+            IRepository repository7 = new Repository(ex7, logFilePath);
+            Controller controller7 = new Controller(repository7);
+
             TextMenu menu = new TextMenu();
             menu.addCommand(new RunExample("1", "run example 1", controller1));
             menu.addCommand(new RunExample("2", "run example 2", controller2));
             menu.addCommand(new RunExample("3", "run example 3", controller3));
             menu.addCommand(new RunExample("4", "run example 4", controller4));
             menu.addCommand(new RunExample("5", "run example 5", controller5));
+            menu.addCommand(new RunExample("6", "run example 6", controller6));
+            menu.addCommand(new RunExample("7", "run example 7", controller7));
 //            menu.addCommand(new ToggleDisplayFlagCommand("1.1", "toggle display flag for example 1", controller1));
 //            menu.addCommand(new ToggleDisplayFlagCommand("2.1", "toggle display flag for example 2", controller2));
 //            menu.addCommand(new ToggleDisplayFlagCommand("3.1", "toggle display flag for example 3", controller3));
 //            menu.addCommand(new ToggleDisplayFlagCommand("4.1", "toggle display flag for example 4", controller4));
 //            menu.addCommand(new ToggleDisplayFlagCommand("5.1", "toggle display flag for example 5", controller5));
+//            menu.addCommand(new ToggleDisplayFlagCommand("6.1", "toggle display flag for example 6", controller6));
+//            menu.addCommand(new ToggleDisplayFlagCommand("7.1", "toggle display flag for example 7", controller7));
             menu.addCommand(new ExitCommand("x", "exit"));
             menu.show();
 

@@ -1,18 +1,17 @@
 package programgenerator;
 
-import model.expression.ArithmeticExpression;
-import model.expression.RelationalExpression;
-import model.expression.ValueExpression;
-import model.expression.VarNameExpression;
+import model.expression.*;
 import model.statement.*;
 import model.type.BoolType;
 import model.type.IntType;
+import model.type.ReferenceType;
 import model.type.StringType;
 import model.value.BoolValue;
 import model.value.IntValue;
 import model.value.StringValue;
 
 public class ProgramGenerator {
+//    Basic Example
     public static Statement getExample1() {
         Statement declaringV = new VarDecStatement("v", new IntType());
         Statement assigningV = new AssignmentStatement("v", new ValueExpression(new IntValue(2)));
@@ -25,6 +24,7 @@ public class ProgramGenerator {
         return statement;
     }
 
+//    Arithmetic expressions example
     public static Statement getExample2() {
         Statement declaringA = new VarDecStatement("a", new IntType());
         Statement declaringB = new VarDecStatement("b", new IntType());
@@ -46,6 +46,7 @@ public class ProgramGenerator {
         return statement;
     }
 
+//    If statement example
     public static Statement getExample3() {
         Statement declaringA = new VarDecStatement("a", new BoolType());
         Statement declaringV = new VarDecStatement("v", new IntType());
@@ -64,14 +65,15 @@ public class ProgramGenerator {
         return statement;
     }
 
+//    File handling example
     public static Statement getExample4() {
         Statement declaringV = new VarDecStatement("v", new StringType());
         Statement assigningV = new AssignmentStatement("v", new ValueExpression(new StringValue("./input/test.in")));
-        Statement openingFile = new OpenReadFileStatement(new VarNameExpression("v"));
+        Statement openingFile = new OpenFileReadStatement(new VarNameExpression("v"));
         Statement declaringC = new VarDecStatement("c", new IntType());
-        Statement readingC = new ReadFileStatement(new VarNameExpression("v"), "c");
+        Statement readingC = new FileReadStatement(new VarNameExpression("v"), "c");
         Statement printingC = new PrintStatement(new VarNameExpression("c"));
-        Statement closingFile = new CloseReadFileStatement(new VarNameExpression("v"));
+        Statement closingFile = new CloseFileReadStatement(new VarNameExpression("v"));
 
         Statement statement = new CompoundStatement(declaringV,
                 new CompoundStatement(assigningV,
@@ -86,6 +88,7 @@ public class ProgramGenerator {
         return statement;
     }
 
+//    Relational expressions example
     public static Statement getExample5() {
         Statement declaringV = new VarDecStatement("v", new IntType());
         Statement assigningV = new AssignmentStatement("v", new ValueExpression(new IntValue(1)));
@@ -96,6 +99,42 @@ public class ProgramGenerator {
         Statement statement = new CompoundStatement(declaringV,
                 new CompoundStatement(assigningV,
                         ifStatement));
+
+        return statement;
+    }
+
+//    Heap handling example
+    public static Statement getExample6() {
+        Statement declaringV = new VarDecStatement("v", new ReferenceType(new IntType()));
+        Statement allocatingV = new HeapAllocationStatement("v", new ValueExpression(new IntValue(20)));
+        Statement printingV = new PrintStatement(new HeapReadExpression(new VarNameExpression("v")));
+        Statement writingV = new HeapWriteStatement("v", new ValueExpression(new IntValue(30)));
+        Statement printingV2 = new PrintStatement(new ArithmeticExpression("+",
+                new HeapReadExpression(new VarNameExpression("v")), new ValueExpression(new IntValue(5))));
+
+        Statement statement = new CompoundStatement(declaringV,
+                new CompoundStatement(allocatingV,
+                        new CompoundStatement(printingV,
+                                new CompoundStatement(writingV,
+                                        printingV2))));
+
+        return statement;
+    }
+
+//    While statement example
+    public static Statement getExample7() {
+        Statement declaringV = new VarDecStatement("v", new IntType());
+        Statement assigningV = new AssignmentStatement("v", new ValueExpression(new IntValue(4)));
+        Statement printingV = new PrintStatement(new VarNameExpression("v"));
+        Statement decrementingV = new AssignmentStatement("v", new ArithmeticExpression("-",
+                new VarNameExpression("v"), new ValueExpression(new IntValue(1))));
+        Statement whileStatement = new WhileStatement(new RelationalExpression(">",
+                new VarNameExpression("v"), new ValueExpression(new IntValue(0))),
+                new CompoundStatement(printingV, decrementingV));
+
+        Statement statement = new CompoundStatement(declaringV,
+                new CompoundStatement(assigningV,
+                        whileStatement));
 
         return statement;
     }

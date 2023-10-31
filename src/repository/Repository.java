@@ -1,9 +1,11 @@
 package repository;
 
 import datastructure.MyIDictionary;
+import datastructure.MyIHeap;
 import datastructure.MyIList;
 import datastructure.MyIStack;
 import exception.DictionaryException;
+import exception.HeapException;
 import exception.RepositoryException;
 import model.programstate.ProgramState;
 import model.statement.Statement;
@@ -82,6 +84,8 @@ public class Repository implements IRepository {
         MyIStack<Statement> executionStack = programState.getExecutionStack();
         MyIDictionary<String, Value> symbolTable = programState.getSymbolTable();
         MyIList<Value> output = programState.getOutput();
+        MyIHeap<Value> heap = programState.getHeap();
+        MyIDictionary<String, BufferedReader> fileTable = programState.getFileTable();
 
         try (PrintWriter logFile = new PrintWriter(new BufferedWriter(new FileWriter(this.logFilePath, true)))) {
             LocalDateTime now = LocalDateTime.now();
@@ -101,11 +105,7 @@ public class Repository implements IRepository {
                 logFile.println("-- Empty --");
             }
             for (String key : symbolTable.keys()) {
-                try {
-                    logFile.println(key + " --> " + symbolTable.get(key));
-                } catch (DictionaryException e) {
-                    throw new RepositoryException(e.getMessage());
-                }
+                logFile.println(key + " --> " + symbolTable.get(key));
             }
             logFile.println("------------------------------------");
 
@@ -119,21 +119,26 @@ public class Repository implements IRepository {
             }
             logFile.println("------------------------------------");
 
+            logFile.println("Heap:");
+            if (programState.getHeap().isEmpty()) {
+                logFile.println("-- Empty --");
+            }
+            for (Integer key : heap.keys()) {
+                logFile.println(key + " --> " + heap.get(key));
+            }
+            logFile.println("------------------------------------");
+
             logFile.println("File Table:");
             if (programState.getFileTable().isEmpty()) {
                 logFile.println("-- Empty --");
             }
-            for (String key : programState.getFileTable().keys()) {
-                try {
-                    logFile.println(key + " --> " + programState.getFileTable().get(key));
-                } catch (DictionaryException e) {
-                    throw new RepositoryException(e.getMessage());
-                }
+            for (String key : fileTable.keys()) {
+                logFile.println(key + " --> " + fileTable.get(key));
             }
             logFile.println("------------------------------------");
 
             logFile.println();
-        } catch (IOException e) {
+        } catch (IOException | DictionaryException | HeapException e) {
             throw new RepositoryException("Could not open log file!");
         }
     }

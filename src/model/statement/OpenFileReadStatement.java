@@ -14,10 +14,10 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
-public class OpenReadFileStatement implements Statement {
+public class OpenFileReadStatement implements Statement {
     private final Expression expression;
 
-    public OpenReadFileStatement(Expression expression) {
+    public OpenFileReadStatement(Expression expression) {
         this.expression = expression;
     }
 
@@ -50,7 +50,7 @@ public class OpenReadFileStatement implements Statement {
     @Override
     public Statement deepCopy() throws StatementException {
         try {
-            return new OpenReadFileStatement(this.expression.deepCopy());
+            return new OpenFileReadStatement(this.expression.deepCopy());
         } catch (ExpressionException e) {
             throw new StatementException(e.getMessage());
         }
