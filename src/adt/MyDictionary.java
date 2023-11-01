@@ -8,67 +8,89 @@ public class MyDictionary<K, V> implements IDictionary<K, V> {
 
     @Override
     public void add(K key, V value) {
-        this.map.put(key, value);
+        synchronized (this.map) {
+            this.map.put(key, value);
+        }
     }
 
     @Override
     public void remove(K key) {
-        this.map.remove(key);
+        synchronized (this.map) {
+            this.map.remove(key);
+        }
     }
 
     @Override
     public V get(K key) {
-        return this.map.get(key);
+        synchronized (this.map) {
+            return this.map.get(key);
+        }
     }
 
     @Override
     public void update(K key, V value) {
-        this.map.put(key, value);
+        synchronized (this.map) {
+            this.map.put(key, value);
+        }
     }
 
     @Override
     public boolean search(K key) {
-        return this.map.containsKey(key);
+        synchronized (this.map) {
+            return this.map.containsKey(key);
+        }
     }
 
     @Override
     public int size() {
-        return this.map.size();
+        synchronized (this.map) {
+            return this.map.size();
+        }
     }
 
     @Override
     public boolean isEmpty() {
-        return this.map.isEmpty();
+        synchronized (this.map) {
+            return this.map.isEmpty();
+        }
     }
 
     @Override
     public Set<K> keys() {
-        return new HashSet<>(this.map.keySet());
+        synchronized (this.map) {
+            return new HashSet<>(this.map.keySet());
+        }
     }
 
     @Override
     public Collection<V> values() {
-        Collection<V> values = new ArrayList<>();
-        for (K key : this.map.keySet()) {
-            values.add(this.map.get(key));
+        synchronized (this.map) {
+            Collection<V> values = new ArrayList<>();
+            for (K key : this.map.keySet()) {
+                values.add(this.map.get(key));
+            }
+            return values;
         }
-        return values;
     }
 
     @Override
     public IDictionary<K, V> deepCopy() {
-        IDictionary<K, V> newDictionary = new MyDictionary<>();
-        for (K key : this.map.keySet()) {
-            newDictionary.add(key, this.map.get(key));
+        synchronized (this.map) {
+            IDictionary<K, V> copy = new MyDictionary<>();
+            for (K key : this.map.keySet()) {
+                copy.add(key, this.map.get(key));
+            }
+            return copy;
         }
-        return newDictionary;
     }
 
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (K key : this.map.keySet()) {
-            stringBuilder.append(key.toString()).append(" -> ").append(this.map.get(key).toString()).append("\n");
+        synchronized (this.map) {
+            StringBuilder stringBuilder = new StringBuilder();
+            for (K key : this.map.keySet()) {
+                stringBuilder.append(key).append(" -> ").append(this.map.get(key)).append("\n");
+            }
+            return stringBuilder.toString();
         }
-        return stringBuilder.toString();
     }
 }

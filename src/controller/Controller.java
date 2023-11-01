@@ -1,5 +1,7 @@
 package controller;
 
+import adt.IDictionary;
+import adt.IHeap;
 import exception.*;
 import model.programstate.ProgramState;
 import model.value.ReferenceValue;
@@ -16,22 +18,9 @@ import java.util.stream.Collectors;
 public class Controller {
     private final IRepository repository;
     private ExecutorService executor;
-    private boolean displayFlag = true;
 
     public Controller(IRepository repository) {
         this.repository = repository;
-    }
-
-    public boolean getDisplayFlag() {
-        return this.displayFlag;
-    }
-
-    public void setDisplayFlag(boolean displayFlag) {
-        this.displayFlag = displayFlag;
-    }
-
-    public void toggleDisplayFlag() {
-        this.displayFlag = !this.displayFlag;
     }
 
     public void oneStepForAllPrograms(List<ProgramState> programStates) throws ControllerException {
@@ -78,12 +67,16 @@ public class Controller {
         this.executor = Executors.newFixedThreadPool(2);
 
         List<ProgramState> programStates = this.removeCompletedPrograms(this.repository.getProgramStateList());
+
         while (!programStates.isEmpty()) {
+            this.conservativeGarbageCollector(this.repository.getSymbolTable(), this.repository.getHeap());
+
             try {
                 this.oneStepForAllPrograms(programStates);
             } catch (RuntimeException e) {
                 throw new ControllerException(e.getMessage());
             }
+
             programStates = this.removeCompletedPrograms(this.repository.getProgramStateList());
         }
 
@@ -97,22 +90,18 @@ public class Controller {
                 .collect(Collectors.toList());
     }
 
-    Map<Integer, Value> unsafeGarbageCollector(List<Integer> symbolTableAddresses, Map<Integer, Value> heap) {
-        return heap.entrySet().stream()
-                .filter(entry -> symbolTableAddresses.contains(entry.getKey()))
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-    }
+    private void conservativeGarbageCollector(IDictionary<String, Value> symbolTable, IHeap heap) {
+        Set<Integer> freedAddresses = new HashSet<>(heap.keys());
 
-    Set<Integer> getAddressesFromSymbolTable(List<Collection<Value>> symbolTableValues, Map<Integer, Value> heap) {
-        Set<Integer> toReturn = new HashSet<>();
-        symbolTableValues.forEach(symbolTable -> symbolTable.stream()
-                .filter(value -> value instanceof ReferenceValue)
-                .forEach(value -> {
-                    while (value instanceof ReferenceValue) {
-                        toReturn.add(((ReferenceValue) value).getAddress());
-                        value = heap.get(((ReferenceValue) value).getAddress());
-                    }
-                }));
-        return toReturn;
+        for (Value value : symbolTable.values()) {
+            while (value instanceof ReferenceValue referenceValue) {
+                freedAddresses.remove(referenceValue.getAddress());
+                value = heap.get(referenceValue.getAddress());
+            }
+        }
+
+        for (Integer freedAddress : freedAddresses) {
+            heap.remove(freedAddress);
+        }
     }
 }

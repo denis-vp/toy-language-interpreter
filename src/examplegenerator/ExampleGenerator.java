@@ -19,7 +19,6 @@ import repository.IRepository;
 import repository.Repository;
 import view.cli.commands.Command;
 import view.cli.commands.RunExample;
-import view.cli.commands.ToggleDisplayFlagCommand;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +33,6 @@ public class ExampleGenerator {
         Controller controller1 = new Controller(repository1);
         List<Command> commands1 = new ArrayList<>();
         commands1.add(new RunExample("1", "run example 1", controller1));
-//        commands1.add(new ToggleDisplayFlagCommand("1.1", "toggle display flag for example 1", controller1));
         commandList.add(commands1);
 
         ProgramState ex2 = new ProgramState(ExampleGenerator.getExample2(), new MyStack<>(), new MyDictionary<>(),
@@ -43,7 +41,6 @@ public class ExampleGenerator {
         Controller controller2 = new Controller(repository2);
         List<Command> commands2 = new ArrayList<>();
         commands2.add(new RunExample("2", "run example 2", controller2));
-//        commands2.add(new ToggleDisplayFlagCommand("2.1", "toggle display flag for example 2", controller2));
         commandList.add(commands2);
 
         ProgramState ex3 = new ProgramState(ExampleGenerator.getExample3(), new MyStack<>(), new MyDictionary<>(),
@@ -52,7 +49,6 @@ public class ExampleGenerator {
         Controller controller3 = new Controller(repository3);
         List<Command> commands3 = new ArrayList<>();
         commands3.add(new RunExample("3", "run example 3", controller3));
-//        commands3.add(new ToggleDisplayFlagCommand("3.1", "toggle display flag for example 3", controller3));
         commandList.add(commands3);
 
         ProgramState ex4 = new ProgramState(ExampleGenerator.getExample4(), new MyStack<>(), new MyDictionary<>(),
@@ -61,7 +57,6 @@ public class ExampleGenerator {
         Controller controller4 = new Controller(repository4);
         List<Command> commands4 = new ArrayList<>();
         commands4.add(new RunExample("4", "run example 4", controller4));
-//        commands4.add(new ToggleDisplayFlagCommand("4.1", "toggle display flag for example 4", controller4));
         commandList.add(commands4);
 
         ProgramState ex5 = new ProgramState(ExampleGenerator.getExample5(), new MyStack<>(), new MyDictionary<>(),
@@ -70,7 +65,6 @@ public class ExampleGenerator {
         Controller controller5 = new Controller(repository5);
         List<Command> commands5 = new ArrayList<>();
         commands5.add(new RunExample("5", "run example 5", controller5));
-//        commands5.add(new ToggleDisplayFlagCommand("5.1", "toggle display flag for example 5", controller5));
         commandList.add(commands5);
 
         ProgramState ex6 = new ProgramState(ExampleGenerator.getExample6(), new MyStack<>(), new MyDictionary<>(),
@@ -79,7 +73,6 @@ public class ExampleGenerator {
         Controller controller6 = new Controller(repository6);
         List<Command> commands6 = new ArrayList<>();
         commands6.add(new RunExample("6", "run example 6", controller6));
-//        commands6.add(new ToggleDisplayFlagCommand("6.1", "toggle display flag for example 6", controller6));
         commandList.add(commands6);
 
         ProgramState ex7 = new ProgramState(ExampleGenerator.getExample7(), new MyStack<>(), new MyDictionary<>(),
@@ -88,7 +81,6 @@ public class ExampleGenerator {
         Controller controller7 = new Controller(repository7);
         List<Command> commands7 = new ArrayList<>();
         commands7.add(new RunExample("7", "run example 7", controller7));
-//        commands7.add(new ToggleDisplayFlagCommand("7.1", "toggle display flag for example 7", controller7));
         commandList.add(commands7);
 
         ProgramState ex8 = new ProgramState(ExampleGenerator.getExample8(), new MyStack<>(), new MyDictionary<>(),
@@ -97,7 +89,6 @@ public class ExampleGenerator {
         Controller controller8 = new Controller(repository8);
         List<Command> commands8 = new ArrayList<>();
         commands8.add(new RunExample("8", "run example 8", controller8));
-//        commands8.add(new ToggleDisplayFlagCommand("8.1", "toggle display flag for example 8", controller8));
         commandList.add(commands8);
 
         ProgramState ex9 = new ProgramState(ExampleGenerator.getExample9(), new MyStack<>(), new MyDictionary<>(),
@@ -106,7 +97,6 @@ public class ExampleGenerator {
         Controller controller9 = new Controller(repository9);
         List<Command> commands9 = new ArrayList<>();
         commands9.add(new RunExample("9", "run example 9", controller9));
-//        commands9.add(new ToggleDisplayFlagCommand("9.1", "toggle display flag for example 9", controller9));
         commandList.add(commands9);
 
         return commandList;
@@ -198,16 +188,17 @@ public class ExampleGenerator {
 //    Heap handling example
         Statement declaringV = new VarDecStatement("v", new ReferenceType(new IntType()));
         Statement allocatingV = new HeapAllocationStatement("v", new ValueExpression(new IntValue(20)));
-        Statement printingV = new PrintStatement(new HeapReadExpression(new VarNameExpression("v")));
-        Statement writingV = new HeapWriteStatement("v", new ValueExpression(new IntValue(30)));
-        Statement printingV2 = new PrintStatement(new ArithmeticExpression("+",
-                new HeapReadExpression(new VarNameExpression("v")), new ValueExpression(new IntValue(5))));
+        Statement declaringA = new VarDecStatement("a", new ReferenceType(new ReferenceType(new IntType())));
+        Statement allocatingA = new HeapAllocationStatement("a", new VarNameExpression("v"));
+        Statement allocatingV2 = new HeapAllocationStatement("v", new ValueExpression(new IntValue(30)));
+        Statement printingA = new PrintStatement(new HeapReadExpression(new HeapReadExpression(new VarNameExpression("a"))));
 
         return new CompoundStatement(declaringV,
                 new CompoundStatement(allocatingV,
-                        new CompoundStatement(printingV,
-                                new CompoundStatement(writingV,
-                                        printingV2))));
+                        new CompoundStatement(declaringA,
+                                new CompoundStatement(allocatingA,
+                                        new CompoundStatement(allocatingV2,
+                                                printingA)))));
     }
 
     private static Statement getExample7() {

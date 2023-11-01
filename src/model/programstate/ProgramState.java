@@ -22,8 +22,8 @@ public class ProgramState {
     private final IHeap heap;
     private final IDictionary<String, BufferedReader> fileTable;
     private final IList<Value> output;
-    private static final Set<Integer> ids = new HashSet<>();
     private final int id;
+    private static final Set<Integer> ids = new HashSet<>();
 
     public ProgramState(Statement originalProgram,
                         IStack<Statement> executionStack, IDictionary<String, Value> symbolTable,

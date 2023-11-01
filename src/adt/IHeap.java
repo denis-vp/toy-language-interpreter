@@ -3,6 +3,7 @@ package adt;
 import model.value.Value;
 
 import java.util.Collection;
+import java.util.Map;
 import java.util.Set;
 
 public interface IHeap {

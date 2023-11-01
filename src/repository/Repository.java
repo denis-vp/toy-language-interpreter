@@ -1,7 +1,10 @@
 package repository;
 
+import adt.IDictionary;
+import adt.IHeap;
 import exception.RepositoryException;
 import model.programstate.ProgramState;
+import model.value.Value;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -25,6 +28,16 @@ public class Repository implements IRepository {
     public void setProgramStateList(List<ProgramState> programStateList) {
         this.programStateList.clear();
         this.programStateList.addAll(programStateList);
+    }
+
+    @Override
+    public IHeap getHeap() {
+        return this.programStateList.get(0).getHeap();
+    }
+
+    @Override
+    public IDictionary<String, Value> getSymbolTable() {
+        return this.programStateList.get(0).getSymbolTable();
     }
 
     @Override
