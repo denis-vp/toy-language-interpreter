@@ -1,8 +1,7 @@
 package model.expression;
 
-import datastructure.MyIDictionary;
-import datastructure.MyIHeap;
-import exception.DictionaryException;
+import adt.IDictionary;
+import adt.IHeap;
 import exception.ExpressionException;
 import model.value.Value;
 
@@ -14,12 +13,8 @@ public class VarNameExpression implements Expression {
     }
 
     @Override
-    public Value eval(MyIDictionary<String, Value> symbolTable, MyIHeap<Value> heap) throws ExpressionException {
-        try {
-            return symbolTable.get(this.id);
-        } catch (DictionaryException e) {
-            throw new ExpressionException(e.getMessage());
-        }
+    public Value eval(IDictionary<String, Value> symbolTable, IHeap heap) throws ExpressionException {
+        return symbolTable.get(this.id);
     }
 
     @Override

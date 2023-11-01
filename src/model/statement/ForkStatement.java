@@ -1,9 +1,8 @@
 package model.statement;
 
-import datastructure.MyIDictionary;
-import datastructure.MyIStack;
-import datastructure.MyStack;
-import exception.ProgramStateException;
+import adt.IDictionary;
+import adt.IStack;
+import adt.MyStack;
 import exception.StatementException;
 import model.programstate.ProgramState;
 import model.value.Value;
@@ -17,20 +16,16 @@ public class ForkStatement implements Statement {
 
     @Override
     public ProgramState execute(ProgramState state) throws StatementException {
-        try {
-            MyIStack<Statement> newStack = new MyStack<>();
-            MyIDictionary<String, Value> newSymbolTable = state.getSymbolTable().deepCopy();
+        IStack<Statement> newExecutionStack = new MyStack<>();
+        IDictionary<String, Value> newSymbolTable = state.getSymbolTable().deepCopy();
 
-            return new ProgramState(this.statement, newStack, newSymbolTable, state.getOutput(),
-                    state.getHeap(), state.getFileTable());
-
-        } catch (ProgramStateException e) {
-            throw new StatementException(e.getMessage());
-        }
+        return new ProgramState(this.statement, newExecutionStack, newSymbolTable,
+                state.getHeap(), state.getFileTable(), state.getOutput()
+        );
     }
 
     @Override
-    public Statement deepCopy() throws StatementException {
+    public Statement deepCopy() {
         return new ForkStatement(this.statement.deepCopy());
     }
 

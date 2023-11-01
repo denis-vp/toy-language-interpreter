@@ -1,6 +1,6 @@
 package model.statement;
 
-import datastructure.MyIDictionary;
+import adt.IDictionary;
 import exception.StatementException;
 import model.programstate.ProgramState;
 import model.type.Type;
@@ -18,7 +18,7 @@ public class VarDecStatement implements Statement {
 
     @Override
     public ProgramState execute(ProgramState state) throws StatementException {
-        MyIDictionary<String, Value> symbolTable = state.getSymbolTable();
+        IDictionary<String, Value> symbolTable = state.getSymbolTable();
 
         if (symbolTable.search(this.id)) {
             throw new StatementException("Variable " + this.id + " is already defined.");

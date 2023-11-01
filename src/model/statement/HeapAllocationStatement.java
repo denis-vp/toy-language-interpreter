@@ -1,8 +1,7 @@
 package model.statement;
 
-import datastructure.MyIDictionary;
-import datastructure.MyIHeap;
-import exception.DictionaryException;
+import adt.IDictionary;
+import adt.IHeap;
 import exception.ExpressionException;
 import exception.StatementException;
 import model.expression.Expression;
@@ -22,18 +21,18 @@ public class HeapAllocationStatement implements Statement {
 
     @Override
     public ProgramState execute(ProgramState state) throws StatementException {
-        MyIDictionary<String, Value> symbolTable = state.getSymbolTable();
-        MyIHeap<Value> heap = state.getHeap();
+        IDictionary<String, Value> symbolTable = state.getSymbolTable();
+        IHeap heap = state.getHeap();
+
+        if (!symbolTable.search(this.id)) {
+            throw new StatementException("Variable " + this.id + " is not defined.");
+        }
+        Value idValue = symbolTable.get(this.id);
+        if (!idValue.getType().equals(new ReferenceType(null))) {
+            throw new StatementException("Variable " + this.id + " is not a reference type.");
+        }
 
         try {
-            if (!symbolTable.search(this.id)) {
-                throw new StatementException("Variable " + this.id + " is not defined.");
-            }
-            Value idValue = symbolTable.get(this.id);
-            if (!idValue.getType().equals(new ReferenceType(null))) {
-                throw new StatementException("Variable " + this.id + " is not a reference type.");
-            }
-
             Value expressionValue = this.expression.eval(symbolTable, heap);
             ReferenceValue referenceValue = (ReferenceValue) idValue;
             if (!expressionValue.getType().equals(referenceValue.getLocationType())) {
@@ -41,10 +40,9 @@ public class HeapAllocationStatement implements Statement {
                         " and type of the assigned expression do not match.");
             }
 
-            int freeAddress = heap.getNextFreeAddress();
-            heap.add(expressionValue);
-            symbolTable.update(this.id, new ReferenceValue(freeAddress, expressionValue.getType()));
-        } catch (ExpressionException | DictionaryException e) {
+            int id = heap.add(expressionValue);
+            symbolTable.update(this.id, new ReferenceValue(id, expressionValue.getType()));
+        } catch (ExpressionException e) {
             throw new StatementException(e.getMessage());
         }
 
@@ -52,12 +50,8 @@ public class HeapAllocationStatement implements Statement {
     }
 
     @Override
-    public Statement deepCopy() throws StatementException {
-        try {
-            return new HeapAllocationStatement(this.id, this.expression.deepCopy());
-        } catch (ExpressionException e) {
-            throw new StatementException(e.getMessage());
-        }
+    public Statement deepCopy() {
+        return new HeapAllocationStatement(this.id, this.expression.deepCopy());
     }
 
     public String toString() {

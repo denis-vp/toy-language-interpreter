@@ -1,8 +1,8 @@
 package model.statement;
 
-import datastructure.MyIDictionary;
-import datastructure.MyIHeap;
-import datastructure.MyIStack;
+import adt.IDictionary;
+import adt.IHeap;
+import adt.IStack;
 import exception.ExpressionException;
 import exception.StatementException;
 import model.expression.Expression;
@@ -22,9 +22,9 @@ public class WhileStatement implements Statement {
 
     @Override
     public ProgramState execute(ProgramState state) throws StatementException {
-        MyIStack<Statement> stack = state.getExecutionStack();
-        MyIDictionary<String, Value> symbolTable = state.getSymbolTable();
-        MyIHeap<Value> heap = state.getHeap();
+        IStack<Statement> executionStack = state.getExecutionStack();
+        IDictionary<String, Value> symbolTable = state.getSymbolTable();
+        IHeap heap = state.getHeap();
 
         try {
             Value value = this.expression.eval(symbolTable, heap);
@@ -33,8 +33,8 @@ public class WhileStatement implements Statement {
             }
             BoolValue boolValue = (BoolValue) value;
             if (boolValue.getValue()) {
-                stack.push(this);
-                stack.push(this.statement);
+                executionStack.push(this);
+                executionStack.push(this.statement);
             }
         } catch (ExpressionException e) {
             throw new StatementException(e.getMessage());
@@ -44,12 +44,8 @@ public class WhileStatement implements Statement {
     }
 
     @Override
-    public Statement deepCopy() throws StatementException {
-        try {
-            return new WhileStatement(this.expression.deepCopy(), this.statement.deepCopy());
-        } catch (ExpressionException e) {
-            throw new StatementException(e.getMessage());
-        }
+    public Statement deepCopy() {
+        return new WhileStatement(this.expression.deepCopy(), this.statement.deepCopy());
     }
 
     public String toString() {

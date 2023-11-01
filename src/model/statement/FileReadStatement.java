@@ -1,8 +1,7 @@
 package model.statement;
 
-import datastructure.MyIDictionary;
-import datastructure.MyIHeap;
-import exception.DictionaryException;
+import adt.IDictionary;
+import adt.IHeap;
 import exception.ExpressionException;
 import exception.StatementException;
 import model.expression.Expression;
@@ -27,19 +26,19 @@ public class FileReadStatement implements Statement {
 
     @Override
     public ProgramState execute(ProgramState state) throws StatementException {
-        MyIDictionary<String, Value> symbolTable = state.getSymbolTable();
-        MyIHeap<Value> heap = state.getHeap();
-        MyIDictionary<String, BufferedReader> fileTable = state.getFileTable();
+        IDictionary<String, Value> symbolTable = state.getSymbolTable();
+        IHeap heap = state.getHeap();
+        IDictionary<String, BufferedReader> fileTable = state.getFileTable();
+
+        if (!symbolTable.search(this.id)) {
+            throw new StatementException("Variable " + this.id + " is not defined.");
+        }
+        Value idValue = symbolTable.get(this.id);
+        if (!idValue.getType().equals(new IntType())) {
+            throw new StatementException("Variable " + this.id + " is not of type int.");
+        }
 
         try {
-            if (!symbolTable.search(this.id)) {
-                throw new StatementException("Variable " + this.id + " is not defined.");
-            }
-            Value idValue = symbolTable.get(this.id);
-            if (!idValue.getType().equals(new IntType())) {
-                throw new StatementException("Variable " + this.id + " is not of type int.");
-            }
-
             Value expressionValue = this.expression.eval(symbolTable, heap);
             if (!expressionValue.getType().equals(new StringType())) {
                 throw new StatementException("Expression " + this.expression + " is not of type string.");
@@ -58,7 +57,7 @@ public class FileReadStatement implements Statement {
             } else {
                 symbolTable.update(this.id, new IntValue(Integer.parseInt(line)));
             }
-        } catch (DictionaryException | ExpressionException | IOException e) {
+        } catch (ExpressionException | IOException e) {
             throw new StatementException(e.getMessage());
         }
 
@@ -66,8 +65,8 @@ public class FileReadStatement implements Statement {
     }
 
     @Override
-    public Statement deepCopy() throws StatementException {
-        return null;
+    public Statement deepCopy() {
+        return new FileReadStatement(this.expression.deepCopy(), this.id);
     }
 
     public String toString() {

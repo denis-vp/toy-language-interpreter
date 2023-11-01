@@ -1,8 +1,8 @@
 package model.statement;
 
-import datastructure.MyIDictionary;
-import datastructure.MyIHeap;
-import datastructure.MyIList;
+import adt.IDictionary;
+import adt.IHeap;
+import adt.IList;
 import exception.*;
 import model.expression.Expression;
 import model.programstate.ProgramState;
@@ -17,9 +17,9 @@ public class PrintStatement implements Statement {
 
     @Override
     public ProgramState execute(ProgramState state) throws StatementException {
-        MyIList<Value> output = state.getOutput();
-        MyIDictionary<String, Value> symbolTable = state.getSymbolTable();
-        MyIHeap<Value> heap = state.getHeap();
+        IDictionary<String, Value> symbolTable = state.getSymbolTable();
+        IHeap heap = state.getHeap();
+        IList<Value> output = state.getOutput();
 
         try {
             Value value = this.expression.eval(symbolTable, heap);
@@ -32,12 +32,8 @@ public class PrintStatement implements Statement {
     }
 
     @Override
-    public Statement deepCopy() throws StatementException {
-        try {
-            return new PrintStatement(this.expression.deepCopy());
-        } catch (ExpressionException e) {
-            throw new StatementException(e.getMessage());
-        }
+    public Statement deepCopy() {
+        return new PrintStatement(this.expression.deepCopy());
     }
 
     public String toString() {

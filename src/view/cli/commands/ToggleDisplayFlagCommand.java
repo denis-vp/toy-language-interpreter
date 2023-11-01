@@ -1,4 +1,4 @@
-package view.commands;
+package view.cli.commands;
 
 import controller.Controller;
 

@@ -1,10 +1,8 @@
 package model.statement;
 
-import datastructure.MyIDictionary;
-import datastructure.MyIHeap;
-import exception.DictionaryException;
+import adt.IDictionary;
+import adt.IHeap;
 import exception.ExpressionException;
-import exception.HeapException;
 import exception.StatementException;
 import model.expression.Expression;
 import model.programstate.ProgramState;
@@ -23,29 +21,30 @@ public class HeapWriteStatement implements Statement {
 
     @Override
     public ProgramState execute(ProgramState state) throws StatementException {
-        MyIDictionary<String, Value> symbolTable = state.getSymbolTable();
-        MyIHeap<Value> heap = state.getHeap();
+        IDictionary<String, Value> symbolTable = state.getSymbolTable();
+        IHeap heap = state.getHeap();
+
+
+        if (!symbolTable.search(this.id)) {
+            throw new StatementException("Variable " + this.id + " is not defined.");
+        }
+        Value value = symbolTable.get(this.id);
+        if (!value.getType().equals(new ReferenceType(null))) {
+            throw new StatementException("Variable " + this.id + " is not a reference type.");
+        }
+        ReferenceValue referenceValue = (ReferenceValue) value;
+        if (!heap.search(referenceValue.getAddress())) {
+            throw new StatementException("Address " + referenceValue.getAddress() + " is not in the heap.");
+        }
 
         try {
-            if (!symbolTable.search(this.id)) {
-                throw new StatementException("Variable " + this.id + " is not defined.");
-            }
-            Value value = symbolTable.get(this.id);
-            if (!value.getType().equals(new ReferenceType(null))) {
-                throw new StatementException("Variable " + this.id + " is not a reference type.");
-            }
-            ReferenceValue referenceValue = (ReferenceValue) value;
-            if (!heap.search(referenceValue.getAddress())) {
-                throw new StatementException("Address " + referenceValue.getAddress() + " is not in the heap.");
-            }
-
             Value expressionValue = this.expression.eval(symbolTable, heap);
             if (!expressionValue.getType().equals(referenceValue.getLocationType())) {
                 throw new StatementException("Expression " + this.expression + " is not of type " + referenceValue.getLocationType() + ".");
             }
 
             heap.update(referenceValue.getAddress(), expressionValue);
-        } catch (ExpressionException | DictionaryException | HeapException e) {
+        } catch (ExpressionException e) {
             throw new StatementException(e.getMessage());
         }
 
@@ -53,12 +52,8 @@ public class HeapWriteStatement implements Statement {
     }
 
     @Override
-    public Statement deepCopy() throws StatementException {
-        try {
-            return new HeapWriteStatement(this.id, this.expression.deepCopy());
-        } catch (ExpressionException e) {
-            throw new StatementException(e.getMessage());
-        }
+    public Statement deepCopy() {
+        return new HeapWriteStatement(this.id, this.expression.deepCopy());
     }
 
     public String toString() {

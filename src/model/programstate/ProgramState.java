@@ -1,11 +1,11 @@
 package model.programstate;
 
-import datastructure.MyIDictionary;
-import datastructure.MyIHeap;
-import datastructure.MyIList;
-import datastructure.MyIStack;
+import adt.IDictionary;
+import adt.IHeap;
+import adt.IList;
+import adt.IStack;
+import exception.ADTException;
 import exception.ProgramStateException;
-import exception.StackException;
 import exception.StatementException;
 import model.statement.Statement;
 import model.value.Value;
@@ -16,52 +16,32 @@ import java.util.Random;
 import java.util.Set;
 
 public class ProgramState {
+    private final Statement originalProgram;
+    private final IStack<Statement> executionStack;
+    private final IDictionary<String, Value> symbolTable;
+    private final IHeap heap;
+    private final IDictionary<String, BufferedReader> fileTable;
+    private final IList<Value> output;
     private static final Set<Integer> ids = new HashSet<>();
     private final int id;
-    Statement originalProgram;
-    private MyIStack<Statement> executionStack;
-    private MyIDictionary<String, Value> symbolTable;
-    private MyIList<Value> output;
-    private MyIHeap<Value> heap;
-    private MyIDictionary<String, BufferedReader> fileTable;
 
     public ProgramState(Statement originalProgram,
-                        MyIStack<Statement> executionStack, MyIDictionary<String, Value> symbolTable,
-                        MyIList<Value> output, MyIHeap<Value> heap,
-                        MyIDictionary<String, BufferedReader> fileTable) throws ProgramStateException {
+                        IStack<Statement> executionStack, IDictionary<String, Value> symbolTable,
+                        IHeap heap, IDictionary<String, BufferedReader> fileTable,
+                        IList<Value> output) {
 
-        this.id = ProgramState.getNewId();
+        this.originalProgram = originalProgram.deepCopy();
         this.executionStack = executionStack;
         this.symbolTable = symbolTable;
-        this.output = output;
         this.heap = heap;
         this.fileTable = fileTable;
+        this.output = output;
 
-        try {
-            this.originalProgram = originalProgram.deepCopy();
-        } catch (StatementException e) {
-            throw new ProgramStateException(e.getMessage());
-        }
-
+        this.id = ProgramState.generateNewId();
         executionStack.push(originalProgram);
     }
 
-    public String toString() {
-        return "ProgramState{" +
-                "id=" + this.id +
-                ", executionStack=" + this.executionStack +
-                ", symbolTable=" + this.symbolTable +
-                ", output=" + this.output +
-                ", heap=" + this.heap +
-                ", fileTable=" + this.fileTable +
-                '}';
-    }
-
-    public int getId() {
-        return this.id;
-    }
-
-    private static int getNewId() {
+    private static int generateNewId() {
         Random random = new Random();
         int id;
         synchronized (ProgramState.ids) {
@@ -73,52 +53,29 @@ public class ProgramState {
         return id;
     }
 
-    public Statement getOriginalProgram() {
-        return this.originalProgram;
+    public int getId() {
+        return this.id;
     }
 
-    public MyIStack<Statement> getExecutionStack() {
+
+    public IStack<Statement> getExecutionStack() {
         return this.executionStack;
     }
 
-    public MyIDictionary<String, Value> getSymbolTable() {
+    public IDictionary<String, Value> getSymbolTable() {
         return this.symbolTable;
     }
 
-    public MyIList<Value> getOutput() {
-        return this.output;
-    }
-
-    public MyIHeap<Value> getHeap() {
+    public IHeap getHeap() {
         return this.heap;
     }
 
-    public MyIDictionary<String, BufferedReader> getFileTable() {
+    public IDictionary<String, BufferedReader> getFileTable() {
         return this.fileTable;
     }
 
-    public void setOriginalProgram(Statement originalProgram) {
-        this.originalProgram = originalProgram;
-    }
-
-    public void setExecutionStack(MyIStack<Statement> executionStack) {
-        this.executionStack = executionStack;
-    }
-
-    public void setSymbolTable(MyIDictionary<String, Value> symbolTable) {
-        this.symbolTable = symbolTable;
-    }
-
-    public void setOutput(MyIList<Value> output) {
-        this.output = output;
-    }
-
-    public void setHeap(MyIHeap<Value> heap) {
-        this.heap = heap;
-    }
-
-    public void setFileTable(MyIDictionary<String, BufferedReader> fileTable) {
-        this.fileTable = fileTable;
+    public IList<Value> getOutput() {
+        return this.output;
     }
 
     public boolean isNotCompleted() {
@@ -133,8 +90,51 @@ public class ProgramState {
         try {
             Statement currentStatement = this.executionStack.pop();
             return currentStatement.execute(this);
-        } catch (StatementException | StackException e) {
+        } catch (StatementException | ADTException e) {
             throw new ProgramStateException(e.getMessage());
         }
+    }
+
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("Program State: ").append(this.id).append("\n");
+        stringBuilder.append("Execution Stack\n");
+        if (this.executionStack.isEmpty()) {
+            stringBuilder.append("----------Empty----------\n");
+        } else {
+            stringBuilder.append(this.executionStack);
+        }
+        stringBuilder.append("-------------------------------------------\n");
+        stringBuilder.append("Symbol Table\n");
+        if (this.symbolTable.isEmpty()) {
+            stringBuilder.append("----------Empty----------\n");
+        } else {
+            stringBuilder.append(this.symbolTable);
+        }
+        stringBuilder.append("-------------------------------------------\n");
+        stringBuilder.append("Heap\n");
+        if (this.heap.isEmpty()) {
+            stringBuilder.append("----------Empty----------\n");
+        } else {
+            stringBuilder.append(this.heap);
+        }
+        stringBuilder.append("-------------------------------------------\n");
+        stringBuilder.append("File Table\n");
+        if (this.fileTable.isEmpty()) {
+            stringBuilder.append("----------Empty----------\n");
+        } else {
+            stringBuilder.append(this.fileTable);
+        }
+        stringBuilder.append("-------------------------------------------\n");
+        stringBuilder.append("Output\n");
+        if (this.output.isEmpty()) {
+            stringBuilder.append("----------Empty----------\n");
+        } else {
+            stringBuilder.append(this.output);
+        }
+        stringBuilder.append("-------------------------------------------\n");
+
+        return stringBuilder.toString();
     }
 }

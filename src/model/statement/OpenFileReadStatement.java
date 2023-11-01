@@ -1,7 +1,7 @@
 package model.statement;
 
-import datastructure.MyIDictionary;
-import datastructure.MyIHeap;
+import adt.IDictionary;
+import adt.IHeap;
 import exception.ExpressionException;
 import exception.StatementException;
 import model.expression.Expression;
@@ -23,9 +23,9 @@ public class OpenFileReadStatement implements Statement {
 
     @Override
     public ProgramState execute(ProgramState state) throws StatementException {
-        MyIDictionary<String, Value> symbolTable = state.getSymbolTable();
-        MyIHeap<Value> heap = state.getHeap();
-        MyIDictionary<String, BufferedReader> fileTable = state.getFileTable();
+        IDictionary<String, Value> symbolTable = state.getSymbolTable();
+        IHeap heap = state.getHeap();
+        IDictionary<String, BufferedReader> fileTable = state.getFileTable();
 
         try {
             Value value = this.expression.eval(symbolTable, heap);
@@ -48,12 +48,8 @@ public class OpenFileReadStatement implements Statement {
     }
 
     @Override
-    public Statement deepCopy() throws StatementException {
-        try {
-            return new OpenFileReadStatement(this.expression.deepCopy());
-        } catch (ExpressionException e) {
-            throw new StatementException(e.getMessage());
-        }
+    public Statement deepCopy() {
+        return new OpenFileReadStatement(this.expression.deepCopy());
     }
 
     public String toString() {

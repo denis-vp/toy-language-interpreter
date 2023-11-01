@@ -1,13 +1,12 @@
 package model.statement;
 
-import datastructure.MyIHeap;
-import datastructure.MyIStack;
+import adt.IHeap;
+import adt.IStack;
 import exception.ExpressionException;
 import exception.StatementException;
 import model.expression.Expression;
 import model.programstate.ProgramState;
 import model.value.BoolValue;
-import model.value.Value;
 
 public class IfStatement implements Statement {
     Expression expression;
@@ -22,15 +21,15 @@ public class IfStatement implements Statement {
 
     @Override
     public ProgramState execute(ProgramState state) throws StatementException {
-        MyIStack<Statement> stack = state.getExecutionStack();
-        MyIHeap<Value> heap = state.getHeap();
+        IStack<Statement> executionStack = state.getExecutionStack();
+        IHeap heap = state.getHeap();
 
         try {
             BoolValue condition = (BoolValue) this.expression.eval(state.getSymbolTable(), heap);
             if (condition.getValue()) {
-                stack.push(this.thenStatement);
+                executionStack.push(this.thenStatement);
             } else {
-                stack.push(this.elseStatement);
+                executionStack.push(this.elseStatement);
             }
         } catch (ExpressionException e) {
             throw new StatementException(e.getMessage());
@@ -40,16 +39,12 @@ public class IfStatement implements Statement {
     }
 
     @Override
-    public Statement deepCopy() throws StatementException {
-        try {
-            return new IfStatement(this.expression.deepCopy(), this.thenStatement.deepCopy(),
-                    this.elseStatement.deepCopy());
-        } catch (ExpressionException e) {
-            throw new StatementException(e.getMessage());
-        }
+    public Statement deepCopy() {
+        return new IfStatement(this.expression.deepCopy(), this.thenStatement.deepCopy(),
+                this.elseStatement.deepCopy());
     }
 
     public String toString() {
-        return "if (" + this.expression + ") then (" + this.thenStatement + ") else (" +  this.elseStatement + ")";
+        return "if (" + this.expression + ") then (" + this.thenStatement + ") else (" + this.elseStatement + ")";
     }
 }

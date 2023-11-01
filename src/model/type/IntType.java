@@ -9,10 +9,12 @@ public class IntType implements Type {
         return another instanceof IntType;
     }
 
+    @Override
     public Value defaultValue() {
         return new IntValue(0);
     }
 
+    @Override
     public Type deepCopy() {
         return new IntType();
     }

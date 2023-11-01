@@ -1,7 +1,7 @@
 package model.expression;
 
-import datastructure.MyIDictionary;
-import datastructure.MyIHeap;
+import adt.IDictionary;
+import adt.IHeap;
 import exception.ExpressionException;
 import model.type.IntType;
 import model.value.IntValue;
@@ -27,14 +27,14 @@ public class ArithmeticExpression implements Expression {
     }
 
     @Override
-    public Value eval(MyIDictionary<String, Value> symbolTable, MyIHeap<Value> heap) throws ExpressionException {
+    public Value eval(IDictionary<String, Value> symbolTable, IHeap heap) throws ExpressionException {
         Value v1 = this.e1.eval(symbolTable, heap);
         if (!v1.getType().equals(new IntType())) {
-            throw new ExpressionException("first operand is not an integer");
+            throw new ExpressionException("First operand is not an integer");
         }
         Value v2 = this.e2.eval(symbolTable, heap);
         if (!v2.getType().equals(new IntType())) {
-            throw new ExpressionException("second operand is not an integer");
+            throw new ExpressionException("Second operand is not an integer");
         }
 
         IntValue i1 = (IntValue) v1;
@@ -45,12 +45,12 @@ public class ArithmeticExpression implements Expression {
         try {
             return new IntValue(ArithmeticExpression.operators.get(this.operator).applyAsInt(n1, n2));
         } catch (Exception e) {
-            throw new ExpressionException("division by zero");
+            throw new ExpressionException("Division by zero");
         }
     }
 
     @Override
-    public Expression deepCopy() throws ExpressionException {
+    public Expression deepCopy() {
         return new ArithmeticExpression(this.operator, this.e1.deepCopy(), this.e2.deepCopy());
     }
 

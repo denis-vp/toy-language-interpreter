@@ -1,7 +1,6 @@
 package model.statement;
 
-import datastructure.MyIStack;
-import exception.StatementException;
+import adt.IStack;
 import model.programstate.ProgramState;
 
 public class CompoundStatement implements Statement {
@@ -15,7 +14,7 @@ public class CompoundStatement implements Statement {
 
     @Override
     public ProgramState execute(ProgramState state) {
-        MyIStack<Statement> stack = state.getExecutionStack();
+        IStack<Statement> stack = state.getExecutionStack();
 
         stack.push(this.second);
         stack.push(this.first);
@@ -24,7 +23,7 @@ public class CompoundStatement implements Statement {
     }
 
     @Override
-    public Statement deepCopy() throws StatementException {
+    public Statement deepCopy() {
         return new CompoundStatement(this.first.deepCopy(), this.second.deepCopy());
     }
 

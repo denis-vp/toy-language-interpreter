@@ -1,12 +1,12 @@
 package model.expression;
 
-import datastructure.MyIDictionary;
-import datastructure.MyIHeap;
+import adt.IDictionary;
+import adt.IHeap;
 import exception.ExpressionException;
 import model.value.Value;
 
 public interface Expression {
-    Value eval(MyIDictionary<String, Value> symbolTable, MyIHeap<Value> heap) throws ExpressionException;
+    Value eval(IDictionary<String, Value> symbolTable, IHeap heap) throws ExpressionException;
 
-    Expression deepCopy() throws ExpressionException;
+    Expression deepCopy();
 }

@@ -1,6 +1,6 @@
-package view;
+package view.cli;
 
-import view.commands.Command;
+import view.cli.commands.Command;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +14,7 @@ public class TextMenu {
     }
 
     private void printMenu() {
-        System.out.println("Menu:");
+        System.out.println("\nMenu:");
         for (Command command : this.commands.values()) {
             System.out.printf("%s: %s%n", command.getId(), command.getDescription());
         }

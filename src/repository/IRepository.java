@@ -6,19 +6,10 @@ import model.programstate.ProgramState;
 import java.util.List;
 
 public interface IRepository {
-    void add(ProgramState programState);
 
-    ProgramState get(int index);
+    List<ProgramState> getProgramStateList();
 
-    void set(int index, ProgramState programState);
-
-    int size();
-
-    boolean isEmpty();
-
-    List<ProgramState> getProgramStates();
-
-    void setProgramStates(List<ProgramState> programStates);
+    void setProgramStateList(List<ProgramState> programStateList);
 
     void logProgramStateExecution(ProgramState programState) throws RepositoryException;
 }

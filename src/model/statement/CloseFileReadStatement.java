@@ -1,8 +1,7 @@
 package model.statement;
 
-import datastructure.MyIDictionary;
-import datastructure.MyIHeap;
-import exception.DictionaryException;
+import adt.IDictionary;
+import adt.IHeap;
 import exception.ExpressionException;
 import exception.StatementException;
 import model.expression.Expression;
@@ -23,9 +22,9 @@ public class CloseFileReadStatement implements Statement {
 
     @Override
     public ProgramState execute(ProgramState state) throws StatementException {
-        MyIDictionary<String, Value> symbolTable = state.getSymbolTable();
-        MyIHeap<Value> heap = state.getHeap();
-        MyIDictionary<String, BufferedReader> fileTable = state.getFileTable();
+        IDictionary<String, Value> symbolTable = state.getSymbolTable();
+        IHeap heap = state.getHeap();
+        IDictionary<String, BufferedReader> fileTable = state.getFileTable();
 
         try {
             Value value = this.expression.eval(symbolTable, heap);
@@ -39,7 +38,7 @@ public class CloseFileReadStatement implements Statement {
             BufferedReader bufferedReader = fileTable.get(stringValue.getValue());
             bufferedReader.close();
             fileTable.remove(stringValue.getValue());
-        } catch (ExpressionException | DictionaryException | IOException e) {
+        } catch (ExpressionException | IOException e) {
             throw new StatementException(e.getMessage());
         }
 
@@ -47,8 +46,8 @@ public class CloseFileReadStatement implements Statement {
     }
 
     @Override
-    public Statement deepCopy() throws StatementException {
-        return null;
+    public Statement deepCopy() {
+        return new CloseFileReadStatement(this.expression.deepCopy());
     }
 
     public String toString() {

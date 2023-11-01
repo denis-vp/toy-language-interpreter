@@ -1,7 +1,7 @@
 package model.statement;
 
-import datastructure.MyIDictionary;
-import datastructure.MyIHeap;
+import adt.IDictionary;
+import adt.IHeap;
 import exception.*;
 import model.expression.Expression;
 import model.programstate.ProgramState;
@@ -19,8 +19,8 @@ public class AssignmentStatement implements Statement {
 
     @Override
     public ProgramState execute(ProgramState state) throws StatementException {
-        MyIDictionary<String, Value> symbolTable = state.getSymbolTable();
-        MyIHeap<Value> heap = state.getHeap();
+        IDictionary<String, Value> symbolTable = state.getSymbolTable();
+        IHeap heap = state.getHeap();
 
         if (!symbolTable.search(this.id)) {
             throw new StatementException("Variable " + this.id + " is not defined.");
@@ -33,7 +33,7 @@ public class AssignmentStatement implements Statement {
                         " and type of the assigned expression do not match.");
             }
             symbolTable.update(this.id, value);
-        } catch (ExpressionException | DictionaryException e) {
+        } catch (ExpressionException e) {
             throw new StatementException(e.getMessage());
         }
 
@@ -41,12 +41,8 @@ public class AssignmentStatement implements Statement {
     }
 
     @Override
-    public Statement deepCopy() throws StatementException {
-        try {
-            return new AssignmentStatement(this.id, this.expression.deepCopy());
-        } catch (ExpressionException e) {
-            throw new StatementException(e.getMessage());
-        }
+    public Statement deepCopy() {
+        return new AssignmentStatement(this.id, this.expression.deepCopy());
     }
 
     public String toString() {

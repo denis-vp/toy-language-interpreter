@@ -1,7 +1,7 @@
 package model.expression;
 
-import datastructure.MyIDictionary;
-import datastructure.MyIHeap;
+import adt.IDictionary;
+import adt.IHeap;
 import exception.ExpressionException;
 import model.type.IntType;
 import model.value.BoolValue;
@@ -28,7 +28,7 @@ public class RelationalExpression implements Expression {
     }
 
     @Override
-    public Value eval(MyIDictionary<String, Value> symbolTable, MyIHeap<Value> heap) throws ExpressionException {
+    public Value eval(IDictionary<String, Value> symbolTable, IHeap heap) throws ExpressionException {
         Value v1 = e1.eval(symbolTable, heap);
         if (!v1.getType().equals(new IntType())) {
             throw new ExpressionException("first operand is not an integer");
@@ -47,7 +47,7 @@ public class RelationalExpression implements Expression {
     }
 
     @Override
-    public Expression deepCopy() throws ExpressionException {
+    public Expression deepCopy() {
         return new RelationalExpression(this.operator, this.e1.deepCopy(), this.e2.deepCopy());
     }
 

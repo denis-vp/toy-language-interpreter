@@ -1,7 +1,7 @@
-package view.commands;
+package view.cli.commands;
 
 import controller.Controller;
-import exception.MyException;
+import exception.InterpreterException;
 
 public class RunExample extends Command {
     private final Controller controller;
@@ -15,7 +15,7 @@ public class RunExample extends Command {
     public void execute() {
         try {
             this.controller.allSteps();
-        } catch (MyException e) {
+        } catch (InterpreterException e) {
             System.out.println("Something went wrong! " + e.getMessage());
         }
     }

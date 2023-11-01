@@ -1,6 +1,6 @@
 package exception;
 
-public class ExpressionException extends MyException {
+public class ExpressionException extends InterpreterException {
     public ExpressionException(String message) {
         super(message);
     }

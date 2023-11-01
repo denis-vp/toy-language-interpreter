@@ -10,13 +10,8 @@ public class ReferenceType implements Type {
         this.inner = inner;
     }
 
-    public Type getInner() {
-        return this.inner;
-    }
-
     @Override
     public boolean equals(Type another) {
-//        TODO: Maybe compare the inner types as well?
         return another instanceof ReferenceType;
     }
 

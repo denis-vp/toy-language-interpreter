@@ -1,13 +1,9 @@
 package model.statement;
 
-import datastructure.MyIDictionary;
-import datastructure.MyIHeap;
-import datastructure.MyIStack;
-import exception.ExpressionException;
+import adt.IStack;
 import exception.StatementException;
 import model.expression.Expression;
 import model.programstate.ProgramState;
-import model.value.Value;
 
 public class ForStatement implements Statement {
     private final Statement initialization;
@@ -24,22 +20,18 @@ public class ForStatement implements Statement {
 
     @Override
     public ProgramState execute(ProgramState state) throws StatementException {
-        MyIStack<Statement> stack = state.getExecutionStack();
+        IStack<Statement> executionStack = state.getExecutionStack();
 
-        stack.push(new WhileStatement(this.condition, new CompoundStatement(this.body, this.advancement)));
-        stack.push(this.initialization);
+        executionStack.push(new WhileStatement(this.condition, new CompoundStatement(this.body, this.advancement)));
+        executionStack.push(this.initialization);
 
         return null;
     }
 
     @Override
-    public Statement deepCopy() throws StatementException {
-        try {
-            return new ForStatement(this.initialization.deepCopy(), this.condition.deepCopy(),
-                    this.advancement.deepCopy(), this.body.deepCopy());
-        } catch (ExpressionException e) {
-            throw new StatementException(e.getMessage());
-        }
+    public Statement deepCopy() {
+        return new ForStatement(this.initialization.deepCopy(), this.condition.deepCopy(),
+                this.advancement.deepCopy(), this.body.deepCopy());
     }
 
     public String toString() {

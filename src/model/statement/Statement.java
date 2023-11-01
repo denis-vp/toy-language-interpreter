@@ -6,5 +6,5 @@ import model.programstate.ProgramState;
 public interface Statement {
     ProgramState execute(ProgramState state) throws StatementException;
 
-    Statement deepCopy() throws StatementException;
+    Statement deepCopy();
 }
