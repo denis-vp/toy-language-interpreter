@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
-// TODO: Implement the garbage collector
 
 public class Interpreter {
     public static void main(String[] args) {
