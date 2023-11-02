@@ -1,4 +1,4 @@
-Program State: -774870603
+Program State: 727196053
 Execution Stack
 ((((((int v; ref (int) a); v = 10); new(a, 22)); fork((wH(a, 30); (v = 32; (print(v); print(rH(a))))))); print(v)); print(rH(a)))
 -------------------------------------------
@@ -15,7 +15,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -774870603
+Program State: 727196053
 Execution Stack
 (((((int v; ref (int) a); v = 10); new(a, 22)); fork((wH(a, 30); (v = 32; (print(v); print(rH(a))))))); print(v))
 print(rH(a))
@@ -33,7 +33,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -774870603
+Program State: 727196053
 Execution Stack
 ((((int v; ref (int) a); v = 10); new(a, 22)); fork((wH(a, 30); (v = 32; (print(v); print(rH(a)))))))
 print(v)
@@ -52,7 +52,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -774870603
+Program State: 727196053
 Execution Stack
 (((int v; ref (int) a); v = 10); new(a, 22))
 fork((wH(a, 30); (v = 32; (print(v); print(rH(a))))))
@@ -72,7 +72,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -774870603
+Program State: 727196053
 Execution Stack
 ((int v; ref (int) a); v = 10)
 new(a, 22)
@@ -93,7 +93,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -774870603
+Program State: 727196053
 Execution Stack
 (int v; ref (int) a)
 v = 10
@@ -115,7 +115,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -774870603
+Program State: 727196053
 Execution Stack
 int v
 ref (int) a
@@ -138,7 +138,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -774870603
+Program State: 727196053
 Execution Stack
 ref (int) a
 v = 10
@@ -160,7 +160,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -774870603
+Program State: 727196053
 Execution Stack
 v = 10
 new(a, 22)
@@ -182,7 +182,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -774870603
+Program State: 727196053
 Execution Stack
 new(a, 22)
 fork((wH(a, 30); (v = 32; (print(v); print(rH(a))))))
@@ -203,7 +203,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -774870603
+Program State: 727196053
 Execution Stack
 fork((wH(a, 30); (v = 32; (print(v); print(rH(a))))))
 print(v)
@@ -223,7 +223,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -774870603
+Program State: 727196053
 Execution Stack
 print(v)
 print(rH(a))
@@ -242,7 +242,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -1266854390
+Program State: 628655903
 Execution Stack
 (wH(a, 30); (v = 32; (print(v); print(rH(a)))))
 -------------------------------------------
@@ -260,7 +260,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -774870603
+Program State: 727196053
 Execution Stack
 print(rH(a))
 -------------------------------------------
@@ -275,10 +275,10 @@ File Table
 ----------Empty----------
 -------------------------------------------
 Output
-[10]
+10
 -------------------------------------------
 
-Program State: -1266854390
+Program State: 628655903
 Execution Stack
 wH(a, 30)
 (v = 32; (print(v); print(rH(a))))
@@ -294,10 +294,10 @@ File Table
 ----------Empty----------
 -------------------------------------------
 Output
-[10]
+10
 -------------------------------------------
 
-Program State: -774870603
+Program State: 727196053
 Execution Stack
 ----------Empty----------
 -------------------------------------------
@@ -312,10 +312,11 @@ File Table
 ----------Empty----------
 -------------------------------------------
 Output
-[10, 22]
+10
+22
 -------------------------------------------
 
-Program State: -1266854390
+Program State: 628655903
 Execution Stack
 (v = 32; (print(v); print(rH(a))))
 -------------------------------------------
@@ -330,10 +331,11 @@ File Table
 ----------Empty----------
 -------------------------------------------
 Output
-[10, 22]
+10
+22
 -------------------------------------------
 
-Program State: -1266854390
+Program State: 628655903
 Execution Stack
 v = 32
 (print(v); print(rH(a)))
@@ -349,10 +351,11 @@ File Table
 ----------Empty----------
 -------------------------------------------
 Output
-[10, 22]
+10
+22
 -------------------------------------------
 
-Program State: -1266854390
+Program State: 628655903
 Execution Stack
 (print(v); print(rH(a)))
 -------------------------------------------
@@ -367,10 +370,11 @@ File Table
 ----------Empty----------
 -------------------------------------------
 Output
-[10, 22]
+10
+22
 -------------------------------------------
 
-Program State: -1266854390
+Program State: 628655903
 Execution Stack
 print(v)
 print(rH(a))
@@ -386,10 +390,11 @@ File Table
 ----------Empty----------
 -------------------------------------------
 Output
-[10, 22]
+10
+22
 -------------------------------------------
 
-Program State: -1266854390
+Program State: 628655903
 Execution Stack
 print(rH(a))
 -------------------------------------------
@@ -404,10 +409,12 @@ File Table
 ----------Empty----------
 -------------------------------------------
 Output
-[10, 22, 32]
+10
+22
+32
 -------------------------------------------
 
-Program State: -1266854390
+Program State: 628655903
 Execution Stack
 ----------Empty----------
 -------------------------------------------
@@ -422,6 +429,9 @@ File Table
 ----------Empty----------
 -------------------------------------------
 Output
-[10, 22, 32, 30]
+10
+22
+32
+30
 -------------------------------------------
 

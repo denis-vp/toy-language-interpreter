@@ -135,13 +135,9 @@ public class MyList<T> implements IList<T> {
     public String toString() {
         synchronized (this.list) {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append("[");
             for (T element : this.list) {
-                stringBuilder.append(element.toString());
-                stringBuilder.append(", ");
+                stringBuilder.append(element.toString()).append("\n");
             }
-            stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());
-            stringBuilder.append("]\n");
             return stringBuilder.toString();
         }
     }

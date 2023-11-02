@@ -1,4 +1,4 @@
-Program State: -608702454
+Program State: -627515105
 Execution Stack
 ((((((((string v; v = "./input/test.in"); openRFile(v)); int c); readFile(v, c)); print(c)); readFile(v, c)); print(c)); closeRFile(v))
 -------------------------------------------
@@ -15,7 +15,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -608702454
+Program State: -627515105
 Execution Stack
 (((((((string v; v = "./input/test.in"); openRFile(v)); int c); readFile(v, c)); print(c)); readFile(v, c)); print(c))
 closeRFile(v)
@@ -33,7 +33,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -608702454
+Program State: -627515105
 Execution Stack
 ((((((string v; v = "./input/test.in"); openRFile(v)); int c); readFile(v, c)); print(c)); readFile(v, c))
 print(c)
@@ -52,7 +52,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -608702454
+Program State: -627515105
 Execution Stack
 (((((string v; v = "./input/test.in"); openRFile(v)); int c); readFile(v, c)); print(c))
 readFile(v, c)
@@ -72,7 +72,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -608702454
+Program State: -627515105
 Execution Stack
 ((((string v; v = "./input/test.in"); openRFile(v)); int c); readFile(v, c))
 print(c)
@@ -93,7 +93,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -608702454
+Program State: -627515105
 Execution Stack
 (((string v; v = "./input/test.in"); openRFile(v)); int c)
 readFile(v, c)
@@ -115,7 +115,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -608702454
+Program State: -627515105
 Execution Stack
 ((string v; v = "./input/test.in"); openRFile(v))
 int c
@@ -138,7 +138,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -608702454
+Program State: -627515105
 Execution Stack
 (string v; v = "./input/test.in")
 openRFile(v)
@@ -162,7 +162,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -608702454
+Program State: -627515105
 Execution Stack
 string v
 v = "./input/test.in"
@@ -187,7 +187,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -608702454
+Program State: -627515105
 Execution Stack
 v = "./input/test.in"
 openRFile(v)
@@ -211,7 +211,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -608702454
+Program State: -627515105
 Execution Stack
 openRFile(v)
 int c
@@ -234,7 +234,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -608702454
+Program State: -627515105
 Execution Stack
 int c
 readFile(v, c)
@@ -256,7 +256,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -608702454
+Program State: -627515105
 Execution Stack
 readFile(v, c)
 print(c)
@@ -278,7 +278,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -608702454
+Program State: -627515105
 Execution Stack
 print(c)
 readFile(v, c)
@@ -299,7 +299,7 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -608702454
+Program State: -627515105
 Execution Stack
 readFile(v, c)
 print(c)
@@ -316,10 +316,10 @@ File Table
 ./input/test.in -> java.io.BufferedReader@593634ad
 -------------------------------------------
 Output
-[15]
+15
 -------------------------------------------
 
-Program State: -608702454
+Program State: -627515105
 Execution Stack
 print(c)
 closeRFile(v)
@@ -335,10 +335,10 @@ File Table
 ./input/test.in -> java.io.BufferedReader@593634ad
 -------------------------------------------
 Output
-[15]
+15
 -------------------------------------------
 
-Program State: -608702454
+Program State: -627515105
 Execution Stack
 closeRFile(v)
 -------------------------------------------
@@ -353,10 +353,11 @@ File Table
 ./input/test.in -> java.io.BufferedReader@593634ad
 -------------------------------------------
 Output
-[15, 50]
+15
+50
 -------------------------------------------
 
-Program State: -608702454
+Program State: -627515105
 Execution Stack
 ----------Empty----------
 -------------------------------------------
@@ -371,6 +372,7 @@ File Table
 ----------Empty----------
 -------------------------------------------
 Output
-[15, 50]
+15
+50
 -------------------------------------------
 
