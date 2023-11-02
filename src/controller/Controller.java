@@ -3,7 +3,7 @@ package controller;
 import adt.IDictionary;
 import adt.IHeap;
 import exception.*;
-import model.programstate.ProgramState;
+import model.ProgramState;
 import model.value.ReferenceValue;
 import model.value.Value;
 import repository.IRepository;
@@ -24,13 +24,13 @@ public class Controller {
     }
 
     public void oneStepForAllPrograms(List<ProgramState> programStates) throws ControllerException {
-        programStates.forEach(programState -> {
-            try {
-                this.repository.logProgramStateExecution(programState);
-            } catch (RepositoryException e) {
-                throw new RuntimeException(e);
-            }
-        });
+//        programStates.forEach(programState -> {
+//            try {
+//                this.repository.logProgramStateExecution(programState);
+//            } catch (RepositoryException e) {
+//                throw new RuntimeException(e);
+//            }
+//        });
 
         List<Callable<ProgramState>> callList = programStates.stream()
                 .map((ProgramState programState) -> (Callable<ProgramState>) programState::oneStep)
@@ -67,6 +67,13 @@ public class Controller {
         this.executor = Executors.newFixedThreadPool(2);
 
         List<ProgramState> programStates = this.removeCompletedPrograms(this.repository.getProgramStateList());
+        programStates.forEach(programState -> {
+            try {
+                this.repository.logProgramStateExecution(programState);
+            } catch (RepositoryException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
         while (!programStates.isEmpty()) {
             this.conservativeGarbageCollector(this.repository.getSymbolTable(), this.repository.getHeap());

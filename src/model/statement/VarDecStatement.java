@@ -2,7 +2,7 @@ package model.statement;
 
 import adt.IDictionary;
 import exception.StatementException;
-import model.programstate.ProgramState;
+import model.ProgramState;
 import model.type.Type;
 import model.value.Value;
 
@@ -27,6 +27,12 @@ public class VarDecStatement implements Statement {
         }
 
         return null;
+    }
+
+    @Override
+    public IDictionary<String, Type> typeCheck(IDictionary<String, Type> typeEnvironment) throws StatementException {
+        typeEnvironment.add(this.id, this.type);
+        return typeEnvironment;
     }
 
     @Override

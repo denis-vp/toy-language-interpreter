@@ -5,9 +5,10 @@ import adt.IHeap;
 import exception.ExpressionException;
 import exception.StatementException;
 import model.expression.Expression;
-import model.programstate.ProgramState;
+import model.ProgramState;
 import model.type.IntType;
 import model.type.StringType;
+import model.type.Type;
 import model.value.IntValue;
 import model.value.StringValue;
 import model.value.Value;
@@ -62,6 +63,23 @@ public class FileReadStatement implements Statement {
         }
 
         return null;
+    }
+
+    @Override
+    public IDictionary<String, Type> typeCheck(IDictionary<String, Type> typeEnvironment) throws StatementException {
+        try {
+            Type expressionType = this.expression.typeCheck(typeEnvironment);
+            if (!expressionType.equals(new StringType())) {
+                throw new StatementException("Expression " + this.expression + " is not of type string.");
+            }
+            Type idType = typeEnvironment.get(this.id);
+            if (!idType.equals(new IntType())) {
+                throw new StatementException("Variable " + this.id + " is not of type int.");
+            }
+        } catch (ExpressionException e) {
+            throw new StatementException(e.getMessage());
+        }
+        return typeEnvironment;
     }
 
     @Override

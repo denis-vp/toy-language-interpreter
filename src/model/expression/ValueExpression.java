@@ -2,6 +2,7 @@ package model.expression;
 
 import adt.IDictionary;
 import adt.IHeap;
+import model.type.Type;
 import model.value.Value;
 
 public class ValueExpression implements Expression {
@@ -14,6 +15,11 @@ public class ValueExpression implements Expression {
     @Override
     public Value eval(IDictionary<String, Value> symbolTable, IHeap heap) {
         return this.value;
+    }
+
+    @Override
+    public Type typeCheck(IDictionary<String, Type> typeEnvironment) {
+        return this.value.getType();
     }
 
     @Override

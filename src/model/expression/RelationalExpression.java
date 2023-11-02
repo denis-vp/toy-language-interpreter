@@ -3,7 +3,9 @@ package model.expression;
 import adt.IDictionary;
 import adt.IHeap;
 import exception.ExpressionException;
+import model.type.BoolType;
 import model.type.IntType;
+import model.type.Type;
 import model.value.BoolValue;
 import model.value.IntValue;
 import model.value.Value;
@@ -44,6 +46,21 @@ public class RelationalExpression implements Expression {
         int n2 = i2.getValue();
 
         return new BoolValue(operators.get(this.operator).test(n1, n2));
+    }
+
+    @Override
+    public Type typeCheck(IDictionary<String, Type> typeEnvironment) throws ExpressionException {
+        Type type1 = this.e1.typeCheck(typeEnvironment);
+        Type type2 = this.e2.typeCheck(typeEnvironment);
+
+        if (!type1.equals(new IntType())) {
+            throw new ExpressionException("first operand is not an integer");
+        }
+        if (!type2.equals(new IntType())) {
+            throw new ExpressionException("second operand is not an integer");
+        }
+
+        return new BoolType();
     }
 
     @Override

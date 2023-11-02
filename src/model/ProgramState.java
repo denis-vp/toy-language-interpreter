@@ -1,4 +1,4 @@
-package model.programstate;
+package model;
 
 import adt.IDictionary;
 import adt.IHeap;

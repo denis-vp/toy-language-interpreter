@@ -4,6 +4,7 @@ import adt.IDictionary;
 import adt.IHeap;
 import exception.ExpressionException;
 import model.type.ReferenceType;
+import model.type.Type;
 import model.value.ReferenceValue;
 import model.value.Value;
 
@@ -27,6 +28,16 @@ public class HeapReadExpression implements Expression {
         }
 
         return heap.get(referenceValue.getAddress());
+    }
+
+    @Override
+    public Type typeCheck(IDictionary<String, Type> typeEnvironment) throws ExpressionException {
+        Type type = this.expression.typeCheck(typeEnvironment);
+        if (!type.equals(new ReferenceType(null))) {
+            throw new ExpressionException("Expression " + this.expression + " is not a reference type.");
+        }
+
+        return ((ReferenceType) type).getInner();
     }
 
     @Override

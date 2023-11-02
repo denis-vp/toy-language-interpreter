@@ -6,8 +6,9 @@ import adt.IStack;
 import exception.ExpressionException;
 import exception.StatementException;
 import model.expression.Expression;
-import model.programstate.ProgramState;
+import model.ProgramState;
 import model.type.BoolType;
+import model.type.Type;
 import model.value.BoolValue;
 import model.value.Value;
 
@@ -41,6 +42,20 @@ public class WhileStatement implements Statement {
         }
 
         return null;
+    }
+
+    @Override
+    public IDictionary<String, Type> typeCheck(IDictionary<String, Type> typeEnvironment) throws StatementException {
+        try {
+            Type expressionType = this.expression.typeCheck(typeEnvironment);
+            if (!expressionType.equals(new BoolType())) {
+                throw new StatementException("Expression " + this.expression + " is not a boolean");
+            }
+            this.statement.typeCheck(typeEnvironment.deepCopy());
+        } catch (ExpressionException e) {
+            throw new StatementException(e.getMessage());
+        }
+        return typeEnvironment;
     }
 
     @Override

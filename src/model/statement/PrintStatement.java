@@ -5,7 +5,8 @@ import adt.IHeap;
 import adt.IList;
 import exception.*;
 import model.expression.Expression;
-import model.programstate.ProgramState;
+import model.ProgramState;
+import model.type.Type;
 import model.value.Value;
 
 public class PrintStatement implements Statement {
@@ -29,6 +30,16 @@ public class PrintStatement implements Statement {
         }
 
         return null;
+    }
+
+    @Override
+    public IDictionary<String, Type> typeCheck(IDictionary<String, Type> typeEnvironment) throws StatementException {
+        try {
+            this.expression.typeCheck(typeEnvironment);
+        } catch (ExpressionException e) {
+            throw new StatementException(e.getMessage());
+        }
+        return typeEnvironment;
     }
 
     @Override

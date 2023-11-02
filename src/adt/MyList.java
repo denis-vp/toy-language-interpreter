@@ -32,7 +32,7 @@ public class MyList<T> implements IList<T> {
     public T first() throws ADTException {
         synchronized (this.list) {
             try {
-                return this.list.get(0);
+                return this.list.getFirst();
             } catch (IndexOutOfBoundsException e) {
                 throw new ADTException(e.getMessage());
             }
@@ -61,7 +61,7 @@ public class MyList<T> implements IList<T> {
     public T last() throws ADTException {
         synchronized (this.list) {
             try {
-                return this.list.get(this.list.size() - 1);
+                return this.list.getLast();
             } catch (IndexOutOfBoundsException e) {
                 throw new ADTException(e.getMessage());
             }

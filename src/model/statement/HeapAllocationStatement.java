@@ -5,8 +5,9 @@ import adt.IHeap;
 import exception.ExpressionException;
 import exception.StatementException;
 import model.expression.Expression;
-import model.programstate.ProgramState;
+import model.ProgramState;
 import model.type.ReferenceType;
+import model.type.Type;
 import model.value.ReferenceValue;
 import model.value.Value;
 
@@ -47,6 +48,21 @@ public class HeapAllocationStatement implements Statement {
         }
 
         return null;
+    }
+
+    @Override
+    public IDictionary<String, Type> typeCheck(IDictionary<String, Type> typeEnvironment) throws StatementException {
+        try {
+            Type typeVariable = typeEnvironment.get(this.id);
+            Type typeExpression = this.expression.typeCheck(typeEnvironment);
+            if (!typeVariable.equals(new ReferenceType(typeExpression))) {
+                throw new StatementException("Declared type of variable " + this.id +
+                        " and type of the assigned expression do not match.");
+            }
+        } catch (ExpressionException e) {
+            throw new StatementException(e.getMessage());
+        }
+        return typeEnvironment;
     }
 
     @Override

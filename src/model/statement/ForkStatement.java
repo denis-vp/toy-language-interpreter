@@ -4,7 +4,8 @@ import adt.IDictionary;
 import adt.IStack;
 import adt.MyStack;
 import exception.StatementException;
-import model.programstate.ProgramState;
+import model.ProgramState;
+import model.type.Type;
 import model.value.Value;
 
 public class ForkStatement implements Statement {
@@ -22,6 +23,12 @@ public class ForkStatement implements Statement {
         return new ProgramState(this.statement, newExecutionStack, newSymbolTable,
                 state.getHeap(), state.getFileTable(), state.getOutput()
         );
+    }
+
+    @Override
+    public IDictionary<String, Type> typeCheck(IDictionary<String, Type> typeEnvironment) throws StatementException {
+        this.statement.typeCheck(typeEnvironment.deepCopy());
+        return typeEnvironment;
     }
 
     @Override

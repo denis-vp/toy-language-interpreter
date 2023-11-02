@@ -4,7 +4,7 @@ import adt.IDictionary;
 import adt.IHeap;
 import exception.*;
 import model.expression.Expression;
-import model.programstate.ProgramState;
+import model.ProgramState;
 import model.type.Type;
 import model.value.Value;
 
@@ -38,6 +38,21 @@ public class AssignmentStatement implements Statement {
         }
 
         return null;
+    }
+
+    @Override
+    public IDictionary<String, Type> typeCheck(IDictionary<String, Type> typeEnvironment) throws StatementException {
+        try {
+            Type typeId = typeEnvironment.get(this.id);
+            Type typeExpression = this.expression.typeCheck(typeEnvironment);
+            if (!typeId.equals(typeExpression)) {
+                throw new StatementException("Declared type of variable " + this.id +
+                        " and type of the assigned expression do not match.");
+            }
+        } catch (ExpressionException e) {
+            throw new StatementException(e.getMessage());
+        }
+        return typeEnvironment;
     }
 
     @Override

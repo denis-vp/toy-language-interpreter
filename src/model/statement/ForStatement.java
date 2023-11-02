@@ -1,9 +1,12 @@
 package model.statement;
 
+import adt.IDictionary;
 import adt.IStack;
+import exception.ExpressionException;
 import exception.StatementException;
 import model.expression.Expression;
-import model.programstate.ProgramState;
+import model.ProgramState;
+import model.type.Type;
 
 public class ForStatement implements Statement {
     private final Statement initialization;
@@ -26,6 +29,19 @@ public class ForStatement implements Statement {
         executionStack.push(this.initialization);
 
         return null;
+    }
+
+    @Override
+    public IDictionary<String, Type> typeCheck(IDictionary<String, Type> typeEnvironment) throws StatementException {
+        try {
+            this.initialization.typeCheck(typeEnvironment);
+            this.condition.typeCheck(typeEnvironment.deepCopy());
+            this.advancement.typeCheck(typeEnvironment.deepCopy());
+            this.body.typeCheck(typeEnvironment.deepCopy());
+        } catch (ExpressionException e) {
+            throw new StatementException(e.getMessage());
+        }
+        return typeEnvironment;
     }
 
     @Override

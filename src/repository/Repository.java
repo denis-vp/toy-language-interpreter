@@ -3,7 +3,7 @@ package repository;
 import adt.IDictionary;
 import adt.IHeap;
 import exception.RepositoryException;
-import model.programstate.ProgramState;
+import model.ProgramState;
 import model.value.Value;
 
 import java.io.*;

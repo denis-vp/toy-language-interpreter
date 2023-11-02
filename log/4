@@ -1,6 +1,6 @@
-Program State: -1756384695
+Program State: -608702454
 Execution Stack
-(string v; (v = "./input/test.in"; (openRFile(v); (int c; (readFile(v, c); (print(c); (readFile(v, c); (print(c); closeRFile(v)))))))))
+((((((((string v; v = "./input/test.in"); openRFile(v)); int c); readFile(v, c)); print(c)); readFile(v, c)); print(c)); closeRFile(v))
 -------------------------------------------
 Symbol Table
 ----------Empty----------
@@ -15,10 +15,164 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -1756384695
+Program State: -608702454
+Execution Stack
+(((((((string v; v = "./input/test.in"); openRFile(v)); int c); readFile(v, c)); print(c)); readFile(v, c)); print(c))
+closeRFile(v)
+-------------------------------------------
+Symbol Table
+----------Empty----------
+-------------------------------------------
+Heap
+----------Empty----------
+-------------------------------------------
+File Table
+----------Empty----------
+-------------------------------------------
+Output
+----------Empty----------
+-------------------------------------------
+
+Program State: -608702454
+Execution Stack
+((((((string v; v = "./input/test.in"); openRFile(v)); int c); readFile(v, c)); print(c)); readFile(v, c))
+print(c)
+closeRFile(v)
+-------------------------------------------
+Symbol Table
+----------Empty----------
+-------------------------------------------
+Heap
+----------Empty----------
+-------------------------------------------
+File Table
+----------Empty----------
+-------------------------------------------
+Output
+----------Empty----------
+-------------------------------------------
+
+Program State: -608702454
+Execution Stack
+(((((string v; v = "./input/test.in"); openRFile(v)); int c); readFile(v, c)); print(c))
+readFile(v, c)
+print(c)
+closeRFile(v)
+-------------------------------------------
+Symbol Table
+----------Empty----------
+-------------------------------------------
+Heap
+----------Empty----------
+-------------------------------------------
+File Table
+----------Empty----------
+-------------------------------------------
+Output
+----------Empty----------
+-------------------------------------------
+
+Program State: -608702454
+Execution Stack
+((((string v; v = "./input/test.in"); openRFile(v)); int c); readFile(v, c))
+print(c)
+readFile(v, c)
+print(c)
+closeRFile(v)
+-------------------------------------------
+Symbol Table
+----------Empty----------
+-------------------------------------------
+Heap
+----------Empty----------
+-------------------------------------------
+File Table
+----------Empty----------
+-------------------------------------------
+Output
+----------Empty----------
+-------------------------------------------
+
+Program State: -608702454
+Execution Stack
+(((string v; v = "./input/test.in"); openRFile(v)); int c)
+readFile(v, c)
+print(c)
+readFile(v, c)
+print(c)
+closeRFile(v)
+-------------------------------------------
+Symbol Table
+----------Empty----------
+-------------------------------------------
+Heap
+----------Empty----------
+-------------------------------------------
+File Table
+----------Empty----------
+-------------------------------------------
+Output
+----------Empty----------
+-------------------------------------------
+
+Program State: -608702454
+Execution Stack
+((string v; v = "./input/test.in"); openRFile(v))
+int c
+readFile(v, c)
+print(c)
+readFile(v, c)
+print(c)
+closeRFile(v)
+-------------------------------------------
+Symbol Table
+----------Empty----------
+-------------------------------------------
+Heap
+----------Empty----------
+-------------------------------------------
+File Table
+----------Empty----------
+-------------------------------------------
+Output
+----------Empty----------
+-------------------------------------------
+
+Program State: -608702454
+Execution Stack
+(string v; v = "./input/test.in")
+openRFile(v)
+int c
+readFile(v, c)
+print(c)
+readFile(v, c)
+print(c)
+closeRFile(v)
+-------------------------------------------
+Symbol Table
+----------Empty----------
+-------------------------------------------
+Heap
+----------Empty----------
+-------------------------------------------
+File Table
+----------Empty----------
+-------------------------------------------
+Output
+----------Empty----------
+-------------------------------------------
+
+Program State: -608702454
 Execution Stack
 string v
-(v = "./input/test.in"; (openRFile(v); (int c; (readFile(v, c); (print(c); (readFile(v, c); (print(c); closeRFile(v))))))))
+v = "./input/test.in"
+openRFile(v)
+int c
+readFile(v, c)
+print(c)
+readFile(v, c)
+print(c)
+closeRFile(v)
 -------------------------------------------
 Symbol Table
 ----------Empty----------
@@ -33,62 +187,16 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -1756384695
-Execution Stack
-string v
-(v = "./input/test.in"; (openRFile(v); (int c; (readFile(v, c); (print(c); (readFile(v, c); (print(c); closeRFile(v))))))))
--------------------------------------------
-Symbol Table
-----------Empty----------
--------------------------------------------
-Heap
-----------Empty----------
--------------------------------------------
-File Table
-----------Empty----------
--------------------------------------------
-Output
-----------Empty----------
--------------------------------------------
-
-Program State: -1756384695
-Execution Stack
-(v = "./input/test.in"; (openRFile(v); (int c; (readFile(v, c); (print(c); (readFile(v, c); (print(c); closeRFile(v))))))))
--------------------------------------------
-Symbol Table
-v -> ""
--------------------------------------------
-Heap
-----------Empty----------
--------------------------------------------
-File Table
-----------Empty----------
--------------------------------------------
-Output
-----------Empty----------
--------------------------------------------
-
-Program State: -1756384695
-Execution Stack
-(v = "./input/test.in"; (openRFile(v); (int c; (readFile(v, c); (print(c); (readFile(v, c); (print(c); closeRFile(v))))))))
--------------------------------------------
-Symbol Table
-v -> ""
--------------------------------------------
-Heap
-----------Empty----------
--------------------------------------------
-File Table
-----------Empty----------
--------------------------------------------
-Output
-----------Empty----------
--------------------------------------------
-
-Program State: -1756384695
+Program State: -608702454
 Execution Stack
 v = "./input/test.in"
-(openRFile(v); (int c; (readFile(v, c); (print(c); (readFile(v, c); (print(c); closeRFile(v)))))))
+openRFile(v)
+int c
+readFile(v, c)
+print(c)
+readFile(v, c)
+print(c)
+closeRFile(v)
 -------------------------------------------
 Symbol Table
 v -> ""
@@ -103,62 +211,15 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -1756384695
-Execution Stack
-v = "./input/test.in"
-(openRFile(v); (int c; (readFile(v, c); (print(c); (readFile(v, c); (print(c); closeRFile(v)))))))
--------------------------------------------
-Symbol Table
-v -> ""
--------------------------------------------
-Heap
-----------Empty----------
--------------------------------------------
-File Table
-----------Empty----------
--------------------------------------------
-Output
-----------Empty----------
--------------------------------------------
-
-Program State: -1756384695
-Execution Stack
-(openRFile(v); (int c; (readFile(v, c); (print(c); (readFile(v, c); (print(c); closeRFile(v)))))))
--------------------------------------------
-Symbol Table
-v -> "./input/test.in"
--------------------------------------------
-Heap
-----------Empty----------
--------------------------------------------
-File Table
-----------Empty----------
--------------------------------------------
-Output
-----------Empty----------
--------------------------------------------
-
-Program State: -1756384695
-Execution Stack
-(openRFile(v); (int c; (readFile(v, c); (print(c); (readFile(v, c); (print(c); closeRFile(v)))))))
--------------------------------------------
-Symbol Table
-v -> "./input/test.in"
--------------------------------------------
-Heap
-----------Empty----------
--------------------------------------------
-File Table
-----------Empty----------
--------------------------------------------
-Output
-----------Empty----------
--------------------------------------------
-
-Program State: -1756384695
+Program State: -608702454
 Execution Stack
 openRFile(v)
-(int c; (readFile(v, c); (print(c); (readFile(v, c); (print(c); closeRFile(v))))))
+int c
+readFile(v, c)
+print(c)
+readFile(v, c)
+print(c)
+closeRFile(v)
 -------------------------------------------
 Symbol Table
 v -> "./input/test.in"
@@ -173,62 +234,14 @@ Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -1756384695
-Execution Stack
-openRFile(v)
-(int c; (readFile(v, c); (print(c); (readFile(v, c); (print(c); closeRFile(v))))))
--------------------------------------------
-Symbol Table
-v -> "./input/test.in"
--------------------------------------------
-Heap
-----------Empty----------
--------------------------------------------
-File Table
-----------Empty----------
--------------------------------------------
-Output
-----------Empty----------
--------------------------------------------
-
-Program State: -1756384695
-Execution Stack
-(int c; (readFile(v, c); (print(c); (readFile(v, c); (print(c); closeRFile(v))))))
--------------------------------------------
-Symbol Table
-v -> "./input/test.in"
--------------------------------------------
-Heap
-----------Empty----------
--------------------------------------------
-File Table
-./input/test.in -> java.io.BufferedReader@2957fcb0
--------------------------------------------
-Output
-----------Empty----------
--------------------------------------------
-
-Program State: -1756384695
-Execution Stack
-(int c; (readFile(v, c); (print(c); (readFile(v, c); (print(c); closeRFile(v))))))
--------------------------------------------
-Symbol Table
-v -> "./input/test.in"
--------------------------------------------
-Heap
-----------Empty----------
--------------------------------------------
-File Table
-./input/test.in -> java.io.BufferedReader@2957fcb0
--------------------------------------------
-Output
-----------Empty----------
--------------------------------------------
-
-Program State: -1756384695
+Program State: -608702454
 Execution Stack
 int c
-(readFile(v, c); (print(c); (readFile(v, c); (print(c); closeRFile(v)))))
+readFile(v, c)
+print(c)
+readFile(v, c)
+print(c)
+closeRFile(v)
 -------------------------------------------
 Symbol Table
 v -> "./input/test.in"
@@ -237,89 +250,19 @@ Heap
 ----------Empty----------
 -------------------------------------------
 File Table
-./input/test.in -> java.io.BufferedReader@2957fcb0
+./input/test.in -> java.io.BufferedReader@593634ad
 -------------------------------------------
 Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -1756384695
-Execution Stack
-int c
-(readFile(v, c); (print(c); (readFile(v, c); (print(c); closeRFile(v)))))
--------------------------------------------
-Symbol Table
-v -> "./input/test.in"
--------------------------------------------
-Heap
-----------Empty----------
--------------------------------------------
-File Table
-./input/test.in -> java.io.BufferedReader@2957fcb0
--------------------------------------------
-Output
-----------Empty----------
--------------------------------------------
-
-Program State: -1756384695
-Execution Stack
-(readFile(v, c); (print(c); (readFile(v, c); (print(c); closeRFile(v)))))
--------------------------------------------
-Symbol Table
-c -> 0
-v -> "./input/test.in"
--------------------------------------------
-Heap
-----------Empty----------
--------------------------------------------
-File Table
-./input/test.in -> java.io.BufferedReader@2957fcb0
--------------------------------------------
-Output
-----------Empty----------
--------------------------------------------
-
-Program State: -1756384695
-Execution Stack
-(readFile(v, c); (print(c); (readFile(v, c); (print(c); closeRFile(v)))))
--------------------------------------------
-Symbol Table
-c -> 0
-v -> "./input/test.in"
--------------------------------------------
-Heap
-----------Empty----------
--------------------------------------------
-File Table
-./input/test.in -> java.io.BufferedReader@2957fcb0
--------------------------------------------
-Output
-----------Empty----------
--------------------------------------------
-
-Program State: -1756384695
+Program State: -608702454
 Execution Stack
 readFile(v, c)
-(print(c); (readFile(v, c); (print(c); closeRFile(v))))
--------------------------------------------
-Symbol Table
-c -> 0
-v -> "./input/test.in"
--------------------------------------------
-Heap
-----------Empty----------
--------------------------------------------
-File Table
-./input/test.in -> java.io.BufferedReader@2957fcb0
--------------------------------------------
-Output
-----------Empty----------
--------------------------------------------
-
-Program State: -1756384695
-Execution Stack
+print(c)
 readFile(v, c)
-(print(c); (readFile(v, c); (print(c); closeRFile(v))))
+print(c)
+closeRFile(v)
 -------------------------------------------
 Symbol Table
 c -> 0
@@ -329,71 +272,18 @@ Heap
 ----------Empty----------
 -------------------------------------------
 File Table
-./input/test.in -> java.io.BufferedReader@2957fcb0
+./input/test.in -> java.io.BufferedReader@593634ad
 -------------------------------------------
 Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -1756384695
-Execution Stack
-(print(c); (readFile(v, c); (print(c); closeRFile(v))))
--------------------------------------------
-Symbol Table
-c -> 15
-v -> "./input/test.in"
--------------------------------------------
-Heap
-----------Empty----------
--------------------------------------------
-File Table
-./input/test.in -> java.io.BufferedReader@2957fcb0
--------------------------------------------
-Output
-----------Empty----------
--------------------------------------------
-
-Program State: -1756384695
-Execution Stack
-(print(c); (readFile(v, c); (print(c); closeRFile(v))))
--------------------------------------------
-Symbol Table
-c -> 15
-v -> "./input/test.in"
--------------------------------------------
-Heap
-----------Empty----------
--------------------------------------------
-File Table
-./input/test.in -> java.io.BufferedReader@2957fcb0
--------------------------------------------
-Output
-----------Empty----------
--------------------------------------------
-
-Program State: -1756384695
+Program State: -608702454
 Execution Stack
 print(c)
-(readFile(v, c); (print(c); closeRFile(v)))
--------------------------------------------
-Symbol Table
-c -> 15
-v -> "./input/test.in"
--------------------------------------------
-Heap
-----------Empty----------
--------------------------------------------
-File Table
-./input/test.in -> java.io.BufferedReader@2957fcb0
--------------------------------------------
-Output
-----------Empty----------
--------------------------------------------
-
-Program State: -1756384695
-Execution Stack
+readFile(v, c)
 print(c)
-(readFile(v, c); (print(c); closeRFile(v)))
+closeRFile(v)
 -------------------------------------------
 Symbol Table
 c -> 15
@@ -403,52 +293,17 @@ Heap
 ----------Empty----------
 -------------------------------------------
 File Table
-./input/test.in -> java.io.BufferedReader@2957fcb0
+./input/test.in -> java.io.BufferedReader@593634ad
 -------------------------------------------
 Output
 ----------Empty----------
 -------------------------------------------
 
-Program State: -1756384695
-Execution Stack
-(readFile(v, c); (print(c); closeRFile(v)))
--------------------------------------------
-Symbol Table
-c -> 15
-v -> "./input/test.in"
--------------------------------------------
-Heap
-----------Empty----------
--------------------------------------------
-File Table
-./input/test.in -> java.io.BufferedReader@2957fcb0
--------------------------------------------
-Output
-[15]
--------------------------------------------
-
-Program State: -1756384695
-Execution Stack
-(readFile(v, c); (print(c); closeRFile(v)))
--------------------------------------------
-Symbol Table
-c -> 15
-v -> "./input/test.in"
--------------------------------------------
-Heap
-----------Empty----------
--------------------------------------------
-File Table
-./input/test.in -> java.io.BufferedReader@2957fcb0
--------------------------------------------
-Output
-[15]
--------------------------------------------
-
-Program State: -1756384695
+Program State: -608702454
 Execution Stack
 readFile(v, c)
-(print(c); closeRFile(v))
+print(c)
+closeRFile(v)
 -------------------------------------------
 Symbol Table
 c -> 15
@@ -458,68 +313,13 @@ Heap
 ----------Empty----------
 -------------------------------------------
 File Table
-./input/test.in -> java.io.BufferedReader@2957fcb0
+./input/test.in -> java.io.BufferedReader@593634ad
 -------------------------------------------
 Output
 [15]
 -------------------------------------------
 
-Program State: -1756384695
-Execution Stack
-readFile(v, c)
-(print(c); closeRFile(v))
--------------------------------------------
-Symbol Table
-c -> 15
-v -> "./input/test.in"
--------------------------------------------
-Heap
-----------Empty----------
--------------------------------------------
-File Table
-./input/test.in -> java.io.BufferedReader@2957fcb0
--------------------------------------------
-Output
-[15]
--------------------------------------------
-
-Program State: -1756384695
-Execution Stack
-(print(c); closeRFile(v))
--------------------------------------------
-Symbol Table
-c -> 50
-v -> "./input/test.in"
--------------------------------------------
-Heap
-----------Empty----------
--------------------------------------------
-File Table
-./input/test.in -> java.io.BufferedReader@2957fcb0
--------------------------------------------
-Output
-[15]
--------------------------------------------
-
-Program State: -1756384695
-Execution Stack
-(print(c); closeRFile(v))
--------------------------------------------
-Symbol Table
-c -> 50
-v -> "./input/test.in"
--------------------------------------------
-Heap
-----------Empty----------
--------------------------------------------
-File Table
-./input/test.in -> java.io.BufferedReader@2957fcb0
--------------------------------------------
-Output
-[15]
--------------------------------------------
-
-Program State: -1756384695
+Program State: -608702454
 Execution Stack
 print(c)
 closeRFile(v)
@@ -532,32 +332,13 @@ Heap
 ----------Empty----------
 -------------------------------------------
 File Table
-./input/test.in -> java.io.BufferedReader@2957fcb0
+./input/test.in -> java.io.BufferedReader@593634ad
 -------------------------------------------
 Output
 [15]
 -------------------------------------------
 
-Program State: -1756384695
-Execution Stack
-print(c)
-closeRFile(v)
--------------------------------------------
-Symbol Table
-c -> 50
-v -> "./input/test.in"
--------------------------------------------
-Heap
-----------Empty----------
--------------------------------------------
-File Table
-./input/test.in -> java.io.BufferedReader@2957fcb0
--------------------------------------------
-Output
-[15]
--------------------------------------------
-
-Program State: -1756384695
+Program State: -608702454
 Execution Stack
 closeRFile(v)
 -------------------------------------------
@@ -569,31 +350,13 @@ Heap
 ----------Empty----------
 -------------------------------------------
 File Table
-./input/test.in -> java.io.BufferedReader@2957fcb0
+./input/test.in -> java.io.BufferedReader@593634ad
 -------------------------------------------
 Output
 [15, 50]
 -------------------------------------------
 
-Program State: -1756384695
-Execution Stack
-closeRFile(v)
--------------------------------------------
-Symbol Table
-c -> 50
-v -> "./input/test.in"
--------------------------------------------
-Heap
-----------Empty----------
--------------------------------------------
-File Table
-./input/test.in -> java.io.BufferedReader@2957fcb0
--------------------------------------------
-Output
-[15, 50]
--------------------------------------------
-
-Program State: -1756384695
+Program State: -608702454
 Execution Stack
 ----------Empty----------
 -------------------------------------------

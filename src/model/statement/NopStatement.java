@@ -1,11 +1,18 @@
 package model.statement;
 
-import model.programstate.ProgramState;
+import adt.IDictionary;
+import model.ProgramState;
+import model.type.Type;
 
 public class NopStatement implements Statement {
     @Override
     public ProgramState execute(ProgramState state) {
         return null;
+    }
+
+    @Override
+    public IDictionary<String, Type> typeCheck(IDictionary<String, Type> typeEnvironment) {
+        return typeEnvironment;
     }
 
     @Override

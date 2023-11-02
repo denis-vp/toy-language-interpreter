@@ -1,11 +1,14 @@
 package model.statement;
 
+import adt.IDictionary;
 import adt.IHeap;
 import adt.IStack;
 import exception.ExpressionException;
 import exception.StatementException;
 import model.expression.Expression;
-import model.programstate.ProgramState;
+import model.ProgramState;
+import model.type.BoolType;
+import model.type.Type;
 import model.value.BoolValue;
 
 public class IfStatement implements Statement {
@@ -36,6 +39,21 @@ public class IfStatement implements Statement {
         }
 
         return null;
+    }
+
+    @Override
+    public IDictionary<String, Type> typeCheck(IDictionary<String, model.type.Type> typeEnvironment) throws StatementException {
+        try {
+            Type typeExpression = this.expression.typeCheck(typeEnvironment);
+            if (!typeExpression.equals(new BoolType())) {
+                throw new StatementException("The condition of IF has not the type bool.");
+            }
+            this.thenStatement.typeCheck(typeEnvironment.deepCopy());
+            this.elseStatement.typeCheck(typeEnvironment.deepCopy());
+        } catch (ExpressionException e) {
+            throw new StatementException(e.getMessage());
+        }
+        return typeEnvironment;
     }
 
     @Override

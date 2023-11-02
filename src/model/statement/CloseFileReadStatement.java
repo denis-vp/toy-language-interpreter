@@ -5,8 +5,9 @@ import adt.IHeap;
 import exception.ExpressionException;
 import exception.StatementException;
 import model.expression.Expression;
-import model.programstate.ProgramState;
+import model.ProgramState;
 import model.type.StringType;
+import model.type.Type;
 import model.value.StringValue;
 import model.value.Value;
 
@@ -43,6 +44,19 @@ public class CloseFileReadStatement implements Statement {
         }
 
         return null;
+    }
+
+    @Override
+    public IDictionary<String, Type> typeCheck(IDictionary<String, Type> typeEnvironment) throws StatementException {
+        try {
+            Type expressionType = this.expression.typeCheck(typeEnvironment);
+            if (!expressionType.equals(new StringType())) {
+                throw new StatementException("Expression " + this.expression + " is not of type string.");
+            }
+        } catch (ExpressionException e) {
+            throw new StatementException(e.getMessage());
+        }
+        return typeEnvironment;
     }
 
     @Override

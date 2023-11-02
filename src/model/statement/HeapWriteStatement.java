@@ -5,8 +5,9 @@ import adt.IHeap;
 import exception.ExpressionException;
 import exception.StatementException;
 import model.expression.Expression;
-import model.programstate.ProgramState;
+import model.ProgramState;
 import model.type.ReferenceType;
+import model.type.Type;
 import model.value.ReferenceValue;
 import model.value.Value;
 
@@ -49,6 +50,24 @@ public class HeapWriteStatement implements Statement {
         }
 
         return null;
+    }
+
+    @Override
+    public IDictionary<String, Type> typeCheck(IDictionary<String, Type> typeEnvironment) throws StatementException {
+        try {
+            Type type = typeEnvironment.get(this.id);
+            if (!type.equals(new ReferenceType(null))) {
+                throw new StatementException("Variable " + this.id + " is not a reference type.");
+            }
+            Type expressionType = this.expression.typeCheck(typeEnvironment);
+            if (!expressionType.equals(((ReferenceType) type).getInner())) {
+                throw new StatementException("Expression " + this.expression + " is not of type " +
+                        ((ReferenceType) type).getInner() + ".");
+            }
+        } catch (ExpressionException e) {
+            throw new StatementException(e.getMessage());
+        }
+        return typeEnvironment;
     }
 
     @Override
