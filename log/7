@@ -1,412 +1,412 @@
-Program State: -766417968
-Execution Stack
+Program State: -2030867139
+Execution Stack:
 ((int v; v = 4); while (v > 0) (print(v); v = v - 1))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -766417968
-Execution Stack
+Program State: -2030867139
+Execution Stack:
 (int v; v = 4)
 while (v > 0) (print(v); v = v - 1)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -766417968
-Execution Stack
+Program State: -2030867139
+Execution Stack:
 int v
 v = 4
 while (v > 0) (print(v); v = v - 1)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -766417968
-Execution Stack
+Program State: -2030867139
+Execution Stack:
 v = 4
 while (v > 0) (print(v); v = v - 1)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 0
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -766417968
-Execution Stack
+Program State: -2030867139
+Execution Stack:
 while (v > 0) (print(v); v = v - 1)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 4
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -766417968
-Execution Stack
+Program State: -2030867139
+Execution Stack:
 (print(v); v = v - 1)
 while (v > 0) (print(v); v = v - 1)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 4
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -766417968
-Execution Stack
+Program State: -2030867139
+Execution Stack:
 print(v)
 v = v - 1
 while (v > 0) (print(v); v = v - 1)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 4
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -766417968
-Execution Stack
+Program State: -2030867139
+Execution Stack:
 v = v - 1
 while (v > 0) (print(v); v = v - 1)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 4
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 4
 -------------------------------------------
 
-Program State: -766417968
-Execution Stack
+Program State: -2030867139
+Execution Stack:
 while (v > 0) (print(v); v = v - 1)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 3
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 4
 -------------------------------------------
 
-Program State: -766417968
-Execution Stack
+Program State: -2030867139
+Execution Stack:
 (print(v); v = v - 1)
 while (v > 0) (print(v); v = v - 1)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 3
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 4
 -------------------------------------------
 
-Program State: -766417968
-Execution Stack
+Program State: -2030867139
+Execution Stack:
 print(v)
 v = v - 1
 while (v > 0) (print(v); v = v - 1)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 3
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 4
 -------------------------------------------
 
-Program State: -766417968
-Execution Stack
+Program State: -2030867139
+Execution Stack:
 v = v - 1
 while (v > 0) (print(v); v = v - 1)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 3
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 4
 3
 -------------------------------------------
 
-Program State: -766417968
-Execution Stack
+Program State: -2030867139
+Execution Stack:
 while (v > 0) (print(v); v = v - 1)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 2
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 4
 3
 -------------------------------------------
 
-Program State: -766417968
-Execution Stack
+Program State: -2030867139
+Execution Stack:
 (print(v); v = v - 1)
 while (v > 0) (print(v); v = v - 1)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 2
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 4
 3
 -------------------------------------------
 
-Program State: -766417968
-Execution Stack
+Program State: -2030867139
+Execution Stack:
 print(v)
 v = v - 1
 while (v > 0) (print(v); v = v - 1)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 2
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 4
 3
 -------------------------------------------
 
-Program State: -766417968
-Execution Stack
+Program State: -2030867139
+Execution Stack:
 v = v - 1
 while (v > 0) (print(v); v = v - 1)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 2
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 4
 3
 2
 -------------------------------------------
 
-Program State: -766417968
-Execution Stack
+Program State: -2030867139
+Execution Stack:
 while (v > 0) (print(v); v = v - 1)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 1
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 4
 3
 2
 -------------------------------------------
 
-Program State: -766417968
-Execution Stack
+Program State: -2030867139
+Execution Stack:
 (print(v); v = v - 1)
 while (v > 0) (print(v); v = v - 1)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 1
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 4
 3
 2
 -------------------------------------------
 
-Program State: -766417968
-Execution Stack
+Program State: -2030867139
+Execution Stack:
 print(v)
 v = v - 1
 while (v > 0) (print(v); v = v - 1)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 1
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 4
 3
 2
 -------------------------------------------
 
-Program State: -766417968
-Execution Stack
+Program State: -2030867139
+Execution Stack:
 v = v - 1
 while (v > 0) (print(v); v = v - 1)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 1
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 4
 3
 2
 1
 -------------------------------------------
 
-Program State: -766417968
-Execution Stack
+Program State: -2030867139
+Execution Stack:
 while (v > 0) (print(v); v = v - 1)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 0
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 4
 3
 2
 1
 -------------------------------------------
 
-Program State: -766417968
-Execution Stack
+Program State: -2030867139
+Execution Stack:
 ----------Empty----------
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 0
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 4
 3
 2

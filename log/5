@@ -1,123 +1,123 @@
-Program State: -148939349
-Execution Stack
+Program State: -1963775672
+Execution Stack:
 ((int v; v = 1); if (v < 3) then (print(v)) else (nop))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -148939349
-Execution Stack
+Program State: -1963775672
+Execution Stack:
 (int v; v = 1)
 if (v < 3) then (print(v)) else (nop)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -148939349
-Execution Stack
+Program State: -1963775672
+Execution Stack:
 int v
 v = 1
 if (v < 3) then (print(v)) else (nop)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -148939349
-Execution Stack
+Program State: -1963775672
+Execution Stack:
 v = 1
 if (v < 3) then (print(v)) else (nop)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 0
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -148939349
-Execution Stack
+Program State: -1963775672
+Execution Stack:
 if (v < 3) then (print(v)) else (nop)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 1
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -148939349
-Execution Stack
+Program State: -1963775672
+Execution Stack:
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 1
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -148939349
-Execution Stack
+Program State: -1963775672
+Execution Stack:
 ----------Empty----------
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 1
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 1
 -------------------------------------------
 

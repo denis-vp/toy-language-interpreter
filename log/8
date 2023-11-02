@@ -1,865 +1,865 @@
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 (((int v; v = 1); for ((int i; i = 2); i < 10; i = i + 1) v = v * i); print(v))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 ((int v; v = 1); for ((int i; i = 2); i < 10; i = i + 1) v = v * i)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 (int v; v = 1)
 for ((int i; i = 2); i < 10; i = i + 1) v = v * i
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 int v
 v = 1
 for ((int i; i = 2); i < 10; i = i + 1) v = v * i
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 v = 1
 for ((int i; i = 2); i < 10; i = i + 1) v = v * i
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 0
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 for ((int i; i = 2); i < 10; i = i + 1) v = v * i
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 1
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 (int i; i = 2)
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 1
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 int i
 i = 2
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 1
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 i = 2
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 1
 i -> 0
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 1
 i -> 2
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 (v = v * i; i = i + 1)
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 1
 i -> 2
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 v = v * i
 i = i + 1
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 1
 i -> 2
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 i = i + 1
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 2
 i -> 2
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 2
 i -> 3
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 (v = v * i; i = i + 1)
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 2
 i -> 3
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 v = v * i
 i = i + 1
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 2
 i -> 3
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 i = i + 1
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 6
 i -> 3
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 6
 i -> 4
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 (v = v * i; i = i + 1)
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 6
 i -> 4
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 v = v * i
 i = i + 1
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 6
 i -> 4
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 i = i + 1
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 24
 i -> 4
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 24
 i -> 5
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 (v = v * i; i = i + 1)
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 24
 i -> 5
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 v = v * i
 i = i + 1
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 24
 i -> 5
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 i = i + 1
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 120
 i -> 5
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 120
 i -> 6
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 (v = v * i; i = i + 1)
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 120
 i -> 6
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 v = v * i
 i = i + 1
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 120
 i -> 6
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 i = i + 1
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 720
 i -> 6
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 720
 i -> 7
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 (v = v * i; i = i + 1)
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 720
 i -> 7
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 v = v * i
 i = i + 1
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 720
 i -> 7
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 i = i + 1
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 5040
 i -> 7
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 5040
 i -> 8
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 (v = v * i; i = i + 1)
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 5040
 i -> 8
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 v = v * i
 i = i + 1
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 5040
 i -> 8
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 i = i + 1
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 40320
 i -> 8
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 40320
 i -> 9
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 (v = v * i; i = i + 1)
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 40320
 i -> 9
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 v = v * i
 i = i + 1
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 40320
 i -> 9
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 i = i + 1
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 362880
 i -> 9
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 362880
 i -> 10
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 362880
 i -> 10
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -481570767
-Execution Stack
+Program State: 762589806
+Execution Stack:
 ----------Empty----------
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 362880
 i -> 10
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 362880
 -------------------------------------------
 

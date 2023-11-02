@@ -1,209 +1,209 @@
-Program State: 385032792
-Execution Stack
+Program State: -1103165583
+Execution Stack:
 ((((bool a; int v); a = true); if (a) then (v = 2) else (v = 3)); print(v))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 385032792
-Execution Stack
+Program State: -1103165583
+Execution Stack:
 (((bool a; int v); a = true); if (a) then (v = 2) else (v = 3))
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 385032792
-Execution Stack
+Program State: -1103165583
+Execution Stack:
 ((bool a; int v); a = true)
 if (a) then (v = 2) else (v = 3)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 385032792
-Execution Stack
+Program State: -1103165583
+Execution Stack:
 (bool a; int v)
 a = true
 if (a) then (v = 2) else (v = 3)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 385032792
-Execution Stack
+Program State: -1103165583
+Execution Stack:
 bool a
 int v
 a = true
 if (a) then (v = 2) else (v = 3)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 385032792
-Execution Stack
+Program State: -1103165583
+Execution Stack:
 int v
 a = true
 if (a) then (v = 2) else (v = 3)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> false
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 385032792
-Execution Stack
+Program State: -1103165583
+Execution Stack:
 a = true
 if (a) then (v = 2) else (v = 3)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> false
 v -> 0
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 385032792
-Execution Stack
+Program State: -1103165583
+Execution Stack:
 if (a) then (v = 2) else (v = 3)
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> true
 v -> 0
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 385032792
-Execution Stack
+Program State: -1103165583
+Execution Stack:
 v = 2
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> true
 v -> 0
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 385032792
-Execution Stack
+Program State: -1103165583
+Execution Stack:
 print(v)
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> true
 v -> 2
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 385032792
-Execution Stack
+Program State: -1103165583
+Execution Stack:
 ----------Empty----------
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> true
 v -> 2
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 2
 -------------------------------------------
 

@@ -99,35 +99,35 @@ public class ProgramState {
         StringBuilder stringBuilder = new StringBuilder();
 
         stringBuilder.append("Program State: ").append(this.id).append("\n");
-        stringBuilder.append("Execution Stack\n");
+        stringBuilder.append("Execution Stack:\n");
         if (this.executionStack.isEmpty()) {
             stringBuilder.append("----------Empty----------\n");
         } else {
             stringBuilder.append(this.executionStack);
         }
         stringBuilder.append("-------------------------------------------\n");
-        stringBuilder.append("Symbol Table\n");
+        stringBuilder.append("Symbol Table:\n");
         if (this.symbolTable.isEmpty()) {
             stringBuilder.append("----------Empty----------\n");
         } else {
             stringBuilder.append(this.symbolTable);
         }
         stringBuilder.append("-------------------------------------------\n");
-        stringBuilder.append("Heap\n");
+        stringBuilder.append("Heap:\n");
         if (this.heap.isEmpty()) {
             stringBuilder.append("----------Empty----------\n");
         } else {
             stringBuilder.append(this.heap);
         }
         stringBuilder.append("-------------------------------------------\n");
-        stringBuilder.append("File Table\n");
+        stringBuilder.append("File Table:\n");
         if (this.fileTable.isEmpty()) {
             stringBuilder.append("----------Empty----------\n");
         } else {
             stringBuilder.append(this.fileTable);
         }
         stringBuilder.append("-------------------------------------------\n");
-        stringBuilder.append("Output\n");
+        stringBuilder.append("Output:\n");
         if (this.output.isEmpty()) {
             stringBuilder.append("----------Empty----------\n");
         } else {

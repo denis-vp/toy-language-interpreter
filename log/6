@@ -1,100 +1,100 @@
-Program State: -380780441
-Execution Stack
+Program State: 872867921
+Execution Stack:
 (((((((((ref (int) v; new(v, 20)); ref (ref (int)) a); new(a, v)); new(v, 30)); print(rH(rH(a)))); ref (int) g); new(g, 5)); new(g, 10)); print(rH(g)))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -380780441
-Execution Stack
+Program State: 872867921
+Execution Stack:
 ((((((((ref (int) v; new(v, 20)); ref (ref (int)) a); new(a, v)); new(v, 30)); print(rH(rH(a)))); ref (int) g); new(g, 5)); new(g, 10))
 print(rH(g))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -380780441
-Execution Stack
+Program State: 872867921
+Execution Stack:
 (((((((ref (int) v; new(v, 20)); ref (ref (int)) a); new(a, v)); new(v, 30)); print(rH(rH(a)))); ref (int) g); new(g, 5))
 new(g, 10)
 print(rH(g))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -380780441
-Execution Stack
+Program State: 872867921
+Execution Stack:
 ((((((ref (int) v; new(v, 20)); ref (ref (int)) a); new(a, v)); new(v, 30)); print(rH(rH(a)))); ref (int) g)
 new(g, 5)
 new(g, 10)
 print(rH(g))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -380780441
-Execution Stack
+Program State: 872867921
+Execution Stack:
 (((((ref (int) v; new(v, 20)); ref (ref (int)) a); new(a, v)); new(v, 30)); print(rH(rH(a))))
 ref (int) g
 new(g, 5)
 new(g, 10)
 print(rH(g))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -380780441
-Execution Stack
+Program State: 872867921
+Execution Stack:
 ((((ref (int) v; new(v, 20)); ref (ref (int)) a); new(a, v)); new(v, 30))
 print(rH(rH(a)))
 ref (int) g
@@ -102,21 +102,21 @@ new(g, 5)
 new(g, 10)
 print(rH(g))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -380780441
-Execution Stack
+Program State: 872867921
+Execution Stack:
 (((ref (int) v; new(v, 20)); ref (ref (int)) a); new(a, v))
 new(v, 30)
 print(rH(rH(a)))
@@ -125,21 +125,21 @@ new(g, 5)
 new(g, 10)
 print(rH(g))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -380780441
-Execution Stack
+Program State: 872867921
+Execution Stack:
 ((ref (int) v; new(v, 20)); ref (ref (int)) a)
 new(a, v)
 new(v, 30)
@@ -149,21 +149,21 @@ new(g, 5)
 new(g, 10)
 print(rH(g))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -380780441
-Execution Stack
+Program State: 872867921
+Execution Stack:
 (ref (int) v; new(v, 20))
 ref (ref (int)) a
 new(a, v)
@@ -174,21 +174,21 @@ new(g, 5)
 new(g, 10)
 print(rH(g))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -380780441
-Execution Stack
+Program State: 872867921
+Execution Stack:
 ref (int) v
 new(v, 20)
 ref (ref (int)) a
@@ -200,21 +200,21 @@ new(g, 5)
 new(g, 10)
 print(rH(g))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -380780441
-Execution Stack
+Program State: 872867921
+Execution Stack:
 new(v, 20)
 ref (ref (int)) a
 new(a, v)
@@ -225,21 +225,21 @@ new(g, 5)
 new(g, 10)
 print(rH(g))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> (0, int)
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -380780441
-Execution Stack
+Program State: 872867921
+Execution Stack:
 ref (ref (int)) a
 new(a, v)
 new(v, 30)
@@ -249,21 +249,21 @@ new(g, 5)
 new(g, 10)
 print(rH(g))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> (0, int)
 -------------------------------------------
-Heap
+Heap:
 0 -> 20
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -380780441
-Execution Stack
+Program State: 872867921
+Execution Stack:
 new(a, v)
 new(v, 30)
 print(rH(rH(a)))
@@ -272,22 +272,22 @@ new(g, 5)
 new(g, 10)
 print(rH(g))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> (0, ref (int))
 v -> (0, int)
 -------------------------------------------
-Heap
+Heap:
 0 -> 20
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -380780441
-Execution Stack
+Program State: 872867921
+Execution Stack:
 new(v, 30)
 print(rH(rH(a)))
 ref (int) g
@@ -295,156 +295,156 @@ new(g, 5)
 new(g, 10)
 print(rH(g))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> (1, ref (int))
 v -> (0, int)
 -------------------------------------------
-Heap
+Heap:
 0 -> 20
 1 -> (0, int)
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -380780441
-Execution Stack
+Program State: 872867921
+Execution Stack:
 print(rH(rH(a)))
 ref (int) g
 new(g, 5)
 new(g, 10)
 print(rH(g))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> (1, ref (int))
 v -> (2, int)
 -------------------------------------------
-Heap
+Heap:
 0 -> 20
 1 -> (0, int)
 2 -> 30
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -380780441
-Execution Stack
+Program State: 872867921
+Execution Stack:
 ref (int) g
 new(g, 5)
 new(g, 10)
 print(rH(g))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> (1, ref (int))
 v -> (2, int)
 -------------------------------------------
-Heap
+Heap:
 0 -> 20
 1 -> (0, int)
 2 -> 30
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 20
 -------------------------------------------
 
-Program State: -380780441
-Execution Stack
+Program State: 872867921
+Execution Stack:
 new(g, 5)
 new(g, 10)
 print(rH(g))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> (1, ref (int))
 v -> (2, int)
 g -> (0, int)
 -------------------------------------------
-Heap
+Heap:
 0 -> 20
 1 -> (0, int)
 2 -> 30
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 20
 -------------------------------------------
 
-Program State: -380780441
-Execution Stack
+Program State: 872867921
+Execution Stack:
 new(g, 10)
 print(rH(g))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> (1, ref (int))
 v -> (2, int)
 g -> (3, int)
 -------------------------------------------
-Heap
+Heap:
 0 -> 20
 1 -> (0, int)
 2 -> 30
 3 -> 5
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 20
 -------------------------------------------
 
-Program State: -380780441
-Execution Stack
+Program State: 872867921
+Execution Stack:
 print(rH(g))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> (1, ref (int))
 v -> (2, int)
 g -> (4, int)
 -------------------------------------------
-Heap
+Heap:
 0 -> 20
 1 -> (0, int)
 2 -> 30
 3 -> 5
 4 -> 10
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 20
 -------------------------------------------
 
-Program State: -380780441
-Execution Stack
+Program State: 872867921
+Execution Stack:
 ----------Empty----------
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> (1, ref (int))
 v -> (2, int)
 g -> (4, int)
 -------------------------------------------
-Heap
+Heap:
 0 -> 20
 1 -> (0, int)
 2 -> 30
 4 -> 10
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 20
 10
 -------------------------------------------

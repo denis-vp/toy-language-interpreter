@@ -1,100 +1,100 @@
-Program State: 727196053
-Execution Stack
+Program State: 260547784
+Execution Stack:
 ((((((int v; ref (int) a); v = 10); new(a, 22)); fork((wH(a, 30); (v = 32; (print(v); print(rH(a))))))); print(v)); print(rH(a)))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 727196053
-Execution Stack
+Program State: 260547784
+Execution Stack:
 (((((int v; ref (int) a); v = 10); new(a, 22)); fork((wH(a, 30); (v = 32; (print(v); print(rH(a))))))); print(v))
 print(rH(a))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 727196053
-Execution Stack
+Program State: 260547784
+Execution Stack:
 ((((int v; ref (int) a); v = 10); new(a, 22)); fork((wH(a, 30); (v = 32; (print(v); print(rH(a)))))))
 print(v)
 print(rH(a))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 727196053
-Execution Stack
+Program State: 260547784
+Execution Stack:
 (((int v; ref (int) a); v = 10); new(a, 22))
 fork((wH(a, 30); (v = 32; (print(v); print(rH(a))))))
 print(v)
 print(rH(a))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 727196053
-Execution Stack
+Program State: 260547784
+Execution Stack:
 ((int v; ref (int) a); v = 10)
 new(a, 22)
 fork((wH(a, 30); (v = 32; (print(v); print(rH(a))))))
 print(v)
 print(rH(a))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 727196053
-Execution Stack
+Program State: 260547784
+Execution Stack:
 (int v; ref (int) a)
 v = 10
 new(a, 22)
@@ -102,21 +102,21 @@ fork((wH(a, 30); (v = 32; (print(v); print(rH(a))))))
 print(v)
 print(rH(a))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 727196053
-Execution Stack
+Program State: 260547784
+Execution Stack:
 int v
 ref (int) a
 v = 10
@@ -125,21 +125,21 @@ fork((wH(a, 30); (v = 32; (print(v); print(rH(a))))))
 print(v)
 print(rH(a))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 ----------Empty----------
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 727196053
-Execution Stack
+Program State: 260547784
+Execution Stack:
 ref (int) a
 v = 10
 new(a, 22)
@@ -147,288 +147,288 @@ fork((wH(a, 30); (v = 32; (print(v); print(rH(a))))))
 print(v)
 print(rH(a))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 v -> 0
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 727196053
-Execution Stack
+Program State: 260547784
+Execution Stack:
 v = 10
 new(a, 22)
 fork((wH(a, 30); (v = 32; (print(v); print(rH(a))))))
 print(v)
 print(rH(a))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> (0, int)
 v -> 0
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 727196053
-Execution Stack
+Program State: 260547784
+Execution Stack:
 new(a, 22)
 fork((wH(a, 30); (v = 32; (print(v); print(rH(a))))))
 print(v)
 print(rH(a))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> (0, int)
 v -> 10
 -------------------------------------------
-Heap
+Heap:
 ----------Empty----------
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 727196053
-Execution Stack
+Program State: 260547784
+Execution Stack:
 fork((wH(a, 30); (v = 32; (print(v); print(rH(a))))))
 print(v)
 print(rH(a))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> (0, int)
 v -> 10
 -------------------------------------------
-Heap
+Heap:
 0 -> 22
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 727196053
-Execution Stack
+Program State: 260547784
+Execution Stack:
 print(v)
 print(rH(a))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> (0, int)
 v -> 10
 -------------------------------------------
-Heap
+Heap:
 0 -> 22
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 628655903
-Execution Stack
+Program State: -241075865
+Execution Stack:
 (wH(a, 30); (v = 32; (print(v); print(rH(a)))))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> (0, int)
 v -> 10
 -------------------------------------------
-Heap
+Heap:
 0 -> 22
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 727196053
-Execution Stack
+Program State: 260547784
+Execution Stack:
 print(rH(a))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> (0, int)
 v -> 10
 -------------------------------------------
-Heap
+Heap:
 0 -> 22
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 10
 -------------------------------------------
 
-Program State: 628655903
-Execution Stack
+Program State: -241075865
+Execution Stack:
 wH(a, 30)
 (v = 32; (print(v); print(rH(a))))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> (0, int)
 v -> 10
 -------------------------------------------
-Heap
+Heap:
 0 -> 22
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 10
 -------------------------------------------
 
-Program State: 727196053
-Execution Stack
+Program State: 260547784
+Execution Stack:
 ----------Empty----------
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> (0, int)
 v -> 10
 -------------------------------------------
-Heap
+Heap:
 0 -> 30
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 10
 22
 -------------------------------------------
 
-Program State: 628655903
-Execution Stack
+Program State: -241075865
+Execution Stack:
 (v = 32; (print(v); print(rH(a))))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> (0, int)
 v -> 10
 -------------------------------------------
-Heap
+Heap:
 0 -> 30
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 10
 22
 -------------------------------------------
 
-Program State: 628655903
-Execution Stack
+Program State: -241075865
+Execution Stack:
 v = 32
 (print(v); print(rH(a)))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> (0, int)
 v -> 10
 -------------------------------------------
-Heap
+Heap:
 0 -> 30
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 10
 22
 -------------------------------------------
 
-Program State: 628655903
-Execution Stack
+Program State: -241075865
+Execution Stack:
 (print(v); print(rH(a)))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> (0, int)
 v -> 32
 -------------------------------------------
-Heap
+Heap:
 0 -> 30
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 10
 22
 -------------------------------------------
 
-Program State: 628655903
-Execution Stack
+Program State: -241075865
+Execution Stack:
 print(v)
 print(rH(a))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> (0, int)
 v -> 32
 -------------------------------------------
-Heap
+Heap:
 0 -> 30
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 10
 22
 -------------------------------------------
 
-Program State: 628655903
-Execution Stack
+Program State: -241075865
+Execution Stack:
 print(rH(a))
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> (0, int)
 v -> 32
 -------------------------------------------
-Heap
+Heap:
 0 -> 30
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 10
 22
 32
 -------------------------------------------
 
-Program State: 628655903
-Execution Stack
+Program State: -241075865
+Execution Stack:
 ----------Empty----------
 -------------------------------------------
-Symbol Table
+Symbol Table:
 a -> (0, int)
 v -> 32
 -------------------------------------------
-Heap
+Heap:
 0 -> 30
 -------------------------------------------
-File Table
+File Table:
 ----------Empty----------
 -------------------------------------------
-Output
+Output:
 10
 22
 32
