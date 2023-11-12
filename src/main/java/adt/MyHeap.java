@@ -15,77 +15,57 @@ public class MyHeap implements IHeap {
     }
 
     @Override
-    public int add(Value value) {
-        synchronized (this) {
-            this.heap.put(this.nextFreeAddress, value);
-            this.moveNextFreeAddress();
-            return this.nextFreeAddress - 1;
-        }
+    public synchronized int add(Value value) {
+        this.heap.put(this.nextFreeAddress, value);
+        this.moveNextFreeAddress();
+        return this.nextFreeAddress - 1;
     }
 
     @Override
-    public void remove(Integer key) {
-        synchronized (this.heap) {
-            this.heap.remove(key);
-        }
+    public synchronized void remove(Integer key) {
+        this.heap.remove(key);
     }
 
     @Override
-    public Value get(Integer key) {
-        synchronized (this.heap) {
-            return this.heap.get(key);
-        }
+    public synchronized Value get(Integer key) {
+        return this.heap.get(key);
     }
 
     @Override
-    public void update(Integer key, Value value) {
-        synchronized (this.heap) {
-            this.heap.put(key, value);
-        }
+    public synchronized void update(Integer key, Value value) {
+        this.heap.put(key, value);
     }
 
     @Override
-    public boolean search(Integer key) {
-        synchronized (this.heap) {
-            return this.heap.containsKey(key);
-        }
+    public synchronized boolean search(Integer key) {
+        return this.heap.containsKey(key);
     }
 
     @Override
-    public int size() {
-        synchronized (this.heap) {
-            return this.heap.size();
-        }
+    public synchronized int size() {
+        return this.heap.size();
     }
 
     @Override
-    public boolean isEmpty() {
-        synchronized (this.heap) {
-            return this.heap.isEmpty();
-        }
+    public synchronized boolean isEmpty() {
+        return this.heap.isEmpty();
     }
 
     @Override
-    public Set<Integer> keys() {
-        synchronized (this.heap) {
-            return new HashSet<>(this.heap.keySet());
-        }
+    public synchronized Set<Integer> keys() {
+        return new HashSet<>(this.heap.keySet());
     }
 
     @Override
-    public Collection<Value> values() {
-        synchronized (this.heap) {
-            return new ArrayList<>(this.heap.values());
-        }
+    public synchronized Collection<Value> values() {
+        return new ArrayList<>(this.heap.values());
     }
 
-    public String toString() {
-        synchronized (this.heap) {
-            StringBuilder stringBuilder = new StringBuilder();
-            for (Integer key : this.heap.keySet()) {
-                stringBuilder.append(key).append(" -> ").append(this.heap.get(key)).append("\n");
-            }
-            return stringBuilder.toString();
+    public synchronized String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Integer key : this.heap.keySet()) {
+            stringBuilder.append(key).append(" -> ").append(this.heap.get(key)).append("\n");
         }
+        return stringBuilder.toString();
     }
 }

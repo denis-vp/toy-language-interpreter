@@ -1,16 +1,21 @@
 # Toy Language Interpreter (Java)
 
-![Python](https://img.shields.io/badge/Java-11%2B-orange)
+![Java](https://img.shields.io/badge/Java-11%2B-orange)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 Welcome to the Toy Language Interpreter repository! This project is a Java-based interpreter for a simple toy language, currently supporting integer and boolean data types, arithmetic and logical expressions, print statements, and if statements. It provides a platform for understanding the basics of language interpretation and lays the foundation for potential enhancements in the future.
 
 ## Features
 
-- **Data Types**: Support for integer and boolean data types.
-- **Expressions**: Evaluate arithmetic and logical expressions.
+- **Data Types**: Support for integer, boolean, string and reference data types.
+- **Expressions**: Evaluate arithmetic, logical and relational expressions.
 - **Print Statements**: Display results and messages in the interpreter.
 - **If Statements**: Implement conditional logic in your code.
+- **Loops**: Support for while and for loops.
+- **Dynamic Allocation**: Allocate memory for variables at runtime in the heap.
+- **Garbage Collection**: Automatically free memory for unused variables.
+- **Threads**: Run multiple threads in parallel.
+- **Type Checker**: Check for type errors in your code.
 
 ## Future Plans
 
@@ -18,9 +23,8 @@ This project is an ongoing work in progress, and there are plans to enhance it w
 
 - **Parser**: Introduce a language parser for more structured code.
 - **Additional Data Types**: Expand the range of supported data types.
-- **Threading**: Implement multithreading capabilities.
-- **Dynamic Allocation**: Support dynamic memory allocation for more flexible programming.
-- **Loops**: Introduce for and while loops for iterative control flow.
+- **Additional Loop Types**: Support for do-while and for-each loops.
+- **Debugger**: Add a gui debugger to step through code and inspect variables.
 - **And More**: Explore other language features and improvements.
 
 ## Getting Started
