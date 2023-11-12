@@ -14,6 +14,19 @@ public class BoolValue implements Value {
         return this.value;
     }
 
+    public boolean equals(Object another) {
+        if (another == null) {
+            return false;
+        } else if (another == this) {
+            return true;
+        }
+
+        if (another instanceof BoolValue) {
+            return this.value == ((BoolValue) another).getValue();
+        }
+        return false;
+    }
+
     @Override
     public Type getType() {
         return new BoolType();

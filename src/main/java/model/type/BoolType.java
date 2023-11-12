@@ -4,8 +4,13 @@ import model.value.BoolValue;
 import model.value.Value;
 
 public class BoolType implements Type {
-    @Override
-    public boolean equals(Type another) {
+    public boolean equals(Object another) {
+        if (another == null) {
+            return false;
+        } else if (another == this) {
+            return true;
+        }
+
         return another instanceof BoolType;
     }
 

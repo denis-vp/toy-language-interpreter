@@ -1,4 +1,4 @@
-Program State: 854660506
+Program State: -1916668120
 Execution Stack:
 ((((((((string v; v = "./input/test.in"); openRFile(v)); int c); readFile(v, c)); print(c)); readFile(v, c)); print(c)); closeRFile(v))
 -------------------------------------------
@@ -15,7 +15,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 854660506
+Program State: -1916668120
 Execution Stack:
 (((((((string v; v = "./input/test.in"); openRFile(v)); int c); readFile(v, c)); print(c)); readFile(v, c)); print(c))
 closeRFile(v)
@@ -33,7 +33,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 854660506
+Program State: -1916668120
 Execution Stack:
 ((((((string v; v = "./input/test.in"); openRFile(v)); int c); readFile(v, c)); print(c)); readFile(v, c))
 print(c)
@@ -52,7 +52,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 854660506
+Program State: -1916668120
 Execution Stack:
 (((((string v; v = "./input/test.in"); openRFile(v)); int c); readFile(v, c)); print(c))
 readFile(v, c)
@@ -72,7 +72,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 854660506
+Program State: -1916668120
 Execution Stack:
 ((((string v; v = "./input/test.in"); openRFile(v)); int c); readFile(v, c))
 print(c)
@@ -93,7 +93,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 854660506
+Program State: -1916668120
 Execution Stack:
 (((string v; v = "./input/test.in"); openRFile(v)); int c)
 readFile(v, c)
@@ -115,7 +115,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 854660506
+Program State: -1916668120
 Execution Stack:
 ((string v; v = "./input/test.in"); openRFile(v))
 int c
@@ -138,7 +138,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 854660506
+Program State: -1916668120
 Execution Stack:
 (string v; v = "./input/test.in")
 openRFile(v)
@@ -162,7 +162,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 854660506
+Program State: -1916668120
 Execution Stack:
 string v
 v = "./input/test.in"
@@ -187,7 +187,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 854660506
+Program State: -1916668120
 Execution Stack:
 v = "./input/test.in"
 openRFile(v)
@@ -211,7 +211,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 854660506
+Program State: -1916668120
 Execution Stack:
 openRFile(v)
 int c
@@ -234,7 +234,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 854660506
+Program State: -1916668120
 Execution Stack:
 int c
 readFile(v, c)
@@ -250,13 +250,13 @@ Heap:
 ----------Empty----------
 -------------------------------------------
 File Table:
-./input/test.in -> java.io.BufferedReader@28ba21f3
+./input/test.in -> java.io.BufferedReader@2b05039f
 -------------------------------------------
 Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 854660506
+Program State: -1916668120
 Execution Stack:
 readFile(v, c)
 print(c)
@@ -272,13 +272,13 @@ Heap:
 ----------Empty----------
 -------------------------------------------
 File Table:
-./input/test.in -> java.io.BufferedReader@28ba21f3
+./input/test.in -> java.io.BufferedReader@2b05039f
 -------------------------------------------
 Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 854660506
+Program State: -1916668120
 Execution Stack:
 print(c)
 readFile(v, c)
@@ -293,13 +293,13 @@ Heap:
 ----------Empty----------
 -------------------------------------------
 File Table:
-./input/test.in -> java.io.BufferedReader@28ba21f3
+./input/test.in -> java.io.BufferedReader@2b05039f
 -------------------------------------------
 Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 854660506
+Program State: -1916668120
 Execution Stack:
 readFile(v, c)
 print(c)
@@ -313,13 +313,13 @@ Heap:
 ----------Empty----------
 -------------------------------------------
 File Table:
-./input/test.in -> java.io.BufferedReader@28ba21f3
+./input/test.in -> java.io.BufferedReader@2b05039f
 -------------------------------------------
 Output:
 15
 -------------------------------------------
 
-Program State: 854660506
+Program State: -1916668120
 Execution Stack:
 print(c)
 closeRFile(v)
@@ -332,13 +332,13 @@ Heap:
 ----------Empty----------
 -------------------------------------------
 File Table:
-./input/test.in -> java.io.BufferedReader@28ba21f3
+./input/test.in -> java.io.BufferedReader@2b05039f
 -------------------------------------------
 Output:
 15
 -------------------------------------------
 
-Program State: 854660506
+Program State: -1916668120
 Execution Stack:
 closeRFile(v)
 -------------------------------------------
@@ -350,14 +350,14 @@ Heap:
 ----------Empty----------
 -------------------------------------------
 File Table:
-./input/test.in -> java.io.BufferedReader@28ba21f3
+./input/test.in -> java.io.BufferedReader@2b05039f
 -------------------------------------------
 Output:
 15
 50
 -------------------------------------------
 
-Program State: 854660506
+Program State: -1916668120
 Execution Stack:
 ----------Empty----------
 -------------------------------------------

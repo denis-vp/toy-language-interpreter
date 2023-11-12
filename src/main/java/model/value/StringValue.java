@@ -14,6 +14,19 @@ public class StringValue implements Value {
         return this.value;
     }
 
+    public boolean equals(Object another) {
+        if (another == null) {
+            return false;
+        } else if (another == this) {
+            return true;
+        }
+
+        if (another instanceof StringValue) {
+            return this.value.equals(((StringValue) another).getValue());
+        }
+        return false;
+    }
+
     @Override
     public Type getType() {
         return new StringType();

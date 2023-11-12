@@ -20,6 +20,20 @@ public class ReferenceValue implements Value {
         return this.locationType;
     }
 
+    public boolean equals(Object another) {
+        if (another == null) {
+            return false;
+        } else if (another == this) {
+            return true;
+        }
+
+        if (another instanceof ReferenceValue) {
+            return this.address == ((ReferenceValue) another).getAddress() &&
+                    this.locationType.equals(((ReferenceValue) another).getLocationType());
+        }
+        return false;
+    }
+
     @Override
     public Type getType() {
         return new ReferenceType(this.locationType);

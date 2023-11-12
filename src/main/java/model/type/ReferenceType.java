@@ -14,8 +14,13 @@ public class ReferenceType implements Type {
         return this.inner;
     }
 
-    @Override
-    public boolean equals(Type another) {
+    public boolean equals(Object another) {
+        if (another == null) {
+            return false;
+        } else if (another == this) {
+            return true;
+        }
+
         return another instanceof ReferenceType;
     }
 
