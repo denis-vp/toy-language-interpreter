@@ -7,7 +7,7 @@ Welcome to the Toy Language Interpreter repository! This project is a Java-based
 
 ## Features
 
-- **Data Types**: Support for integer, boolean, string and reference data types.
+- **Data Types**: Support for integer, float, boolean, string and reference data types.
 - **Expressions**: Evaluate arithmetic, logical and relational expressions.
 - **Print Statements**: Display results and messages in the interpreter.
 - **If Statements**: Implement conditional logic in your code.
