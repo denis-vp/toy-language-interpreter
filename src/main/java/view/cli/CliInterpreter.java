@@ -1,9 +1,6 @@
 package view.cli;
 
-import adt.MyDictionary;
-import adt.MyHeap;
-import adt.MyList;
-import adt.MyStack;
+import adt.*;
 import controller.Controller;
 import examplegenerator.ExampleGenerator;
 import model.ProgramState;
@@ -47,7 +44,7 @@ public class CliInterpreter {
             Statement example = examples.get(i);
 
             ProgramState programState = new ProgramState(example, new MyStack<>(), new MyDictionary<>(),
-                    new MyHeap(), new MyDictionary<>(), new MyList<>());
+                    new MyHeap(), new MyConcurrentDictionary<>(), new MyList<>());
             IRepository repository = new Repository(programState, logFilePath);
             Controller controller = new Controller(repository);
 

@@ -1,10 +1,10 @@
 package adt;
 
-
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class MyDictionary<K, V> implements IDictionary<K, V> {
-    private final Map<K, V> map = new HashMap<>();
+public class MyConcurrentDictionary<K, V> implements IDictionary<K, V> {
+    private final Map<K, V> map = new ConcurrentHashMap<>();
 
     @Override
     public void add(K key, V value) {

@@ -24,4 +24,6 @@ public interface IHeap {
     Set<Integer> keys();
 
     Collection<Value> values();
+
+    Collection<Map.Entry<Integer, Value>> entrySet();
 }
