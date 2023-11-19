@@ -99,16 +99,14 @@ public class Controller {
 
     private void conservativeGarbageCollector(IDictionary<String, Value> symbolTable, IHeap heap) {
         Set<Integer> freedAddresses = new HashSet<>(heap.keys());
-
-        for (Value value : symbolTable.values()) {
-            while (value instanceof ReferenceValue referenceValue) {
-                freedAddresses.remove(referenceValue.getAddress());
-                value = heap.get(referenceValue.getAddress());
-            }
-        }
-
-        for (Integer freedAddress : freedAddresses) {
-            heap.remove(freedAddress);
-        }
+        symbolTable.values().stream()
+                .filter(value -> value instanceof ReferenceValue)
+                .forEach(value -> {
+                    while (value instanceof ReferenceValue referenceValue) {
+                        freedAddresses.remove(referenceValue.getAddress());
+                        value = heap.get(referenceValue.getAddress());
+                    }
+                });
+        freedAddresses.forEach(heap::remove);
     }
 }

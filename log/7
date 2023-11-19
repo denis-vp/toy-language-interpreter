@@ -1,4 +1,4 @@
-Program State: -2066683449
+Program State: -996613003
 Execution Stack:
 ((int v; v = 4); while (v > 0) (print(v); v = v - 1))
 -------------------------------------------
@@ -15,7 +15,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -2066683449
+Program State: -996613003
 Execution Stack:
 (int v; v = 4)
 while (v > 0) (print(v); v = v - 1)
@@ -33,7 +33,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -2066683449
+Program State: -996613003
 Execution Stack:
 int v
 v = 4
@@ -52,7 +52,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -2066683449
+Program State: -996613003
 Execution Stack:
 v = 4
 while (v > 0) (print(v); v = v - 1)
@@ -70,7 +70,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -2066683449
+Program State: -996613003
 Execution Stack:
 while (v > 0) (print(v); v = v - 1)
 -------------------------------------------
@@ -87,7 +87,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -2066683449
+Program State: -996613003
 Execution Stack:
 (print(v); v = v - 1)
 while (v > 0) (print(v); v = v - 1)
@@ -105,7 +105,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -2066683449
+Program State: -996613003
 Execution Stack:
 print(v)
 v = v - 1
@@ -124,7 +124,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -2066683449
+Program State: -996613003
 Execution Stack:
 v = v - 1
 while (v > 0) (print(v); v = v - 1)
@@ -142,7 +142,7 @@ Output:
 4
 -------------------------------------------
 
-Program State: -2066683449
+Program State: -996613003
 Execution Stack:
 while (v > 0) (print(v); v = v - 1)
 -------------------------------------------
@@ -159,7 +159,7 @@ Output:
 4
 -------------------------------------------
 
-Program State: -2066683449
+Program State: -996613003
 Execution Stack:
 (print(v); v = v - 1)
 while (v > 0) (print(v); v = v - 1)
@@ -177,7 +177,7 @@ Output:
 4
 -------------------------------------------
 
-Program State: -2066683449
+Program State: -996613003
 Execution Stack:
 print(v)
 v = v - 1
@@ -196,7 +196,7 @@ Output:
 4
 -------------------------------------------
 
-Program State: -2066683449
+Program State: -996613003
 Execution Stack:
 v = v - 1
 while (v > 0) (print(v); v = v - 1)
@@ -215,7 +215,7 @@ Output:
 3
 -------------------------------------------
 
-Program State: -2066683449
+Program State: -996613003
 Execution Stack:
 while (v > 0) (print(v); v = v - 1)
 -------------------------------------------
@@ -233,7 +233,7 @@ Output:
 3
 -------------------------------------------
 
-Program State: -2066683449
+Program State: -996613003
 Execution Stack:
 (print(v); v = v - 1)
 while (v > 0) (print(v); v = v - 1)
@@ -252,7 +252,7 @@ Output:
 3
 -------------------------------------------
 
-Program State: -2066683449
+Program State: -996613003
 Execution Stack:
 print(v)
 v = v - 1
@@ -272,7 +272,7 @@ Output:
 3
 -------------------------------------------
 
-Program State: -2066683449
+Program State: -996613003
 Execution Stack:
 v = v - 1
 while (v > 0) (print(v); v = v - 1)
@@ -292,7 +292,7 @@ Output:
 2
 -------------------------------------------
 
-Program State: -2066683449
+Program State: -996613003
 Execution Stack:
 while (v > 0) (print(v); v = v - 1)
 -------------------------------------------
@@ -311,7 +311,7 @@ Output:
 2
 -------------------------------------------
 
-Program State: -2066683449
+Program State: -996613003
 Execution Stack:
 (print(v); v = v - 1)
 while (v > 0) (print(v); v = v - 1)
@@ -331,7 +331,7 @@ Output:
 2
 -------------------------------------------
 
-Program State: -2066683449
+Program State: -996613003
 Execution Stack:
 print(v)
 v = v - 1
@@ -352,7 +352,7 @@ Output:
 2
 -------------------------------------------
 
-Program State: -2066683449
+Program State: -996613003
 Execution Stack:
 v = v - 1
 while (v > 0) (print(v); v = v - 1)
@@ -373,7 +373,7 @@ Output:
 1
 -------------------------------------------
 
-Program State: -2066683449
+Program State: -996613003
 Execution Stack:
 while (v > 0) (print(v); v = v - 1)
 -------------------------------------------
@@ -393,7 +393,7 @@ Output:
 1
 -------------------------------------------
 
-Program State: -2066683449
+Program State: -996613003
 Execution Stack:
 ----------Empty----------
 -------------------------------------------

@@ -1,6 +1,6 @@
-Program State: -410707248
+Program State: 1849118645
 Execution Stack:
-((((((((string v; v = "./input/test.in"); openRFile(v)); int c); readFile(v, c)); print(c)); readFile(v, c)); print(c)); closeRFile(v))
+(((((((((ref (int) v; new(v, 20)); ref (ref (int)) a); new(a, v)); new(v, 30)); print(rH(rH(a)))); ref (int) g); new(g, 5)); new(g, 10)); print(rH(g)))
 -------------------------------------------
 Symbol Table:
 ----------Empty----------
@@ -15,10 +15,10 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -410707248
+Program State: 1849118645
 Execution Stack:
-(((((((string v; v = "./input/test.in"); openRFile(v)); int c); readFile(v, c)); print(c)); readFile(v, c)); print(c))
-closeRFile(v)
+((((((((ref (int) v; new(v, 20)); ref (ref (int)) a); new(a, v)); new(v, 30)); print(rH(rH(a)))); ref (int) g); new(g, 5)); new(g, 10))
+print(rH(g))
 -------------------------------------------
 Symbol Table:
 ----------Empty----------
@@ -33,11 +33,11 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -410707248
+Program State: 1849118645
 Execution Stack:
-((((((string v; v = "./input/test.in"); openRFile(v)); int c); readFile(v, c)); print(c)); readFile(v, c))
-print(c)
-closeRFile(v)
+(((((((ref (int) v; new(v, 20)); ref (ref (int)) a); new(a, v)); new(v, 30)); print(rH(rH(a)))); ref (int) g); new(g, 5))
+new(g, 10)
+print(rH(g))
 -------------------------------------------
 Symbol Table:
 ----------Empty----------
@@ -52,12 +52,12 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -410707248
+Program State: 1849118645
 Execution Stack:
-(((((string v; v = "./input/test.in"); openRFile(v)); int c); readFile(v, c)); print(c))
-readFile(v, c)
-print(c)
-closeRFile(v)
+((((((ref (int) v; new(v, 20)); ref (ref (int)) a); new(a, v)); new(v, 30)); print(rH(rH(a)))); ref (int) g)
+new(g, 5)
+new(g, 10)
+print(rH(g))
 -------------------------------------------
 Symbol Table:
 ----------Empty----------
@@ -72,13 +72,13 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -410707248
+Program State: 1849118645
 Execution Stack:
-((((string v; v = "./input/test.in"); openRFile(v)); int c); readFile(v, c))
-print(c)
-readFile(v, c)
-print(c)
-closeRFile(v)
+(((((ref (int) v; new(v, 20)); ref (ref (int)) a); new(a, v)); new(v, 30)); print(rH(rH(a))))
+ref (int) g
+new(g, 5)
+new(g, 10)
+print(rH(g))
 -------------------------------------------
 Symbol Table:
 ----------Empty----------
@@ -93,14 +93,14 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -410707248
+Program State: 1849118645
 Execution Stack:
-(((string v; v = "./input/test.in"); openRFile(v)); int c)
-readFile(v, c)
-print(c)
-readFile(v, c)
-print(c)
-closeRFile(v)
+((((ref (int) v; new(v, 20)); ref (ref (int)) a); new(a, v)); new(v, 30))
+print(rH(rH(a)))
+ref (int) g
+new(g, 5)
+new(g, 10)
+print(rH(g))
 -------------------------------------------
 Symbol Table:
 ----------Empty----------
@@ -115,15 +115,15 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -410707248
+Program State: 1849118645
 Execution Stack:
-((string v; v = "./input/test.in"); openRFile(v))
-int c
-readFile(v, c)
-print(c)
-readFile(v, c)
-print(c)
-closeRFile(v)
+(((ref (int) v; new(v, 20)); ref (ref (int)) a); new(a, v))
+new(v, 30)
+print(rH(rH(a)))
+ref (int) g
+new(g, 5)
+new(g, 10)
+print(rH(g))
 -------------------------------------------
 Symbol Table:
 ----------Empty----------
@@ -138,16 +138,16 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -410707248
+Program State: 1849118645
 Execution Stack:
-(string v; v = "./input/test.in")
-openRFile(v)
-int c
-readFile(v, c)
-print(c)
-readFile(v, c)
-print(c)
-closeRFile(v)
+((ref (int) v; new(v, 20)); ref (ref (int)) a)
+new(a, v)
+new(v, 30)
+print(rH(rH(a)))
+ref (int) g
+new(g, 5)
+new(g, 10)
+print(rH(g))
 -------------------------------------------
 Symbol Table:
 ----------Empty----------
@@ -162,17 +162,17 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -410707248
+Program State: 1849118645
 Execution Stack:
-string v
-v = "./input/test.in"
-openRFile(v)
-int c
-readFile(v, c)
-print(c)
-readFile(v, c)
-print(c)
-closeRFile(v)
+(ref (int) v; new(v, 20))
+ref (ref (int)) a
+new(a, v)
+new(v, 30)
+print(rH(rH(a)))
+ref (int) g
+new(g, 5)
+new(g, 10)
+print(rH(g))
 -------------------------------------------
 Symbol Table:
 ----------Empty----------
@@ -187,19 +187,21 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -410707248
+Program State: 1849118645
 Execution Stack:
-v = "./input/test.in"
-openRFile(v)
-int c
-readFile(v, c)
-print(c)
-readFile(v, c)
-print(c)
-closeRFile(v)
+ref (int) v
+new(v, 20)
+ref (ref (int)) a
+new(a, v)
+new(v, 30)
+print(rH(rH(a)))
+ref (int) g
+new(g, 5)
+new(g, 10)
+print(rH(g))
 -------------------------------------------
 Symbol Table:
-v -> ""
+----------Empty----------
 -------------------------------------------
 Heap:
 ----------Empty----------
@@ -211,18 +213,20 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -410707248
+Program State: 1849118645
 Execution Stack:
-openRFile(v)
-int c
-readFile(v, c)
-print(c)
-readFile(v, c)
-print(c)
-closeRFile(v)
+new(v, 20)
+ref (ref (int)) a
+new(a, v)
+new(v, 30)
+print(rH(rH(a)))
+ref (int) g
+new(g, 5)
+new(g, 10)
+print(rH(g))
 -------------------------------------------
 Symbol Table:
-v -> "./input/test.in"
+v -> (0, int)
 -------------------------------------------
 Heap:
 ----------Empty----------
@@ -234,145 +238,214 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -410707248
+Program State: 1849118645
 Execution Stack:
-int c
-readFile(v, c)
-print(c)
-readFile(v, c)
-print(c)
-closeRFile(v)
+ref (ref (int)) a
+new(a, v)
+new(v, 30)
+print(rH(rH(a)))
+ref (int) g
+new(g, 5)
+new(g, 10)
+print(rH(g))
 -------------------------------------------
 Symbol Table:
-v -> "./input/test.in"
+v -> (0, int)
 -------------------------------------------
 Heap:
-----------Empty----------
+0 -> 20
 -------------------------------------------
 File Table:
-./input/test.in -> java.io.BufferedReader@61e717c2
+----------Empty----------
 -------------------------------------------
 Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -410707248
+Program State: 1849118645
 Execution Stack:
-readFile(v, c)
-print(c)
-readFile(v, c)
-print(c)
-closeRFile(v)
+new(a, v)
+new(v, 30)
+print(rH(rH(a)))
+ref (int) g
+new(g, 5)
+new(g, 10)
+print(rH(g))
 -------------------------------------------
 Symbol Table:
-c -> 0
-v -> "./input/test.in"
+a -> (0, ref (int))
+v -> (0, int)
 -------------------------------------------
 Heap:
-----------Empty----------
+0 -> 20
 -------------------------------------------
 File Table:
-./input/test.in -> java.io.BufferedReader@61e717c2
+----------Empty----------
 -------------------------------------------
 Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -410707248
+Program State: 1849118645
 Execution Stack:
-print(c)
-readFile(v, c)
-print(c)
-closeRFile(v)
+new(v, 30)
+print(rH(rH(a)))
+ref (int) g
+new(g, 5)
+new(g, 10)
+print(rH(g))
 -------------------------------------------
 Symbol Table:
-c -> 15
-v -> "./input/test.in"
+a -> (1, ref (int))
+v -> (0, int)
 -------------------------------------------
 Heap:
-----------Empty----------
+0 -> 20
+1 -> (0, int)
 -------------------------------------------
 File Table:
-./input/test.in -> java.io.BufferedReader@61e717c2
+----------Empty----------
 -------------------------------------------
 Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: -410707248
+Program State: 1849118645
 Execution Stack:
-readFile(v, c)
-print(c)
-closeRFile(v)
+print(rH(rH(a)))
+ref (int) g
+new(g, 5)
+new(g, 10)
+print(rH(g))
 -------------------------------------------
 Symbol Table:
-c -> 15
-v -> "./input/test.in"
+a -> (1, ref (int))
+v -> (2, int)
 -------------------------------------------
 Heap:
-----------Empty----------
+0 -> 20
+1 -> (0, int)
+2 -> 30
 -------------------------------------------
 File Table:
-./input/test.in -> java.io.BufferedReader@61e717c2
+----------Empty----------
 -------------------------------------------
 Output:
-15
+----------Empty----------
 -------------------------------------------
 
-Program State: -410707248
+Program State: 1849118645
 Execution Stack:
-print(c)
-closeRFile(v)
+ref (int) g
+new(g, 5)
+new(g, 10)
+print(rH(g))
 -------------------------------------------
 Symbol Table:
-c -> 50
-v -> "./input/test.in"
+a -> (1, ref (int))
+v -> (2, int)
 -------------------------------------------
 Heap:
-----------Empty----------
+0 -> 20
+1 -> (0, int)
+2 -> 30
 -------------------------------------------
 File Table:
-./input/test.in -> java.io.BufferedReader@61e717c2
+----------Empty----------
 -------------------------------------------
 Output:
-15
+20
 -------------------------------------------
 
-Program State: -410707248
+Program State: 1849118645
 Execution Stack:
-closeRFile(v)
+new(g, 5)
+new(g, 10)
+print(rH(g))
 -------------------------------------------
 Symbol Table:
-c -> 50
-v -> "./input/test.in"
+a -> (1, ref (int))
+v -> (2, int)
+g -> (0, int)
 -------------------------------------------
 Heap:
-----------Empty----------
+0 -> 20
+1 -> (0, int)
+2 -> 30
 -------------------------------------------
 File Table:
-./input/test.in -> java.io.BufferedReader@61e717c2
+----------Empty----------
 -------------------------------------------
 Output:
-15
-50
+20
 -------------------------------------------
 
-Program State: -410707248
+Program State: 1849118645
 Execution Stack:
-----------Empty----------
+new(g, 10)
+print(rH(g))
 -------------------------------------------
 Symbol Table:
-c -> 50
-v -> "./input/test.in"
+a -> (1, ref (int))
+v -> (2, int)
+g -> (3, int)
 -------------------------------------------
 Heap:
-----------Empty----------
+0 -> 20
+1 -> (0, int)
+2 -> 30
+3 -> 5
 -------------------------------------------
 File Table:
 ----------Empty----------
 -------------------------------------------
 Output:
-15
-50
+20
+-------------------------------------------
+
+Program State: 1849118645
+Execution Stack:
+print(rH(g))
+-------------------------------------------
+Symbol Table:
+a -> (1, ref (int))
+v -> (2, int)
+g -> (4, int)
+-------------------------------------------
+Heap:
+0 -> 20
+1 -> (0, int)
+2 -> 30
+3 -> 5
+4 -> 10
+-------------------------------------------
+File Table:
+----------Empty----------
+-------------------------------------------
+Output:
+20
+-------------------------------------------
+
+Program State: 1849118645
+Execution Stack:
+----------Empty----------
+-------------------------------------------
+Symbol Table:
+a -> (1, ref (int))
+v -> (2, int)
+g -> (4, int)
+-------------------------------------------
+Heap:
+0 -> 20
+1 -> (0, int)
+2 -> 30
+4 -> 10
+-------------------------------------------
+File Table:
+----------Empty----------
+-------------------------------------------
+Output:
+20
+10
 -------------------------------------------
 
