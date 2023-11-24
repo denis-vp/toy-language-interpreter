@@ -23,7 +23,7 @@ public class CliInterpreter {
     }
 
     private static String getLogFile() {
-        String logFilePath = "./log/";
+        String logFilePath = "./logs/";
 
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please enter the log file name: ");

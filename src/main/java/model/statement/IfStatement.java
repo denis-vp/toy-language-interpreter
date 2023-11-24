@@ -42,7 +42,7 @@ public class IfStatement implements Statement {
     }
 
     @Override
-    public IDictionary<String, Type> typeCheck(IDictionary<String, model.type.Type> typeEnvironment) throws StatementException {
+    public IDictionary<String, Type> typeCheck(IDictionary<String, Type> typeEnvironment) throws StatementException {
         try {
             Type typeExpression = this.expression.typeCheck(typeEnvironment);
             if (!typeExpression.equals(new BoolType())) {

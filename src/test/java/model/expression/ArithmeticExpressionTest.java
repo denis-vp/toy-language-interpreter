@@ -2,19 +2,26 @@ package model.expression;
 
 import adt.IDictionary;
 import adt.IHeap;
-import adt.MyDictionary;
+import adt.MyConcurrentDictionary;
 import adt.MyHeap;
 import model.value.*;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ValueExpressionTest {
+class ArithmeticExpressionTest {
+    IDictionary<String, Value> symbolTable;
+    IHeap heap;
+
+    @BeforeEach
+    void setUp() {
+        this.symbolTable = new MyConcurrentDictionary<>();
+        this.heap = new MyHeap();
+    }
+
     @Test
     void eval() {
-        IDictionary<String, Value> symbolTable = new MyDictionary<>();
-        IHeap heap = new MyHeap();
-
         ValueExpression valueExpression = new ValueExpression(new IntValue(1));
         assertEquals(new IntValue(1), valueExpression.eval(symbolTable, heap));
 
@@ -26,5 +33,6 @@ class ValueExpressionTest {
 
         ValueExpression valueExpression4 = new ValueExpression(new ReferenceValue(1, new IntValue(1).getType()));
         assertEquals(new ReferenceValue(1, new IntValue(1).getType()), valueExpression4.eval(symbolTable, heap));
+
     }
 }

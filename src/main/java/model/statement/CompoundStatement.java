@@ -26,7 +26,7 @@ public class CompoundStatement implements Statement {
     }
 
     @Override
-    public IDictionary<String, Type> typeCheck(IDictionary<String, model.type.Type> typeEnvironment) throws StatementException {
+    public IDictionary<String, Type> typeCheck(IDictionary<String, Type> typeEnvironment) throws StatementException {
         return this.second.typeCheck(this.first.typeCheck(typeEnvironment));
     }
 
