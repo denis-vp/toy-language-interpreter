@@ -53,6 +53,17 @@ public class MyHeap implements IHeap {
     }
 
     @Override
+    public Map<Integer, Value> getContent() {
+        return new HashMap<>(this.heap);
+    }
+
+    @Override
+    public void setContent(Map<Integer, Value> heap) {
+        this.heap.clear();
+        this.heap.putAll(heap);
+    }
+
+    @Override
     public Set<Integer> keys() {
         return new HashSet<>(this.heap.keySet());
     }
@@ -60,11 +71,6 @@ public class MyHeap implements IHeap {
     @Override
     public Collection<Value> values() {
         return new ArrayList<>(this.heap.values());
-    }
-
-    @Override
-    public Collection<Map.Entry<Integer, Value>> entrySet() {
-        return new ArrayList<>(this.heap.entrySet());
     }
 
     public String toString() {

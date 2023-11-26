@@ -97,9 +97,9 @@ public class ExampleGenerator {
 //    File handling example
         Statement declaringV = new VarDecStatement("v", new StringType());
         Statement assigningV = new AssignmentStatement("v", new ValueExpression(new StringValue("./input/test.in")));
-        Statement openingFile = new OpenFileReadStatement(new VarNameExpression("v"));
+        Statement openingFile = new OpenFileStatement(new VarNameExpression("v"));
         Statement declaringC = new VarDecStatement("c", new IntType());
-        Statement readingC = new ReadFileStatement(new VarNameExpression("v"), "c");
+        Statement readingC = new FileReadStatement(new VarNameExpression("v"), "c");
         Statement printingC = new PrintStatement(new VarNameExpression("c"));
         Statement closingFile = new CloseFileReadStatement(new VarNameExpression("v"));
 

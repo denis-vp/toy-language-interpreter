@@ -76,7 +76,14 @@ public class Controller {
         });
 
         while (!programStates.isEmpty()) {
-            this.conservativeGarbageCollector(this.repository.getSymbolTable(), this.repository.getHeap());
+            this.repository.getHeap().setContent(
+                    this.garbageCollector(
+                        this.getAddressesFromSymbolTable(this.repository.getSymbolTable().values()),
+                        this.repository.getHeap().getContent()
+            ));
+
+//            Other way to do it:
+//            this.conservativeGarbageCollector(this.repository.getSymbolTable(), this.repository.getHeap());
 
             try {
                 this.oneStepForAllPrograms(programStates);
@@ -97,16 +104,39 @@ public class Controller {
                 .collect(Collectors.toList());
     }
 
-    private void conservativeGarbageCollector(IDictionary<String, Value> symbolTable, IHeap heap) {
-        Set<Integer> freedAddresses = new HashSet<>(heap.keys());
-        symbolTable.values().stream()
-                .filter(value -> value instanceof ReferenceValue)
-                .forEach(value -> {
-                    while (value instanceof ReferenceValue referenceValue) {
-                        freedAddresses.remove(referenceValue.getAddress());
-                        value = heap.get(referenceValue.getAddress());
+//    Other way to do it:
+//    private void conservativeGarbageCollector(IDictionary<String, Value> symbolTable, IHeap heap) {
+//        Set<Integer> freedAddresses = new HashSet<>(heap.keys());
+//        symbolTable.values().stream()
+//                .filter(value -> value instanceof ReferenceValue)
+//                .forEach(value -> {
+//                    while (value instanceof ReferenceValue referenceValue) {
+//                        freedAddresses.remove(referenceValue.getAddress());
+//                        value = heap.get(referenceValue.getAddress());
+//                    }
+//                });
+//        freedAddresses.forEach(heap::remove);
+//    }
+
+    Map<Integer, Value> garbageCollector(List<Integer> symbolTableAddresses, Map<Integer, Value> heap) {
+        return heap.entrySet().stream()
+                .filter(entry -> {
+                    for (Value value : heap.values()) {
+                        if (value instanceof ReferenceValue referenceValue) {
+                            if (referenceValue.getAddress() == entry.getKey()) {
+                                return true;
+                            }
+                        }
                     }
-                });
-        freedAddresses.forEach(heap::remove);
+                    return symbolTableAddresses.contains(entry.getKey());
+                })
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+    }
+
+    List<Integer> getAddressesFromSymbolTable(Collection<Value> symbolTableValues) {
+        return symbolTableValues.stream()
+                .filter(value -> value instanceof ReferenceValue)
+                .map(value -> ((ReferenceValue) value).getAddress())
+                .toList();
     }
 }

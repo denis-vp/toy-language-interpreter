@@ -16,11 +16,11 @@ import model.value.Value;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class ReadFileStatement implements Statement {
+public class FileReadStatement implements Statement {
     private final Expression expression;
     private final String id;
 
-    public ReadFileStatement(Expression expression, String id) {
+    public FileReadStatement(Expression expression, String id) {
         this.expression = expression;
         this.id = id;
     }
@@ -84,7 +84,7 @@ public class ReadFileStatement implements Statement {
 
     @Override
     public Statement deepCopy() {
-        return new ReadFileStatement(this.expression.deepCopy(), this.id);
+        return new FileReadStatement(this.expression.deepCopy(), this.id);
     }
 
     public String toString() {

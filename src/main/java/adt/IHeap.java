@@ -21,9 +21,11 @@ public interface IHeap {
 
     boolean isEmpty();
 
+    Map<Integer, Value> getContent();
+
+    void setContent(Map<Integer, Value> heap);
+
     Set<Integer> keys();
 
     Collection<Value> values();
-
-    Collection<Map.Entry<Integer, Value>> entrySet();
 }
