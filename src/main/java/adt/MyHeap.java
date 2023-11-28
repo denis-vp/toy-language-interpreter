@@ -7,7 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class MyHeap implements IHeap {
     private final Map<Integer, Value> heap = new ConcurrentHashMap<>();
-    private int nextFreeAddress = 0;
+    private int nextFreeAddress = 1;
 
     private void moveNextFreeAddress() {
         while (this.heap.containsKey(this.nextFreeAddress)) {

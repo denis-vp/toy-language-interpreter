@@ -1,6 +1,9 @@
 package adt;
 
+import model.value.Value;
+
 import java.util.Collection;
+import java.util.Map;
 import java.util.Set;
 
 public interface IDictionary<K, V> {
@@ -17,6 +20,8 @@ public interface IDictionary<K, V> {
     int size();
 
     boolean isEmpty();
+
+    Collection<Map.Entry<K, V>> entrySet();
 
     Set<K> keys();
 

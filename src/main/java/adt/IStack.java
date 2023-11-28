@@ -2,7 +2,7 @@ package adt;
 
 import exception.ADTException;
 
-import java.util.ArrayList;
+import java.util.Collection;
 
 public interface IStack<T> {
     void push(T element);
@@ -14,4 +14,6 @@ public interface IStack<T> {
     int size();
 
     boolean isEmpty();
+
+    Collection<T> reversed();
 }

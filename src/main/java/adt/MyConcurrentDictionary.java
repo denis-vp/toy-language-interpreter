@@ -42,6 +42,11 @@ public class MyConcurrentDictionary<K, V> implements IDictionary<K, V> {
     }
 
     @Override
+    public Collection<Map.Entry<K, V>> entrySet() {
+        return this.map.entrySet();
+    }
+
+    @Override
     public Set<K> keys() {
         return new HashSet<>(this.map.keySet());
     }

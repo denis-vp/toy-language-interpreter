@@ -1,9 +1,11 @@
 package adt;
 
 
+import model.value.Value;
+
 import java.util.*;
 
-public class MyDictionary<K, V> implements IDictionary<K, V> {
+public class MyDictionary<K, V> implements IDictionary<K,V> {
     private final Map<K, V> map = new HashMap<>();
 
     @Override
@@ -39,6 +41,11 @@ public class MyDictionary<K, V> implements IDictionary<K, V> {
     @Override
     public boolean isEmpty() {
         return this.map.isEmpty();
+    }
+
+    @Override
+    public Collection<Map.Entry<K, V>> entrySet() {
+        return this.map.entrySet();
     }
 
     @Override

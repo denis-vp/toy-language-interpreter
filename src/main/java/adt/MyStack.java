@@ -2,8 +2,7 @@ package adt;
 
 import exception.ADTException;
 
-import java.util.EmptyStackException;
-import java.util.Stack;
+import java.util.*;
 
 public class MyStack<T> implements IStack<T> {
     private final Stack<T> stack = new Stack<>();
@@ -39,6 +38,13 @@ public class MyStack<T> implements IStack<T> {
     @Override
     public boolean isEmpty() {
         return this.stack.isEmpty();
+    }
+
+    @Override
+    public Collection<T> reversed() {
+        List<T> reversed = new ArrayList<>(this.stack);
+        Collections.reverse(reversed);
+        return reversed;
     }
 
     public String toString() {

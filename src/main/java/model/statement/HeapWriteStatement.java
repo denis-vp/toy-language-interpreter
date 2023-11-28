@@ -25,7 +25,6 @@ public class HeapWriteStatement implements Statement {
         IDictionary<String, Value> symbolTable = state.getSymbolTable();
         IHeap heap = state.getHeap();
 
-
         if (!symbolTable.search(this.id)) {
             throw new StatementException("Variable " + this.id + " is not defined.");
         }

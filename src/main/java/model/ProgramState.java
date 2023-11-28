@@ -57,6 +57,9 @@ public class ProgramState {
         return this.id;
     }
 
+    public Statement getOriginalProgram() {
+        return this.originalProgram;
+    }
 
     public IStack<Statement> getExecutionStack() {
         return this.executionStack;

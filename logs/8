@@ -1,58 +1,4 @@
-Program State: 1034744888
-Execution Stack:
-(((int v; v = 1); for ((int i; i = 2); i < 10; i = i + 1) v = v * i); print(v))
--------------------------------------------
-Symbol Table:
-----------Empty----------
--------------------------------------------
-Heap:
-----------Empty----------
--------------------------------------------
-File Table:
-----------Empty----------
--------------------------------------------
-Output:
-----------Empty----------
--------------------------------------------
-
-Program State: 1034744888
-Execution Stack:
-((int v; v = 1); for ((int i; i = 2); i < 10; i = i + 1) v = v * i)
-print(v)
--------------------------------------------
-Symbol Table:
-----------Empty----------
--------------------------------------------
-Heap:
-----------Empty----------
--------------------------------------------
-File Table:
-----------Empty----------
--------------------------------------------
-Output:
-----------Empty----------
--------------------------------------------
-
-Program State: 1034744888
-Execution Stack:
-(int v; v = 1)
-for ((int i; i = 2); i < 10; i = i + 1) v = v * i
-print(v)
--------------------------------------------
-Symbol Table:
-----------Empty----------
--------------------------------------------
-Heap:
-----------Empty----------
--------------------------------------------
-File Table:
-----------Empty----------
--------------------------------------------
-Output:
-----------Empty----------
--------------------------------------------
-
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 int v
 v = 1
@@ -72,7 +18,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 v = 1
 for ((int i; i = 2); i < 10; i = i + 1) v = v * i
@@ -91,7 +37,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 for ((int i; i = 2); i < 10; i = i + 1) v = v * i
 print(v)
@@ -109,7 +55,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 (int i; i = 2)
 while (i < 10) (v = v * i; i = i + 1)
@@ -128,7 +74,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 int i
 i = 2
@@ -148,7 +94,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 i = 2
 while (i < 10) (v = v * i; i = i + 1)
@@ -168,7 +114,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
@@ -187,7 +133,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 (v = v * i; i = i + 1)
 while (i < 10) (v = v * i; i = i + 1)
@@ -207,7 +153,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 v = v * i
 i = i + 1
@@ -228,7 +174,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 i = i + 1
 while (i < 10) (v = v * i; i = i + 1)
@@ -248,7 +194,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
@@ -267,7 +213,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 (v = v * i; i = i + 1)
 while (i < 10) (v = v * i; i = i + 1)
@@ -287,7 +233,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 v = v * i
 i = i + 1
@@ -308,7 +254,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 i = i + 1
 while (i < 10) (v = v * i; i = i + 1)
@@ -328,7 +274,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
@@ -347,7 +293,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 (v = v * i; i = i + 1)
 while (i < 10) (v = v * i; i = i + 1)
@@ -367,7 +313,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 v = v * i
 i = i + 1
@@ -388,7 +334,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 i = i + 1
 while (i < 10) (v = v * i; i = i + 1)
@@ -408,7 +354,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
@@ -427,7 +373,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 (v = v * i; i = i + 1)
 while (i < 10) (v = v * i; i = i + 1)
@@ -447,7 +393,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 v = v * i
 i = i + 1
@@ -468,7 +414,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 i = i + 1
 while (i < 10) (v = v * i; i = i + 1)
@@ -488,7 +434,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
@@ -507,7 +453,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 (v = v * i; i = i + 1)
 while (i < 10) (v = v * i; i = i + 1)
@@ -527,7 +473,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 v = v * i
 i = i + 1
@@ -548,7 +494,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 i = i + 1
 while (i < 10) (v = v * i; i = i + 1)
@@ -568,7 +514,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
@@ -587,7 +533,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 (v = v * i; i = i + 1)
 while (i < 10) (v = v * i; i = i + 1)
@@ -607,7 +553,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 v = v * i
 i = i + 1
@@ -628,7 +574,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 i = i + 1
 while (i < 10) (v = v * i; i = i + 1)
@@ -648,7 +594,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
@@ -667,7 +613,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 (v = v * i; i = i + 1)
 while (i < 10) (v = v * i; i = i + 1)
@@ -687,7 +633,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 v = v * i
 i = i + 1
@@ -708,7 +654,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 i = i + 1
 while (i < 10) (v = v * i; i = i + 1)
@@ -728,7 +674,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 while (i < 10) (v = v * i; i = i + 1)
 print(v)
@@ -747,7 +693,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 (v = v * i; i = i + 1)
 while (i < 10) (v = v * i; i = i + 1)
@@ -767,7 +713,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 v = v * i
 i = i + 1
@@ -788,7 +734,7 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 i = i + 1
 while (i < 10) (v = v * i; i = i + 1)
@@ -808,27 +754,9 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
 Execution Stack:
 while (i < 10) (v = v * i; i = i + 1)
-print(v)
--------------------------------------------
-Symbol Table:
-v -> 362880
-i -> 10
--------------------------------------------
-Heap:
-----------Empty----------
--------------------------------------------
-File Table:
-----------Empty----------
--------------------------------------------
-Output:
-----------Empty----------
--------------------------------------------
-
-Program State: 1034744888
-Execution Stack:
 print(v)
 -------------------------------------------
 Symbol Table:
@@ -845,7 +773,25 @@ Output:
 ----------Empty----------
 -------------------------------------------
 
-Program State: 1034744888
+Program State: -275965287
+Execution Stack:
+print(v)
+-------------------------------------------
+Symbol Table:
+v -> 362880
+i -> 10
+-------------------------------------------
+Heap:
+----------Empty----------
+-------------------------------------------
+File Table:
+----------Empty----------
+-------------------------------------------
+Output:
+----------Empty----------
+-------------------------------------------
+
+Program State: -275965287
 Execution Stack:
 ----------Empty----------
 -------------------------------------------

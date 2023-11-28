@@ -1,9 +1,10 @@
 package controller;
 
-import adt.IDictionary;
-import adt.IHeap;
+import adt.IStack;
 import exception.*;
 import model.ProgramState;
+import model.statement.CompoundStatement;
+import model.statement.Statement;
 import model.value.ReferenceValue;
 import model.value.Value;
 import repository.IRepository;
@@ -17,21 +18,60 @@ import java.util.stream.Collectors;
 
 public class Controller {
     private final IRepository repository;
-    private ExecutorService executor;
+    private Boolean logOutput;
+    private final ExecutorService executor = Executors.newFixedThreadPool(2);
 
-    public Controller(IRepository repository) {
+    public Controller(IRepository repository, Boolean logOutput) {
         this.repository = repository;
+        this.logOutput = logOutput;
+        this.skipInitialCompoundStatementUnpacking();
+    }
+
+    public IRepository getRepository() {
+        return this.repository;
+    }
+
+    public ExecutorService getExecutor() {
+        return this.executor;
+    }
+
+    private void skipInitialCompoundStatementUnpacking() {
+        boolean aux = logOutput;
+        logOutput = false;
+
+        List<ProgramState> programStates = this.removeCompletedPrograms(this.repository.getProgramStateList());
+
+        while (!programStates.isEmpty()) {
+            IStack<Statement> executionStack = programStates.get(0).getExecutionStack();
+            try {
+                if (!(executionStack.top() instanceof CompoundStatement)) {
+                    break;
+                }
+            } catch (ADTException e) {
+                throw new RuntimeException(e);
+            }
+
+            this.repository.getHeap().setContent(
+                    this.garbageCollector(
+                            this.getAddressesFromSymbolTable(this.repository.getSymbolTable().values()),
+                            this.repository.getHeap().getContent()
+                    ));
+
+            try {
+                this.oneStepForAllPrograms(programStates);
+            } catch (RuntimeException | ControllerException e) {
+                throw new RuntimeException(e);
+            }
+
+            programStates = this.removeCompletedPrograms(this.repository.getProgramStateList());
+        }
+
+        this.repository.setProgramStateList(programStates);
+
+        logOutput = aux;
     }
 
     public void oneStepForAllPrograms(List<ProgramState> programStates) throws ControllerException {
-//        programStates.forEach(programState -> {
-//            try {
-//                this.repository.logProgramStateExecution(programState);
-//            } catch (RepositoryException e) {
-//                throw new RuntimeException(e);
-//            }
-//        });
-
         List<Callable<ProgramState>> callList = programStates.stream()
                 .map((ProgramState programState) -> (Callable<ProgramState>) programState::oneStep)
                 .toList();
@@ -52,38 +92,37 @@ public class Controller {
             throw new ControllerException(e.getMessage());
         }
 
-        programStates.forEach(programState -> {
-            try {
-                this.repository.logProgramStateExecution(programState);
-            } catch (RepositoryException e) {
-                throw new RuntimeException(e);
-            }
-        });
+        if (this.logOutput) {
+            programStates.forEach(programState -> {
+                try {
+                    this.repository.logProgramStateExecution(programState);
+                } catch (RepositoryException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+        }
 
         this.repository.setProgramStateList(programStates);
     }
 
     public void allSteps() throws ControllerException {
-        this.executor = Executors.newFixedThreadPool(2);
-
         List<ProgramState> programStates = this.removeCompletedPrograms(this.repository.getProgramStateList());
-        programStates.forEach(programState -> {
-            try {
-                this.repository.logProgramStateExecution(programState);
-            } catch (RepositoryException e) {
-                throw new RuntimeException(e);
-            }
-        });
+        if (this.logOutput) {
+            programStates.forEach(programState -> {
+                try {
+                    this.repository.logProgramStateExecution(programState);
+                } catch (RepositoryException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+        }
 
         while (!programStates.isEmpty()) {
             this.repository.getHeap().setContent(
                     this.garbageCollector(
-                        this.getAddressesFromSymbolTable(this.repository.getSymbolTable().values()),
-                        this.repository.getHeap().getContent()
-            ));
-
-//            Other way to do it:
-//            this.conservativeGarbageCollector(this.repository.getSymbolTable(), this.repository.getHeap());
+                            this.getAddressesFromSymbolTable(this.repository.getSymbolTable().values()),
+                            this.repository.getHeap().getContent()
+                    ));
 
             try {
                 this.oneStepForAllPrograms(programStates);
@@ -98,27 +137,13 @@ public class Controller {
         this.repository.setProgramStateList(programStates);
     }
 
-    List<ProgramState> removeCompletedPrograms(List<ProgramState> programStates) {
+    public List<ProgramState> removeCompletedPrograms(List<ProgramState> programStates) {
         return programStates.stream()
                 .filter(ProgramState::isNotCompleted)
                 .collect(Collectors.toList());
     }
 
-//    Other way to do it:
-//    private void conservativeGarbageCollector(IDictionary<String, Value> symbolTable, IHeap heap) {
-//        Set<Integer> freedAddresses = new HashSet<>(heap.keys());
-//        symbolTable.values().stream()
-//                .filter(value -> value instanceof ReferenceValue)
-//                .forEach(value -> {
-//                    while (value instanceof ReferenceValue referenceValue) {
-//                        freedAddresses.remove(referenceValue.getAddress());
-//                        value = heap.get(referenceValue.getAddress());
-//                    }
-//                });
-//        freedAddresses.forEach(heap::remove);
-//    }
-
-    Map<Integer, Value> garbageCollector(List<Integer> symbolTableAddresses, Map<Integer, Value> heap) {
+    public Map<Integer, Value> garbageCollector(List<Integer> symbolTableAddresses, Map<Integer, Value> heap) {
         return heap.entrySet().stream()
                 .filter(entry -> {
                     for (Value value : heap.values()) {
@@ -133,7 +158,7 @@ public class Controller {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
-    List<Integer> getAddressesFromSymbolTable(Collection<Value> symbolTableValues) {
+    public List<Integer> getAddressesFromSymbolTable(Collection<Value> symbolTableValues) {
         return symbolTableValues.stream()
                 .filter(value -> value instanceof ReferenceValue)
                 .map(value -> ((ReferenceValue) value).getAddress())

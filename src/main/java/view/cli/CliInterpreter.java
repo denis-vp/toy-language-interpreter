@@ -2,7 +2,7 @@ package view.cli;
 
 import adt.*;
 import controller.Controller;
-import examplegenerator.ExampleGenerator;
+import programgenerator.ProgramGenerator;
 import model.ProgramState;
 import model.statement.Statement;
 import repository.IRepository;
@@ -39,14 +39,14 @@ public class CliInterpreter {
     }
 
     private static void addCommands(String logFilePath, TextMenu menu) {
-        List<Statement> examples = ExampleGenerator.getExamples();
-        for (int i = 0; i < examples.size(); i++) {
-            Statement example = examples.get(i);
+        List<Statement> programs = ProgramGenerator.getPrograms();
+        for (int i = 0; i < programs.size(); i++) {
+            Statement program = programs.get(i);
 
-            ProgramState programState = new ProgramState(example, new MyStack<>(), new MyDictionary<>(),
+            ProgramState programState = new ProgramState(program, new MyStack<>(), new MyDictionary<>(),
                     new MyHeap(), new MyConcurrentDictionary<>(), new MyList<>());
             IRepository repository = new Repository(programState, logFilePath);
-            Controller controller = new Controller(repository);
+            Controller controller = new Controller(repository, true);
 
             menu.addCommand(new RunExampleCommand(String.valueOf(i + 1), "run example " + (i + 1), controller));
         }

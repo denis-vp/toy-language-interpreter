@@ -1,4 +1,4 @@
-package examplegenerator;
+package programgenerator;
 
 import adt.IDictionary;
 import adt.MyDictionary;
@@ -13,18 +13,18 @@ import model.value.StringValue;
 import java.util.Arrays;
 import java.util.List;
 
-public class ExampleGenerator {
-    public static List<Statement> getExamples() {
+public class ProgramGenerator {
+    public static List<Statement> getPrograms() {
         List<Statement> examples = Arrays.asList(
-                ExampleGenerator.getExample1(),
-                ExampleGenerator.getExample2(),
-                ExampleGenerator.getExample3(),
-                ExampleGenerator.getExample4(),
-                ExampleGenerator.getExample5(),
-                ExampleGenerator.getExample6(),
-                ExampleGenerator.getExample7(),
-                ExampleGenerator.getExample8(),
-                ExampleGenerator.getExample9()
+                ProgramGenerator.getProgram1(),
+                ProgramGenerator.getProgram2(),
+                ProgramGenerator.getProgram3(),
+                ProgramGenerator.getProgram4(),
+                ProgramGenerator.getProgram5(),
+                ProgramGenerator.getProgram6(),
+                ProgramGenerator.getProgram7(),
+                ProgramGenerator.getProgram8(),
+                ProgramGenerator.getProgram9()
         );
 
         for (Statement example : examples) {
@@ -40,7 +40,7 @@ public class ExampleGenerator {
         return examples;
     }
 
-    private static Statement buildExample(Statement... statements) {
+    private static Statement buildProgram(Statement... statements) {
         if (statements.length == 0) {
             return new NopStatement();
         } else if (statements.length == 1) {
@@ -55,16 +55,16 @@ public class ExampleGenerator {
         return example;
     }
 
-    private static Statement getExample1() {
+    private static Statement getProgram1() {
 //    Basic Example
         Statement declaringV = new VarDecStatement("v", new IntType());
         Statement assigningV = new AssignmentStatement("v", new ValueExpression(new IntValue(2)));
         Statement printingV = new PrintStatement(new VarNameExpression("v"));
 
-        return ExampleGenerator.buildExample(declaringV, assigningV, printingV);
+        return ProgramGenerator.buildProgram(declaringV, assigningV, printingV);
     }
 
-    private static Statement getExample2() {
+    private static Statement getProgram2() {
 //    Arithmetic expressions example
         Statement declaringA = new VarDecStatement("a", new IntType());
         Statement declaringB = new VarDecStatement("b", new IntType());
@@ -77,10 +77,10 @@ public class ExampleGenerator {
                         new ValueExpression(new IntValue(1))));
         Statement printingB = new PrintStatement(new VarNameExpression("b"));
 
-        return ExampleGenerator.buildExample(declaringA, declaringB, assigningA, assigningB, printingB);
+        return ProgramGenerator.buildProgram(declaringA, declaringB, assigningA, assigningB, printingB);
     }
 
-    private static Statement getExample3() {
+    private static Statement getProgram3() {
 //    If statement example
         Statement declaringA = new VarDecStatement("a", new BoolType());
         Statement declaringV = new VarDecStatement("v", new IntType());
@@ -90,10 +90,10 @@ public class ExampleGenerator {
                 new AssignmentStatement("v", new ValueExpression(new IntValue(3))));
         Statement printingV = new PrintStatement(new VarNameExpression("v"));
 
-        return ExampleGenerator.buildExample(declaringA, declaringV, assigningA, ifStatement, printingV);
+        return ProgramGenerator.buildProgram(declaringA, declaringV, assigningA, ifStatement, printingV);
     }
 
-    private static Statement getExample4() {
+    private static Statement getProgram4() {
 //    File handling example
         Statement declaringV = new VarDecStatement("v", new StringType());
         Statement assigningV = new AssignmentStatement("v", new ValueExpression(new StringValue("./input/test.in")));
@@ -103,11 +103,11 @@ public class ExampleGenerator {
         Statement printingC = new PrintStatement(new VarNameExpression("c"));
         Statement closingFile = new CloseFileReadStatement(new VarNameExpression("v"));
 
-        return ExampleGenerator.buildExample(declaringV, assigningV, openingFile, declaringC, readingC,
+        return ProgramGenerator.buildProgram(declaringV, assigningV, openingFile, declaringC, readingC,
                 printingC, readingC, printingC, closingFile);
     }
 
-    private static Statement getExample5() {
+    private static Statement getProgram5() {
 //    Relational expressions example
         Statement declaringV = new VarDecStatement("v", new IntType());
         Statement assigningV = new AssignmentStatement("v", new ValueExpression(new IntValue(1)));
@@ -115,10 +115,10 @@ public class ExampleGenerator {
                 new PrintStatement(new VarNameExpression("v")),
                 new NopStatement());
 
-        return ExampleGenerator.buildExample(declaringV, assigningV, ifStatement);
+        return ProgramGenerator.buildProgram(declaringV, assigningV, ifStatement);
     }
 
-    private static Statement getExample6() {
+    private static Statement getProgram6() {
 //    Heap handling example
         Statement declaringV = new VarDecStatement("v", new ReferenceType(new IntType()));
         Statement allocatingV = new HeapAllocationStatement("v", new ValueExpression(new IntValue(20)));
@@ -131,11 +131,11 @@ public class ExampleGenerator {
         Statement allocatingG2 = new HeapAllocationStatement("g", new ValueExpression(new IntValue(10)));
         Statement printingG = new PrintStatement(new HeapReadExpression(new VarNameExpression("g")));
 
-        return ExampleGenerator.buildExample(declaringV, allocatingV, declaringA, allocatingA,
+        return ProgramGenerator.buildProgram(declaringV, allocatingV, declaringA, allocatingA,
                 allocatingV2, printingA, declaringG, allocatingG, allocatingG2, printingG);
     }
 
-    private static Statement getExample7() {
+    private static Statement getProgram7() {
 //    While statement example
         Statement declaringV = new VarDecStatement("v", new IntType());
         Statement assigningV = new AssignmentStatement("v", new ValueExpression(new IntValue(4)));
@@ -146,10 +146,10 @@ public class ExampleGenerator {
                 new VarNameExpression("v"), new ValueExpression(new IntValue(0))),
                 new CompoundStatement(printingV, decrementingV));
 
-        return ExampleGenerator.buildExample(declaringV, assigningV, whileStatement);
+        return ProgramGenerator.buildProgram(declaringV, assigningV, whileStatement);
     }
 
-    private static Statement getExample8() {
+    private static Statement getProgram8() {
 //    For statement example
         Statement declaringV = new VarDecStatement("v", new IntType());
         Statement assigningV = new AssignmentStatement("v", new ValueExpression(new IntValue(1)));
@@ -163,10 +163,10 @@ public class ExampleGenerator {
                 new VarNameExpression("i"), new ValueExpression(new IntValue(10))), incrementingI, multiplyingV);
         Statement printingV = new PrintStatement(new VarNameExpression("v"));
 
-        return ExampleGenerator.buildExample(declaringV, assigningV, forStatement, printingV);
+        return ProgramGenerator.buildProgram(declaringV, assigningV, forStatement, printingV);
     }
 
-    private static Statement getExample9() {
+    private static Statement getProgram9() {
 //    Threading example
         Statement declaringV = new VarDecStatement("v", new IntType());
         Statement declaringA = new VarDecStatement("a", new ReferenceType(new IntType()));
@@ -179,6 +179,6 @@ public class ExampleGenerator {
         Statement thread1 = new ForkStatement(new CompoundStatement(writingA,
                 new CompoundStatement(assigningV2, new CompoundStatement(printingV, printingA))));
 
-        return ExampleGenerator.buildExample(declaringV, declaringA, assigningV, allocatingA, thread1, printingV, printingA);
+        return ProgramGenerator.buildProgram(declaringV, declaringA, assigningV, allocatingA, thread1, printingV, printingA);
     }
 }
