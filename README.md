@@ -7,6 +7,7 @@ Welcome to the Toy Language Interpreter repository! This project is a Java-based
 
 ## Features
 
+- **Gui Debugger**: Step through code and inspect variables in a gui debugger.
 - **Data Types**: Support for integer, float, boolean, string and reference data types.
 - **Expressions**: Evaluate arithmetic, logical and relational expressions.
 - **Print Statements**: Display results and messages in the interpreter.
@@ -24,7 +25,6 @@ This project is an ongoing work in progress, and there are plans to enhance it w
 - **Parser**: Introduce a language parser for more structured code.
 - **Additional Data Types**: Expand the range of supported data types.
 - **Additional Loop Types**: Support for do-while and for-each loops.
-- **Debugger**: Add a gui debugger to step through code and inspect variables.
 - **And More**: Explore other language features and improvements.
 
 ## Getting Started
