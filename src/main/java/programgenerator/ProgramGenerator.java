@@ -10,34 +10,37 @@ import model.value.BoolValue;
 import model.value.IntValue;
 import model.value.StringValue;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class ProgramGenerator {
     public static List<Statement> getPrograms() {
-        List<Statement> examples = Arrays.asList(
-                ProgramGenerator.getProgram1(),
-                ProgramGenerator.getProgram2(),
-                ProgramGenerator.getProgram3(),
-                ProgramGenerator.getProgram4(),
-                ProgramGenerator.getProgram5(),
-                ProgramGenerator.getProgram6(),
-                ProgramGenerator.getProgram7(),
-                ProgramGenerator.getProgram8(),
-                ProgramGenerator.getProgram9()
-        );
+        ArrayList<Statement> programs = new ArrayList<>(
+                Arrays.asList(
+                        ProgramGenerator.getProgram1(),
+                        ProgramGenerator.getProgram2(),
+                        ProgramGenerator.getProgram3(),
+                        ProgramGenerator.getProgram4(),
+                        ProgramGenerator.getProgram5(),
+                        ProgramGenerator.getProgram6(),
+                        ProgramGenerator.getProgram7(),
+                        ProgramGenerator.getProgram8(),
+                        ProgramGenerator.getProgram9()
+                ));
 
-        for (Statement example : examples) {
+        for (int i = 0; i < programs.size(); i++) {
             try {
                 IDictionary<String, Type> typeEnvironment = new MyDictionary<>();
-                example.typeCheck(typeEnvironment);
+                programs.get(i).typeCheck(typeEnvironment);
             } catch (StatementException e) {
                 System.out.println(e.getMessage());
-                examples.remove(example);
+                programs.remove(i);
+                i--;
             }
         }
 
-        return examples;
+        return programs;
     }
 
     private static Statement buildProgram(Statement... statements) {
@@ -180,5 +183,14 @@ public class ProgramGenerator {
                 new CompoundStatement(assigningV2, new CompoundStatement(printingV, printingA))));
 
         return ProgramGenerator.buildProgram(declaringV, declaringA, assigningV, allocatingA, thread1, printingV, printingA);
+    }
+
+    private static Statement getProgram10() {
+        Statement declaringV = new VarDecStatement("v", new IntType());
+        Statement assigningV = new AssignmentStatement("v", new ValueExpression(new IntValue(10)));
+        Statement thread1 = new ForkStatement(new ForkStatement(new PrintStatement(new VarNameExpression("v"))));
+        Statement printingV = new PrintStatement(new VarNameExpression("v"));
+
+        return ProgramGenerator.buildProgram(declaringV, assigningV, thread1, printingV);
     }
 }

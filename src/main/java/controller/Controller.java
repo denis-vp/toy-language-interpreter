@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 public class Controller {
     private final IRepository repository;
     private Boolean logOutput;
-    private final ExecutorService executor = Executors.newFixedThreadPool(2);
+    private final ExecutorService executor = Executors.newFixedThreadPool(8);
 
     public Controller(IRepository repository, Boolean logOutput) {
         this.repository = repository;
