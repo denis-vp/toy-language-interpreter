@@ -1,7 +1,7 @@
 package model.statement;
 
 import adt.IDictionary;
-import adt.ILockTable;
+import adt.ISyncTable;
 import exception.StatementException;
 import model.ProgramState;
 import model.type.IntType;
@@ -19,7 +19,7 @@ public class LockStatement implements Statement {
     @Override
     public ProgramState execute(ProgramState state) throws StatementException {
         IDictionary<String, Value> symbolTable = state.getSymbolTable();
-        ILockTable lockTable = state.getLockTable();
+        ISyncTable lockTable = state.getLockTable();
 
         if (!symbolTable.search(this.id)) {
             throw new StatementException("Variable " + this.id + " is not defined.");

@@ -10,8 +10,6 @@ import java.io.IOException;
 
 
 // TODO: Semaphore
-// TODO: Conditional assignment
-// TODO: Lock + Unlock
 // TODO: CountDownLatch
 // TODO: Switch
 // TODO: RepeatUntil
@@ -29,7 +27,7 @@ public class GuiInterpreter extends Application {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setMinWidth(800);
-        stage.setMinHeight(500);
+        stage.setMinHeight(750);
 
         stage.setTitle("Toy Language Interpreter - Select Window");
         stage.show();

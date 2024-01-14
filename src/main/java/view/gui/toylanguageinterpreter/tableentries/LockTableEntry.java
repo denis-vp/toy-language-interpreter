@@ -1,30 +1,29 @@
 package view.gui.toylanguageinterpreter.tableentries;
 
 import javafx.beans.property.SimpleStringProperty;
-import model.value.Value;
 
-public class HeapTableEntry {
+public class LockTableEntry {
     private final int address;
-    private final Value value;
+    private final int threadId;
 
-    public HeapTableEntry(int address, Value value) {
+    public LockTableEntry(int address, int threadId) {
         this.address = address;
-        this.value = value;
+        this.threadId = threadId;
     }
 
     public int getAddress() {
         return this.address;
     }
 
-    public Value getValue() {
-        return this.value;
+    public int getThreadId() {
+        return this.threadId;
     }
 
     public SimpleStringProperty addressProperty() {
         return new SimpleStringProperty(String.valueOf(this.address));
     }
 
-    public SimpleStringProperty valueProperty() {
-        return new SimpleStringProperty(this.value.toString());
+    public SimpleStringProperty threadIdProperty() {
+        return new SimpleStringProperty(String.valueOf(this.threadId));
     }
 }

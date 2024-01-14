@@ -19,14 +19,14 @@ public class ProgramState {
     private final IHeap heap;
     private final IDictionary<String, BufferedReader> fileTable;
     private final IList<Value> output;
-    private final ILockTable lockTable;
+    private final ISyncTable lockTable;
     private final int id;
     private static final Set<Integer> ids = new HashSet<>();
 
     public ProgramState(Statement originalProgram,
                         IStack<Statement> executionStack, IDictionary<String, Value> symbolTable,
                         IHeap heap, IDictionary<String, BufferedReader> fileTable,
-                        IList<Value> output, ILockTable lockTable) {
+                        IList<Value> output, ISyncTable lockTable) {
 
         this.originalProgram = originalProgram.deepCopy();
         this.executionStack = executionStack;
@@ -80,7 +80,7 @@ public class ProgramState {
         return this.output;
     }
 
-    public ILockTable getLockTable() {
+    public ISyncTable getLockTable() {
         return this.lockTable;
     }
 

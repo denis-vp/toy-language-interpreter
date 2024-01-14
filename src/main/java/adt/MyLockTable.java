@@ -1,9 +1,11 @@
 package adt;
 
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class MyLockTable implements ILockTable {
+public class MyLockTable implements ISyncTable {
     private final Map<Integer, Integer> lockTable = new ConcurrentHashMap<>();
     private int nextFreeAddress = 1;
 
@@ -48,6 +50,11 @@ public class MyLockTable implements ILockTable {
     @Override
     public boolean isEmpty() {
         return this.lockTable.isEmpty();
+    }
+
+    @Override
+    public Set<Integer> keys() {
+        return new HashSet<>(this.lockTable.keySet());
     }
 
     public String toString() {

@@ -27,7 +27,8 @@ public class ProgramGenerator {
                         ProgramGenerator.getProgram7(),
                         ProgramGenerator.getProgram8(),
                         ProgramGenerator.getProgram9(),
-                        ProgramGenerator.getProgram10()
+                        ProgramGenerator.getProgram10(),
+                        ProgramGenerator.getProgram11()
                 ));
 
         for (int i = 0; i < programs.size(); i++) {
@@ -259,5 +260,36 @@ public class ProgramGenerator {
                 lockX, printV1, unlockX,
                 lockQ, printV2, unlockQ
         );
+    }
+
+    private static Statement getProgram11() {
+//    Conditional assignment example
+        Statement declaringA = new VarDecStatement("a", new ReferenceType(new IntType()));
+        Statement declaringB = new VarDecStatement("b", new ReferenceType(new IntType()));
+        Statement declaringV = new VarDecStatement("v", new IntType());
+        Statement allocatingA = new HeapAllocationStatement("a", new ValueExpression(new IntValue(0)));
+        Statement allocatingB = new HeapAllocationStatement("b", new ValueExpression(new IntValue(0)));
+        Statement writingA = new HeapWriteStatement("a", new ValueExpression(new IntValue(1)));
+        Statement writingB = new HeapWriteStatement("b", new ValueExpression(new IntValue(2)));
+        Statement conditionalAssignment1 = new CondAssignmentStatement(
+                "v",
+                new RelationalExpression("<", new HeapReadExpression(new VarNameExpression("a")),
+                        new HeapReadExpression(new VarNameExpression("b"))),
+                new ValueExpression(new IntValue(100)),
+                new ValueExpression(new IntValue(200))
+        );
+        Statement printingV = new PrintStatement(new VarNameExpression("v"));
+        Statement conditionalAssignment2 = new CondAssignmentStatement(
+                "v",
+                new RelationalExpression(">", new ArithmeticExpression("-",
+                        new HeapReadExpression(new VarNameExpression("b")),
+                        new ValueExpression(new IntValue(2))),
+                        new HeapReadExpression(new VarNameExpression("a"))),
+                new ValueExpression(new IntValue(100)),
+                new ValueExpression(new IntValue(200))
+        );
+
+        return ProgramGenerator.buildProgram(declaringA, declaringB, declaringV, allocatingA, allocatingB,
+                writingA, writingB, conditionalAssignment1, printingV, conditionalAssignment2, printingV);
     }
 }

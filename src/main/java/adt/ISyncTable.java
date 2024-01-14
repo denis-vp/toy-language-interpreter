@@ -1,6 +1,8 @@
 package adt;
 
-public interface ILockTable {
+import java.util.Set;
+
+public interface ISyncTable {
     int add();
 
     void remove(Integer key);
@@ -14,4 +16,6 @@ public interface ILockTable {
     int size();
 
     boolean isEmpty();
+
+    Set<Integer> keys();
 }

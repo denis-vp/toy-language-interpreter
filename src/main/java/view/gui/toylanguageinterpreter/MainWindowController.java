@@ -18,6 +18,7 @@ import model.ProgramState;
 import model.statement.Statement;
 import model.value.Value;
 import view.gui.toylanguageinterpreter.tableentries.HeapTableEntry;
+import view.gui.toylanguageinterpreter.tableentries.LockTableEntry;
 import view.gui.toylanguageinterpreter.tableentries.SymbolTableEntry;
 
 import java.io.IOException;
@@ -49,6 +50,12 @@ public class MainWindowController implements Initializable {
     @FXML
     private TableColumn<HeapTableEntry, String> valueHeapTableColumn;
     @FXML
+    private TableView<LockTableEntry> lockTable;
+    @FXML
+    private TableColumn<LockTableEntry, String> lockTableAddressColumn;
+    @FXML
+    private TableColumn<LockTableEntry, String> lockTableThreadIdColumn;
+    @FXML
     private TextField threadCountText;
 
     public void loadProgram(Controller programController) {
@@ -62,6 +69,8 @@ public class MainWindowController implements Initializable {
         this.symbolTableValueColumn.setCellValueFactory(cellData -> cellData.getValue().valueProperty());
         this.addressHeapTableColumn.setCellValueFactory(cellData -> cellData.getValue().addressProperty());
         this.valueHeapTableColumn.setCellValueFactory(cellData -> cellData.getValue().valueProperty());
+        this.lockTableAddressColumn.setCellValueFactory(cellData -> cellData.getValue().addressProperty());
+        this.lockTableThreadIdColumn.setCellValueFactory(cellData -> cellData.getValue().threadIdProperty());
     }
 
     public void updateWindow() {
@@ -71,6 +80,7 @@ public class MainWindowController implements Initializable {
         this.populateOutputList();
         this.populateFileTable();
         this.populateHeapTable();
+        this.populateLockTable();
         this.populateThreadCountText();
     }
 
@@ -137,13 +147,22 @@ public class MainWindowController implements Initializable {
     private void populateHeapTable() {
         this.heapTable.getItems().clear();
         for (ProgramState programState : this.program.getRepository().getProgramStateList()) {
-            if (String.valueOf(programState.getId()).equals(this.selectedThread)) {
-                for (Integer address : programState.getHeap().keys()) {
-                    HeapTableEntry entry = new HeapTableEntry(address, programState.getHeap().get(address));
-                    this.heapTable.getItems().add(entry);
-                }
-                break;
+            for (Integer address : programState.getHeap().keys()) {
+                HeapTableEntry entry = new HeapTableEntry(address, programState.getHeap().get(address));
+                this.heapTable.getItems().add(entry);
             }
+            break;
+        }
+    }
+
+    private void populateLockTable() {
+        this.lockTable.getItems().clear();
+        for (ProgramState programState : this.program.getRepository().getProgramStateList()) {
+            for (Integer address : programState.getLockTable().keys()) {
+                LockTableEntry entry = new LockTableEntry(address, programState.getLockTable().get(address));
+                this.lockTable.getItems().add(entry);
+            }
+            break;
         }
     }
 

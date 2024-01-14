@@ -13,11 +13,11 @@ public class SymbolTableEntry {
     }
 
     public String getId() {
-        return id;
+        return this.id;
     }
 
     public Value getValue() {
-        return value;
+        return this.value;
     }
 
     public SimpleStringProperty idProperty() {
