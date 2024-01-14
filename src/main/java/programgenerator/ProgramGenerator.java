@@ -26,7 +26,8 @@ public class ProgramGenerator {
                         ProgramGenerator.getProgram6(),
                         ProgramGenerator.getProgram7(),
                         ProgramGenerator.getProgram8(),
-                        ProgramGenerator.getProgram9()
+                        ProgramGenerator.getProgram9(),
+                        ProgramGenerator.getProgram10()
                 ));
 
         for (int i = 0; i < programs.size(); i++) {
@@ -186,11 +187,77 @@ public class ProgramGenerator {
     }
 
     private static Statement getProgram10() {
-        Statement declaringV = new VarDecStatement("v", new IntType());
-        Statement assigningV = new AssignmentStatement("v", new ValueExpression(new IntValue(10)));
-        Statement thread1 = new ForkStatement(new ForkStatement(new PrintStatement(new VarNameExpression("v"))));
-        Statement printingV = new PrintStatement(new VarNameExpression("v"));
+//    Lock example
+        Statement declaringV1 = new VarDecStatement("v1", new ReferenceType(new IntType()));
+        Statement declaringV2 = new VarDecStatement("v2", new ReferenceType(new IntType()));
+        Statement declaringX = new VarDecStatement("x", new IntType());
+        Statement declaringQ = new VarDecStatement("q", new IntType());
+        Statement allocatingV1 = new HeapAllocationStatement("v1", new ValueExpression(new IntValue(20)));
+        Statement allocatingV2 = new HeapAllocationStatement("v2", new ValueExpression(new IntValue(30)));
 
-        return ProgramGenerator.buildProgram(declaringV, assigningV, thread1, printingV);
+        Statement newLockX = new LockDecStatement("x");
+        Statement lockX = new LockStatement("x");
+        Statement unlockX = new UnlockStatement("x");
+        Expression readHeapV1 = new HeapReadExpression(new VarNameExpression("v1"));
+        Statement fork1 = new ForkStatement(
+                new CompoundStatement(
+                        new ForkStatement(
+                                new CompoundStatement(
+                                        lockX,
+                                        new CompoundStatement(
+                                                new HeapWriteStatement("v1", new ArithmeticExpression("-",
+                                                        readHeapV1, new ValueExpression(new IntValue(1)))),
+                                                unlockX
+                                        )
+                                )
+                        ),
+                        new CompoundStatement(
+                                lockX,
+                                new CompoundStatement(
+                                        new HeapWriteStatement("v1", new ArithmeticExpression("*",
+                                                readHeapV1, new ValueExpression(new IntValue(10)))),
+                                        unlockX
+                                )
+                        )
+                )
+        );
+
+        Statement newLockQ = new LockDecStatement("q");
+        Statement lockQ = new LockStatement("q");
+        Statement unlockQ = new UnlockStatement("q");
+        Expression readHeapV2 = new HeapReadExpression(new VarNameExpression("v2"));
+        Statement fork2 = new ForkStatement(
+                new CompoundStatement(
+                        new ForkStatement(
+                                new CompoundStatement(
+                                        lockQ,
+                                        new CompoundStatement(
+                                                new HeapWriteStatement("v2", new ArithmeticExpression("+",
+                                                        readHeapV2, new ValueExpression(new IntValue(5)))),
+                                                unlockQ
+                                        )
+                                )
+                        ),
+                        new CompoundStatement(
+                                lockQ,
+                                new CompoundStatement(
+                                        new HeapWriteStatement("v2", new ArithmeticExpression("*",
+                                                readHeapV2, new ValueExpression(new IntValue(10)))),
+                                        unlockQ
+                                )
+                        )
+                )
+        );
+        Statement nop = new NopStatement();
+        Statement printV1 = new PrintStatement(readHeapV1);
+        Statement printV2 = new PrintStatement(readHeapV2);
+
+        return ProgramGenerator.buildProgram(
+                declaringV1, declaringV2, declaringX, declaringQ, allocatingV1, allocatingV2,
+                newLockX, fork1, newLockQ, fork2,
+                nop, nop, nop, nop,
+                lockX, printV1, unlockX,
+                lockQ, printV2, unlockQ
+        );
     }
 }

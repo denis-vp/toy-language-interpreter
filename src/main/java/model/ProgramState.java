@@ -1,9 +1,6 @@
 package model;
 
-import adt.IDictionary;
-import adt.IHeap;
-import adt.IList;
-import adt.IStack;
+import adt.*;
 import exception.ADTException;
 import exception.ProgramStateException;
 import exception.StatementException;
@@ -22,13 +19,14 @@ public class ProgramState {
     private final IHeap heap;
     private final IDictionary<String, BufferedReader> fileTable;
     private final IList<Value> output;
+    private final ILockTable lockTable;
     private final int id;
     private static final Set<Integer> ids = new HashSet<>();
 
     public ProgramState(Statement originalProgram,
                         IStack<Statement> executionStack, IDictionary<String, Value> symbolTable,
                         IHeap heap, IDictionary<String, BufferedReader> fileTable,
-                        IList<Value> output) {
+                        IList<Value> output, ILockTable lockTable) {
 
         this.originalProgram = originalProgram.deepCopy();
         this.executionStack = executionStack;
@@ -36,6 +34,7 @@ public class ProgramState {
         this.heap = heap;
         this.fileTable = fileTable;
         this.output = output;
+        this.lockTable = lockTable;
 
         this.id = ProgramState.generateNewId();
         executionStack.push(originalProgram);
@@ -79,6 +78,10 @@ public class ProgramState {
 
     public IList<Value> getOutput() {
         return this.output;
+    }
+
+    public ILockTable getLockTable() {
+        return this.lockTable;
     }
 
     public boolean isNotCompleted() {
@@ -135,6 +138,13 @@ public class ProgramState {
             stringBuilder.append("----------Empty----------\n");
         } else {
             stringBuilder.append(this.output);
+        }
+        stringBuilder.append("-------------------------------------------\n");
+        stringBuilder.append("Lock Table:\n");
+        if (this.lockTable.isEmpty()) {
+            stringBuilder.append("----------Empty----------\n");
+        } else {
+            stringBuilder.append(this.lockTable);
         }
         stringBuilder.append("-------------------------------------------\n");
 

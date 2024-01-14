@@ -38,7 +38,7 @@ public class SelectWindowController implements Initializable {
         ProgramGenerator.getPrograms()
                 .forEach(program -> {
                     ProgramState programState = new ProgramState(program, new MyStack<>(), new MyDictionary<>(),
-                            new MyHeap(), new MyConcurrentDictionary<>(), new MyList<>());
+                            new MyHeap(), new MyConcurrentDictionary<>(), new MyList<>(), new MyLockTable());
                     this.programs.add(programState);
                 });
     }

@@ -12,9 +12,9 @@ import model.type.Type;
 import model.value.BoolValue;
 
 public class IfStatement implements Statement {
-    Expression expression;
-    Statement thenStatement;
-    Statement elseStatement;
+    private final Expression expression;
+    private final Statement thenStatement;
+    private final Statement elseStatement;
 
     public IfStatement(Expression expression, Statement thenStatement, Statement elseStatement) {
         this.expression = expression;

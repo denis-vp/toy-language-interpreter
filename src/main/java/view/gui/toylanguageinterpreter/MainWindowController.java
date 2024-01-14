@@ -86,6 +86,9 @@ public class MainWindowController implements Initializable {
                     this.threadsList.getItems().add(String.valueOf(programState.getId()));
                 });
 
+        if (selectedIndex >= this.threadsList.getItems().size()) {
+            selectedIndex = 0;
+        }
         this.threadsList.getSelectionModel().select(selectedIndex);
         this.selectedThread = this.threadsList.getItems().get(selectedIndex);
     }

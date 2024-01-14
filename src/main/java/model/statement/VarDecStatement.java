@@ -8,8 +8,8 @@ import model.value.Value;
 
 
 public class VarDecStatement implements Statement {
-    String id;
-    Type type;
+    private final String id;
+    private final Type type;
 
     public VarDecStatement(String id, Type type) {
         this.id = id;
