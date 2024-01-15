@@ -43,6 +43,10 @@ public class UnaryExpression implements Expression {
 
     @Override
     public Type typeCheck(IDictionary<String, Type> typeEnvironment) throws ExpressionException {
+        if (!booleanOperators.containsKey(this.operator) && !integerOperators.containsKey(this.operator)) {
+            throw new ExpressionException("invalid operator");
+        }
+
         Type type = this.expression.typeCheck(typeEnvironment);
         if (type.equals(new BoolType())) {
             return new BoolType();
@@ -56,5 +60,14 @@ public class UnaryExpression implements Expression {
     @Override
     public Expression deepCopy() {
         return new UnaryExpression(this.operator, this.expression.deepCopy());
+    }
+
+    public String toString() {
+        if (this.operator.equals("--") || this.operator.equals("++")) {
+            return this.expression.toString() + this.operator;
+        } else if (this.operator.equals("!") || this.operator.equals("~")) {
+            return this.operator + this.expression.toString();
+        }
+        return "";
     }
 }

@@ -17,7 +17,7 @@ import java.util.function.BiPredicate;
 public class RelationalExpression implements Expression {
     private final Expression e1;
     private final Expression e2;
-    private final Map<String, BiPredicate<Integer, Integer>> operators = new HashMap<>(
+    private static final Map<String, BiPredicate<Integer, Integer>> operators = new HashMap<>(
             Map.of("<", (a, b) -> a < b, "<=", (a, b) -> a <= b, "==", Integer::equals,
                     "!=", (a, b) -> !a.equals(b), ">", (a, b) -> a > b, ">=", (a, b) -> a >= b)
     );
@@ -50,6 +50,10 @@ public class RelationalExpression implements Expression {
 
     @Override
     public Type typeCheck(IDictionary<String, Type> typeEnvironment) throws ExpressionException {
+        if (!operators.containsKey(this.operator)) {
+            throw new ExpressionException("invalid operator");
+        }
+
         Type type1 = this.e1.typeCheck(typeEnvironment);
         Type type2 = this.e2.typeCheck(typeEnvironment);
 

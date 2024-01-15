@@ -47,6 +47,10 @@ public class LogicalExpression implements Expression {
 
     @Override
     public Type typeCheck(IDictionary<String, Type> typeEnvironment) throws ExpressionException {
+        if (!operators.containsKey(this.operator)) {
+            throw new ExpressionException("invalid operator");
+        }
+
         Type type1 = this.e1.typeCheck(typeEnvironment);
         Type type2 = this.e2.typeCheck(typeEnvironment);
 

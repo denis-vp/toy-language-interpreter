@@ -30,7 +30,8 @@ public class ProgramGenerator {
                         ProgramGenerator.getProgram10(),
                         ProgramGenerator.getProgram11(),
                         ProgramGenerator.getProgram12(),
-                        ProgramGenerator.getProgram13()
+                        ProgramGenerator.getProgram13(),
+                        ProgramGenerator.getProgram14()
                 ));
 
         for (int i = 0; i < programs.size(); i++) {
@@ -366,5 +367,26 @@ public class ProgramGenerator {
 
         return ProgramGenerator.buildProgram(declaringV, assigningV, repeatStatement, declaringX, assigningX,
                 declaringY, assigningY, declaringZ, assigningZ, declaringW, assigningW, printingXV10);
+    }
+
+    private static Statement getProgram14() {
+//    Sleep example
+        Statement declaringV = new VarDecStatement("v", new IntType());
+        Statement assigningV = new AssignmentStatement("v", new ValueExpression(new IntValue(10)));
+        Statement decrementingV = new AssignmentStatement("v", new UnaryExpression("--", new VarNameExpression("v")));
+        Statement forkStatement = new ForkStatement(
+                new CompoundStatement(
+                        decrementingV,
+                        new CompoundStatement(
+                                decrementingV,
+                                new PrintStatement(new VarNameExpression("v"))
+                        )
+                )
+        );
+        Statement sleepStatement = new SleepStatement(10);
+        Statement printingV10 = new PrintStatement(new ArithmeticExpression("*",
+                new VarNameExpression("v"), new ValueExpression(new IntValue(10))));
+
+        return ProgramGenerator.buildProgram(declaringV, assigningV, forkStatement, sleepStatement, printingV10);
     }
 }
