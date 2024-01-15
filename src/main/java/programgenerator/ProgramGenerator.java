@@ -29,7 +29,8 @@ public class ProgramGenerator {
                         ProgramGenerator.getProgram9(),
                         ProgramGenerator.getProgram10(),
                         ProgramGenerator.getProgram11(),
-                        ProgramGenerator.getProgram12()
+                        ProgramGenerator.getProgram12(),
+                        ProgramGenerator.getProgram13()
                 ));
 
         for (int i = 0; i < programs.size(); i++) {
@@ -329,5 +330,41 @@ public class ProgramGenerator {
 
         return ProgramGenerator.buildProgram(declaringA, declaringB, declaringC, assigningA, assigningB, assigningC,
                 switchStatement, printing300);
+    }
+
+    private static Statement getProgram13() {
+//    Repeat until example
+        Statement declaringV = new VarDecStatement("v", new IntType());
+        Statement assigningV = new AssignmentStatement("v", new ValueExpression(new IntValue(0)));
+
+        Statement forkStatement = new ForkStatement(
+                new CompoundStatement(
+                        new PrintStatement(new VarNameExpression("v")),
+                        new AssignmentStatement("v", new ArithmeticExpression("-",
+                                new VarNameExpression("v"), new ValueExpression(new IntValue(1))))
+                )
+        );
+        Statement repeatStatement = new RepeatUntilStatement(
+                new CompoundStatement(
+                        forkStatement,
+                        new AssignmentStatement("v", new ArithmeticExpression("+",
+                                new VarNameExpression("v"), new ValueExpression(new IntValue(1))))
+                ),
+                new RelationalExpression("==", new VarNameExpression("v"), new ValueExpression(new IntValue(3)))
+        );
+
+        Statement declaringX = new VarDecStatement("x", new IntType());
+        Statement assigningX = new AssignmentStatement("x", new ValueExpression(new IntValue(1)));
+        Statement declaringY = new VarDecStatement("y", new IntType());
+        Statement assigningY = new AssignmentStatement("y", new ValueExpression(new IntValue(2)));
+        Statement declaringZ = new VarDecStatement("z", new IntType());
+        Statement assigningZ = new AssignmentStatement("z", new ValueExpression(new IntValue(3)));
+        Statement declaringW = new VarDecStatement("w", new IntType());
+        Statement assigningW = new AssignmentStatement("w", new ValueExpression(new IntValue(4)));
+        Statement printingXV10 = new PrintStatement(new ArithmeticExpression("*",
+                new VarNameExpression("v"), new ValueExpression(new IntValue(10))));
+
+        return ProgramGenerator.buildProgram(declaringV, assigningV, repeatStatement, declaringX, assigningX,
+                declaringY, assigningY, declaringZ, assigningZ, declaringW, assigningW, printingXV10);
     }
 }
