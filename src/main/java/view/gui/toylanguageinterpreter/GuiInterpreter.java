@@ -17,7 +17,6 @@ import java.io.IOException;
 // TODO: Sleep
 // TODO: CyclicBarrier
 // TODO: Wait
-// TODO: Relational Expression
 
 public class GuiInterpreter extends Application {
     @Override

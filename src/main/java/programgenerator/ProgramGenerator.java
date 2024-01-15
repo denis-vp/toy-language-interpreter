@@ -28,7 +28,8 @@ public class ProgramGenerator {
                         ProgramGenerator.getProgram8(),
                         ProgramGenerator.getProgram9(),
                         ProgramGenerator.getProgram10(),
-                        ProgramGenerator.getProgram11()
+                        ProgramGenerator.getProgram11(),
+                        ProgramGenerator.getProgram12()
                 ));
 
         for (int i = 0; i < programs.size(); i++) {
@@ -291,5 +292,42 @@ public class ProgramGenerator {
 
         return ProgramGenerator.buildProgram(declaringA, declaringB, declaringV, allocatingA, allocatingB,
                 writingA, writingB, conditionalAssignment1, printingV, conditionalAssignment2, printingV);
+    }
+
+    private static Statement getProgram12() {
+//    Switch example
+        Statement declaringA = new VarDecStatement("a", new IntType());
+        Statement declaringB = new VarDecStatement("b", new IntType());
+        Statement declaringC = new VarDecStatement("c", new IntType());
+        Statement assigningA = new AssignmentStatement("a", new ValueExpression(new IntValue(1)));
+        Statement assigningB = new AssignmentStatement("b", new ValueExpression(new IntValue(2)));
+        Statement assigningC = new AssignmentStatement("c", new ValueExpression(new IntValue(5)));
+
+        Statement case1 = new CompoundStatement(
+                new PrintStatement(new VarNameExpression("a")),
+                new PrintStatement(new VarNameExpression("b"))
+        );
+        Statement case2 = new CompoundStatement(
+                new PrintStatement(new ValueExpression(new IntValue(100))),
+                new PrintStatement(new ValueExpression(new IntValue(200)))
+        );
+        Statement case3 = new PrintStatement(new ValueExpression(new IntValue(300)));
+        Statement switchStatement = new SwitchStatement(
+                new ArithmeticExpression("*", new VarNameExpression("a"), new ValueExpression(new IntValue(10))),
+                new ArrayList<>(Arrays.asList(
+                        new ArithmeticExpression("*", new VarNameExpression("b"), new VarNameExpression("c")),
+                        new ValueExpression(new IntValue(10))
+                )),
+                new ArrayList<>(Arrays.asList(
+                        case1,
+                        case2,
+                        case3
+                ))
+        );
+
+        Statement printing300 = new PrintStatement(new ValueExpression(new IntValue(300)));
+
+        return ProgramGenerator.buildProgram(declaringA, declaringB, declaringC, assigningA, assigningB, assigningC,
+                switchStatement, printing300);
     }
 }
