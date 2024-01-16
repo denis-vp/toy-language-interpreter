@@ -18,6 +18,7 @@ import model.ProgramState;
 import model.statement.Statement;
 import model.value.Value;
 import view.gui.toylanguageinterpreter.tableentries.HeapTableEntry;
+import view.gui.toylanguageinterpreter.tableentries.LatchTableEntry;
 import view.gui.toylanguageinterpreter.tableentries.LockTableEntry;
 import view.gui.toylanguageinterpreter.tableentries.SymbolTableEntry;
 
@@ -56,6 +57,12 @@ public class MainWindowController implements Initializable {
     @FXML
     private TableColumn<LockTableEntry, String> lockTableThreadIdColumn;
     @FXML
+    private TableView<LatchTableEntry> latchTable;
+    @FXML
+    private TableColumn<LatchTableEntry, String> latchTableAddressColumn;
+    @FXML
+    private TableColumn<LatchTableEntry, String> latchTableCountColumn;
+    @FXML
     private TextField threadCountText;
 
     public void loadProgram(Controller programController) {
@@ -71,6 +78,8 @@ public class MainWindowController implements Initializable {
         this.valueHeapTableColumn.setCellValueFactory(cellData -> cellData.getValue().valueProperty());
         this.lockTableAddressColumn.setCellValueFactory(cellData -> cellData.getValue().addressProperty());
         this.lockTableThreadIdColumn.setCellValueFactory(cellData -> cellData.getValue().threadIdProperty());
+        this.latchTableAddressColumn.setCellValueFactory(cellData -> cellData.getValue().addressProperty());
+        this.latchTableCountColumn.setCellValueFactory(cellData -> cellData.getValue().countProperty());
     }
 
     public void updateWindow() {
@@ -81,6 +90,7 @@ public class MainWindowController implements Initializable {
         this.populateFileTable();
         this.populateHeapTable();
         this.populateLockTable();
+        this.populateLatchTable();
         this.populateThreadCountText();
     }
 
@@ -161,6 +171,17 @@ public class MainWindowController implements Initializable {
             for (Integer address : programState.getLockTable().keys()) {
                 LockTableEntry entry = new LockTableEntry(address, programState.getLockTable().get(address));
                 this.lockTable.getItems().add(entry);
+            }
+            break;
+        }
+    }
+
+    private void populateLatchTable() {
+        this.latchTable.getItems().clear();
+        for (ProgramState programState : this.program.getRepository().getProgramStateList()) {
+            for (Integer address : programState.getLatchTable().keys()) {
+                LatchTableEntry entry = new LatchTableEntry(address, programState.getLatchTable().get(address));
+                this.latchTable.getItems().add(entry);
             }
             break;
         }

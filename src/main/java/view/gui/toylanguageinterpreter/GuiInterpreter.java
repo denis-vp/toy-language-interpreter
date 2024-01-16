@@ -14,7 +14,6 @@ import java.io.IOException;
 // TODO: Procedure
 // TODO: Barrier
 // TODO: CyclicBarrier
-// TODO: Wait
 
 public class GuiInterpreter extends Application {
     @Override

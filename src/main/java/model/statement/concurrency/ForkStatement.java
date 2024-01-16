@@ -1,10 +1,11 @@
-package model.statement;
+package model.statement.concurrency;
 
 import adt.IDictionary;
 import adt.IStack;
 import adt.MyStack;
 import exception.StatementException;
 import model.ProgramState;
+import model.statement.Statement;
 import model.type.Type;
 import model.value.Value;
 
@@ -21,7 +22,7 @@ public class ForkStatement implements Statement {
         IDictionary<String, Value> newSymbolTable = state.getSymbolTable().deepCopy();
 
         return new ProgramState(this.statement, newExecutionStack, newSymbolTable,
-                state.getHeap(), state.getFileTable(), state.getOutput(), state.getLockTable());
+                state.getHeap(), state.getFileTable(), state.getOutput(), state.getLockTable(), state.getLatchTable());
     }
 
     @Override

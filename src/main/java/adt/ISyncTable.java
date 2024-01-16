@@ -3,7 +3,7 @@ package adt;
 import java.util.Set;
 
 public interface ISyncTable {
-    int add();
+    int add(Object obj);
 
     void remove(Integer key);
 

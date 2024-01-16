@@ -1,4 +1,4 @@
-package model.statement;
+package model.statement.loop;
 
 import adt.IDictionary;
 import adt.IHeap;
@@ -8,6 +8,7 @@ import exception.StatementException;
 import model.ProgramState;
 import model.expression.Expression;
 import model.expression.UnaryExpression;
+import model.statement.Statement;
 import model.type.BoolType;
 import model.type.Type;
 import model.value.Value;

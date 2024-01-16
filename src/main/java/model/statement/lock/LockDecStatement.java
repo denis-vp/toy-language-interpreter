@@ -1,18 +1,19 @@
-package model.statement;
+package model.statement.lock;
 
 import adt.IDictionary;
 import adt.ISyncTable;
 import exception.StatementException;
 import model.ProgramState;
+import model.statement.Statement;
 import model.type.IntType;
 import model.type.Type;
 import model.value.IntValue;
 import model.value.Value;
 
-public class UnlockStatement implements Statement {
+public class LockDecStatement implements Statement {
     private final String id;
 
-    public UnlockStatement(String id) {
+    public LockDecStatement(String id) {
         this.id = id;
     }
 
@@ -24,20 +25,13 @@ public class UnlockStatement implements Statement {
         if (!symbolTable.search(this.id)) {
             throw new StatementException("Variable " + this.id + " is not defined.");
         }
-
         Value value = symbolTable.get(this.id);
         if (!value.getType().equals(new IntType())) {
             throw new StatementException("Variable " + this.id + " is not an integer type.");
         }
-        int address = ((IntValue) value).getValue();
 
-        if (!lockTable.search(address)) {
-            throw new StatementException("Address " + address + " is not in the lock table.");
-        }
-
-        if (lockTable.get(address) == state.getId()) {
-            lockTable.update(address, -1);
-        }
+        int address = lockTable.add(null);
+        symbolTable.update(this.id, new IntValue(address));
 
         return null;
     }
@@ -53,10 +47,10 @@ public class UnlockStatement implements Statement {
 
     @Override
     public Statement deepCopy() {
-        return new UnlockStatement(this.id);
+        return new LockDecStatement(this.id);
     }
 
     public String toString() {
-        return "unlock(" + this.id + ")";
+        return "newLock(" + this.id + ")";
     }
 }

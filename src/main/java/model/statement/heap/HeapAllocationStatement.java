@@ -1,4 +1,4 @@
-package model.statement;
+package model.statement.heap;
 
 import adt.IDictionary;
 import adt.IHeap;
@@ -6,6 +6,7 @@ import exception.ExpressionException;
 import exception.StatementException;
 import model.expression.Expression;
 import model.ProgramState;
+import model.statement.Statement;
 import model.type.ReferenceType;
 import model.type.Type;
 import model.value.ReferenceValue;

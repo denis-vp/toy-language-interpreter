@@ -1,4 +1,4 @@
-package model.statement;
+package model.statement.file;
 
 import adt.IDictionary;
 import adt.IHeap;
@@ -6,19 +6,19 @@ import exception.ExpressionException;
 import exception.StatementException;
 import model.expression.Expression;
 import model.ProgramState;
+import model.statement.Statement;
 import model.type.StringType;
 import model.type.Type;
 import model.value.StringValue;
 import model.value.Value;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.IOException;
 
-public class OpenFileStatement implements Statement {
+public class CloseFileReadStatement implements Statement {
     private final Expression expression;
 
-    public OpenFileStatement(Expression expression) {
+    public CloseFileReadStatement(Expression expression) {
         this.expression = expression;
     }
 
@@ -34,14 +34,13 @@ public class OpenFileStatement implements Statement {
                 throw new StatementException("Expression " + this.expression + " is not of type string.");
             }
             StringValue stringValue = (StringValue) value;
-            if (fileTable.search(stringValue.getValue())) {
-                throw new StatementException("File " + stringValue.getValue() + " already opened.");
+            if (!fileTable.search(stringValue.getValue())) {
+                throw new StatementException("File " + stringValue.getValue() + " not opened.");
             }
-
-            BufferedReader bufferedReader;
-            bufferedReader = new BufferedReader(new FileReader(stringValue.getValue()));
-            fileTable.add(stringValue.getValue(), bufferedReader);
-        } catch (ExpressionException | FileNotFoundException e) {
+            BufferedReader bufferedReader = fileTable.get(stringValue.getValue());
+            bufferedReader.close();
+            fileTable.remove(stringValue.getValue());
+        } catch (ExpressionException | IOException e) {
             throw new StatementException(e.getMessage());
         }
 
@@ -63,10 +62,10 @@ public class OpenFileStatement implements Statement {
 
     @Override
     public Statement deepCopy() {
-        return new OpenFileStatement(this.expression.deepCopy());
+        return new CloseFileReadStatement(this.expression.deepCopy());
     }
 
     public String toString() {
-        return "openRFile(" + this.expression + ")";
+        return "closeRFile(" + this.expression + ")";
     }
 }

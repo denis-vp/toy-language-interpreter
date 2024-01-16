@@ -1,10 +1,11 @@
-package model.statement;
+package model.statement.assignment;
 
 import adt.IDictionary;
 import adt.IHeap;
 import exception.*;
 import model.expression.Expression;
 import model.ProgramState;
+import model.statement.Statement;
 import model.type.Type;
 import model.value.Value;
 

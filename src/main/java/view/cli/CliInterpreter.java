@@ -44,7 +44,7 @@ public class CliInterpreter {
             Statement program = programs.get(i);
 
             ProgramState programState = new ProgramState(program, new MyStack<>(), new MyDictionary<>(),
-                    new MyHeap(), new MyConcurrentDictionary<>(), new MyList<>(), new MyLockTable());
+                    new MyHeap(), new MyConcurrentDictionary<>(), new MyList<>(), new MyLockTable(), new MyLatchTable());
             IRepository repository = new Repository(programState, logFilePath);
             Controller controller = new Controller(repository, true);
 

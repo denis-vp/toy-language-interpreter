@@ -1,9 +1,10 @@
-package model.statement;
+package model.statement.concurrency;
 
 import adt.IDictionary;
 import adt.IStack;
 import exception.StatementException;
 import model.ProgramState;
+import model.statement.Statement;
 import model.type.Type;
 
 public class SleepStatement implements Statement {

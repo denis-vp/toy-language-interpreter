@@ -106,5 +106,19 @@
             <Label fx:id="lockTableLabel" layoutX="61.0" layoutY="14.0" text="Lock Table:" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="5.0" />
          </children>
       </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <children>
+            <TableView fx:id="latchTable" layoutX="24.0" layoutY="32.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="27.0">
+              <columns>
+                <TableColumn fx:id="latchTableAddressColumn" prefWidth="75.0" text="Address" />
+                <TableColumn fx:id="latchTableCountColumn" prefWidth="75.0" text="Count" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <Label fx:id="latchTableLabel" layoutX="81.0" layoutY="6.0" text="Latch Table:" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="5.0" />
+         </children>
+      </AnchorPane>
    </children>
 </GridPane>

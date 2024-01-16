@@ -1,4 +1,4 @@
-package model.statement;
+package model.statement.loop;
 
 import adt.IDictionary;
 import adt.IStack;
@@ -6,6 +6,8 @@ import exception.ExpressionException;
 import exception.StatementException;
 import model.expression.Expression;
 import model.ProgramState;
+import model.statement.CompoundStatement;
+import model.statement.Statement;
 import model.type.Type;
 
 public class ForStatement implements Statement {

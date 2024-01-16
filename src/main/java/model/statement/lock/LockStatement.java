@@ -1,9 +1,10 @@
-package model.statement;
+package model.statement.lock;
 
 import adt.IDictionary;
 import adt.ISyncTable;
 import exception.StatementException;
 import model.ProgramState;
+import model.statement.Statement;
 import model.type.IntType;
 import model.type.Type;
 import model.value.IntValue;

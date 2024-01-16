@@ -5,6 +5,26 @@ import adt.MyDictionary;
 import exception.StatementException;
 import model.expression.*;
 import model.statement.*;
+import model.statement.assignment.AssignmentStatement;
+import model.statement.assignment.CondAssignmentStatement;
+import model.statement.concurrency.ForkStatement;
+import model.statement.concurrency.SleepStatement;
+import model.statement.countdownlatch.LatchAwaitStatement;
+import model.statement.countdownlatch.LatchCountDownStatement;
+import model.statement.countdownlatch.LatchDecStatement;
+import model.statement.file.CloseFileReadStatement;
+import model.statement.file.FileReadStatement;
+import model.statement.file.OpenFileStatement;
+import model.statement.heap.HeapAllocationStatement;
+import model.statement.heap.HeapWriteStatement;
+import model.statement.lock.LockDecStatement;
+import model.statement.lock.LockStatement;
+import model.statement.lock.UnlockStatement;
+import model.statement.loop.ForStatement;
+import model.statement.loop.RepeatUntilStatement;
+import model.statement.loop.WhileStatement;
+import model.statement.selection.IfStatement;
+import model.statement.selection.SwitchStatement;
 import model.type.*;
 import model.value.BoolValue;
 import model.value.IntValue;
@@ -31,7 +51,8 @@ public class ProgramGenerator {
                         ProgramGenerator.getProgram11(),
                         ProgramGenerator.getProgram12(),
                         ProgramGenerator.getProgram13(),
-                        ProgramGenerator.getProgram14()
+                        ProgramGenerator.getProgram14(),
+                        ProgramGenerator.getProgram15()
                 ));
 
         for (int i = 0; i < programs.size(); i++) {
@@ -388,5 +409,62 @@ public class ProgramGenerator {
                 new VarNameExpression("v"), new ValueExpression(new IntValue(10))));
 
         return ProgramGenerator.buildProgram(declaringV, assigningV, forkStatement, sleepStatement, printingV10);
+    }
+
+    private static Statement getProgram15() {
+//    Count Down Latch example
+        Statement declaringV1 = new VarDecStatement("v1", new ReferenceType(new IntType()));
+        Statement declaringV2 = new VarDecStatement("v2", new ReferenceType(new IntType()));
+        Statement declaringV3 = new VarDecStatement("v3", new ReferenceType(new IntType()));
+        Statement declaringCnt = new VarDecStatement("cnt", new IntType());
+        Statement allocatingV1 = new HeapAllocationStatement("v1", new ValueExpression(new IntValue(2)));
+        Statement allocatingV2 = new HeapAllocationStatement("v2", new ValueExpression(new IntValue(3)));
+        Statement allocatingV3 = new HeapAllocationStatement("v3", new ValueExpression(new IntValue(4)));
+
+        Expression readV1 = new HeapReadExpression(new VarNameExpression("v1"));
+        Expression readV2 = new HeapReadExpression(new VarNameExpression("v2"));
+        Expression readV3 = new HeapReadExpression(new VarNameExpression("v3"));
+        Statement printV1 = new PrintStatement(readV1);
+        Statement printV2 = new PrintStatement(readV2);
+        Statement printV3 = new PrintStatement(readV3);
+
+        Statement newLatch = new LatchDecStatement("cnt", readV2);
+        Statement countDown = new LatchCountDownStatement("cnt");
+
+        Statement fork1 = new ForkStatement(
+                new CompoundStatement(
+                        new HeapWriteStatement("v1", new ArithmeticExpression("*", readV1, new ValueExpression(new IntValue(10)))),
+                        new CompoundStatement(
+                                printV1,
+                                countDown
+                        )
+                )
+        );
+        Statement fork2 = new ForkStatement(
+                new CompoundStatement(
+                        new HeapWriteStatement("v2", new ArithmeticExpression("*", readV2, new ValueExpression(new IntValue(10)))),
+                        new CompoundStatement(
+                                printV2,
+                                countDown
+                        )
+                )
+        );
+        Statement fork3 = new ForkStatement(
+                new CompoundStatement(
+                        new HeapWriteStatement("v3", new ArithmeticExpression("*", readV3, new ValueExpression(new IntValue(10)))),
+                        new CompoundStatement(
+                                printV3,
+                                countDown
+                        )
+                )
+        );
+
+        Statement await = new LatchAwaitStatement("cnt");
+        Statement print100 = new PrintStatement(new ValueExpression(new IntValue(100)));
+
+        return ProgramGenerator.buildProgram(
+                declaringV1, declaringV2, declaringV3, declaringCnt, allocatingV1, allocatingV2, allocatingV3,
+                newLatch, fork1, fork2, fork3, await, print100, countDown, print100
+        );
     }
 }

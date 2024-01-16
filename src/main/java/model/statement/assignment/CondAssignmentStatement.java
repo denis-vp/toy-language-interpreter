@@ -1,4 +1,4 @@
-package model.statement;
+package model.statement.assignment;
 
 import adt.IDictionary;
 import adt.IStack;
@@ -6,10 +6,10 @@ import exception.ExpressionException;
 import exception.StatementException;
 import model.ProgramState;
 import model.expression.Expression;
+import model.statement.Statement;
+import model.statement.selection.IfStatement;
 import model.type.BoolType;
 import model.type.Type;
-import model.value.BoolValue;
-import model.value.Value;
 
 public class CondAssignmentStatement implements Statement {
     private final String id;

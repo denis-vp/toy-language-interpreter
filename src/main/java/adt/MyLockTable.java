@@ -16,7 +16,7 @@ public class MyLockTable implements ISyncTable {
     }
 
     @Override
-    public synchronized int add() {
+    public synchronized int add(Object obj) {
         this.lockTable.put(this.nextFreeAddress, -1);
         this.moveNextFreeAddress();
         return this.nextFreeAddress - 1;

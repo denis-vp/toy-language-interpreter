@@ -20,13 +20,14 @@ public class ProgramState {
     private final IDictionary<String, BufferedReader> fileTable;
     private final IList<Value> output;
     private final ISyncTable lockTable;
+    private final ISyncTable latchTable;
     private final int id;
     private static final Set<Integer> ids = new HashSet<>();
 
     public ProgramState(Statement originalProgram,
                         IStack<Statement> executionStack, IDictionary<String, Value> symbolTable,
                         IHeap heap, IDictionary<String, BufferedReader> fileTable,
-                        IList<Value> output, ISyncTable lockTable) {
+                        IList<Value> output, ISyncTable lockTable, ISyncTable latchTable) {
 
         this.originalProgram = originalProgram.deepCopy();
         this.executionStack = executionStack;
@@ -35,6 +36,7 @@ public class ProgramState {
         this.fileTable = fileTable;
         this.output = output;
         this.lockTable = lockTable;
+        this.latchTable = latchTable;
 
         this.id = ProgramState.generateNewId();
         executionStack.push(originalProgram);
@@ -82,6 +84,10 @@ public class ProgramState {
 
     public ISyncTable getLockTable() {
         return this.lockTable;
+    }
+
+    public ISyncTable getLatchTable() {
+        return this.latchTable;
     }
 
     public boolean isNotCompleted() {
@@ -145,6 +151,13 @@ public class ProgramState {
             stringBuilder.append("----------Empty----------\n");
         } else {
             stringBuilder.append(this.lockTable);
+        }
+        stringBuilder.append("-------------------------------------------\n");
+        stringBuilder.append("Latch Table:\n");
+        if (this.latchTable.isEmpty()) {
+            stringBuilder.append("----------Empty----------\n");
+        } else {
+            stringBuilder.append(this.latchTable);
         }
         stringBuilder.append("-------------------------------------------\n");
 
