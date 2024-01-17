@@ -32,7 +32,7 @@
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
          <children>
-            <Label fx:id="symbolTableLabel" layoutX="84.0" layoutY="14.0" text="Symbol Table:" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+            <Label fx:id="symbolTableLabel" layoutX="84.0" layoutY="14.0" text="Symbol Table:" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
             <TableView fx:id="symbolTable" layoutX="12.0" layoutY="33.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="32.0">
               <columns>
                 <TableColumn fx:id="symbolTableIdColumn" prefWidth="75.0" text="ID" />
@@ -58,8 +58,8 @@
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
          <children>
-            <Label fx:id="heapLabel" layoutX="69.0" layoutY="24.0" text="Heap:" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
-            <TableView fx:id="heapTable" layoutX="12.0" layoutY="23.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="27.0">
+            <Label fx:id="heapLabel" layoutX="69.0" layoutY="24.0" text="Heap:" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+            <TableView fx:id="heapTable" layoutX="12.0" layoutY="23.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="27.0">
               <columns>
                 <TableColumn fx:id="addressHeapTableColumn" prefWidth="75.0" text="Address" />
                 <TableColumn fx:id="valueHeapTableColumn" prefWidth="75.0" text="Value" />
@@ -108,7 +108,7 @@
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
-            <TableView fx:id="latchTable" layoutX="24.0" layoutY="32.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="27.0">
+            <TableView fx:id="latchTable" layoutX="24.0" layoutY="32.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="27.0">
               <columns>
                 <TableColumn fx:id="latchTableAddressColumn" prefWidth="75.0" text="Address" />
                 <TableColumn fx:id="latchTableCountColumn" prefWidth="75.0" text="Count" />
@@ -118,6 +118,20 @@
                </columnResizePolicy>
             </TableView>
             <Label fx:id="latchTableLabel" layoutX="81.0" layoutY="6.0" text="Latch Table:" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="5.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+         <children>
+            <TableView fx:id="semaphoreTable" layoutX="14.0" layoutY="31.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="27.0">
+              <columns>
+                <TableColumn fx:id="semaphoreTableAddressColumn" prefWidth="75.0" text="Address" />
+                <TableColumn fx:id="semaphoreTableValueColumn" prefWidth="75.0" text="Value" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <Label fx:id="semaphoreTableLabel" layoutX="48.0" layoutY="6.0" text="Semaphore Table:" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
          </children>
       </AnchorPane>
    </children>

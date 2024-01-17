@@ -22,7 +22,8 @@ public class ForkStatement implements Statement {
         IDictionary<String, Value> newSymbolTable = state.getSymbolTable().deepCopy();
 
         return new ProgramState(this.statement, newExecutionStack, newSymbolTable,
-                state.getHeap(), state.getFileTable(), state.getOutput(), state.getLockTable(), state.getLatchTable());
+                state.getHeap(), state.getFileTable(), state.getOutput(), state.getLockTable(), state.getLatchTable(),
+                state.getSemaphoreTable());
     }
 
     @Override

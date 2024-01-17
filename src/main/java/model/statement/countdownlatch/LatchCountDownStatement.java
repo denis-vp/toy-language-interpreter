@@ -20,7 +20,6 @@ public class LatchCountDownStatement implements Statement {
 
     @Override
     public ProgramState execute(ProgramState state) throws StatementException {
-        IStack<Statement> stack = state.getExecutionStack();
         IDictionary<String, Value> symbolTable = state.getSymbolTable();
         ISyncTable latchTable = state.getLatchTable();
 
@@ -37,11 +36,12 @@ public class LatchCountDownStatement implements Statement {
             throw new StatementException("Address " + address + " is not defined in the latch table");
         }
 
-        int count = latchTable.get(address);
+        int count = (Integer) latchTable.get(address);
         if (count > 0) {
             latchTable.update(address, count - 1);
         }
 
+//        IStack<Statement> stack = state.getExecutionStack();
 //        state.getOutput().pushBack(new IntValue(state.getId()));
 
         return null;

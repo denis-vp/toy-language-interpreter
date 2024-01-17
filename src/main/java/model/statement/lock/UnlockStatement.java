@@ -36,7 +36,7 @@ public class UnlockStatement implements Statement {
             throw new StatementException("Address " + address + " is not in the lock table.");
         }
 
-        if (lockTable.get(address) == state.getId()) {
+        if ((Integer) lockTable.get(address) == state.getId()) {
             lockTable.update(address, -1);
         }
 

@@ -29,13 +29,14 @@ public class MyLatchTable implements ISyncTable {
     }
 
     @Override
-    public int get(Integer key) {
+    public Object get(Integer key) {
         return this.latchTable.get(key);
     }
 
     @Override
-    public void update(Integer key, Integer value) {
-        this.latchTable.put(key, value);
+    public synchronized void update(Integer key, Object value) {
+        Integer val = (Integer) value;
+        this.latchTable.put(key, val);
     }
 
     @Override

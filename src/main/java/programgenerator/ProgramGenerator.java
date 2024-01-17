@@ -25,6 +25,9 @@ import model.statement.loop.RepeatUntilStatement;
 import model.statement.loop.WhileStatement;
 import model.statement.selection.IfStatement;
 import model.statement.selection.SwitchStatement;
+import model.statement.semaphore.SemaphoreAcquireStatement;
+import model.statement.semaphore.SemaphoreDecStatement;
+import model.statement.semaphore.SemaphoreReleaseStatement;
 import model.type.*;
 import model.value.BoolValue;
 import model.value.IntValue;
@@ -52,7 +55,8 @@ public class ProgramGenerator {
                         ProgramGenerator.getProgram12(),
                         ProgramGenerator.getProgram13(),
                         ProgramGenerator.getProgram14(),
-                        ProgramGenerator.getProgram15()
+                        ProgramGenerator.getProgram15(),
+                        ProgramGenerator.getProgram16()
                 ));
 
         for (int i = 0; i < programs.size(); i++) {
@@ -465,6 +469,51 @@ public class ProgramGenerator {
         return ProgramGenerator.buildProgram(
                 declaringV1, declaringV2, declaringV3, declaringCnt, allocatingV1, allocatingV2, allocatingV3,
                 newLatch, fork1, fork2, fork3, await, print100, countDown, print100
+        );
+    }
+
+    private static Statement getProgram16() {
+//    Semaphore example
+        Statement declaringV1 = new VarDecStatement("v1", new ReferenceType(new IntType()));
+        Statement declaringCnt = new VarDecStatement("cnt", new IntType());
+        Statement allocatingV1 = new HeapAllocationStatement("v1", new ValueExpression(new IntValue(2)));
+
+        Expression readV1 = new HeapReadExpression(new VarNameExpression("v1"));
+        Statement acquireSemaphore = new SemaphoreAcquireStatement("cnt");
+        Statement releaseSemaphore = new SemaphoreReleaseStatement("cnt");
+
+        Statement newSemaphore = new SemaphoreDecStatement("cnt", readV1);
+        Statement fork1 = new ForkStatement(
+                new CompoundStatement(
+                        acquireSemaphore,
+                        new CompoundStatement(
+                                new HeapWriteStatement("v1", new ArithmeticExpression("*", readV1, new ValueExpression(new IntValue(10)))),
+                                new CompoundStatement(
+                                        new PrintStatement(readV1),
+                                        releaseSemaphore
+                                )
+                        )
+                )
+        );
+        Statement fork2 = new ForkStatement(
+                new CompoundStatement(
+                        acquireSemaphore,
+                        new CompoundStatement(
+                                new HeapWriteStatement("v1", new ArithmeticExpression("*", readV1, new ValueExpression(new IntValue(10)))),
+                                new CompoundStatement(
+                                        new HeapWriteStatement("v1", new ArithmeticExpression("*", readV1, new ValueExpression(new IntValue(2)))),
+                                        new CompoundStatement(
+                                                new PrintStatement(readV1),
+                                                releaseSemaphore
+                                        )
+                                )
+                        )
+                )
+        );
+        Statement printing = new PrintStatement(new ArithmeticExpression("-", readV1, new ValueExpression(new IntValue(1))));
+
+        return ProgramGenerator.buildProgram(
+                declaringV1, declaringCnt, allocatingV1, newSemaphore, fork1, fork2, acquireSemaphore, printing, releaseSemaphore
         );
     }
 }

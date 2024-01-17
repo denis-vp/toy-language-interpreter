@@ -36,7 +36,7 @@ public class LockStatement implements Statement {
             throw new StatementException("Address " + address + " is not in the lock table.");
         }
 
-        if (lockTable.get(address) == -1) {
+        if ((Integer) lockTable.get(address) == -1) {
             lockTable.update(address, state.getId());
         } else {
             state.getExecutionStack().push(this);

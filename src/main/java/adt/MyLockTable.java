@@ -28,13 +28,14 @@ public class MyLockTable implements ISyncTable {
     }
 
     @Override
-    public int get(Integer key) {
+    public Object get(Integer key) {
         return this.lockTable.get(key);
     }
 
     @Override
-    public void update(Integer key, Integer value) {
-        this.lockTable.put(key, value);
+    public synchronized void update(Integer key, Object value) {
+        Integer val = (Integer) value;
+        this.lockTable.put(key, val);
     }
 
     @Override

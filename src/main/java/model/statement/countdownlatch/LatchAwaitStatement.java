@@ -37,7 +37,7 @@ public class LatchAwaitStatement implements Statement {
             throw new StatementException("Address " + address + " is not defined in the latch table");
         }
 
-        int count = latchTable.get(address);
+        int count = (Integer) latchTable.get(address);
         if (count != 0) {
             stack.push(this);
         }

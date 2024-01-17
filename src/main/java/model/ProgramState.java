@@ -21,13 +21,15 @@ public class ProgramState {
     private final IList<Value> output;
     private final ISyncTable lockTable;
     private final ISyncTable latchTable;
+    private final ISyncTable semaphoreTable;
     private final int id;
     private static final Set<Integer> ids = new HashSet<>();
 
     public ProgramState(Statement originalProgram,
                         IStack<Statement> executionStack, IDictionary<String, Value> symbolTable,
                         IHeap heap, IDictionary<String, BufferedReader> fileTable,
-                        IList<Value> output, ISyncTable lockTable, ISyncTable latchTable) {
+                        IList<Value> output, ISyncTable lockTable, ISyncTable latchTable,
+                        ISyncTable semaphoreTable) {
 
         this.originalProgram = originalProgram.deepCopy();
         this.executionStack = executionStack;
@@ -37,6 +39,7 @@ public class ProgramState {
         this.output = output;
         this.lockTable = lockTable;
         this.latchTable = latchTable;
+        this.semaphoreTable = semaphoreTable;
 
         this.id = ProgramState.generateNewId();
         executionStack.push(originalProgram);
@@ -88,6 +91,10 @@ public class ProgramState {
 
     public ISyncTable getLatchTable() {
         return this.latchTable;
+    }
+
+    public ISyncTable getSemaphoreTable() {
+        return this.semaphoreTable;
     }
 
     public boolean isNotCompleted() {
@@ -158,6 +165,13 @@ public class ProgramState {
             stringBuilder.append("----------Empty----------\n");
         } else {
             stringBuilder.append(this.latchTable);
+        }
+        stringBuilder.append("-------------------------------------------\n");
+        stringBuilder.append("Semaphore Table:\n");
+        if (this.semaphoreTable.isEmpty()) {
+            stringBuilder.append("----------Empty----------\n");
+        } else {
+            stringBuilder.append(this.semaphoreTable);
         }
         stringBuilder.append("-------------------------------------------\n");
 

@@ -10,7 +10,6 @@ import java.io.IOException;
 
 
 // TODO: Semaphore
-// TODO: CountDownLatch
 // TODO: Procedure
 // TODO: Barrier
 // TODO: CyclicBarrier

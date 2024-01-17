@@ -7,9 +7,9 @@ public interface ISyncTable {
 
     void remove(Integer key);
 
-    int get(Integer key);
+    Object get(Integer key);
 
-    void update(Integer key, Integer value);
+    void update(Integer key, Object obj);
 
     boolean search(Integer key);
 

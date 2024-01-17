@@ -1,5 +1,7 @@
 package view.gui.toylanguageinterpreter;
 
+import adt.Pair;
+import adt.Triplet;
 import controller.Controller;
 import exception.ControllerException;
 import javafx.event.ActionEvent;
@@ -17,10 +19,7 @@ import javafx.stage.Stage;
 import model.ProgramState;
 import model.statement.Statement;
 import model.value.Value;
-import view.gui.toylanguageinterpreter.tableentries.HeapTableEntry;
-import view.gui.toylanguageinterpreter.tableentries.LatchTableEntry;
-import view.gui.toylanguageinterpreter.tableentries.LockTableEntry;
-import view.gui.toylanguageinterpreter.tableentries.SymbolTableEntry;
+import view.gui.toylanguageinterpreter.tableentries.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -63,6 +62,12 @@ public class MainWindowController implements Initializable {
     @FXML
     private TableColumn<LatchTableEntry, String> latchTableCountColumn;
     @FXML
+    private TableView<SemaphoreTableEntry> semaphoreTable;
+    @FXML
+    private TableColumn<SemaphoreTableEntry, String> semaphoreTableAddressColumn;
+    @FXML
+    private TableColumn<SemaphoreTableEntry, String> semaphoreTableValueColumn;
+    @FXML
     private TextField threadCountText;
 
     public void loadProgram(Controller programController) {
@@ -80,6 +85,8 @@ public class MainWindowController implements Initializable {
         this.lockTableThreadIdColumn.setCellValueFactory(cellData -> cellData.getValue().threadIdProperty());
         this.latchTableAddressColumn.setCellValueFactory(cellData -> cellData.getValue().addressProperty());
         this.latchTableCountColumn.setCellValueFactory(cellData -> cellData.getValue().countProperty());
+        this.semaphoreTableAddressColumn.setCellValueFactory(cellData -> cellData.getValue().addressProperty());
+        this.semaphoreTableValueColumn.setCellValueFactory(cellData -> cellData.getValue().valueProperty());
     }
 
     public void updateWindow() {
@@ -91,6 +98,7 @@ public class MainWindowController implements Initializable {
         this.populateHeapTable();
         this.populateLockTable();
         this.populateLatchTable();
+        this.populateSemaphoreTable();
         this.populateThreadCountText();
     }
 
@@ -169,7 +177,7 @@ public class MainWindowController implements Initializable {
         this.lockTable.getItems().clear();
         for (ProgramState programState : this.program.getRepository().getProgramStateList()) {
             for (Integer address : programState.getLockTable().keys()) {
-                LockTableEntry entry = new LockTableEntry(address, programState.getLockTable().get(address));
+                LockTableEntry entry = new LockTableEntry(address, (Integer) programState.getLockTable().get(address));
                 this.lockTable.getItems().add(entry);
             }
             break;
@@ -180,8 +188,20 @@ public class MainWindowController implements Initializable {
         this.latchTable.getItems().clear();
         for (ProgramState programState : this.program.getRepository().getProgramStateList()) {
             for (Integer address : programState.getLatchTable().keys()) {
-                LatchTableEntry entry = new LatchTableEntry(address, programState.getLatchTable().get(address));
+                LatchTableEntry entry = new LatchTableEntry(address, (Integer) programState.getLatchTable().get(address));
                 this.latchTable.getItems().add(entry);
+            }
+            break;
+        }
+    }
+
+    private void populateSemaphoreTable() {
+        this.semaphoreTable.getItems().clear();
+        for (ProgramState programState : this.program.getRepository().getProgramStateList()) {
+            for (Integer key : programState.getSemaphoreTable().keys()) {
+                Pair<Integer, List<Integer>> pair = (Pair<Integer, List<Integer>>) programState.getSemaphoreTable().get(key);
+                SemaphoreTableEntry entry = new SemaphoreTableEntry(key, pair);
+                this.semaphoreTable.getItems().add(entry);
             }
             break;
         }
