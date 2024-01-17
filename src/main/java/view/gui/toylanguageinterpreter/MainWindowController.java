@@ -68,6 +68,12 @@ public class MainWindowController implements Initializable {
     @FXML
     private TableColumn<SemaphoreTableEntry, String> semaphoreTableValueColumn;
     @FXML
+    private TableView<BarrierTableEntry> barrierTable;
+    @FXML
+    private TableColumn<BarrierTableEntry, String> barrierTableAddressColumn;
+    @FXML
+    private TableColumn<BarrierTableEntry, String> barrierTableValueColumn;
+    @FXML
     private TextField threadCountText;
 
     public void loadProgram(Controller programController) {
@@ -87,6 +93,8 @@ public class MainWindowController implements Initializable {
         this.latchTableCountColumn.setCellValueFactory(cellData -> cellData.getValue().countProperty());
         this.semaphoreTableAddressColumn.setCellValueFactory(cellData -> cellData.getValue().addressProperty());
         this.semaphoreTableValueColumn.setCellValueFactory(cellData -> cellData.getValue().valueProperty());
+        this.barrierTableAddressColumn.setCellValueFactory(cellData -> cellData.getValue().addressProperty());
+        this.barrierTableValueColumn.setCellValueFactory(cellData -> cellData.getValue().valueProperty());
     }
 
     public void updateWindow() {
@@ -100,6 +108,7 @@ public class MainWindowController implements Initializable {
         this.populateLatchTable();
         this.populateSemaphoreTable();
         this.populateThreadCountText();
+        this.populateBarrierTable();
     }
 
     private void populateThreadsList() {
@@ -202,6 +211,18 @@ public class MainWindowController implements Initializable {
                 Pair<Integer, List<Integer>> pair = (Pair<Integer, List<Integer>>) programState.getSemaphoreTable().get(key);
                 SemaphoreTableEntry entry = new SemaphoreTableEntry(key, pair);
                 this.semaphoreTable.getItems().add(entry);
+            }
+            break;
+        }
+    }
+
+    private void populateBarrierTable() {
+        this.barrierTable.getItems().clear();
+        for (ProgramState programState : this.program.getRepository().getProgramStateList()) {
+            for (Integer key : programState.getBarrierTable().keys()) {
+                Pair<Integer, List<Integer>> pair = (Pair<Integer, List<Integer>>) programState.getBarrierTable().get(key);
+                BarrierTableEntry entry = new BarrierTableEntry(key, pair);
+                this.barrierTable.getItems().add(entry);
             }
             break;
         }

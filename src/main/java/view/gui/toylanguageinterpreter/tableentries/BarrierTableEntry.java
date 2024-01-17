@@ -5,11 +5,11 @@ import javafx.beans.property.SimpleStringProperty;
 
 import java.util.List;
 
-public class SemaphoreTableEntry {
+public class BarrierTableEntry {
     private final int address;
     private final Pair<Integer, List<Integer>> value;
 
-    public SemaphoreTableEntry(int address, Pair<Integer, List<Integer>> value) {
+    public BarrierTableEntry(int address, Pair<Integer, List<Integer>> value) {
         this.address = address;
         this.value = value;
     }

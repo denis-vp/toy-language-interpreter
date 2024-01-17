@@ -7,6 +7,7 @@ import model.expression.*;
 import model.statement.*;
 import model.statement.assignment.AssignmentStatement;
 import model.statement.assignment.CondAssignmentStatement;
+import model.statement.barrier.BarrierAwaitStatement;
 import model.statement.concurrency.ForkStatement;
 import model.statement.concurrency.SleepStatement;
 import model.statement.countdownlatch.LatchAwaitStatement;
@@ -28,6 +29,7 @@ import model.statement.selection.SwitchStatement;
 import model.statement.semaphore.SemaphoreAcquireStatement;
 import model.statement.semaphore.SemaphoreDecStatement;
 import model.statement.semaphore.SemaphoreReleaseStatement;
+import model.statement.barrier.BarrierDecStatement;
 import model.type.*;
 import model.value.BoolValue;
 import model.value.IntValue;
@@ -56,7 +58,8 @@ public class ProgramGenerator {
                         ProgramGenerator.getProgram13(),
                         ProgramGenerator.getProgram14(),
                         ProgramGenerator.getProgram15(),
-                        ProgramGenerator.getProgram16()
+                        ProgramGenerator.getProgram16(),
+                        ProgramGenerator.getProgram17()
                 ));
 
         for (int i = 0; i < programs.size(); i++) {
@@ -514,6 +517,51 @@ public class ProgramGenerator {
 
         return ProgramGenerator.buildProgram(
                 declaringV1, declaringCnt, allocatingV1, newSemaphore, fork1, fork2, acquireSemaphore, printing, releaseSemaphore
+        );
+    }
+
+    private static Statement getProgram17() {
+//    Barrier example
+        Statement declaringV1 = new VarDecStatement("v1", new ReferenceType(new IntType()));
+        Statement declaringV2 = new VarDecStatement("v2", new ReferenceType(new IntType()));
+        Statement declaringV3 = new VarDecStatement("v3", new ReferenceType(new IntType()));
+        Statement declaringCnt = new VarDecStatement("cnt", new IntType());
+        Statement allocatingV1 = new HeapAllocationStatement("v1", new ValueExpression(new IntValue(2)));
+        Statement allocatingV2 = new HeapAllocationStatement("v2", new ValueExpression(new IntValue(3)));
+        Statement allocatingV3 = new HeapAllocationStatement("v3", new ValueExpression(new IntValue(4)));
+
+        Expression readV1 = new HeapReadExpression(new VarNameExpression("v1"));
+        Expression readV2 = new HeapReadExpression(new VarNameExpression("v2"));
+        Expression readV3 = new HeapReadExpression(new VarNameExpression("v3"));
+        Statement awaitBarrier = new BarrierAwaitStatement("cnt");
+
+        Statement newBarrier = new BarrierDecStatement("cnt", readV2);
+        Statement fork1 = new ForkStatement(
+                new CompoundStatement(
+                        awaitBarrier,
+                        new CompoundStatement(
+                                new HeapWriteStatement("v1", new ArithmeticExpression("*", readV1, new ValueExpression(new IntValue(10)))),
+                                new PrintStatement(readV1)
+                        )
+                )
+        );
+        Statement fork2 = new ForkStatement(
+                new CompoundStatement(
+                        awaitBarrier,
+                        new CompoundStatement(
+                                new HeapWriteStatement("v2", new ArithmeticExpression("*", readV2, new ValueExpression(new IntValue(10)))),
+                                new CompoundStatement(
+                                        new HeapWriteStatement("v2", new ArithmeticExpression("*", readV2, new ValueExpression(new IntValue(10)))),
+                                        new PrintStatement(readV2)
+                                        )
+                        )
+                )
+        );
+        Statement printingV3 = new PrintStatement(readV3);
+
+        return ProgramGenerator.buildProgram(
+                declaringV1, declaringV2, declaringV3, declaringCnt, allocatingV1, allocatingV2, allocatingV3,
+                newBarrier, fork1, fork2, awaitBarrier, printingV3
         );
     }
 }

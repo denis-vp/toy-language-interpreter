@@ -61,6 +61,6 @@ public class LatchAwaitStatement implements Statement {
     }
 
     public String toString() {
-        return "await(" + this.id + ")";
+        return "awaitLatch(" + this.id + ")";
     }
 }

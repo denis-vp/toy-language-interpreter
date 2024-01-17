@@ -21,6 +21,7 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" percentHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
@@ -76,18 +77,18 @@
             <ListView fx:id="threadsList" layoutX="10.0" layoutY="33.0" onMouseClicked="#updateWindow" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="32.0" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
          <children>
             <TextField fx:id="threadCountText" editable="false" layoutX="38.0" layoutY="12.0" text="Thread Count: /" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="2.5" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <children>
             <Button fx:id="oneStepButton" layoutX="53.0" layoutY="2.0" mnemonicParsing="false" onAction="#oneStep" prefHeight="38.0" prefWidth="120.0" text="One Step" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="7.5" AnchorPane.topAnchor="2.5" />
             <Button fx:id="allStepsButtoon" layoutX="8.0" layoutY="2.0" mnemonicParsing="false" onAction="#allSteps" prefHeight="38.0" prefWidth="120.0" text="All Steps" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="2.5" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
          <children>
             <Button fx:id="backButton" layoutX="81.0" layoutY="13.0" mnemonicParsing="false" onAction="#switchToSelectWindow" text="Back" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="2.5" />
          </children>
@@ -132,6 +133,20 @@
                </columnResizePolicy>
             </TableView>
             <Label fx:id="semaphoreTableLabel" layoutX="48.0" layoutY="6.0" text="Semaphore Table:" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+         <children>
+            <TableView fx:id="barrierTable" layoutY="-8.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="27.0">
+              <columns>
+                <TableColumn fx:id="barrierTableAddressColumn" prefWidth="75.0" text="Address" />
+                <TableColumn fx:id="barrierTableValueColumn" prefWidth="75.0" text="Value" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <Label fx:id="barrierTableLabel" layoutX="55.0" layoutY="6.0" text="Barrier Table:" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="5.0" />
          </children>
       </AnchorPane>
    </children>

@@ -22,6 +22,7 @@ public class ProgramState {
     private final ISyncTable lockTable;
     private final ISyncTable latchTable;
     private final ISyncTable semaphoreTable;
+    private final ISyncTable barrierTable;
     private final int id;
     private static final Set<Integer> ids = new HashSet<>();
 
@@ -29,7 +30,7 @@ public class ProgramState {
                         IStack<Statement> executionStack, IDictionary<String, Value> symbolTable,
                         IHeap heap, IDictionary<String, BufferedReader> fileTable,
                         IList<Value> output, ISyncTable lockTable, ISyncTable latchTable,
-                        ISyncTable semaphoreTable) {
+                        ISyncTable semaphoreTable, ISyncTable barrierTable) {
 
         this.originalProgram = originalProgram.deepCopy();
         this.executionStack = executionStack;
@@ -40,6 +41,7 @@ public class ProgramState {
         this.lockTable = lockTable;
         this.latchTable = latchTable;
         this.semaphoreTable = semaphoreTable;
+        this.barrierTable = barrierTable;
 
         this.id = ProgramState.generateNewId();
         executionStack.push(originalProgram);
@@ -95,6 +97,10 @@ public class ProgramState {
 
     public ISyncTable getSemaphoreTable() {
         return this.semaphoreTable;
+    }
+
+    public ISyncTable getBarrierTable() {
+        return this.barrierTable;
     }
 
     public boolean isNotCompleted() {
@@ -172,6 +178,13 @@ public class ProgramState {
             stringBuilder.append("----------Empty----------\n");
         } else {
             stringBuilder.append(this.semaphoreTable);
+        }
+        stringBuilder.append("-------------------------------------------\n");
+        stringBuilder.append("Barrier Table:\n");
+        if (this.barrierTable.isEmpty()) {
+            stringBuilder.append("----------Empty----------\n");
+        } else {
+            stringBuilder.append(this.barrierTable);
         }
         stringBuilder.append("-------------------------------------------\n");
 

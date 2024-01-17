@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
-// TODO: Semaphore
 // TODO: Procedure
 // TODO: Barrier
 // TODO: CyclicBarrier

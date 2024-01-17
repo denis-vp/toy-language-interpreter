@@ -45,7 +45,7 @@ public class CliInterpreter {
 
             ProgramState programState = new ProgramState(program, new MyStack<>(), new MyDictionary<>(),
                     new MyHeap(), new MyConcurrentDictionary<>(), new MyList<>(), new MyLockTable(), new MyLatchTable(),
-                    new MySemaphoreTable());
+                    new MySemaphoreTable(), new MyBarrierTable());
             IRepository repository = new Repository(programState, logFilePath);
             Controller controller = new Controller(repository, true);
 
