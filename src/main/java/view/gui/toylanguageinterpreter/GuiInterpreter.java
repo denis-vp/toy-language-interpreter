@@ -9,8 +9,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
-// TODO: Procedure
-
 public class GuiInterpreter extends Application {
     @Override
     public void start(Stage stage) throws IOException {
