@@ -1,7 +1,6 @@
 package view.gui.toylanguageinterpreter;
 
 import adt.Pair;
-import adt.Triplet;
 import controller.Controller;
 import exception.ControllerException;
 import javafx.event.ActionEvent;

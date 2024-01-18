@@ -9,6 +9,7 @@ import model.value.Value;
 
 import java.io.BufferedReader;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
@@ -23,6 +24,7 @@ public class ProgramState {
     private final ISyncTable latchTable;
     private final ISyncTable semaphoreTable;
     private final ISyncTable barrierTable;
+    private final IDictionary<String, Pair<List<String>, Statement>> procedureTable;
     private final int id;
     private static final Set<Integer> ids = new HashSet<>();
 
@@ -30,7 +32,8 @@ public class ProgramState {
                         IStack<Statement> executionStack, IDictionary<String, Value> symbolTable,
                         IHeap heap, IDictionary<String, BufferedReader> fileTable,
                         IList<Value> output, ISyncTable lockTable, ISyncTable latchTable,
-                        ISyncTable semaphoreTable, ISyncTable barrierTable) {
+                        ISyncTable semaphoreTable, ISyncTable barrierTable,
+                        IDictionary<String, Pair<List<String>, Statement>> procedureTable) {
 
         this.originalProgram = originalProgram.deepCopy();
         this.executionStack = executionStack;
@@ -42,6 +45,7 @@ public class ProgramState {
         this.latchTable = latchTable;
         this.semaphoreTable = semaphoreTable;
         this.barrierTable = barrierTable;
+        this.procedureTable = procedureTable;
 
         this.id = ProgramState.generateNewId();
         executionStack.push(originalProgram);
@@ -101,6 +105,10 @@ public class ProgramState {
 
     public ISyncTable getBarrierTable() {
         return this.barrierTable;
+    }
+
+    public IDictionary<String, Pair<List<String>, Statement>> getProcedureTable() {
+        return this.procedureTable;
     }
 
     public boolean isNotCompleted() {
@@ -185,6 +193,13 @@ public class ProgramState {
             stringBuilder.append("----------Empty----------\n");
         } else {
             stringBuilder.append(this.barrierTable);
+        }
+        stringBuilder.append("-------------------------------------------\n");
+        stringBuilder.append("Procedure Table:\n");
+        if (this.procedureTable.isEmpty()) {
+            stringBuilder.append("----------Empty----------\n");
+        } else {
+            stringBuilder.append(this.procedureTable);
         }
         stringBuilder.append("-------------------------------------------\n");
 

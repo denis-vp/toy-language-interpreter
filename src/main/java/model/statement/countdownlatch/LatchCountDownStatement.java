@@ -41,8 +41,7 @@ public class LatchCountDownStatement implements Statement {
             latchTable.update(address, count - 1);
         }
 
-//        IStack<Statement> stack = state.getExecutionStack();
-//        state.getOutput().pushBack(new IntValue(state.getId()));
+        state.getOutput().pushBack(new IntValue(state.getId()));
 
         return null;
     }

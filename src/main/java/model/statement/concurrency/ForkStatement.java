@@ -23,7 +23,7 @@ public class ForkStatement implements Statement {
 
         return new ProgramState(this.statement, newExecutionStack, newSymbolTable,
                 state.getHeap(), state.getFileTable(), state.getOutput(), state.getLockTable(), state.getLatchTable(),
-                state.getSemaphoreTable(), state.getBarrierTable());
+                state.getSemaphoreTable(), state.getBarrierTable(), state.getProcedureTable());
     }
 
     @Override
