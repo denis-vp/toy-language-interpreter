@@ -2,6 +2,7 @@ package view.cli;
 
 import adt.*;
 import controller.Controller;
+import model.value.Value;
 import programgenerator.ProgramGenerator;
 import model.ProgramState;
 import model.statement.Statement;
@@ -13,6 +14,7 @@ import view.cli.commands.RunExampleCommand;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.Stack;
 
 
 public class CliInterpreter {
@@ -43,7 +45,9 @@ public class CliInterpreter {
         for (int i = 0; i < programs.size(); i++) {
             Statement program = programs.get(i);
 
-            ProgramState programState = new ProgramState(program, new MyStack<>(), new MyDictionary<>(),
+            Stack<IDictionary<String, Value>> symbolTables = new Stack<>();
+            symbolTables.push(new MyDictionary<>());
+            ProgramState programState = new ProgramState(program, new MyStack<>(), symbolTables,
                     new MyHeap(), new MyConcurrentDictionary<>(), new MyList<>(), new MyLockTable(), new MyLatchTable(),
                     new MySemaphoreTable(), new MyBarrierTable(), new MyProcedureTable());
             IRepository repository = new Repository(programState, logFilePath);

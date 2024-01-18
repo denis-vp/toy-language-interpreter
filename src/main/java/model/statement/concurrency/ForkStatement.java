@@ -9,6 +9,8 @@ import model.statement.Statement;
 import model.type.Type;
 import model.value.Value;
 
+import java.util.Stack;
+
 public class ForkStatement implements Statement {
     private final Statement statement;
 
@@ -19,9 +21,12 @@ public class ForkStatement implements Statement {
     @Override
     public ProgramState execute(ProgramState state) throws StatementException {
         IStack<Statement> newExecutionStack = new MyStack<>();
-        IDictionary<String, Value> newSymbolTable = state.getSymbolTable().deepCopy();
+        Stack<IDictionary<String, Value>> newSymbolTables = new Stack<>();
+        for (IDictionary<String, Value> symbolTable : state.getSymbolTables()) {
+            newSymbolTables.push(symbolTable.deepCopy());
+        }
 
-        return new ProgramState(this.statement, newExecutionStack, newSymbolTable,
+        return new ProgramState(this.statement, newExecutionStack, newSymbolTables,
                 state.getHeap(), state.getFileTable(), state.getOutput(), state.getLockTable(), state.getLatchTable(),
                 state.getSemaphoreTable(), state.getBarrierTable(), state.getProcedureTable());
     }

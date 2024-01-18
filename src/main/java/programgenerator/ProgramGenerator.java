@@ -24,6 +24,8 @@ import model.statement.lock.UnlockStatement;
 import model.statement.loop.ForStatement;
 import model.statement.loop.RepeatUntilStatement;
 import model.statement.loop.WhileStatement;
+import model.statement.procedure.ProcedureCallStatement;
+import model.statement.procedure.ProcedureDecStatement;
 import model.statement.selection.IfStatement;
 import model.statement.selection.SwitchStatement;
 import model.statement.semaphore.SemaphoreAcquireStatement;
@@ -59,7 +61,8 @@ public class ProgramGenerator {
                         ProgramGenerator.getProgram14(),
                         ProgramGenerator.getProgram15(),
                         ProgramGenerator.getProgram16(),
-                        ProgramGenerator.getProgram17()
+                        ProgramGenerator.getProgram17(),
+                        ProgramGenerator.getProgram18()
                 ));
 
         for (int i = 0; i < programs.size(); i++) {
@@ -553,7 +556,7 @@ public class ProgramGenerator {
                                 new CompoundStatement(
                                         new HeapWriteStatement("v2", new ArithmeticExpression("*", readV2, new ValueExpression(new IntValue(10)))),
                                         new PrintStatement(readV2)
-                                        )
+                                )
                         )
                 )
         );
@@ -562,6 +565,50 @@ public class ProgramGenerator {
         return ProgramGenerator.buildProgram(
                 declaringV1, declaringV2, declaringV3, declaringCnt, allocatingV1, allocatingV2, allocatingV3,
                 newBarrier, fork1, fork2, awaitBarrier, printingV3
+        );
+    }
+
+    private static Statement getProgram18() {
+//    Procedure example
+        Statement declaringV = new VarDecStatement("v", new IntType());
+        Statement assigningSumV = new AssignmentStatement("v", new ArithmeticExpression("+",
+                new VarNameExpression("a"),
+                new VarNameExpression("b")));
+        Statement printingV = new PrintStatement(new VarNameExpression("v"));
+        Statement newProc1 = new ProcedureDecStatement("sum",
+                new ArrayList<>(Arrays.asList("a", "b")),
+                new CompoundStatement(declaringV, new CompoundStatement(assigningSumV, printingV)));
+
+        Statement assigningProdV = new AssignmentStatement("v", new ArithmeticExpression("*",
+                new VarNameExpression("a"),
+                new VarNameExpression("b")));
+        Statement newProc2 = new ProcedureDecStatement("product",
+                new ArrayList<>(Arrays.asList("a", "b")),
+                new CompoundStatement(declaringV, new CompoundStatement(assigningProdV, printingV)));
+
+        Statement declaringW = new VarDecStatement("w", new IntType());
+        Statement assigningV = new AssignmentStatement("v", new ValueExpression(new IntValue(2)));
+        Statement assigningW = new AssignmentStatement("w", new ValueExpression(new IntValue(5)));
+        Statement callSum = new ProcedureCallStatement("sum", new ArrayList<>(Arrays.asList(
+                new ArithmeticExpression("*", new VarNameExpression("v"), new ValueExpression(new IntValue(10))),
+                new VarNameExpression("w")
+        )));
+
+        Statement fork1 = new ForkStatement(
+                new ProcedureCallStatement("product", new ArrayList<>(Arrays.asList(
+                        new VarNameExpression("v"),
+                        new VarNameExpression("w")
+                )))
+        );
+        Statement fork2 = new ForkStatement(
+                new ProcedureCallStatement("sum", new ArrayList<>(Arrays.asList(
+                        new VarNameExpression("v"),
+                        new VarNameExpression("w")
+                )))
+        );
+
+        return ProgramGenerator.buildProgram(
+                declaringV, declaringW, assigningV, assigningW, newProc1, newProc2, callSum, printingV, fork1, fork2
         );
     }
 }

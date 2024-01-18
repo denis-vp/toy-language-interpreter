@@ -8,15 +8,12 @@ import model.statement.Statement;
 import model.value.Value;
 
 import java.io.BufferedReader;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 public class ProgramState {
     private final Statement originalProgram;
     private final IStack<Statement> executionStack;
-    private final IDictionary<String, Value> symbolTable;
+    private final Stack<IDictionary<String, Value>> symbolTables;
     private final IHeap heap;
     private final IDictionary<String, BufferedReader> fileTable;
     private final IList<Value> output;
@@ -29,7 +26,7 @@ public class ProgramState {
     private static final Set<Integer> ids = new HashSet<>();
 
     public ProgramState(Statement originalProgram,
-                        IStack<Statement> executionStack, IDictionary<String, Value> symbolTable,
+                        IStack<Statement> executionStack, Stack<IDictionary<String, Value>> symbolTables,
                         IHeap heap, IDictionary<String, BufferedReader> fileTable,
                         IList<Value> output, ISyncTable lockTable, ISyncTable latchTable,
                         ISyncTable semaphoreTable, ISyncTable barrierTable,
@@ -37,7 +34,7 @@ public class ProgramState {
 
         this.originalProgram = originalProgram.deepCopy();
         this.executionStack = executionStack;
-        this.symbolTable = symbolTable;
+        this.symbolTables = symbolTables;
         this.heap = heap;
         this.fileTable = fileTable;
         this.output = output;
@@ -75,8 +72,12 @@ public class ProgramState {
         return this.executionStack;
     }
 
+    public Stack<IDictionary<String, Value>> getSymbolTables() {
+        return this.symbolTables;
+    }
+
     public IDictionary<String, Value> getSymbolTable() {
-        return this.symbolTable;
+        return this.symbolTables.peek();
     }
 
     public IHeap getHeap() {
@@ -140,10 +141,10 @@ public class ProgramState {
         }
         stringBuilder.append("-------------------------------------------\n");
         stringBuilder.append("Symbol Table:\n");
-        if (this.symbolTable.isEmpty()) {
+        if (this.symbolTables.peek().isEmpty()) {
             stringBuilder.append("----------Empty----------\n");
         } else {
-            stringBuilder.append(this.symbolTable);
+            stringBuilder.append(this.symbolTables.peek());
         }
         stringBuilder.append("-------------------------------------------\n");
         stringBuilder.append("Heap:\n");

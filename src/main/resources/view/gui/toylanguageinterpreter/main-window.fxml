@@ -36,7 +36,7 @@
             <Label fx:id="symbolTableLabel" layoutX="84.0" layoutY="14.0" text="Symbol Table:" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
             <TableView fx:id="symbolTable" layoutX="12.0" layoutY="33.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="32.0">
               <columns>
-                <TableColumn fx:id="symbolTableIdColumn" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="symbolTableIdColumn" prefWidth="75.0" text="Id" />
                 <TableColumn fx:id="symbolTableValueColumn" prefWidth="75.0" text="Value" />
               </columns>
                <columnResizePolicy>
