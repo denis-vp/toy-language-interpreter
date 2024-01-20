@@ -54,7 +54,7 @@ public class ProgramState {
         synchronized (ProgramState.ids) {
             do {
                 id = random.nextInt();
-            } while (ProgramState.ids.contains(id));
+            } while (ProgramState.ids.contains(id) || id <= 0);
             ProgramState.ids.add(id);
         }
         return id;

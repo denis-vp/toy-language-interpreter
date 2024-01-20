@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
 
 public class MainWindowController implements Initializable {
     private Controller program;
-    String selectedThread;
+    private String selectedThread;
     @FXML
     private ListView<String> threadsList;
     @FXML
@@ -73,6 +73,12 @@ public class MainWindowController implements Initializable {
     @FXML
     private TableColumn<BarrierTableEntry, String> barrierTableValueColumn;
     @FXML
+    private TableView<ProcedureTableEntry> procedureTable;
+    @FXML
+    private TableColumn<ProcedureTableEntry, String> procedureTableNameColumn;
+    @FXML
+    private TableColumn<ProcedureTableEntry, String> procedureTableSignatureColumn;
+    @FXML
     private TextField threadCountText;
 
     public void loadProgram(Controller programController) {
@@ -94,9 +100,19 @@ public class MainWindowController implements Initializable {
         this.semaphoreTableValueColumn.setCellValueFactory(cellData -> cellData.getValue().valueProperty());
         this.barrierTableAddressColumn.setCellValueFactory(cellData -> cellData.getValue().addressProperty());
         this.barrierTableValueColumn.setCellValueFactory(cellData -> cellData.getValue().valueProperty());
+        this.procedureTableNameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+        this.procedureTableSignatureColumn.setCellValueFactory(cellData -> cellData.getValue().signatureProperty());
+    }
+
+    private boolean isProgramCompleted() {
+        return this.program.getRepository().getProgramStateList().isEmpty();
     }
 
     public void updateWindow() {
+        if (this.isProgramCompleted()) {
+            return;
+        }
+        this.populateThreadCountText();
         this.populateThreadsList();
         this.populateExecutionStackList();
         this.populateSymbolTable();
@@ -106,11 +122,22 @@ public class MainWindowController implements Initializable {
         this.populateLockTable();
         this.populateLatchTable();
         this.populateSemaphoreTable();
-        this.populateThreadCountText();
         this.populateBarrierTable();
+        this.populateProcedureTable();
+    }
+
+    private void removeJustCompletedPrograms() {
+       this.populateThreadsList();
+       this.populateExecutionStackList();
+       this.populateThreadCountText();
     }
 
     private void populateThreadsList() {
+        if (this.isProgramCompleted()) {
+            this.threadsList.getItems().clear();
+            return;
+        }
+
         int selectedIndex = this.threadsList.getSelectionModel().getSelectedIndex();
         if (selectedIndex < 0) {
             selectedIndex = 0;
@@ -227,6 +254,18 @@ public class MainWindowController implements Initializable {
         }
     }
 
+    private void populateProcedureTable() {
+        this.procedureTable.getItems().clear();
+        for (ProgramState programState : this.program.getRepository().getProgramStateList()) {
+            for (String key : programState.getProcedureTable().keys()) {
+                Pair<List<String>, Statement> pair = programState.getProcedureTable().get(key);
+                ProcedureTableEntry entry = new ProcedureTableEntry(key, pair);
+                this.procedureTable.getItems().add(entry);
+            }
+            break;
+        }
+    }
+
     private void populateThreadCountText() {
         String threadCountText = "Thread Count: ";
         threadCountText += this.program.getRepository().getProgramStateList().size();
@@ -274,6 +313,8 @@ public class MainWindowController implements Initializable {
         programStates = this.program.removeCompletedPrograms(
                 this.program.getRepository().getProgramStateList());
         this.program.getRepository().setProgramStateList(programStates);
+
+        this.removeJustCompletedPrograms();
     }
 
     public void allSteps() {

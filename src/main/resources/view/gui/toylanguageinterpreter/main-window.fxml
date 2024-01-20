@@ -16,25 +16,24 @@
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" percentHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
          <children>
-            <Label fx:id="executionStackLabel" layoutX="15.0" layoutY="14.0" prefHeight="17.0" prefWidth="195.0" text="Execution Stack:" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="10.0" />
-            <ListView fx:id="executionStackList" layoutX="13.0" layoutY="31.0" prefHeight="210.0" prefWidth="214.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="32.0" />
+            <Label fx:id="executionStackLabel" layoutX="15.0" layoutY="14.0" prefHeight="17.0" prefWidth="195.0" text="Execution Stack:" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0" />
+            <ListView fx:id="executionStackList" layoutX="13.0" layoutY="31.0" prefHeight="210.0" prefWidth="214.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="32.0" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
          <children>
-            <Label fx:id="symbolTableLabel" layoutX="84.0" layoutY="14.0" text="Symbol Table:" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-            <TableView fx:id="symbolTable" layoutX="12.0" layoutY="33.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="32.0">
+            <Label fx:id="symbolTableLabel" layoutX="84.0" layoutY="14.0" text="Symbol Table:" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0" />
+            <TableView fx:id="symbolTable" layoutX="12.0" layoutY="33.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="32.0">
               <columns>
                 <TableColumn fx:id="symbolTableIdColumn" prefWidth="75.0" text="Id" />
                 <TableColumn fx:id="symbolTableValueColumn" prefWidth="75.0" text="Value" />
@@ -47,20 +46,20 @@
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
          <children>
-            <Label fx:id="outputListLabel" layoutX="84.0" layoutY="26.0" text="Output List:" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="5.0" />
-            <ListView fx:id="outputList" layoutX="12.0" layoutY="32.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="27.0" />
+            <Label fx:id="outputListLabel" layoutX="84.0" layoutY="26.0" text="Output List:" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+            <ListView fx:id="outputList" layoutX="12.0" layoutY="32.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="27.0" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <Label fx:id="fileTableLabel" layoutX="76.0" layoutY="28.0" text="File Table:" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="5.0" />
-            <ListView fx:id="fileTableList" layoutX="12.0" layoutY="23.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="27.0" />
+            <Label fx:id="fileTableLabel" layoutX="76.0" layoutY="28.0" text="File Table:" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+            <ListView fx:id="fileTableList" layoutX="12.0" layoutY="23.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="27.0" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
          <children>
-            <Label fx:id="heapLabel" layoutX="69.0" layoutY="24.0" text="Heap:" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
-            <TableView fx:id="heapTable" layoutX="12.0" layoutY="23.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="27.0">
+            <Label fx:id="heapLabel" layoutX="69.0" layoutY="24.0" text="Heap:" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+            <TableView fx:id="heapTable" layoutX="12.0" layoutY="23.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="27.0">
               <columns>
                 <TableColumn fx:id="addressHeapTableColumn" prefWidth="75.0" text="Address" />
                 <TableColumn fx:id="valueHeapTableColumn" prefWidth="75.0" text="Value" />
@@ -73,29 +72,13 @@
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Label fx:id="threadsLabel" layoutX="61.0" layoutY="45.0" text="Threads:" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="10.0" />
-            <ListView fx:id="threadsList" layoutX="10.0" layoutY="33.0" onMouseClicked="#updateWindow" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="32.0" />
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
-         <children>
-            <TextField fx:id="threadCountText" editable="false" layoutX="38.0" layoutY="12.0" text="Thread Count: /" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="2.5" />
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-         <children>
-            <Button fx:id="oneStepButton" layoutX="53.0" layoutY="2.0" mnemonicParsing="false" onAction="#oneStep" prefHeight="38.0" prefWidth="120.0" text="One Step" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="7.5" AnchorPane.topAnchor="2.5" />
-            <Button fx:id="allStepsButtoon" layoutX="8.0" layoutY="2.0" mnemonicParsing="false" onAction="#allSteps" prefHeight="38.0" prefWidth="120.0" text="All Steps" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="2.5" />
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
-         <children>
-            <Button fx:id="backButton" layoutX="81.0" layoutY="13.0" mnemonicParsing="false" onAction="#switchToSelectWindow" text="Back" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="2.5" />
+            <Label fx:id="threadsLabel" layoutX="61.0" layoutY="45.0" text="Threads:" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0" />
+            <ListView fx:id="threadsList" layoutX="10.0" layoutY="33.0" onMouseClicked="#updateWindow" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="32.0" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
          <children>
-            <TableView fx:id="lockTable" layoutX="34.0" layoutY="107.0" prefHeight="106.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="27.0">
+            <TableView fx:id="lockTable" layoutX="34.0" layoutY="107.0" prefHeight="106.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="27.0">
               <columns>
                 <TableColumn fx:id="lockTableAddressColumn" prefWidth="75.0" text="Address" />
                 <TableColumn fx:id="lockTableThreadIdColumn" prefWidth="75.0" text="Thread" />
@@ -104,12 +87,12 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Label fx:id="lockTableLabel" layoutX="61.0" layoutY="14.0" text="Lock Table:" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="5.0" />
+            <Label fx:id="lockTableLabel" layoutX="61.0" layoutY="14.0" text="Lock Table:" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
-            <TableView fx:id="latchTable" layoutX="24.0" layoutY="32.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="27.0">
+            <TableView fx:id="latchTable" layoutX="24.0" layoutY="32.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="27.0">
               <columns>
                 <TableColumn fx:id="latchTableAddressColumn" prefWidth="75.0" text="Address" />
                 <TableColumn fx:id="latchTableCountColumn" prefWidth="75.0" text="Count" />
@@ -118,12 +101,12 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Label fx:id="latchTableLabel" layoutX="81.0" layoutY="6.0" text="Latch Table:" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="5.0" />
+            <Label fx:id="latchTableLabel" layoutX="81.0" layoutY="6.0" text="Latch Table:" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
          <children>
-            <TableView fx:id="semaphoreTable" layoutX="14.0" layoutY="31.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="27.0">
+            <TableView fx:id="semaphoreTable" layoutX="14.0" layoutY="31.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="27.0">
               <columns>
                 <TableColumn fx:id="semaphoreTableAddressColumn" prefWidth="75.0" text="Address" />
                 <TableColumn fx:id="semaphoreTableValueColumn" prefWidth="75.0" text="Value" />
@@ -132,12 +115,12 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Label fx:id="semaphoreTableLabel" layoutX="48.0" layoutY="6.0" text="Semaphore Table:" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+            <Label fx:id="semaphoreTableLabel" layoutX="48.0" layoutY="6.0" text="Semaphore Table:" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
          <children>
-            <TableView fx:id="barrierTable" layoutY="-8.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="27.0">
+            <TableView fx:id="barrierTable" layoutY="-8.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="27.0">
               <columns>
                 <TableColumn fx:id="barrierTableAddressColumn" prefWidth="75.0" text="Address" />
                 <TableColumn fx:id="barrierTableValueColumn" prefWidth="75.0" text="Value" />
@@ -146,12 +129,12 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Label fx:id="barrierTableLabel" layoutX="55.0" layoutY="6.0" text="Barrier Table:" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="5.0" />
+            <Label fx:id="barrierTableLabel" layoutX="55.0" layoutY="6.0" text="Barrier Table:" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
          <children>
-            <TableView fx:id="procedureTable" layoutX="34.0" layoutY="-10.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="27.0">
+            <TableView fx:id="procedureTable" layoutX="34.0" layoutY="-10.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="27.0">
               <columns>
                 <TableColumn fx:id="procedureTableNameColumn" prefWidth="75.0" text="Name" />
                 <TableColumn fx:id="procedureTableSignatureColumn" prefWidth="75.0" text="Signature" />
@@ -160,7 +143,15 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Label fx:id="procedureTableLabel" layoutX="44.0" layoutY="6.0" text="Procedure Table:" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="5.0" />
+            <Label fx:id="procedureTableLabel" layoutX="44.0" layoutY="6.0" text="Procedure Table:" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
+         <children>
+            <TextField fx:id="threadCountText" editable="false" layoutX="5.0" layoutY="8.0" prefHeight="45.0" prefWidth="180.0" text="Thread Count: /" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+            <Button fx:id="oneStepButton" layoutX="8.0" layoutY="81.0" mnemonicParsing="false" onAction="#oneStep" prefHeight="45.0" prefWidth="180.0" text="One Step" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="70.0" />
+            <Button fx:id="allStepsButtoon" layoutX="8.0" layoutY="145.0" mnemonicParsing="false" onAction="#allSteps" prefHeight="45.0" prefWidth="180.0" text="All Steps" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="10.0" />
+            <Button fx:id="backButton" layoutX="6.0" layoutY="196.0" mnemonicParsing="false" onAction="#switchToSelectWindow" prefHeight="45.0" prefWidth="180.0" text="Back" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="10.0" />
          </children>
       </AnchorPane>
    </children>
