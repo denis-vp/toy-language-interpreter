@@ -37,14 +37,16 @@ public class SemaphoreAcquireStatement implements Statement {
             throw new StatementException("Address " + address + " is not defined in the semaphore table!");
         }
 
-        Pair<Integer, List<Integer>> pair = (Pair<Integer, List<Integer>>) semaphoreTable.get(address);
-        int listLen = pair.getSecond().size();
-        if (pair.getFirst() > listLen) {
-            if (!pair.getSecond().contains(state.getId())) {
-                pair.getSecond().add(state.getId());
+        synchronized (semaphoreTable) {
+            Pair<Integer, List<Integer>> pair = (Pair<Integer, List<Integer>>) semaphoreTable.get(address);
+            int listLen = pair.getSecond().size();
+            if (pair.getFirst() > listLen) {
+                if (!pair.getSecond().contains(state.getId())) {
+                    pair.getSecond().add(state.getId());
+                }
+            } else {
+                stack.push(this);
             }
-        } else {
-            stack.push(this);
         }
 
         return null;
