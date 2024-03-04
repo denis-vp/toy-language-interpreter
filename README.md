@@ -16,6 +16,7 @@ Welcome to the Toy Language Interpreter repository! This project is a Java-based
 - **Dynamic Allocation**: Allocate memory for variables at runtime in the heap.
 - **Garbage Collection**: Automatically free memory for unused variables.
 - **Threads**: Run multiple threads in parallel.
+- **Synchronization**: Ensure thread safety with synchronized blocks.
 - **Type Checker**: Check for type errors in your code.
 
 ## Future Plans
@@ -24,7 +25,6 @@ This project is an ongoing work in progress, and there are plans to enhance it w
 
 - **Parser**: Introduce a language parser for more structured code.
 - **Additional Data Types**: Expand the range of supported data types.
-- **Additional Loop Types**: Support for do-while and for-each loops.
 - **And More**: Explore other language features and improvements.
 
 ## Getting Started
