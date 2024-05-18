@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3296df6a-a031-4442-acb9-11e5d42ce52f" name="Changes" comment="update README.md" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;denis-vp&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/denis-vp/toy-language-interpreter.git&quot;,
+    &quot;accountId&quot;: &quot;474e8464-19c8-4ecd-9dbd-cf63d7678645&quot;
+  }
+}</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2YfEZGyVaL5xdoqI1GdJPpyAxvB" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.CliInterpreter.executor&quot;: &quot;Run&quot;,
+    &quot;Application.GuiInterpreter.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/qdeni/Documents/repos-github/toy-language-interpreter/src/main/java/view/gui/toylanguageinterpreter&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/qdeni/Documents/repos-github/toy-language-interpreter&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Application.GuiInterpreter">
+    <configuration name="CliInterpreter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="view.cli.CliInterpreter" />
+      <module name="toy-language-interpreter" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="view.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GuiInterpreter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="view.gui.toylanguageinterpreter.GuiInterpreter" />
+      <module name="toy-language-interpreter" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="view.gui.toylanguageinterpreter.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.GuiInterpreter" />
+        <item itemvalue="Application.CliInterpreter" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3296df6a-a031-4442-acb9-11e5d42ce52f" name="Changes" comment="" />
+      <created>1700908294433</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1700908294433</updated>
+      <workItem from="1700908296742" duration="1947000" />
+      <workItem from="1700914605878" duration="980000" />
+      <workItem from="1700923459032" duration="410000" />
+      <workItem from="1700944850474" duration="3377000" />
+      <workItem from="1701015835296" duration="6636000" />
+      <workItem from="1701066292268" duration="116000" />
+      <workItem from="1701071732639" duration="6652000" />
+      <workItem from="1701105861730" duration="2797000" />
+      <workItem from="1701120580950" duration="877000" />
+      <workItem from="1701152637611" duration="6396000" />
+      <workItem from="1701168726591" duration="499000" />
+      <workItem from="1701185978157" duration="2869000" />
+      <workItem from="1701244806507" duration="626000" />
+      <workItem from="1701266697992" duration="844000" />
+      <workItem from="1701547237658" duration="159000" />
+      <workItem from="1701642203645" duration="83000" />
+      <workItem from="1701677030585" duration="1505000" />
+      <workItem from="1701679378080" duration="327000" />
+      <workItem from="1701681072176" duration="533000" />
+      <workItem from="1701683063153" duration="637000" />
+      <workItem from="1701778652336" duration="701000" />
+      <workItem from="1702129211914" duration="95000" />
+      <workItem from="1702205836042" duration="2488000" />
+      <workItem from="1702282151127" duration="206000" />
+      <workItem from="1702282374349" duration="640000" />
+      <workItem from="1702285393997" duration="323000" />
+      <workItem from="1702890430553" duration="2708000" />
+      <workItem from="1705081901515" duration="640000" />
+      <workItem from="1705150369751" duration="304000" />
+      <workItem from="1705159974478" duration="786000" />
+      <workItem from="1705235168244" duration="64000" />
+      <workItem from="1705244557854" duration="864000" />
+      <workItem from="1705245444210" duration="1553000" />
+      <workItem from="1705247503093" duration="1624000" />
+      <workItem from="1705261206373" duration="217000" />
+      <workItem from="1705261448685" duration="33000" />
+      <workItem from="1705261499363" duration="53000" />
+      <workItem from="1705261570864" duration="18000" />
+      <workItem from="1705261605171" duration="2472000" />
+      <workItem from="1705306598028" duration="4581000" />
+      <workItem from="1705343026716" duration="2866000" />
+      <workItem from="1705345920951" duration="8000" />
+      <workItem from="1705440874590" duration="2469000" />
+      <workItem from="1705481075602" duration="1498000" />
+      <workItem from="1705482599916" duration="320000" />
+      <workItem from="1705482947466" duration="3252000" />
+      <workItem from="1705486635983" duration="67000" />
+      <workItem from="1705486721179" duration="904000" />
+      <workItem from="1705492825258" duration="1147000" />
+      <workItem from="1705502892347" duration="3561000" />
+      <workItem from="1705581480974" duration="455000" />
+      <workItem from="1705598057740" duration="370000" />
+      <workItem from="1705600802457" duration="3749000" />
+      <workItem from="1705772893777" duration="192000" />
+      <workItem from="1705785767248" duration="3988000" />
+      <workItem from="1705844508401" duration="134000" />
+      <workItem from="1705866975648" duration="60000" />
+      <workItem from="1709540203155" duration="103000" />
+      <workItem from="1709540323073" duration="68000" />
+      <workItem from="1715939445064" duration="489000" />
+      <workItem from="1715941425479" duration="107000" />
+      <workItem from="1716024419023" duration="94000" />
+      <workItem from="1716024570846" duration="50000" />
+    </task>
+    <task id="LOCAL-00001" summary="design gui">
+      <option name="closed" value="true" />
+      <created>1701018341971</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1701018341971</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add different implementation for garbage collector">
+      <option name="closed" value="true" />
+      <created>1701021069380</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1701021069380</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add gui">
+      <option name="closed" value="true" />
+      <created>1701188581417</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1701188581417</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update README.md">
+      <option name="closed" value="true" />
+      <created>1701188839056</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1701188839056</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fix typechecker">
+      <option name="closed" value="true" />
+      <created>1701678500112</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1701678500112</updated>
+    </task>
+    <task id="LOCAL-00006" summary="implemented locks">
+      <option name="closed" value="true" />
+      <created>1705249059232</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1705249059232</updated>
+    </task>
+    <task id="LOCAL-00007" summary="implement gui for locks + conditional assignment">
+      <option name="closed" value="true" />
+      <created>1705264042235</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1705264042235</updated>
+    </task>
+    <task id="LOCAL-00008" summary="implement switch">
+      <option name="closed" value="true" />
+      <created>1705308638944</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1705308638944</updated>
+    </task>
+    <task id="LOCAL-00009" summary="implement repeat until">
+      <option name="closed" value="true" />
+      <created>1705311153315</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1705311153315</updated>
+    </task>
+    <task id="LOCAL-00010" summary="implement sleep">
+      <option name="closed" value="true" />
+      <created>1705344010461</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1705344010461</updated>
+    </task>
+    <task id="LOCAL-00011" summary="restructure statement package">
+      <option name="closed" value="true" />
+      <created>1705443220800</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1705443220800</updated>
+    </task>
+    <task id="LOCAL-00012" summary="implement count down latch">
+      <option name="closed" value="true" />
+      <created>1705443244301</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1705443244301</updated>
+    </task>
+    <task id="LOCAL-00013" summary="implement semaphore">
+      <option name="closed" value="true" />
+      <created>1705503316709</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1705503316709</updated>
+    </task>
+    <task id="LOCAL-00014" summary="implement barrier">
+      <option name="closed" value="true" />
+      <created>1705505118919</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1705505118919</updated>
+    </task>
+    <task id="LOCAL-00015" summary="implement procedure table">
+      <option name="closed" value="true" />
+      <created>1705601139232</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1705601139232</updated>
+    </task>
+    <task id="LOCAL-00016" summary="implement procedures">
+      <option name="closed" value="true" />
+      <created>1705604183733</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1705604183733</updated>
+    </task>
+    <task id="LOCAL-00017" summary="implement procedures">
+      <option name="closed" value="true" />
+      <created>1705604197150</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1705604197150</updated>
+    </task>
+    <task id="LOCAL-00018" summary="improve ui">
+      <option name="closed" value="true" />
+      <created>1705789743514</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1705789743514</updated>
+    </task>
+    <task id="LOCAL-00019" summary="fix semaphore acquire">
+      <option name="closed" value="true" />
+      <created>1705789757826</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1705789757826</updated>
+    </task>
+    <task id="LOCAL-00020" summary="update README.md">
+      <option name="closed" value="true" />
+      <created>1709540381848</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1709540381848</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="design gui" />
+    <MESSAGE value="add different implementation for garbage collector" />
+    <MESSAGE value="add gui" />
+    <MESSAGE value="fix typechecker" />
+    <MESSAGE value="implemented locks" />
+    <MESSAGE value="implement gui for locks + conditional assignment" />
+    <MESSAGE value="implement switch" />
+    <MESSAGE value="implement repeat until" />
+    <MESSAGE value="implement sleep" />
+    <MESSAGE value="restructure statement package" />
+    <MESSAGE value="implement count down latch" />
+    <MESSAGE value="implement semaphore" />
+    <MESSAGE value="implement barrier" />
+    <MESSAGE value="implement procedure table" />
+    <MESSAGE value="implement procedures" />
+    <MESSAGE value="improve ui" />
+    <MESSAGE value="fix semaphore acquire" />
+    <MESSAGE value="update README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="update README.md" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
